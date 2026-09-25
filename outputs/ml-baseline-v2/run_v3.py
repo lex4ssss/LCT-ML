@@ -21,9 +21,9 @@ def read_weather(connection, path):
     return weather
 
 
-def window(times, cutoff, hours):
+def window(times, cutoff, hours, per_hour=READINGS_PER_HOUR):
     start, end = np.searchsorted(times, cutoff - hours * HOUR, 'right'), np.searchsorted(times, cutoff, 'right')
-    return slice(start, end) if end - start == round(hours * READINGS_PER_HOUR) else None
+    return slice(start, end) if end - start == round(hours * per_hour) else None
 
 
 def at(times, values, moment):
@@ -31,10 +31,10 @@ def at(times, values, moment):
     return values[index] if index < len(times) and times[index] == moment else np.nan
 
 
-def features_at(weather, moment):
+def features_at(weather, moment, per_hour=READINGS_PER_HOUR):
     times, temperature, pressure = weather['datetime'], weather['temperature'], weather['pressure']
     cutoff = moment - AVAILABILITY_LAG
-    day, three_days = window(times, cutoff, 24), window(times, cutoff, 72)
+    day, three_days = window(times, cutoff, 24, per_hour), window(times, cutoff, 72, per_hour)
     values = [np.nan] * len(WEATHER_FEATURES)
     if day is not None:
         values[0:3] = temperature[day].mean(), temperature[day].min(), temperature[day].max()
@@ -47,13 +47,14 @@ def features_at(weather, moment):
     return values
 
 
-def weather_matrix(weather, as_of):
+def weather_matrix(weather, as_of, features=features_at, names=WEATHER_FEATURES):
     moments, inverse = np.unique(np.asarray(as_of).astype('datetime64[us]'), return_inverse=True)
-    table = np.array([features_at(weather, moment) for moment in moments], dtype=np.float64).reshape(len(moments), len(WEATHER_FEATURES))
+    table = np.array([features(weather, moment) for moment in moments], dtype=np.float64).reshape(len(moments), len(names))
     return table[inverse]
 
 
-def main(examples, episodes, weather_csv, baseline_report, output):
+def main(examples, episodes, weather_csv, baseline_report, output, reader=read_weather, features=features_at, names=WEATHER_FEATURES,
+         flags=dict(precipitation=False, weather_lag_hours=3), candidate='hgb_weather'):
     if output.exists():
         raise FileExistsError(str(output))
     baseline = json.loads(baseline_report.read_text())
@@ -62,7 +63,7 @@ def main(examples, episodes, weather_csv, baseline_report, output):
         raise ValueError('examples differ from the baseline run')
     with duckdb.connect(config={'threads': 4, 'memory_limit': '4GB'}) as connection:
         columns = rv.load(connection, examples)
-        extra = weather_matrix(read_weather(connection, weather_csv), columns['as_of'])
+        extra = weather_matrix(reader(connection, weather_csv), columns['as_of'], features, names)
         matrix = np.column_stack([ex.matrix_v2(columns, True), extra])
         labels, common = columns['label'], columns['event_count_24h'] > 0
         masks = {fold: ex.fold_masks(columns['as_of'], fold) for fold in ('A', 'B')}
@@ -76,11 +77,11 @@ def main(examples, episodes, weather_csv, baseline_report, output):
                       coverage=rv.coverage(connection, episodes, columns, eval_b, scores_b, threshold), calibration=rv.calibration(labels, scores_a, eval_a, eval_b))
     rows = {fold: dict(train=int(train.sum()), eval=int(evaluation.sum())) for fold, (train, evaluation) in masks.items()}
     result = dict(input_sha256=digest, weather_sha256=hashlib.file_digest(weather_csv.open('rb'), 'sha256').hexdigest(), rows=rows,
-                  weather_features=WEATHER_FEATURES, rows_missing_weather=int(np.isnan(extra).any(axis=1).sum()),
-                  candidates=dict(hgb_weather=report), baseline=dict(source=baseline_report.name, hgb=baseline['candidates']['hgb']),
-                  flags=dict(test_evaluation=False, training=True, precipitation=False, weather_lag_hours=3, calibration_fit_on='2024', threshold_selected_on='2024'))
+                  weather_features=names, rows_missing_weather=int(np.isnan(extra).any(axis=1).sum()),
+                  candidates={candidate: report}, baseline=dict(source=baseline_report.name, hgb=baseline['candidates']['hgb']),
+                  flags=dict(test_evaluation=False, training=True, **flags, calibration_fit_on='2024', threshold_selected_on='2024'))
     output.mkdir(parents=True)
-    joblib.dump(model, output / 'hgb_weather.joblib')
+    joblib.dump(model, output / (candidate + '.joblib'))
     (output / 'report.json').write_text(json.dumps(result, indent=2) + '\n')
 
 

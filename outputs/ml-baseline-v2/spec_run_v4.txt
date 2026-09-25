@@ -1,0 +1,23 @@
+run-004: HGB v2 plus city weather from Open-Meteo, precipitation included, folds A and B only, no test evaluation.
+
+Written on 2026-09-26 before run-004 results were seen. run-003 (old source, no precipitation) was rejected.
+
+Input: training-examples-v2.parquet (sha must equal run-002 input_sha256), weather_msk_openmeteo_2019_2026-06_hourly.csv from the backend team.
+Source: Open-Meteo Historical Weather API, ERA5 / ECMWF IFS reanalysis, grid node 55.78 N 37.58 E, hourly, local time Europe/Moscow, 65712 rows without gaps.
+Columns used: temperature_2m, surface_pressure (converted to mmHg), wind_speed_10m, precipitation (sum over the previous hour).
+Baseline: run-002/report.json candidates.hgb, same examples, same folds, same HGB parameters, random_state=0.
+
+Weather features per as_of, from readings with local time <= as_of - 3 hours, which is as_of - 6 hours in UTC:
+temp_mean_24h, temp_min_24h, temp_max_24h, freeze_thaw_72h, pressure_last, pressure_delta_24h, wind_max_24h, precipitation_24h, precipitation_72h.
+An incomplete window gives NaN.
+The 6-hour margin also keeps reanalysis values from depending on observations after as_of: an ERA5 analysis may use observations made several hours after its valid time.
+
+Acceptance rule, the same as run-003, fixed before results:
+weather is accepted only if hgb_weather_openmeteo beats baseline hgb on both
+1. selection_2024 average_precision by at least 0.005 absolute, and
+2. retrained.all average_precision on 2025 by at least 0.005 absolute,
+and frozen.all F1 on 2025 at the fold A threshold is not lower than baseline by more than 0.005.
+Otherwise the service keeps the run-002 model.
+
+This is the second weather attempt on the same folds; the fixed 0.005 margin on both years is kept to limit a lucky pass.
+If accepted, the service needs a live weather source at as_of: reanalysis arrives with a delay of several days, so the live source would be a forecast or nowcast with a different error profile. Test 2026 was already opened in run-002; any new test figure is a second look.
