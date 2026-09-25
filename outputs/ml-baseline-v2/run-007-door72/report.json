@@ -1,0 +1,53 @@
+{
+  "target": "door",
+  "horizon_hours": 72,
+  "unit": "object_day",
+  "threshold_from_2025": 0.4005703196694143,
+  "precision_at_recall_0_5_2025": 0.7782675776945118,
+  "test_object_day": {
+    "model": {
+      "rows": 13628,
+      "positives": 3368,
+      "prevalence": 0.24713824479013796,
+      "average_precision": 0.6641334201344162,
+      "brier": 0.13372674897808878,
+      "roc_auc": 0.8444322467391757,
+      "recall_at_precision_0_3": 0.9723871733966746,
+      "recall_at_precision_0_5": 0.8126484560570071,
+      "threshold": 0.4005703196694143,
+      "tp": 1468,
+      "fp": 588,
+      "fn": 1900,
+      "tn": 9672,
+      "precision": 0.7140077821011673,
+      "recall": 0.4358669833729216,
+      "f1": 0.5412979351032449,
+      "alerts_per_1000": 150.86586439683006,
+      "alerts_per_day": 11.55056179775281,
+      "recall_at_precision_0_7": 0.47832541567695963
+    },
+    "always_alert_precision": 0.24713824479013796,
+    "rule_alarm_24h": {
+      "rows": 13628,
+      "positives": 3368,
+      "prevalence": 0.24713824479013796,
+      "average_precision": 0.31879307976897875,
+      "brier": 0.3086292926328148,
+      "roc_auc": 0.6199154523945123,
+      "recall_at_precision_0_3": 0.47862232779097386,
+      "recall_at_precision_0_5": 0.0,
+      "threshold": 1.0,
+      "tp": 1612,
+      "fp": 2450,
+      "fn": 1756,
+      "tn": 7810,
+      "precision": 0.396848842934515,
+      "recall": 0.47862232779097386,
+      "f1": 0.43391655450874833,
+      "alerts_per_1000": 298.06281185793955
+    }
+  },
+  "test_rows": 1574615,
+  "test_last_as_of": "2026-06-27T00:00:00.000000",
+  "protocol": "model trained on as_of < 2025-01-01 minus horizon, threshold fixed on 2025, test 2026 evaluated once"
+}
