@@ -1,0 +1,31 @@
+Write a Python 3.12 command line script run_v2.py. Imports allowed: hashlib, json, sys, pathlib, duckdb, joblib, numpy, sklearn, and `import experiment_v2 as ex` (a sibling module, already written, API below).
+
+experiment_v2 API:
+- ex.V2_FEATURES: list of 13 feature column names.
+- ex.fold_masks(as_of, fold) -> (train_mask, eval_mask); fold 'A' evaluates year 2024, fold 'B' evaluates 2025. Raises ValueError on rows >= 2026-01-01.
+- ex.matrix_v1(columns), ex.matrix_v2(columns, calendar) -> float arrays. columns is a dict of numpy arrays.
+- ex.make_model(kind) for kind in 'logistic_v1','logistic_v2','hgb' -> unfitted sklearn classifier.
+- ex.max_f1_threshold(labels, scores) -> (threshold, f1)
+- ex.evaluate(labels, scores, threshold) -> dict
+- ex.reliability(labels, scores) -> list
+
+Usage: python run_v2.py EXAMPLES_PARQUET EPISODES_PARQUET OUTPUT_DIR
+
+Steps:
+1. If OUTPUT_DIR exists raise FileExistsError. Create it only after all computation succeeded.
+2. With duckdb (config threads=4, memory_limit='4GB') read from EXAMPLES_PARQUET the columns channel_id, as_of, label and all ex.V2_FEATURES, only rows with label IS NOT NULL AND split IN ('train','validation') AND as_of < TIMESTAMP '2026-01-01', ORDER BY channel_id, as_of. Use fetchnumpy; convert every feature to float64 with masked/NULL values as NaN; as_of to datetime64[us]; label to int.
+3. common = event_count_24h > 0.
+4. Candidates and their training:
+   - 'rule_alarm_24h': score = float(alarm_count_24h > 0); 'rule_alarm_7d': score = float(alarm_count_7d > 0). No training.
+   - 'logistic_v1': fit on train rows that are also common, features ex.matrix_v1; score = predict_proba[:,1] on common rows and 0.0 on other rows.
+   - 'logistic_v2': ex.matrix_v2(columns, False), fit on all train rows.
+   - 'hgb': ex.matrix_v2(columns, True), fit on all train rows.
+   For each fold in ('A','B') fit every trainable candidate on that fold's train mask. Compute scores for all rows once per fitted model.
+5. For each candidate:
+   - threshold_A, _ = ex.max_f1_threshold(labels[evalA], scoresA[evalA]) where scoresA are scores from the fold A model and evalA is fold A eval mask.
+   - frozen: evaluate fold A model on fold B eval rows (year 2025) with threshold_A, separately for subset 'all' (every fold B eval row) and 'common' (fold B eval rows with common). Also ex.evaluate on fold A eval rows ('all') with threshold_A as 'selection_2024'.
+   - retrained: fold B model on fold B eval rows with threshold_A, subsets 'all' and 'common'.
+   - calibration: for trainable candidates only, fit sklearn IsotonicRegression(out_of_bounds='clip', y_min=0, y_max=1) on (scoresA[evalA], labels[evalA]); apply to scoresA on fold B eval rows; store brier before and after (sklearn brier_score_loss) and ex.reliability before and after.
+6. Episode coverage for 2025: in duckdb read EPISODES_PARQUET rows with first_alarm_at > TIMESTAMP '2025-01-01' AND first_alarm_at <= TIMESTAMP '2026-01-01', key (channel_id, date_trunc('day', first_alarm_at - INTERVAL '1 microsecond')) as as_of. Match keys to the loaded fold B eval rows. For each candidate report: episodes_total, episodes_with_eligible_snapshot, episodes_in_alerted_windows where the retrained fold B score >= threshold_A. Count each episode separately even if several share one snapshot.
+7. Write OUTPUT_DIR/report.json (indent 2) with keys: input_sha256 (sha256 of EXAMPLES_PARQUET), rows (dict counts per fold of train and eval), candidates (dict per candidate name with threshold_A, selection_2024, frozen, retrained, calibration, coverage), flags = {"test_evaluation": false, "training": true, "calibration_fit_on": "2024", "threshold_selected_on": "2024"}. All numbers plain Python int/float.
+8. Save each fold B trainable model with joblib to OUTPUT_DIR/<name>.joblib.

@@ -1,0 +1,30 @@
+{
+  "model": "hgb",
+  "model_path": "run-002/hgb.joblib",
+  "model_sha256": "c2c25f5d5fadbbadf756baf1cdbb3d77357bd9a6eab0f5fc22ecd5385ba7e3ed",
+  "examples_sha256": "3d7429a0effd21e918b5cee66f70ee83bc1f071bd28bedd1f6a276e015c198bd",
+  "features": [
+    "event_count_24h",
+    "alarm_count_24h",
+    "event_count_7d",
+    "alarm_count_7d",
+    "event_count_30d",
+    "alarm_count_30d",
+    "active_days_30d",
+    "episode_starts_7d",
+    "episode_starts_30d",
+    "last_event_age_hours",
+    "last_alarm_age_hours_30d",
+    "channel_age_days",
+    "log_gap_hours_30d",
+    "month",
+    "weekday"
+  ],
+  "trained_on": "as_of < 2024-12-31",
+  "threshold": 0.14729813936270086,
+  "threshold_selection": "max row F1 on 2025 validation with this model",
+  "validation_f1": 0.25787873000014694,
+  "probability_output": "raw hgb score; out-of-time reliability checked on 2025 with the fold A model",
+  "validation_rows": 2794638,
+  "test_evaluated": false
+}

@@ -1,0 +1,29 @@
+Write a Python 3.12 module named exp_data.py. Allowed imports: datetime, numpy, sklearn. No I/O, no printing, no CLI.
+
+Input data is a dict `columns` mapping column name to a 1-D numpy array, all arrays of equal length:
+- 'as_of': numpy datetime64[us]
+- 'label': int 0/1
+- float arrays that may contain NaN: event_count_24h, alarm_count_24h, event_count_7d, alarm_count_7d, event_count_30d, alarm_count_30d, active_days_30d, episode_starts_7d, episode_starts_30d, last_event_age_hours, last_alarm_age_hours_30d, channel_age_days, log_gap_hours_30d
+
+Constants:
+TEST_START = numpy.datetime64('2026-01-01T00:00:00', 'us')
+V2_FEATURES = ['event_count_24h','alarm_count_24h','event_count_7d','alarm_count_7d','event_count_30d','alarm_count_30d','active_days_30d','episode_starts_7d','episode_starts_30d','last_event_age_hours','last_alarm_age_hours_30d','channel_age_days','log_gap_hours_30d']
+
+Functions:
+
+
+1. fold_masks(as_of, fold) -> (train_mask, eval_mask), boolean numpy arrays.
+   Raise ValueError('test rows present') if any as_of >= TEST_START. Raise ValueError('fold') if fold not in ('A','B').
+   Fold 'A': train = as_of < 2023-12-31T00:00; eval = 2024-01-01T00:00 <= as_of < 2025-01-01T00:00.
+   Fold 'B': train = as_of < 2024-12-31T00:00; eval = 2025-01-01T00:00 <= as_of < 2026-01-01T00:00.
+
+2. matrix_v1(columns) -> float64 array of shape (n, 4) with columns:
+   event_count_24h, alarm_count_24h, last_event_age_hours, and last_alarm_age_hours_30d where it is < 24, otherwise NaN (NaN stays NaN).
+
+3. matrix_v2(columns, calendar) -> float64 array. Columns are V2_FEATURES in order, except channel_age_days is replaced by min(channel_age_days, 365). If calendar is True append two columns: month of as_of (1..12) and weekday of as_of (Monday=0..Sunday=6).
+
+4. make_model(kind) -> unfitted sklearn estimator.
+   'logistic_v1': make_pipeline(SimpleImputer(strategy='constant', fill_value=24), FunctionTransformer(numpy.log1p), StandardScaler(), LogisticRegression(C=1, max_iter=500, tol=1e-6, solver='lbfgs'))
+   'logistic_v2': same but fill_value=720 and max_iter=1000.
+   'hgb': HistGradientBoostingClassifier(max_iter=300, learning_rate=0.05, max_leaf_nodes=31, min_samples_leaf=200, l2_regularization=1.0, early_stopping=False, random_state=0)
+   Any other kind: raise ValueError('kind').

@@ -1,0 +1,10 @@
+Write a Python 3.12 module named exp_metrics_report.py. Allowed imports: numpy, sklearn. No I/O, no printing, no CLI. labels is a 1-D int numpy array of 0/1, scores a 1-D float numpy array of the same length.
+
+Start with: from exp_metrics_core import confusion, recall_at_precision, max_f1_threshold
+
+Functions:
+
+8. reliability(labels, scores) -> list of dicts, one per non-empty bin of width 0.1 over [0,1]: bin i holds lower <= score < upper, the last bin also includes score == 1.0. Keys: lower, upper (floats rounded to 1 decimal), rows (int), mean_score, observed_fraction (floats).
+
+9. evaluate(labels, scores, threshold) -> dict with keys: rows, positives (ints), prevalence, average_precision (sklearn.metrics.average_precision_score), brier (sklearn.metrics.brier_score_loss), roc_auc (sklearn.metrics.roc_auc_score), recall_at_precision_0_3, recall_at_precision_0_5, threshold, and all keys of confusion(labels, scores, threshold) merged in. All values plain Python int/float.
+

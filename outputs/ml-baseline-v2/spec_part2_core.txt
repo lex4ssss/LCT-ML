@@ -1,0 +1,10 @@
+Write a Python 3.12 module named exp_metrics_core.py. Allowed imports: numpy, sklearn. No I/O, no printing, no CLI. labels is a 1-D int numpy array of 0/1, scores a 1-D float numpy array of the same length.
+
+Functions:
+
+5. max_f1_threshold(labels, scores) -> (threshold, f1) as Python floats.
+   Candidate thresholds are the distinct values of scores. A row is predicted positive when score >= threshold. F1 = 2*tp/(2*tp+fp+fn). Return the candidate with maximum F1; among ties return the highest threshold. Must be O(n log n): sort scores descending and use cumulative sums, do not loop over thresholds in Python.
+
+6. confusion(labels, scores, threshold) -> dict with int keys tp, fp, fn, tn and float keys precision, recall, f1, alerts_per_1000 (1000*(tp+fp)/n). precision is 0.0 when tp+fp == 0, recall is 0.0 when tp+fn == 0, f1 is 0.0 when 2*tp+fp+fn == 0.
+
+7. recall_at_precision(labels, scores, target) -> float: maximum recall over all distinct-score thresholds (score >= threshold) whose precision >= target; 0.0 if none. O(n log n).
