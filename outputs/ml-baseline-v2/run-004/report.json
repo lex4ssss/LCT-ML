@@ -1,0 +1,550 @@
+{
+  "input_sha256": "3d7429a0effd21e918b5cee66f70ee83bc1f071bd28bedd1f6a276e015c198bd",
+  "weather_sha256": "f577cfe1028ec96bcee7546237e01e6ac01097b39ffbc29f42a334805ac4826b",
+  "rows": {
+    "A": {
+      "train": 11516501,
+      "eval": 2558102
+    },
+    "B": {
+      "train": 14082243,
+      "eval": 2794638
+    }
+  },
+  "weather_features": [
+    "temp_mean_24h",
+    "temp_min_24h",
+    "temp_max_24h",
+    "freeze_thaw_72h",
+    "pressure_last",
+    "pressure_delta_24h",
+    "wind_max_24h",
+    "precipitation_24h",
+    "precipitation_72h"
+  ],
+  "rows_missing_weather": 0,
+  "candidates": {
+    "hgb_weather_openmeteo": {
+      "threshold_A": 0.12796251065609407,
+      "selection_2024": {
+        "rows": 2558102,
+        "positives": 25136,
+        "prevalence": 0.009826035083823867,
+        "average_precision": 0.2062887348999848,
+        "brier": 0.008626630418120545,
+        "roc_auc": 0.8910066403967163,
+        "recall_at_precision_0_3": 0.19283099936346276,
+        "recall_at_precision_0_5": 0.10109007001909612,
+        "threshold": 0.12796251065609407,
+        "tp": 7051,
+        "fp": 23954,
+        "fn": 18085,
+        "tn": 2509012,
+        "precision": 0.22741493307531044,
+        "recall": 0.2805140038192234,
+        "f1": 0.2511889706275271,
+        "alerts_per_1000": 12.120314201701104
+      },
+      "frozen": {
+        "all": {
+          "rows": 2794638,
+          "positives": 35186,
+          "prevalence": 0.012590539454483908,
+          "average_precision": 0.2080686854059558,
+          "brier": 0.01104255355298212,
+          "roc_auc": 0.8728951139085079,
+          "recall_at_precision_0_3": 0.1988290797476269,
+          "recall_at_precision_0_5": 0.10137554709259365,
+          "threshold": 0.12796251065609407,
+          "tp": 9693,
+          "fp": 31258,
+          "fn": 25493,
+          "tn": 2728194,
+          "precision": 0.23669751654416255,
+          "recall": 0.27547888364690504,
+          "f1": 0.2546199613853974,
+          "alerts_per_1000": 14.65341843916815
+        },
+        "common": {
+          "rows": 570662,
+          "positives": 12819,
+          "prevalence": 0.02246338463048179,
+          "average_precision": 0.35131412929623157,
+          "brier": 0.01757253419468285,
+          "roc_auc": 0.8893134101669444,
+          "recall_at_precision_0_3": 0.4168031827755675,
+          "recall_at_precision_0_5": 0.25438801778609876,
+          "threshold": 0.12796251065609407,
+          "tp": 5728,
+          "fp": 14840,
+          "fn": 7091,
+          "tn": 543003,
+          "precision": 0.2784908595877091,
+          "recall": 0.4468367267337546,
+          "f1": 0.3431275646209603,
+          "alerts_per_1000": 36.042350813616466
+        }
+      },
+      "retrained": {
+        "all": {
+          "rows": 2794638,
+          "positives": 35186,
+          "prevalence": 0.012590539454483908,
+          "average_precision": 0.21208731498301892,
+          "brier": 0.011004008383700198,
+          "roc_auc": 0.8713759064817623,
+          "recall_at_precision_0_3": 0.2121866651509123,
+          "recall_at_precision_0_5": 0.09876087080088672,
+          "threshold": 0.12796251065609407,
+          "tp": 10151,
+          "fp": 33316,
+          "fn": 25035,
+          "tn": 2726136,
+          "precision": 0.23353348517265973,
+          "recall": 0.2884954243164895,
+          "f1": 0.2581211142613759,
+          "alerts_per_1000": 15.553713933611437
+        },
+        "common": {
+          "rows": 570662,
+          "positives": 12819,
+          "prevalence": 0.02246338463048179,
+          "average_precision": 0.3589530240953719,
+          "brier": 0.01744867671218886,
+          "roc_auc": 0.8914617311340374,
+          "recall_at_precision_0_3": 0.43513534597082454,
+          "recall_at_precision_0_5": 0.274358374288166,
+          "threshold": 0.12796251065609407,
+          "tp": 5904,
+          "fp": 15668,
+          "fn": 6915,
+          "tn": 542175,
+          "precision": 0.2736881142221398,
+          "recall": 0.46056634682892583,
+          "f1": 0.34334564275537205,
+          "alerts_per_1000": 37.8017109953002
+        }
+      },
+      "coverage": {
+        "episodes_total": 65303,
+        "episodes_with_eligible_snapshot": 56260,
+        "episodes_in_alerted_windows": 24715
+      },
+      "calibration": {
+        "brier_before": 0.01104255355298212,
+        "brier_after": 0.011043511542437162,
+        "reliability_before": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "rows": 2735921,
+            "mean_score": 0.007284173976991187,
+            "observed_fraction": 0.008572615949071629
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "rows": 39648,
+            "mean_score": 0.1379248046161412,
+            "observed_fraction": 0.1385946327683616
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.3,
+            "rows": 12017,
+            "mean_score": 0.24046012987994989,
+            "observed_fraction": 0.22443205458933177
+          },
+          {
+            "lower": 0.3,
+            "upper": 0.4,
+            "rows": 3194,
+            "mean_score": 0.33906772297890686,
+            "observed_fraction": 0.3083907326236694
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "rows": 825,
+            "mean_score": 0.4373950996358563,
+            "observed_fraction": 0.4533333333333333
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6,
+            "rows": 743,
+            "mean_score": 0.5537921116780526,
+            "observed_fraction": 0.48855989232839836
+          },
+          {
+            "lower": 0.6,
+            "upper": 0.7,
+            "rows": 755,
+            "mean_score": 0.6497606589913706,
+            "observed_fraction": 0.5986754966887418
+          },
+          {
+            "lower": 0.7,
+            "upper": 0.8,
+            "rows": 339,
+            "mean_score": 0.7402587241531281,
+            "observed_fraction": 0.7669616519174042
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.9,
+            "rows": 479,
+            "mean_score": 0.8544192465910168,
+            "observed_fraction": 0.8517745302713987
+          },
+          {
+            "lower": 0.9,
+            "upper": 1.0,
+            "rows": 717,
+            "mean_score": 0.9510287283417859,
+            "observed_fraction": 0.9735006973500697
+          }
+        ],
+        "reliability_after": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "rows": 2736063,
+            "mean_score": 0.007229294741414857,
+            "observed_fraction": 0.008579846297398854
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "rows": 45871,
+            "mean_score": 0.14338926338132243,
+            "observed_fraction": 0.146519587538968
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.3,
+            "rows": 6810,
+            "mean_score": 0.24718203152854118,
+            "observed_fraction": 0.2527165932452276
+          },
+          {
+            "lower": 0.3,
+            "upper": 0.4,
+            "rows": 2163,
+            "mean_score": 0.34926737574875427,
+            "observed_fraction": 0.3546000924641701
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "rows": 1694,
+            "mean_score": 0.44471433490361917,
+            "observed_fraction": 0.48406139315230223
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6,
+            "rows": 165,
+            "mean_score": 0.538223689280821,
+            "observed_fraction": 0.6060606060606061
+          },
+          {
+            "lower": 0.6,
+            "upper": 0.7,
+            "rows": 633,
+            "mean_score": 0.6587737233752634,
+            "observed_fraction": 0.7045813586097947
+          },
+          {
+            "lower": 0.7,
+            "upper": 0.8,
+            "rows": 257,
+            "mean_score": 0.7627443607774276,
+            "observed_fraction": 0.8093385214007782
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.9,
+            "rows": 228,
+            "mean_score": 0.837489358114692,
+            "observed_fraction": 0.8552631578947368
+          },
+          {
+            "lower": 0.9,
+            "upper": 1.0,
+            "rows": 754,
+            "mean_score": 0.9749347910573435,
+            "observed_fraction": 0.9721485411140584
+          }
+        ]
+      }
+    }
+  },
+  "baseline": {
+    "source": "report.json",
+    "hgb": {
+      "threshold_A": 0.12252677522839533,
+      "selection_2024": {
+        "rows": 2558102,
+        "positives": 25136,
+        "prevalence": 0.009826035083823867,
+        "average_precision": 0.20823931229069909,
+        "brier": 0.008611081077577153,
+        "roc_auc": 0.8895277937730742,
+        "recall_at_precision_0_3": 0.19840070019096118,
+        "recall_at_precision_0_5": 0.10077180140038192,
+        "threshold": 0.12252677522839533,
+        "tp": 7393,
+        "fp": 25905,
+        "fn": 17743,
+        "tn": 2507061,
+        "precision": 0.22202534686767975,
+        "recall": 0.29411998726925526,
+        "f1": 0.2530376150871068,
+        "alerts_per_1000": 13.016681899314413
+      },
+      "frozen": {
+        "all": {
+          "rows": 2794638,
+          "positives": 35186,
+          "prevalence": 0.012590539454483908,
+          "average_precision": 0.20716185295975476,
+          "brier": 0.011046453031844422,
+          "roc_auc": 0.8644455948256692,
+          "recall_at_precision_0_3": 0.20599101915534587,
+          "recall_at_precision_0_5": 0.10055135565281646,
+          "threshold": 0.12252677522839533,
+          "tp": 9998,
+          "fp": 33760,
+          "fn": 25188,
+          "tn": 2725692,
+          "precision": 0.2284839343662873,
+          "recall": 0.284147103961803,
+          "f1": 0.2532934738548845,
+          "alerts_per_1000": 15.657841910115014
+        },
+        "common": {
+          "rows": 570662,
+          "positives": 12819,
+          "prevalence": 0.02246338463048179,
+          "average_precision": 0.3515483005332348,
+          "brier": 0.017568732803898666,
+          "roc_auc": 0.8908156570412666,
+          "recall_at_precision_0_3": 0.42304391918246353,
+          "recall_at_precision_0_5": 0.2522817692487714,
+          "threshold": 0.12252677522839533,
+          "tp": 5773,
+          "fp": 15428,
+          "fn": 7046,
+          "tn": 542415,
+          "precision": 0.27229847648695815,
+          "recall": 0.45034714096263356,
+          "f1": 0.3393885949441505,
+          "alerts_per_1000": 37.15158885645093
+        }
+      },
+      "retrained": {
+        "all": {
+          "rows": 2794638,
+          "positives": 35186,
+          "prevalence": 0.012590539454483908,
+          "average_precision": 0.2088486944014158,
+          "brier": 0.01102908144707426,
+          "roc_auc": 0.8642729993097246,
+          "recall_at_precision_0_3": 0.2106803842437333,
+          "recall_at_precision_0_5": 0.10055135565281646,
+          "threshold": 0.12252677522839533,
+          "tp": 10207,
+          "fp": 34343,
+          "fn": 24979,
+          "tn": 2725109,
+          "precision": 0.22911335578002245,
+          "recall": 0.29008696640709375,
+          "f1": 0.25601986555633593,
+          "alerts_per_1000": 15.941241763691755
+        },
+        "common": {
+          "rows": 570662,
+          "positives": 12819,
+          "prevalence": 0.02246338463048179,
+          "average_precision": 0.3527188156051835,
+          "brier": 0.017549611712883887,
+          "roc_auc": 0.8907060679404722,
+          "recall_at_precision_0_3": 0.4240580388485841,
+          "recall_at_precision_0_5": 0.25313987050471953,
+          "threshold": 0.12252677522839533,
+          "tp": 5853,
+          "fp": 15804,
+          "fn": 6966,
+          "tn": 542039,
+          "precision": 0.2702590386480122,
+          "recall": 0.4565878773695296,
+          "f1": 0.33954054994778976,
+          "alerts_per_1000": 37.9506608114786
+        }
+      },
+      "coverage": {
+        "episodes_total": 65303,
+        "episodes_with_eligible_snapshot": 56260,
+        "episodes_in_alerted_windows": 24570
+      },
+      "calibration": {
+        "brier_before": 0.011046453031844422,
+        "brier_after": 0.011047169258138596,
+        "reliability_before": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "rows": 2735981,
+            "mean_score": 0.007327977976571371,
+            "observed_fraction": 0.008563290461446918
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "rows": 40351,
+            "mean_score": 0.13815775094658336,
+            "observed_fraction": 0.13704740898614656
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.3,
+            "rows": 11299,
+            "mean_score": 0.2389898984580547,
+            "observed_fraction": 0.24028675103991504
+          },
+          {
+            "lower": 0.3,
+            "upper": 0.4,
+            "rows": 3006,
+            "mean_score": 0.34302244815658656,
+            "observed_fraction": 0.3070525615435795
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "rows": 1141,
+            "mean_score": 0.4413701923110914,
+            "observed_fraction": 0.4163014899211218
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6,
+            "rows": 664,
+            "mean_score": 0.5508439671145606,
+            "observed_fraction": 0.45180722891566266
+          },
+          {
+            "lower": 0.6,
+            "upper": 0.7,
+            "rows": 756,
+            "mean_score": 0.6463211437489467,
+            "observed_fraction": 0.6759259259259259
+          },
+          {
+            "lower": 0.7,
+            "upper": 0.8,
+            "rows": 308,
+            "mean_score": 0.7423663454655168,
+            "observed_fraction": 0.801948051948052
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.9,
+            "rows": 361,
+            "mean_score": 0.8513925492142091,
+            "observed_fraction": 0.850415512465374
+          },
+          {
+            "lower": 0.9,
+            "upper": 1.0,
+            "rows": 771,
+            "mean_score": 0.9600525806248907,
+            "observed_fraction": 0.9714656290531777
+          }
+        ],
+        "reliability_after": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "rows": 2738132,
+            "mean_score": 0.007293365510745102,
+            "observed_fraction": 0.00865188383905524
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "rows": 38151,
+            "mean_score": 0.13581708470485107,
+            "observed_fraction": 0.13782076485544284
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.3,
+            "rows": 13338,
+            "mean_score": 0.2341284637374142,
+            "observed_fraction": 0.24793822162243215
+          },
+          {
+            "lower": 0.3,
+            "upper": 0.4,
+            "rows": 1301,
+            "mean_score": 0.36622833228671886,
+            "observed_fraction": 0.3535741737125288
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "rows": 1464,
+            "mean_score": 0.4487987570108082,
+            "observed_fraction": 0.4337431693989071
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6,
+            "rows": 392,
+            "mean_score": 0.5311822290313495,
+            "observed_fraction": 0.5816326530612245
+          },
+          {
+            "lower": 0.6,
+            "upper": 0.7,
+            "rows": 491,
+            "mean_score": 0.6182643099355459,
+            "observed_fraction": 0.7311608961303462
+          },
+          {
+            "lower": 0.7,
+            "upper": 0.8,
+            "rows": 290,
+            "mean_score": 0.7363718292710391,
+            "observed_fraction": 0.8172413793103448
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.9,
+            "rows": 327,
+            "mean_score": 0.8422265223373064,
+            "observed_fraction": 0.8623853211009175
+          },
+          {
+            "lower": 0.9,
+            "upper": 1.0,
+            "rows": 752,
+            "mean_score": 0.9800667623088564,
+            "observed_fraction": 0.9707446808510638
+          }
+        ]
+      }
+    }
+  },
+  "flags": {
+    "test_evaluation": false,
+    "training": true,
+    "precipitation": true,
+    "weather_source": "open-meteo-era5-hourly",
+    "weather_lag_hours": 3,
+    "calibration_fit_on": "2024",
+    "threshold_selected_on": "2024"
+  }
+}
