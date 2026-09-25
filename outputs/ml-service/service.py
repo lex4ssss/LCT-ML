@@ -1,5 +1,5 @@
 import argparse
-from datetime import datetime
+from datetime import datetime, timezone
 import hashlib
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import json
@@ -8,7 +8,7 @@ import sys
 import threading
 import joblib
 import numpy as np
-from feature_store import FeatureStore, InsufficientData
+from feature_store import FeatureStore, InsufficientData, to_utc_naive
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / 'ml-baseline-v2'))
 import experiment_v2 as ex
@@ -17,7 +17,7 @@ MAX_BODY = 64 * 1024
 
 
 class Predictor:
-    def __init__(self, store, decision_path):
+    def __init__(self, store, decision_path, demo_anchor=None):
         decision_path = Path(decision_path)
         self.decision = json.loads(decision_path.read_text())
         model_path = decision_path.parent / self.decision['model_path']
@@ -27,11 +27,15 @@ class Predictor:
         self.store, self.lock = store, threading.Lock()
         self.threshold = float(self.decision['threshold'])
         self.model_name = 'hgb-v2-run002-' + self.decision['model_sha256'][:8]
+        self.demo_anchor = None if demo_anchor is None else to_utc_naive(demo_anchor)
+        self.demo_offset = None if demo_anchor is None else self.demo_anchor - datetime.now(timezone.utc).replace(tzinfo=None)
 
     def predict(self, target_id, as_of):
         channel = target_id.removeprefix('sensor_')
+        requested = to_utc_naive(as_of)
+        effective = requested if self.demo_offset is None else requested + self.demo_offset
         with self.lock:
-            t, values = self.store.features(channel, as_of)
+            t, values = self.store.features(channel, effective)
         columns = {name: np.array([np.nan if values[name] is None else values[name]], dtype=np.float64) for name in ex.V2_FEATURES}
         columns['as_of'] = np.array([np.datetime64(t, 'us')])
         probability = float(self.model.predict_proba(ex.matrix_v2(columns, True))[0, 1])
@@ -45,7 +49,8 @@ class Predictor:
                           else 'Риск ниже рабочего порога модели: плановое наблюдение')
         return dict(probability=probability, lead_min_hours=0.0, prediction_window_hours=24.0, top_factors=factors, recommendation=recommendation,
                     model_name=self.model_name, status='ok', alert=alert, threshold=self.threshold, as_of_utc=t.isoformat(),
-                    target_scope='recorded_alarm_episode_start', features=values)
+                    target_scope='recorded_alarm_episode_start', features=values,
+                    demo_clock=None if self.demo_offset is None else dict(requested_as_of_utc=requested.isoformat(), anchor_utc=self.demo_anchor.isoformat()))
 
 
 def make_handler(predictor):
@@ -61,7 +66,8 @@ def make_handler(predictor):
         def do_GET(self):
             if self.path != '/health':
                 return self.reply(404, dict(error='not_found'))
-            self.reply(200, dict(status='ok', model_name=predictor.model_name, threshold=predictor.threshold, journal_last_record=predictor.store.global_last.isoformat()))
+            demo = None if predictor.demo_offset is None else (datetime.now(timezone.utc).replace(tzinfo=None) + predictor.demo_offset).isoformat()
+            self.reply(200, dict(status='ok', model_name=predictor.model_name, threshold=predictor.threshold, journal_last_record=predictor.store.global_last.isoformat(), demo_now_utc=demo))
 
         def do_POST(self):
             if self.path != '/predict':
@@ -94,8 +100,9 @@ def main():
     parser.add_argument('--decision', required=True)
     parser.add_argument('--host', default='127.0.0.1')
     parser.add_argument('--port', type=int, default=8090)
+    parser.add_argument('--demo-anchor', type=datetime.fromisoformat)
     args = parser.parse_args()
-    predictor = Predictor(FeatureStore(args.prepared, args.config), args.decision)
+    predictor = Predictor(FeatureStore(args.prepared, args.config), args.decision, args.demo_anchor)
     ThreadingHTTPServer((args.host, args.port), make_handler(predictor)).serve_forever()
 
 
