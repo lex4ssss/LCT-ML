@@ -15,3 +15,6 @@ __pycache__/
 *.pem
 *.key
 .DS_Store
+.venv
+work/ml-prepared
+work/baseline-reproduced/
