@@ -1,0 +1,22 @@
+run-003: HGB v2 plus city weather, folds A and B only, no test evaluation.
+
+Written on 2026-09-25 before run-003 results were seen.
+
+Input: training-examples-v2.parquet (sha must equal run-002 input_sha256), weather_msk_2019_2026-06_raw.csv from the backend team.
+Baseline: run-002/report.json candidates.hgb, same examples, same folds, same HGB parameters, random_state=0.
+
+Weather features per as_of, from readings with datetime <= as_of - 3 hours:
+temp_mean_24h, temp_min_24h, temp_max_24h, freeze_thaw_72h, pressure_last, pressure_delta_24h, wind_max_24h.
+An incomplete window gives NaN.
+
+Precipitation is excluded: from 2022 the source reports almost no precipitation (rows with precipitation_mm > 0 per year: 291, 298, 272 in 2019-2021; 1, 3, 10, 0, 0 in 2022-2026).
+Time zone is not stated by the backend; the daily temperature curve points to Moscow time. The 3-hour lag keeps features in the past under either reading.
+
+Acceptance rule, fixed before results:
+weather is accepted only if hgb_weather beats baseline hgb on both
+1. selection_2024 average_precision by at least 0.005 absolute, and
+2. retrained.all average_precision on 2025 by at least 0.005 absolute,
+and frozen.all F1 on 2025 at the fold A threshold is not lower than baseline by more than 0.005.
+Otherwise the service keeps the run-002 model.
+
+If accepted, test 2026 was already opened in run-002; any new test figure is reported as a second look at the same test.
