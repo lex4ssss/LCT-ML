@@ -1,0 +1,59 @@
+{
+  "source_timezone": "Europe/Moscow_assumed",
+  "timestamps": "UTC",
+  "gap_seconds": 900,
+  "gap_parameter_status": "diagnostic_candidate_not_optimized",
+  "lookback_hours": 24,
+  "horizon_hours": 24,
+  "snapshot_grid": "daily_at_00:00:00_UTC",
+  "feature_window": "(as_of - 24h, as_of]",
+  "label_window": "(as_of, as_of + 24h]",
+  "target": "recorded_alarm_episode_start",
+  "validation_start_utc": "2025-01-01T00:00:00",
+  "test_start_utc": "2026-01-01T00:00:00",
+  "missing_log_dates_local": [
+    "2024-04-07",
+    "2024-04-08",
+    "2026-06-01"
+  ],
+  "exact_tuple_deduplication": true,
+  "repeated_header_removal": true,
+  "device_uptime_verified": false,
+  "delivery_timestamps_available": false,
+  "physical_failure_labels_available": false,
+  "training": false,
+  "inference": false,
+  "gap_intervals_utc": [
+    {
+      "start_at": "2024-04-05 22:01:30.000001",
+      "end_at": "2024-04-09 02:29:49",
+      "seconds_between_records": 275299.0
+    },
+    {
+      "start_at": "2024-04-09 02:29:49.000001",
+      "end_at": "2024-04-09 04:03:08",
+      "seconds_between_records": 5599.0
+    },
+    {
+      "start_at": "2024-04-09 04:11:37.000001",
+      "end_at": "2024-04-09 05:22:02",
+      "seconds_between_records": 4225.0
+    },
+    {
+      "start_at": "2024-04-09 05:38:30.000001",
+      "end_at": "2024-04-09 07:15:09",
+      "seconds_between_records": 5799.0
+    },
+    {
+      "start_at": "2024-04-09 09:24:14.000001",
+      "end_at": "2024-04-09 10:26:43",
+      "seconds_between_records": 3749.0
+    },
+    {
+      "start_at": "2026-05-31 20:59:59.000001",
+      "end_at": "2026-06-01 21:00:00",
+      "seconds_between_records": 86401.0
+    }
+  ],
+  "log_gap_threshold_seconds": 3600
+}

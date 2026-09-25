@@ -1,0 +1,2227 @@
+{
+  "rows": 20993328,
+  "distinct_event_ids": 20991837,
+  "rows_beyond_distinct_event_ids": 1491,
+  "channels": 5622,
+  "first_local": "2019-01-01 00:00:21",
+  "last_local": "2019-12-31 23:59:52",
+  "alarm_rows": 134199,
+  "normal_rows": 20859129,
+  "invalid_alarm_rows": 0,
+  "invalid_timestamp_rows": 0,
+  "missing_id_rows": 0,
+  "empty_value_rows": 0,
+  "finite_numeric_value_rows": 9624289,
+  "unmapped_rows": 2481645,
+  "unmapped_channels": 1004,
+  "daily": [
+    {
+      "day": "2019-01-01",
+      "rows": 19140,
+      "alarm_rows": 17,
+      "channels": 483
+    },
+    {
+      "day": "2019-01-02",
+      "rows": 24109,
+      "alarm_rows": 98,
+      "channels": 667
+    },
+    {
+      "day": "2019-01-03",
+      "rows": 27443,
+      "alarm_rows": 111,
+      "channels": 840
+    },
+    {
+      "day": "2019-01-04",
+      "rows": 31734,
+      "alarm_rows": 2837,
+      "channels": 435
+    },
+    {
+      "day": "2019-01-05",
+      "rows": 40685,
+      "alarm_rows": 5140,
+      "channels": 2006
+    },
+    {
+      "day": "2019-01-06",
+      "rows": 28447,
+      "alarm_rows": 1286,
+      "channels": 336
+    },
+    {
+      "day": "2019-01-07",
+      "rows": 25611,
+      "alarm_rows": 288,
+      "channels": 351
+    },
+    {
+      "day": "2019-01-08",
+      "rows": 27521,
+      "alarm_rows": 25,
+      "channels": 1736
+    },
+    {
+      "day": "2019-01-09",
+      "rows": 37912,
+      "alarm_rows": 1014,
+      "channels": 1374
+    },
+    {
+      "day": "2019-01-10",
+      "rows": 36421,
+      "alarm_rows": 1110,
+      "channels": 918
+    },
+    {
+      "day": "2019-01-11",
+      "rows": 34640,
+      "alarm_rows": 907,
+      "channels": 1154
+    },
+    {
+      "day": "2019-01-12",
+      "rows": 22011,
+      "alarm_rows": 21,
+      "channels": 320
+    },
+    {
+      "day": "2019-01-13",
+      "rows": 23354,
+      "alarm_rows": 25,
+      "channels": 428
+    },
+    {
+      "day": "2019-01-14",
+      "rows": 43065,
+      "alarm_rows": 88,
+      "channels": 2351
+    },
+    {
+      "day": "2019-01-15",
+      "rows": 37158,
+      "alarm_rows": 316,
+      "channels": 1309
+    },
+    {
+      "day": "2019-01-16",
+      "rows": 43825,
+      "alarm_rows": 239,
+      "channels": 1095
+    },
+    {
+      "day": "2019-01-17",
+      "rows": 47056,
+      "alarm_rows": 107,
+      "channels": 1315
+    },
+    {
+      "day": "2019-01-18",
+      "rows": 39758,
+      "alarm_rows": 146,
+      "channels": 674
+    },
+    {
+      "day": "2019-01-19",
+      "rows": 30376,
+      "alarm_rows": 99,
+      "channels": 610
+    },
+    {
+      "day": "2019-01-20",
+      "rows": 31511,
+      "alarm_rows": 11,
+      "channels": 384
+    },
+    {
+      "day": "2019-01-21",
+      "rows": 43474,
+      "alarm_rows": 73,
+      "channels": 1040
+    },
+    {
+      "day": "2019-01-22",
+      "rows": 37999,
+      "alarm_rows": 604,
+      "channels": 1095
+    },
+    {
+      "day": "2019-01-23",
+      "rows": 38553,
+      "alarm_rows": 594,
+      "channels": 949
+    },
+    {
+      "day": "2019-01-24",
+      "rows": 44282,
+      "alarm_rows": 193,
+      "channels": 2190
+    },
+    {
+      "day": "2019-01-25",
+      "rows": 39122,
+      "alarm_rows": 92,
+      "channels": 1038
+    },
+    {
+      "day": "2019-01-26",
+      "rows": 23441,
+      "alarm_rows": 43,
+      "channels": 375
+    },
+    {
+      "day": "2019-01-27",
+      "rows": 23071,
+      "alarm_rows": 28,
+      "channels": 463
+    },
+    {
+      "day": "2019-01-28",
+      "rows": 40703,
+      "alarm_rows": 219,
+      "channels": 1352
+    },
+    {
+      "day": "2019-01-29",
+      "rows": 38465,
+      "alarm_rows": 146,
+      "channels": 920
+    },
+    {
+      "day": "2019-01-30",
+      "rows": 37112,
+      "alarm_rows": 168,
+      "channels": 971
+    },
+    {
+      "day": "2019-01-31",
+      "rows": 41204,
+      "alarm_rows": 155,
+      "channels": 1647
+    },
+    {
+      "day": "2019-02-01",
+      "rows": 45342,
+      "alarm_rows": 813,
+      "channels": 822
+    },
+    {
+      "day": "2019-02-02",
+      "rows": 27232,
+      "alarm_rows": 109,
+      "channels": 510
+    },
+    {
+      "day": "2019-02-03",
+      "rows": 28379,
+      "alarm_rows": 41,
+      "channels": 1642
+    },
+    {
+      "day": "2019-02-04",
+      "rows": 41920,
+      "alarm_rows": 1960,
+      "channels": 1231
+    },
+    {
+      "day": "2019-02-05",
+      "rows": 61974,
+      "alarm_rows": 6060,
+      "channels": 1826
+    },
+    {
+      "day": "2019-02-06",
+      "rows": 40071,
+      "alarm_rows": 340,
+      "channels": 2495
+    },
+    {
+      "day": "2019-02-07",
+      "rows": 43349,
+      "alarm_rows": 214,
+      "channels": 2515
+    },
+    {
+      "day": "2019-02-08",
+      "rows": 48943,
+      "alarm_rows": 755,
+      "channels": 1467
+    },
+    {
+      "day": "2019-02-09",
+      "rows": 35246,
+      "alarm_rows": 45,
+      "channels": 1841
+    },
+    {
+      "day": "2019-02-10",
+      "rows": 26975,
+      "alarm_rows": 84,
+      "channels": 348
+    },
+    {
+      "day": "2019-02-11",
+      "rows": 50705,
+      "alarm_rows": 833,
+      "channels": 1467
+    },
+    {
+      "day": "2019-02-12",
+      "rows": 50007,
+      "alarm_rows": 185,
+      "channels": 1409
+    },
+    {
+      "day": "2019-02-13",
+      "rows": 49465,
+      "alarm_rows": 417,
+      "channels": 1915
+    },
+    {
+      "day": "2019-02-14",
+      "rows": 49237,
+      "alarm_rows": 180,
+      "channels": 2799
+    },
+    {
+      "day": "2019-02-15",
+      "rows": 51692,
+      "alarm_rows": 285,
+      "channels": 1072
+    },
+    {
+      "day": "2019-02-16",
+      "rows": 35718,
+      "alarm_rows": 112,
+      "channels": 601
+    },
+    {
+      "day": "2019-02-17",
+      "rows": 30220,
+      "alarm_rows": 85,
+      "channels": 379
+    },
+    {
+      "day": "2019-02-18",
+      "rows": 50007,
+      "alarm_rows": 269,
+      "channels": 1651
+    },
+    {
+      "day": "2019-02-19",
+      "rows": 52258,
+      "alarm_rows": 147,
+      "channels": 1162
+    },
+    {
+      "day": "2019-02-20",
+      "rows": 56600,
+      "alarm_rows": 260,
+      "channels": 1044
+    },
+    {
+      "day": "2019-02-21",
+      "rows": 47337,
+      "alarm_rows": 117,
+      "channels": 1097
+    },
+    {
+      "day": "2019-02-22",
+      "rows": 37383,
+      "alarm_rows": 501,
+      "channels": 1026
+    },
+    {
+      "day": "2019-02-23",
+      "rows": 25699,
+      "alarm_rows": 8,
+      "channels": 375
+    },
+    {
+      "day": "2019-02-24",
+      "rows": 23431,
+      "alarm_rows": 2,
+      "channels": 369
+    },
+    {
+      "day": "2019-02-25",
+      "rows": 55691,
+      "alarm_rows": 922,
+      "channels": 1492
+    },
+    {
+      "day": "2019-02-26",
+      "rows": 61888,
+      "alarm_rows": 808,
+      "channels": 1649
+    },
+    {
+      "day": "2019-02-27",
+      "rows": 53354,
+      "alarm_rows": 224,
+      "channels": 2642
+    },
+    {
+      "day": "2019-02-28",
+      "rows": 48429,
+      "alarm_rows": 209,
+      "channels": 1227
+    },
+    {
+      "day": "2019-03-01",
+      "rows": 48123,
+      "alarm_rows": 267,
+      "channels": 1141
+    },
+    {
+      "day": "2019-03-02",
+      "rows": 30812,
+      "alarm_rows": 62,
+      "channels": 503
+    },
+    {
+      "day": "2019-03-03",
+      "rows": 23186,
+      "alarm_rows": 57,
+      "channels": 365
+    },
+    {
+      "day": "2019-03-04",
+      "rows": 44764,
+      "alarm_rows": 190,
+      "channels": 1212
+    },
+    {
+      "day": "2019-03-05",
+      "rows": 50361,
+      "alarm_rows": 488,
+      "channels": 1095
+    },
+    {
+      "day": "2019-03-06",
+      "rows": 59719,
+      "alarm_rows": 585,
+      "channels": 1366
+    },
+    {
+      "day": "2019-03-07",
+      "rows": 43639,
+      "alarm_rows": 139,
+      "channels": 1076
+    },
+    {
+      "day": "2019-03-08",
+      "rows": 25811,
+      "alarm_rows": 68,
+      "channels": 309
+    },
+    {
+      "day": "2019-03-09",
+      "rows": 34021,
+      "alarm_rows": 110,
+      "channels": 1916
+    },
+    {
+      "day": "2019-03-10",
+      "rows": 34245,
+      "alarm_rows": 78,
+      "channels": 612
+    },
+    {
+      "day": "2019-03-11",
+      "rows": 51807,
+      "alarm_rows": 382,
+      "channels": 1152
+    },
+    {
+      "day": "2019-03-12",
+      "rows": 53993,
+      "alarm_rows": 357,
+      "channels": 2695
+    },
+    {
+      "day": "2019-03-13",
+      "rows": 52055,
+      "alarm_rows": 221,
+      "channels": 1108
+    },
+    {
+      "day": "2019-03-14",
+      "rows": 46261,
+      "alarm_rows": 165,
+      "channels": 2631
+    },
+    {
+      "day": "2019-03-15",
+      "rows": 51843,
+      "alarm_rows": 208,
+      "channels": 1276
+    },
+    {
+      "day": "2019-03-16",
+      "rows": 36558,
+      "alarm_rows": 46,
+      "channels": 626
+    },
+    {
+      "day": "2019-03-17",
+      "rows": 31630,
+      "alarm_rows": 75,
+      "channels": 500
+    },
+    {
+      "day": "2019-03-18",
+      "rows": 52353,
+      "alarm_rows": 147,
+      "channels": 1465
+    },
+    {
+      "day": "2019-03-19",
+      "rows": 50206,
+      "alarm_rows": 171,
+      "channels": 1056
+    },
+    {
+      "day": "2019-03-20",
+      "rows": 55836,
+      "alarm_rows": 238,
+      "channels": 1299
+    },
+    {
+      "day": "2019-03-21",
+      "rows": 55390,
+      "alarm_rows": 258,
+      "channels": 1360
+    },
+    {
+      "day": "2019-03-22",
+      "rows": 56899,
+      "alarm_rows": 301,
+      "channels": 1307
+    },
+    {
+      "day": "2019-03-23",
+      "rows": 30742,
+      "alarm_rows": 135,
+      "channels": 607
+    },
+    {
+      "day": "2019-03-24",
+      "rows": 28033,
+      "alarm_rows": 220,
+      "channels": 464
+    },
+    {
+      "day": "2019-03-25",
+      "rows": 53825,
+      "alarm_rows": 295,
+      "channels": 1319
+    },
+    {
+      "day": "2019-03-26",
+      "rows": 53469,
+      "alarm_rows": 250,
+      "channels": 1081
+    },
+    {
+      "day": "2019-03-27",
+      "rows": 45704,
+      "alarm_rows": 208,
+      "channels": 866
+    },
+    {
+      "day": "2019-03-28",
+      "rows": 55529,
+      "alarm_rows": 186,
+      "channels": 1078
+    },
+    {
+      "day": "2019-03-29",
+      "rows": 52727,
+      "alarm_rows": 274,
+      "channels": 2090
+    },
+    {
+      "day": "2019-03-30",
+      "rows": 31321,
+      "alarm_rows": 185,
+      "channels": 475
+    },
+    {
+      "day": "2019-03-31",
+      "rows": 29576,
+      "alarm_rows": 380,
+      "channels": 573
+    },
+    {
+      "day": "2019-04-01",
+      "rows": 57302,
+      "alarm_rows": 726,
+      "channels": 1474
+    },
+    {
+      "day": "2019-04-02",
+      "rows": 60401,
+      "alarm_rows": 445,
+      "channels": 1399
+    },
+    {
+      "day": "2019-04-03",
+      "rows": 66317,
+      "alarm_rows": 288,
+      "channels": 1479
+    },
+    {
+      "day": "2019-04-04",
+      "rows": 59521,
+      "alarm_rows": 230,
+      "channels": 1074
+    },
+    {
+      "day": "2019-04-05",
+      "rows": 49109,
+      "alarm_rows": 218,
+      "channels": 1191
+    },
+    {
+      "day": "2019-04-06",
+      "rows": 31454,
+      "alarm_rows": 163,
+      "channels": 548
+    },
+    {
+      "day": "2019-04-07",
+      "rows": 29903,
+      "alarm_rows": 96,
+      "channels": 571
+    },
+    {
+      "day": "2019-04-08",
+      "rows": 61196,
+      "alarm_rows": 219,
+      "channels": 1103
+    },
+    {
+      "day": "2019-04-09",
+      "rows": 65587,
+      "alarm_rows": 263,
+      "channels": 1333
+    },
+    {
+      "day": "2019-04-10",
+      "rows": 58848,
+      "alarm_rows": 240,
+      "channels": 1291
+    },
+    {
+      "day": "2019-04-11",
+      "rows": 62986,
+      "alarm_rows": 234,
+      "channels": 2855
+    },
+    {
+      "day": "2019-04-12",
+      "rows": 60680,
+      "alarm_rows": 172,
+      "channels": 1254
+    },
+    {
+      "day": "2019-04-13",
+      "rows": 36642,
+      "alarm_rows": 87,
+      "channels": 656
+    },
+    {
+      "day": "2019-04-14",
+      "rows": 31978,
+      "alarm_rows": 125,
+      "channels": 830
+    },
+    {
+      "day": "2019-04-15",
+      "rows": 67406,
+      "alarm_rows": 338,
+      "channels": 3086
+    },
+    {
+      "day": "2019-04-16",
+      "rows": 63534,
+      "alarm_rows": 250,
+      "channels": 1448
+    },
+    {
+      "day": "2019-04-17",
+      "rows": 69891,
+      "alarm_rows": 277,
+      "channels": 2639
+    },
+    {
+      "day": "2019-04-18",
+      "rows": 65598,
+      "alarm_rows": 308,
+      "channels": 1677
+    },
+    {
+      "day": "2019-04-19",
+      "rows": 68114,
+      "alarm_rows": 224,
+      "channels": 1474
+    },
+    {
+      "day": "2019-04-20",
+      "rows": 43428,
+      "alarm_rows": 106,
+      "channels": 646
+    },
+    {
+      "day": "2019-04-21",
+      "rows": 34101,
+      "alarm_rows": 99,
+      "channels": 859
+    },
+    {
+      "day": "2019-04-22",
+      "rows": 74970,
+      "alarm_rows": 297,
+      "channels": 2049
+    },
+    {
+      "day": "2019-04-23",
+      "rows": 68421,
+      "alarm_rows": 197,
+      "channels": 1562
+    },
+    {
+      "day": "2019-04-24",
+      "rows": 56879,
+      "alarm_rows": 253,
+      "channels": 2097
+    },
+    {
+      "day": "2019-04-25",
+      "rows": 55643,
+      "alarm_rows": 348,
+      "channels": 1726
+    },
+    {
+      "day": "2019-04-26",
+      "rows": 64604,
+      "alarm_rows": 406,
+      "channels": 1609
+    },
+    {
+      "day": "2019-04-27",
+      "rows": 43034,
+      "alarm_rows": 95,
+      "channels": 981
+    },
+    {
+      "day": "2019-04-28",
+      "rows": 30890,
+      "alarm_rows": 78,
+      "channels": 1186
+    },
+    {
+      "day": "2019-04-29",
+      "rows": 59155,
+      "alarm_rows": 285,
+      "channels": 2163
+    },
+    {
+      "day": "2019-04-30",
+      "rows": 46865,
+      "alarm_rows": 336,
+      "channels": 1745
+    },
+    {
+      "day": "2019-05-01",
+      "rows": 34611,
+      "alarm_rows": 247,
+      "channels": 834
+    },
+    {
+      "day": "2019-05-02",
+      "rows": 38740,
+      "alarm_rows": 222,
+      "channels": 1487
+    },
+    {
+      "day": "2019-05-03",
+      "rows": 35732,
+      "alarm_rows": 167,
+      "channels": 1047
+    },
+    {
+      "day": "2019-05-04",
+      "rows": 34727,
+      "alarm_rows": 177,
+      "channels": 1035
+    },
+    {
+      "day": "2019-05-05",
+      "rows": 38345,
+      "alarm_rows": 189,
+      "channels": 1051
+    },
+    {
+      "day": "2019-05-06",
+      "rows": 55993,
+      "alarm_rows": 368,
+      "channels": 1638
+    },
+    {
+      "day": "2019-05-07",
+      "rows": 55218,
+      "alarm_rows": 477,
+      "channels": 1688
+    },
+    {
+      "day": "2019-05-08",
+      "rows": 53107,
+      "alarm_rows": 196,
+      "channels": 1329
+    },
+    {
+      "day": "2019-05-09",
+      "rows": 41264,
+      "alarm_rows": 377,
+      "channels": 921
+    },
+    {
+      "day": "2019-05-10",
+      "rows": 52141,
+      "alarm_rows": 259,
+      "channels": 1726
+    },
+    {
+      "day": "2019-05-11",
+      "rows": 51827,
+      "alarm_rows": 215,
+      "channels": 1599
+    },
+    {
+      "day": "2019-05-12",
+      "rows": 49100,
+      "alarm_rows": 216,
+      "channels": 1093
+    },
+    {
+      "day": "2019-05-13",
+      "rows": 72524,
+      "alarm_rows": 403,
+      "channels": 2099
+    },
+    {
+      "day": "2019-05-14",
+      "rows": 62647,
+      "alarm_rows": 405,
+      "channels": 1915
+    },
+    {
+      "day": "2019-05-15",
+      "rows": 68143,
+      "alarm_rows": 319,
+      "channels": 1642
+    },
+    {
+      "day": "2019-05-16",
+      "rows": 67325,
+      "alarm_rows": 385,
+      "channels": 1659
+    },
+    {
+      "day": "2019-05-17",
+      "rows": 64883,
+      "alarm_rows": 367,
+      "channels": 1753
+    },
+    {
+      "day": "2019-05-18",
+      "rows": 43272,
+      "alarm_rows": 205,
+      "channels": 1081
+    },
+    {
+      "day": "2019-05-19",
+      "rows": 42949,
+      "alarm_rows": 219,
+      "channels": 1115
+    },
+    {
+      "day": "2019-05-20",
+      "rows": 80827,
+      "alarm_rows": 468,
+      "channels": 1790
+    },
+    {
+      "day": "2019-05-21",
+      "rows": 79058,
+      "alarm_rows": 349,
+      "channels": 1822
+    },
+    {
+      "day": "2019-05-22",
+      "rows": 82043,
+      "alarm_rows": 763,
+      "channels": 1969
+    },
+    {
+      "day": "2019-05-23",
+      "rows": 94901,
+      "alarm_rows": 359,
+      "channels": 1957
+    },
+    {
+      "day": "2019-05-24",
+      "rows": 71613,
+      "alarm_rows": 252,
+      "channels": 1822
+    },
+    {
+      "day": "2019-05-25",
+      "rows": 56863,
+      "alarm_rows": 135,
+      "channels": 1108
+    },
+    {
+      "day": "2019-05-26",
+      "rows": 49028,
+      "alarm_rows": 287,
+      "channels": 1138
+    },
+    {
+      "day": "2019-05-27",
+      "rows": 75056,
+      "alarm_rows": 397,
+      "channels": 1825
+    },
+    {
+      "day": "2019-05-28",
+      "rows": 75094,
+      "alarm_rows": 424,
+      "channels": 1741
+    },
+    {
+      "day": "2019-05-29",
+      "rows": 94487,
+      "alarm_rows": 487,
+      "channels": 1909
+    },
+    {
+      "day": "2019-05-30",
+      "rows": 96614,
+      "alarm_rows": 337,
+      "channels": 2400
+    },
+    {
+      "day": "2019-05-31",
+      "rows": 87978,
+      "alarm_rows": 287,
+      "channels": 1970
+    },
+    {
+      "day": "2019-06-01",
+      "rows": 61486,
+      "alarm_rows": 230,
+      "channels": 1343
+    },
+    {
+      "day": "2019-06-02",
+      "rows": 50044,
+      "alarm_rows": 231,
+      "channels": 1233
+    },
+    {
+      "day": "2019-06-03",
+      "rows": 86309,
+      "alarm_rows": 782,
+      "channels": 1554
+    },
+    {
+      "day": "2019-06-04",
+      "rows": 83394,
+      "alarm_rows": 535,
+      "channels": 1638
+    },
+    {
+      "day": "2019-06-05",
+      "rows": 86373,
+      "alarm_rows": 379,
+      "channels": 1609
+    },
+    {
+      "day": "2019-06-06",
+      "rows": 79070,
+      "alarm_rows": 349,
+      "channels": 2121
+    },
+    {
+      "day": "2019-06-07",
+      "rows": 82746,
+      "alarm_rows": 329,
+      "channels": 1784
+    },
+    {
+      "day": "2019-06-08",
+      "rows": 54817,
+      "alarm_rows": 214,
+      "channels": 1200
+    },
+    {
+      "day": "2019-06-09",
+      "rows": 53726,
+      "alarm_rows": 200,
+      "channels": 1368
+    },
+    {
+      "day": "2019-06-10",
+      "rows": 90324,
+      "alarm_rows": 372,
+      "channels": 1816
+    },
+    {
+      "day": "2019-06-11",
+      "rows": 68288,
+      "alarm_rows": 192,
+      "channels": 1251
+    },
+    {
+      "day": "2019-06-12",
+      "rows": 40165,
+      "alarm_rows": 135,
+      "channels": 834
+    },
+    {
+      "day": "2019-06-13",
+      "rows": 79179,
+      "alarm_rows": 626,
+      "channels": 1808
+    },
+    {
+      "day": "2019-06-14",
+      "rows": 65555,
+      "alarm_rows": 360,
+      "channels": 1899
+    },
+    {
+      "day": "2019-06-15",
+      "rows": 52208,
+      "alarm_rows": 140,
+      "channels": 1160
+    },
+    {
+      "day": "2019-06-16",
+      "rows": 51268,
+      "alarm_rows": 129,
+      "channels": 1105
+    },
+    {
+      "day": "2019-06-17",
+      "rows": 65922,
+      "alarm_rows": 287,
+      "channels": 1889
+    },
+    {
+      "day": "2019-06-18",
+      "rows": 80461,
+      "alarm_rows": 304,
+      "channels": 1809
+    },
+    {
+      "day": "2019-06-19",
+      "rows": 72693,
+      "alarm_rows": 650,
+      "channels": 1929
+    },
+    {
+      "day": "2019-06-20",
+      "rows": 85319,
+      "alarm_rows": 1697,
+      "channels": 1838
+    },
+    {
+      "day": "2019-06-21",
+      "rows": 79585,
+      "alarm_rows": 526,
+      "channels": 1650
+    },
+    {
+      "day": "2019-06-22",
+      "rows": 57142,
+      "alarm_rows": 330,
+      "channels": 1092
+    },
+    {
+      "day": "2019-06-23",
+      "rows": 48648,
+      "alarm_rows": 119,
+      "channels": 901
+    },
+    {
+      "day": "2019-06-24",
+      "rows": 91169,
+      "alarm_rows": 1998,
+      "channels": 1845
+    },
+    {
+      "day": "2019-06-25",
+      "rows": 63528,
+      "alarm_rows": 405,
+      "channels": 1671
+    },
+    {
+      "day": "2019-06-26",
+      "rows": 59301,
+      "alarm_rows": 420,
+      "channels": 1728
+    },
+    {
+      "day": "2019-06-27",
+      "rows": 58696,
+      "alarm_rows": 222,
+      "channels": 2142
+    },
+    {
+      "day": "2019-06-28",
+      "rows": 57105,
+      "alarm_rows": 458,
+      "channels": 1638
+    },
+    {
+      "day": "2019-06-29",
+      "rows": 48271,
+      "alarm_rows": 112,
+      "channels": 1063
+    },
+    {
+      "day": "2019-06-30",
+      "rows": 46584,
+      "alarm_rows": 60,
+      "channels": 1089
+    },
+    {
+      "day": "2019-07-01",
+      "rows": 65099,
+      "alarm_rows": 294,
+      "channels": 1934
+    },
+    {
+      "day": "2019-07-02",
+      "rows": 69778,
+      "alarm_rows": 454,
+      "channels": 3392
+    },
+    {
+      "day": "2019-07-03",
+      "rows": 77481,
+      "alarm_rows": 474,
+      "channels": 1663
+    },
+    {
+      "day": "2019-07-04",
+      "rows": 82659,
+      "alarm_rows": 993,
+      "channels": 1765
+    },
+    {
+      "day": "2019-07-05",
+      "rows": 69157,
+      "alarm_rows": 314,
+      "channels": 1682
+    },
+    {
+      "day": "2019-07-06",
+      "rows": 47268,
+      "alarm_rows": 118,
+      "channels": 1163
+    },
+    {
+      "day": "2019-07-07",
+      "rows": 51952,
+      "alarm_rows": 117,
+      "channels": 1380
+    },
+    {
+      "day": "2019-07-08",
+      "rows": 65580,
+      "alarm_rows": 212,
+      "channels": 1723
+    },
+    {
+      "day": "2019-07-09",
+      "rows": 59667,
+      "alarm_rows": 300,
+      "channels": 1567
+    },
+    {
+      "day": "2019-07-10",
+      "rows": 71946,
+      "alarm_rows": 385,
+      "channels": 1704
+    },
+    {
+      "day": "2019-07-11",
+      "rows": 77096,
+      "alarm_rows": 328,
+      "channels": 1898
+    },
+    {
+      "day": "2019-07-12",
+      "rows": 74024,
+      "alarm_rows": 207,
+      "channels": 1518
+    },
+    {
+      "day": "2019-07-13",
+      "rows": 48338,
+      "alarm_rows": 156,
+      "channels": 1167
+    },
+    {
+      "day": "2019-07-14",
+      "rows": 47178,
+      "alarm_rows": 134,
+      "channels": 1032
+    },
+    {
+      "day": "2019-07-15",
+      "rows": 67156,
+      "alarm_rows": 210,
+      "channels": 1604
+    },
+    {
+      "day": "2019-07-16",
+      "rows": 72309,
+      "alarm_rows": 427,
+      "channels": 1392
+    },
+    {
+      "day": "2019-07-17",
+      "rows": 81638,
+      "alarm_rows": 299,
+      "channels": 1537
+    },
+    {
+      "day": "2019-07-18",
+      "rows": 79948,
+      "alarm_rows": 206,
+      "channels": 1609
+    },
+    {
+      "day": "2019-07-19",
+      "rows": 74692,
+      "alarm_rows": 142,
+      "channels": 1535
+    },
+    {
+      "day": "2019-07-20",
+      "rows": 57972,
+      "alarm_rows": 127,
+      "channels": 1039
+    },
+    {
+      "day": "2019-07-21",
+      "rows": 45849,
+      "alarm_rows": 145,
+      "channels": 1105
+    },
+    {
+      "day": "2019-07-22",
+      "rows": 72776,
+      "alarm_rows": 216,
+      "channels": 1489
+    },
+    {
+      "day": "2019-07-23",
+      "rows": 71259,
+      "alarm_rows": 311,
+      "channels": 1495
+    },
+    {
+      "day": "2019-07-24",
+      "rows": 79089,
+      "alarm_rows": 249,
+      "channels": 1739
+    },
+    {
+      "day": "2019-07-25",
+      "rows": 58627,
+      "alarm_rows": 140,
+      "channels": 1470
+    },
+    {
+      "day": "2019-07-26",
+      "rows": 69248,
+      "alarm_rows": 212,
+      "channels": 1593
+    },
+    {
+      "day": "2019-07-27",
+      "rows": 64253,
+      "alarm_rows": 115,
+      "channels": 1569
+    },
+    {
+      "day": "2019-07-28",
+      "rows": 49034,
+      "alarm_rows": 117,
+      "channels": 1062
+    },
+    {
+      "day": "2019-07-29",
+      "rows": 61751,
+      "alarm_rows": 225,
+      "channels": 2242
+    },
+    {
+      "day": "2019-07-30",
+      "rows": 72736,
+      "alarm_rows": 323,
+      "channels": 1841
+    },
+    {
+      "day": "2019-07-31",
+      "rows": 73326,
+      "alarm_rows": 229,
+      "channels": 1784
+    },
+    {
+      "day": "2019-08-01",
+      "rows": 81657,
+      "alarm_rows": 1199,
+      "channels": 1552
+    },
+    {
+      "day": "2019-08-02",
+      "rows": 69435,
+      "alarm_rows": 366,
+      "channels": 2628
+    },
+    {
+      "day": "2019-08-03",
+      "rows": 43876,
+      "alarm_rows": 170,
+      "channels": 1130
+    },
+    {
+      "day": "2019-08-04",
+      "rows": 47684,
+      "alarm_rows": 68,
+      "channels": 1141
+    },
+    {
+      "day": "2019-08-05",
+      "rows": 79890,
+      "alarm_rows": 876,
+      "channels": 2070
+    },
+    {
+      "day": "2019-08-06",
+      "rows": 73047,
+      "alarm_rows": 221,
+      "channels": 2427
+    },
+    {
+      "day": "2019-08-07",
+      "rows": 62973,
+      "alarm_rows": 189,
+      "channels": 1489
+    },
+    {
+      "day": "2019-08-08",
+      "rows": 63962,
+      "alarm_rows": 234,
+      "channels": 1984
+    },
+    {
+      "day": "2019-08-09",
+      "rows": 68353,
+      "alarm_rows": 438,
+      "channels": 2526
+    },
+    {
+      "day": "2019-08-10",
+      "rows": 43378,
+      "alarm_rows": 82,
+      "channels": 1949
+    },
+    {
+      "day": "2019-08-11",
+      "rows": 37943,
+      "alarm_rows": 36,
+      "channels": 1126
+    },
+    {
+      "day": "2019-08-12",
+      "rows": 73151,
+      "alarm_rows": 141,
+      "channels": 2074
+    },
+    {
+      "day": "2019-08-13",
+      "rows": 68399,
+      "alarm_rows": 173,
+      "channels": 2475
+    },
+    {
+      "day": "2019-08-14",
+      "rows": 87406,
+      "alarm_rows": 1360,
+      "channels": 1991
+    },
+    {
+      "day": "2019-08-15",
+      "rows": 74440,
+      "alarm_rows": 979,
+      "channels": 1980
+    },
+    {
+      "day": "2019-08-16",
+      "rows": 65069,
+      "alarm_rows": 355,
+      "channels": 2163
+    },
+    {
+      "day": "2019-08-17",
+      "rows": 42545,
+      "alarm_rows": 159,
+      "channels": 974
+    },
+    {
+      "day": "2019-08-18",
+      "rows": 45637,
+      "alarm_rows": 173,
+      "channels": 1323
+    },
+    {
+      "day": "2019-08-19",
+      "rows": 82889,
+      "alarm_rows": 285,
+      "channels": 1925
+    },
+    {
+      "day": "2019-08-20",
+      "rows": 95910,
+      "alarm_rows": 1887,
+      "channels": 1583
+    },
+    {
+      "day": "2019-08-21",
+      "rows": 79107,
+      "alarm_rows": 230,
+      "channels": 1707
+    },
+    {
+      "day": "2019-08-22",
+      "rows": 66178,
+      "alarm_rows": 304,
+      "channels": 1737
+    },
+    {
+      "day": "2019-08-23",
+      "rows": 58515,
+      "alarm_rows": 461,
+      "channels": 1438
+    },
+    {
+      "day": "2019-08-24",
+      "rows": 40001,
+      "alarm_rows": 64,
+      "channels": 971
+    },
+    {
+      "day": "2019-08-25",
+      "rows": 53038,
+      "alarm_rows": 155,
+      "channels": 1147
+    },
+    {
+      "day": "2019-08-26",
+      "rows": 69827,
+      "alarm_rows": 328,
+      "channels": 1791
+    },
+    {
+      "day": "2019-08-27",
+      "rows": 52838,
+      "alarm_rows": 162,
+      "channels": 1282
+    },
+    {
+      "day": "2019-08-28",
+      "rows": 42889,
+      "alarm_rows": 214,
+      "channels": 1263
+    },
+    {
+      "day": "2019-08-29",
+      "rows": 42911,
+      "alarm_rows": 272,
+      "channels": 1246
+    },
+    {
+      "day": "2019-08-30",
+      "rows": 64058,
+      "alarm_rows": 253,
+      "channels": 1808
+    },
+    {
+      "day": "2019-08-31",
+      "rows": 46583,
+      "alarm_rows": 94,
+      "channels": 958
+    },
+    {
+      "day": "2019-09-01",
+      "rows": 45399,
+      "alarm_rows": 216,
+      "channels": 1021
+    },
+    {
+      "day": "2019-09-02",
+      "rows": 60840,
+      "alarm_rows": 159,
+      "channels": 1389
+    },
+    {
+      "day": "2019-09-03",
+      "rows": 70817,
+      "alarm_rows": 125,
+      "channels": 1329
+    },
+    {
+      "day": "2019-09-04",
+      "rows": 67093,
+      "alarm_rows": 232,
+      "channels": 1650
+    },
+    {
+      "day": "2019-09-05",
+      "rows": 78131,
+      "alarm_rows": 212,
+      "channels": 1645
+    },
+    {
+      "day": "2019-09-06",
+      "rows": 66708,
+      "alarm_rows": 236,
+      "channels": 1667
+    },
+    {
+      "day": "2019-09-07",
+      "rows": 42815,
+      "alarm_rows": 115,
+      "channels": 837
+    },
+    {
+      "day": "2019-09-08",
+      "rows": 42102,
+      "alarm_rows": 49,
+      "channels": 845
+    },
+    {
+      "day": "2019-09-09",
+      "rows": 67667,
+      "alarm_rows": 204,
+      "channels": 1956
+    },
+    {
+      "day": "2019-09-10",
+      "rows": 105653,
+      "alarm_rows": 212,
+      "channels": 1585
+    },
+    {
+      "day": "2019-09-11",
+      "rows": 79124,
+      "alarm_rows": 385,
+      "channels": 1703
+    },
+    {
+      "day": "2019-09-12",
+      "rows": 74042,
+      "alarm_rows": 265,
+      "channels": 1526
+    },
+    {
+      "day": "2019-09-13",
+      "rows": 68943,
+      "alarm_rows": 317,
+      "channels": 1461
+    },
+    {
+      "day": "2019-09-14",
+      "rows": 46684,
+      "alarm_rows": 161,
+      "channels": 1048
+    },
+    {
+      "day": "2019-09-15",
+      "rows": 40751,
+      "alarm_rows": 275,
+      "channels": 1101
+    },
+    {
+      "day": "2019-09-16",
+      "rows": 69713,
+      "alarm_rows": 219,
+      "channels": 1839
+    },
+    {
+      "day": "2019-09-17",
+      "rows": 80632,
+      "alarm_rows": 271,
+      "channels": 1702
+    },
+    {
+      "day": "2019-09-18",
+      "rows": 72587,
+      "alarm_rows": 249,
+      "channels": 1863
+    },
+    {
+      "day": "2019-09-19",
+      "rows": 80483,
+      "alarm_rows": 343,
+      "channels": 1980
+    },
+    {
+      "day": "2019-09-20",
+      "rows": 78376,
+      "alarm_rows": 284,
+      "channels": 2729
+    },
+    {
+      "day": "2019-09-21",
+      "rows": 48448,
+      "alarm_rows": 99,
+      "channels": 1103
+    },
+    {
+      "day": "2019-09-22",
+      "rows": 44809,
+      "alarm_rows": 173,
+      "channels": 1165
+    },
+    {
+      "day": "2019-09-23",
+      "rows": 68932,
+      "alarm_rows": 360,
+      "channels": 1978
+    },
+    {
+      "day": "2019-09-24",
+      "rows": 68253,
+      "alarm_rows": 344,
+      "channels": 2061
+    },
+    {
+      "day": "2019-09-25",
+      "rows": 70865,
+      "alarm_rows": 459,
+      "channels": 2964
+    },
+    {
+      "day": "2019-09-26",
+      "rows": 61213,
+      "alarm_rows": 302,
+      "channels": 2946
+    },
+    {
+      "day": "2019-09-27",
+      "rows": 63566,
+      "alarm_rows": 265,
+      "channels": 1731
+    },
+    {
+      "day": "2019-09-28",
+      "rows": 42497,
+      "alarm_rows": 128,
+      "channels": 1072
+    },
+    {
+      "day": "2019-09-29",
+      "rows": 41176,
+      "alarm_rows": 221,
+      "channels": 1246
+    },
+    {
+      "day": "2019-09-30",
+      "rows": 80573,
+      "alarm_rows": 867,
+      "channels": 1969
+    },
+    {
+      "day": "2019-10-01",
+      "rows": 91364,
+      "alarm_rows": 2241,
+      "channels": 2435
+    },
+    {
+      "day": "2019-10-02",
+      "rows": 90834,
+      "alarm_rows": 2090,
+      "channels": 2077
+    },
+    {
+      "day": "2019-10-03",
+      "rows": 80302,
+      "alarm_rows": 3261,
+      "channels": 1851
+    },
+    {
+      "day": "2019-10-04",
+      "rows": 75941,
+      "alarm_rows": 513,
+      "channels": 3023
+    },
+    {
+      "day": "2019-10-05",
+      "rows": 48010,
+      "alarm_rows": 113,
+      "channels": 1101
+    },
+    {
+      "day": "2019-10-06",
+      "rows": 38925,
+      "alarm_rows": 83,
+      "channels": 1012
+    },
+    {
+      "day": "2019-10-07",
+      "rows": 75907,
+      "alarm_rows": 461,
+      "channels": 1707
+    },
+    {
+      "day": "2019-10-08",
+      "rows": 75390,
+      "alarm_rows": 279,
+      "channels": 1896
+    },
+    {
+      "day": "2019-10-09",
+      "rows": 70053,
+      "alarm_rows": 369,
+      "channels": 1763
+    },
+    {
+      "day": "2019-10-10",
+      "rows": 59428,
+      "alarm_rows": 344,
+      "channels": 1914
+    },
+    {
+      "day": "2019-10-11",
+      "rows": 71539,
+      "alarm_rows": 368,
+      "channels": 1636
+    },
+    {
+      "day": "2019-10-12",
+      "rows": 44757,
+      "alarm_rows": 114,
+      "channels": 1026
+    },
+    {
+      "day": "2019-10-13",
+      "rows": 43435,
+      "alarm_rows": 145,
+      "channels": 1155
+    },
+    {
+      "day": "2019-10-14",
+      "rows": 81337,
+      "alarm_rows": 379,
+      "channels": 1915
+    },
+    {
+      "day": "2019-10-15",
+      "rows": 123388,
+      "alarm_rows": 464,
+      "channels": 2597
+    },
+    {
+      "day": "2019-10-16",
+      "rows": 48362,
+      "alarm_rows": 217,
+      "channels": 1608
+    },
+    {
+      "day": "2019-10-17",
+      "rows": 118794,
+      "alarm_rows": 503,
+      "channels": 2843
+    },
+    {
+      "day": "2019-10-18",
+      "rows": 90059,
+      "alarm_rows": 482,
+      "channels": 2165
+    },
+    {
+      "day": "2019-10-19",
+      "rows": 51448,
+      "alarm_rows": 116,
+      "channels": 1167
+    },
+    {
+      "day": "2019-10-20",
+      "rows": 47021,
+      "alarm_rows": 87,
+      "channels": 1182
+    },
+    {
+      "day": "2019-10-21",
+      "rows": 85443,
+      "alarm_rows": 387,
+      "channels": 1852
+    },
+    {
+      "day": "2019-10-22",
+      "rows": 75323,
+      "alarm_rows": 325,
+      "channels": 1811
+    },
+    {
+      "day": "2019-10-23",
+      "rows": 81866,
+      "alarm_rows": 344,
+      "channels": 1961
+    },
+    {
+      "day": "2019-10-24",
+      "rows": 76398,
+      "alarm_rows": 454,
+      "channels": 1945
+    },
+    {
+      "day": "2019-10-25",
+      "rows": 65222,
+      "alarm_rows": 386,
+      "channels": 1905
+    },
+    {
+      "day": "2019-10-26",
+      "rows": 44296,
+      "alarm_rows": 106,
+      "channels": 1095
+    },
+    {
+      "day": "2019-10-27",
+      "rows": 39268,
+      "alarm_rows": 100,
+      "channels": 1105
+    },
+    {
+      "day": "2019-10-28",
+      "rows": 69693,
+      "alarm_rows": 265,
+      "channels": 2044
+    },
+    {
+      "day": "2019-10-29",
+      "rows": 72445,
+      "alarm_rows": 333,
+      "channels": 3416
+    },
+    {
+      "day": "2019-10-30",
+      "rows": 69515,
+      "alarm_rows": 239,
+      "channels": 1902
+    },
+    {
+      "day": "2019-10-31",
+      "rows": 68051,
+      "alarm_rows": 282,
+      "channels": 1911
+    },
+    {
+      "day": "2019-11-01",
+      "rows": 60849,
+      "alarm_rows": 311,
+      "channels": 1238
+    },
+    {
+      "day": "2019-11-02",
+      "rows": 34746,
+      "alarm_rows": 85,
+      "channels": 653
+    },
+    {
+      "day": "2019-11-03",
+      "rows": 34450,
+      "alarm_rows": 67,
+      "channels": 466
+    },
+    {
+      "day": "2019-11-04",
+      "rows": 31412,
+      "alarm_rows": 26,
+      "channels": 498
+    },
+    {
+      "day": "2019-11-05",
+      "rows": 73751,
+      "alarm_rows": 227,
+      "channels": 1567
+    },
+    {
+      "day": "2019-11-06",
+      "rows": 75892,
+      "alarm_rows": 314,
+      "channels": 2563
+    },
+    {
+      "day": "2019-11-07",
+      "rows": 71456,
+      "alarm_rows": 259,
+      "channels": 1622
+    },
+    {
+      "day": "2019-11-08",
+      "rows": 66411,
+      "alarm_rows": 967,
+      "channels": 2220
+    },
+    {
+      "day": "2019-11-09",
+      "rows": 47959,
+      "alarm_rows": 121,
+      "channels": 1190
+    },
+    {
+      "day": "2019-11-10",
+      "rows": 41122,
+      "alarm_rows": 144,
+      "channels": 1260
+    },
+    {
+      "day": "2019-11-11",
+      "rows": 84549,
+      "alarm_rows": 869,
+      "channels": 2176
+    },
+    {
+      "day": "2019-11-12",
+      "rows": 78798,
+      "alarm_rows": 448,
+      "channels": 1813
+    },
+    {
+      "day": "2019-11-13",
+      "rows": 67770,
+      "alarm_rows": 264,
+      "channels": 1664
+    },
+    {
+      "day": "2019-11-14",
+      "rows": 69995,
+      "alarm_rows": 411,
+      "channels": 1538
+    },
+    {
+      "day": "2019-11-15",
+      "rows": 48490,
+      "alarm_rows": 209,
+      "channels": 1245
+    },
+    {
+      "day": "2019-11-16",
+      "rows": 38205,
+      "alarm_rows": 102,
+      "channels": 554
+    },
+    {
+      "day": "2019-11-17",
+      "rows": 37484,
+      "alarm_rows": 110,
+      "channels": 430
+    },
+    {
+      "day": "2019-11-18",
+      "rows": 64863,
+      "alarm_rows": 500,
+      "channels": 1462
+    },
+    {
+      "day": "2019-11-19",
+      "rows": 71397,
+      "alarm_rows": 558,
+      "channels": 1463
+    },
+    {
+      "day": "2019-11-20",
+      "rows": 71481,
+      "alarm_rows": 399,
+      "channels": 1635
+    },
+    {
+      "day": "2019-11-21",
+      "rows": 66034,
+      "alarm_rows": 414,
+      "channels": 1833
+    },
+    {
+      "day": "2019-11-22",
+      "rows": 70439,
+      "alarm_rows": 290,
+      "channels": 1777
+    },
+    {
+      "day": "2019-11-23",
+      "rows": 45451,
+      "alarm_rows": 188,
+      "channels": 1130
+    },
+    {
+      "day": "2019-11-24",
+      "rows": 41898,
+      "alarm_rows": 145,
+      "channels": 1125
+    },
+    {
+      "day": "2019-11-25",
+      "rows": 50724,
+      "alarm_rows": 239,
+      "channels": 1228
+    },
+    {
+      "day": "2019-11-26",
+      "rows": 70560,
+      "alarm_rows": 360,
+      "channels": 1239
+    },
+    {
+      "day": "2019-11-27",
+      "rows": 52814,
+      "alarm_rows": 227,
+      "channels": 1185
+    },
+    {
+      "day": "2019-11-28",
+      "rows": 58378,
+      "alarm_rows": 333,
+      "channels": 1910
+    },
+    {
+      "day": "2019-11-29",
+      "rows": 56600,
+      "alarm_rows": 262,
+      "channels": 1358
+    },
+    {
+      "day": "2019-11-30",
+      "rows": 33373,
+      "alarm_rows": 89,
+      "channels": 548
+    },
+    {
+      "day": "2019-12-01",
+      "rows": 29936,
+      "alarm_rows": 90,
+      "channels": 461
+    },
+    {
+      "day": "2019-12-02",
+      "rows": 73132,
+      "alarm_rows": 546,
+      "channels": 1822
+    },
+    {
+      "day": "2019-12-03",
+      "rows": 80120,
+      "alarm_rows": 379,
+      "channels": 2027
+    },
+    {
+      "day": "2019-12-04",
+      "rows": 86294,
+      "alarm_rows": 1131,
+      "channels": 1349
+    },
+    {
+      "day": "2019-12-05",
+      "rows": 74974,
+      "alarm_rows": 992,
+      "channels": 1239
+    },
+    {
+      "day": "2019-12-06",
+      "rows": 69815,
+      "alarm_rows": 270,
+      "channels": 1482
+    },
+    {
+      "day": "2019-12-07",
+      "rows": 53214,
+      "alarm_rows": 119,
+      "channels": 1252
+    },
+    {
+      "day": "2019-12-08",
+      "rows": 48957,
+      "alarm_rows": 113,
+      "channels": 1043
+    },
+    {
+      "day": "2019-12-09",
+      "rows": 74372,
+      "alarm_rows": 249,
+      "channels": 2882
+    },
+    {
+      "day": "2019-12-10",
+      "rows": 75359,
+      "alarm_rows": 275,
+      "channels": 1650
+    },
+    {
+      "day": "2019-12-11",
+      "rows": 82045,
+      "alarm_rows": 921,
+      "channels": 2822
+    },
+    {
+      "day": "2019-12-12",
+      "rows": 77749,
+      "alarm_rows": 407,
+      "channels": 1553
+    },
+    {
+      "day": "2019-12-13",
+      "rows": 69129,
+      "alarm_rows": 320,
+      "channels": 1142
+    },
+    {
+      "day": "2019-12-14",
+      "rows": 45213,
+      "alarm_rows": 154,
+      "channels": 829
+    },
+    {
+      "day": "2019-12-15",
+      "rows": 40971,
+      "alarm_rows": 123,
+      "channels": 661
+    },
+    {
+      "day": "2019-12-16",
+      "rows": 75158,
+      "alarm_rows": 182,
+      "channels": 1188
+    },
+    {
+      "day": "2019-12-17",
+      "rows": 79496,
+      "alarm_rows": 241,
+      "channels": 1306
+    },
+    {
+      "day": "2019-12-18",
+      "rows": 74772,
+      "alarm_rows": 198,
+      "channels": 1355
+    },
+    {
+      "day": "2019-12-19",
+      "rows": 79959,
+      "alarm_rows": 1188,
+      "channels": 1540
+    },
+    {
+      "day": "2019-12-20",
+      "rows": 71839,
+      "alarm_rows": 308,
+      "channels": 1198
+    },
+    {
+      "day": "2019-12-21",
+      "rows": 45094,
+      "alarm_rows": 142,
+      "channels": 835
+    },
+    {
+      "day": "2019-12-22",
+      "rows": 41011,
+      "alarm_rows": 128,
+      "channels": 927
+    },
+    {
+      "day": "2019-12-23",
+      "rows": 67937,
+      "alarm_rows": 600,
+      "channels": 1388
+    },
+    {
+      "day": "2019-12-24",
+      "rows": 77362,
+      "alarm_rows": 770,
+      "channels": 1635
+    },
+    {
+      "day": "2019-12-25",
+      "rows": 70132,
+      "alarm_rows": 271,
+      "channels": 1600
+    },
+    {
+      "day": "2019-12-26",
+      "rows": 72777,
+      "alarm_rows": 422,
+      "channels": 1582
+    },
+    {
+      "day": "2019-12-27",
+      "rows": 72573,
+      "alarm_rows": 724,
+      "channels": 1883
+    },
+    {
+      "day": "2019-12-28",
+      "rows": 51997,
+      "alarm_rows": 647,
+      "channels": 1402
+    },
+    {
+      "day": "2019-12-29",
+      "rows": 38086,
+      "alarm_rows": 276,
+      "channels": 773
+    },
+    {
+      "day": "2019-12-30",
+      "rows": 44859,
+      "alarm_rows": 234,
+      "channels": 1604
+    },
+    {
+      "day": "2019-12-31",
+      "rows": 38328,
+      "alarm_rows": 54,
+      "channels": 650
+    }
+  ],
+  "archive": "ext-journal-2019.7z",
+  "archive_sha256": "262d5fb712feee3d4b92ae4cf09ce8e02c52eef25d9539f3a5769bae3d05a39c",
+  "csv_bytes": 1185619451,
+  "parquet_bytes": 177681291,
+  "elapsed_seconds": 21.199,
+  "duckdb_version": "1.5.5",
+  "flags": {
+    "full_scan": true,
+    "strict_csv": true,
+    "numeric_coercion": false,
+    "invalid_record_filter": false,
+    "deduplication": false,
+    "source_timezone": "Europe/Moscow_assumed",
+    "training": false,
+    "inference": false
+  },
+  "memory_limit": "1GB",
+  "threads": 2
+}

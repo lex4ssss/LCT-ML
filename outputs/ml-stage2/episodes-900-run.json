@@ -1,0 +1,1 @@
+{"schema_version": 1, "algorithm": "consecutive_alarm_gap_v1", "gap_seconds": 900, "source_timezone": "Europe/Moscow", "input_rows": 169993, "alarm_rows": 207, "episodes": 98, "disk_sort": true, "deduplication": false, "recovery_inference": false, "coverage_verified": false, "boundary_scope": "input_rows_only", "training": false, "inference": false}

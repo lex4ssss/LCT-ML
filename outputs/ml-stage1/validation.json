@@ -1,0 +1,44 @@
+{
+  "repository": "https://github.com/Runoi/LCT-backend",
+  "commit": "928b9931da16ca53498425316482d19bc40f11ba",
+  "expected_aggregate_fields_checked": 13,
+  "inputs": [
+    {
+      "file": "data/журнал_событий_пример.csv",
+      "bytes": 9537508,
+      "sha256": "f82b5d4d800e46bb338320ff8db884587b95af88343401696de9feed982b39cd",
+      "matches_git_blob": true
+    },
+    {
+      "file": "data/справочник_каналов_датчиков.csv",
+      "bytes": 1309800,
+      "sha256": "e6aa3cb85891f8783aadab4d5ad0abd499e4a4305a20df4eb3419a116ffc3914",
+      "matches_git_blob": true
+    },
+    {
+      "file": "data/справочник_объектов_диспетчер.csv",
+      "bytes": 5170,
+      "sha256": "b29a3f8871ce79c9284c0d4b74e9c3c4f9224d41a96b63da4d7cf773ec845c70",
+      "matches_git_blob": true
+    }
+  ],
+  "unit_test_methods": 19,
+  "backend_started": false,
+  "model_trained": false,
+  "source_timezone_assumption": "Europe/Moscow matches backend parser; source timezone not independently confirmed",
+  "measurement": {
+    "elapsed_seconds": 1.48113775,
+    "peak_rss_bytes_macos": 20889600,
+    "run": {
+      "streaming": true,
+      "reject_invalid_rows": true,
+      "remove_duplicates": false,
+      "numeric_classification": false,
+      "replay": false,
+      "synthetic_data": false,
+      "training": false,
+      "inference": false,
+      "schema_version": 1
+    }
+  }
+}

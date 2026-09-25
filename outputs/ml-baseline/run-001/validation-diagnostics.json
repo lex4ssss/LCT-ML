@@ -1,0 +1,120 @@
+{
+  "confusion": {
+    "tp": 4926,
+    "fp": 18118,
+    "fn": 7893,
+    "tn": 539725
+  },
+  "alerts": 23044,
+  "false_alerts_per_1000_eligible_snapshots": 31.749091406121313,
+  "reliability_bins": [
+    {
+      "lower": 0.0,
+      "upper": 0.1,
+      "rows": 553231,
+      "mean_score": 0.013357150351403136,
+      "observed_fraction": 0.0158613671323552
+    },
+    {
+      "lower": 0.1,
+      "upper": 0.2,
+      "rows": 8156,
+      "mean_score": 0.14108099561755358,
+      "observed_fraction": 0.16932319764590487
+    },
+    {
+      "lower": 0.2,
+      "upper": 0.30000000000000004,
+      "rows": 3345,
+      "mean_score": 0.24423688952966024,
+      "observed_fraction": 0.19970104633781763
+    },
+    {
+      "lower": 0.30000000000000004,
+      "upper": 0.4,
+      "rows": 1749,
+      "mean_score": 0.3456195792488159,
+      "observed_fraction": 0.21212121212121213
+    },
+    {
+      "lower": 0.4,
+      "upper": 0.5,
+      "rows": 1117,
+      "mean_score": 0.44788969351308244,
+      "observed_fraction": 0.22291853178155774
+    },
+    {
+      "lower": 0.5,
+      "upper": 0.6000000000000001,
+      "rows": 795,
+      "mean_score": 0.5471924773776006,
+      "observed_fraction": 0.28176100628930817
+    },
+    {
+      "lower": 0.6000000000000001,
+      "upper": 0.7000000000000001,
+      "rows": 707,
+      "mean_score": 0.647432774737169,
+      "observed_fraction": 0.32107496463932106
+    },
+    {
+      "lower": 0.7000000000000001,
+      "upper": 0.8,
+      "rows": 582,
+      "mean_score": 0.7500716147758445,
+      "observed_fraction": 0.46563573883161513
+    },
+    {
+      "lower": 0.8,
+      "upper": 0.9,
+      "rows": 509,
+      "mean_score": 0.8446092721288209,
+      "observed_fraction": 0.593320235756385
+    },
+    {
+      "lower": 0.9,
+      "upper": 1.0,
+      "rows": 471,
+      "mean_score": 0.9495601222349014,
+      "observed_fraction": 0.7452229299363057
+    }
+  ],
+  "max_row_recall_at_precision": {
+    "0.5": 0.0929089632576644,
+    "0.7": 0.0437631640533583
+  },
+  "episode_coverage": {
+    "active_alarm": 3907,
+    "channel_history": 263,
+    "eligible": 26609,
+    "no_history_snapshot": 34515,
+    "split_boundary": 9
+  },
+  "eligible_episodes": 26609,
+  "detected_eligible_episodes": 16552,
+  "coefficient": [
+    -0.15477904635144596,
+    0.4753626360896857,
+    0.07447135089288247,
+    -0.2525625594000949
+  ],
+  "intercept": -4.348771169166981,
+  "sha256": {
+    "work/ml-prepared/training-examples.parquet": "a8d3331a82541726a37ff67d94d7b140da83aa4a7559d0d3912ddfa7f5827e4b",
+    "outputs/ml-baseline/run-001/model.joblib": "37227f5e3f05b8fd706dd6aead57a0427ab0e17a90d645cd09b03d9062db8f9d",
+    "outputs/ml-baseline/fit_baseline.py": "0062ee2a249c292a65fcb5da100c5830f72b49251a65ab3987e283a0055b1cda",
+    "outputs/ml-dataset/dataset-config.json": "caa6f8c4d5a837cd74a8a26124452b145e64b5725abb9b70c3780717a1a6f23d"
+  },
+  "flags": {
+    "validation": true,
+    "test_evaluation": false,
+    "training": false,
+    "offline_inference": true,
+    "calibration": false
+  },
+  "manual_probability_check": true,
+  "independent_threshold_sweep": true,
+  "total_episodes_in_validation_windows": 65303,
+  "episode_coverage_fraction": 0.4074697946495567,
+  "episodes_in_alerted_windows_fraction": 0.25346461877708526
+}

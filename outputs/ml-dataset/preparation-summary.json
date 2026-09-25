@@ -1,0 +1,15 @@
+{
+  "input_rows": 313546017,
+  "output_rows": 312982076,
+  "alarm_rows": 2466978,
+  "exact_duplicates_removed": 563940,
+  "repeated_headers_removed": 1,
+  "flags": {
+    "exact_tuple_deduplication": true,
+    "header_removal": true,
+    "utc_normalization": true,
+    "other_invalid_rows_skipped": false,
+    "training": false,
+    "inference": false
+  }
+}

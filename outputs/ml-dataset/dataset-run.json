@@ -1,0 +1,186 @@
+{
+  "config": {
+    "source_timezone": "Europe/Moscow_assumed",
+    "timestamps": "UTC",
+    "gap_seconds": 900,
+    "gap_parameter_status": "diagnostic_candidate_not_optimized",
+    "lookback_hours": 24,
+    "horizon_hours": 24,
+    "snapshot_grid": "daily_at_00:00:00_UTC",
+    "feature_window": "(as_of - 24h, as_of]",
+    "label_window": "(as_of, as_of + 24h]",
+    "target": "recorded_alarm_episode_start",
+    "validation_start_utc": "2025-01-01T00:00:00",
+    "test_start_utc": "2026-01-01T00:00:00",
+    "missing_log_dates_local": [
+      "2024-04-07",
+      "2024-04-08",
+      "2026-06-01"
+    ],
+    "exact_tuple_deduplication": true,
+    "repeated_header_removal": true,
+    "device_uptime_verified": false,
+    "delivery_timestamps_available": false,
+    "physical_failure_labels_available": false,
+    "training": false,
+    "inference": false,
+    "gap_intervals_utc": [
+      {
+        "start_at": "2024-04-05 22:01:30.000001",
+        "end_at": "2024-04-09 02:29:49",
+        "seconds_between_records": 275299.0
+      },
+      {
+        "start_at": "2024-04-09 02:29:49.000001",
+        "end_at": "2024-04-09 04:03:08",
+        "seconds_between_records": 5599.0
+      },
+      {
+        "start_at": "2024-04-09 04:11:37.000001",
+        "end_at": "2024-04-09 05:22:02",
+        "seconds_between_records": 4225.0
+      },
+      {
+        "start_at": "2024-04-09 05:38:30.000001",
+        "end_at": "2024-04-09 07:15:09",
+        "seconds_between_records": 5799.0
+      },
+      {
+        "start_at": "2024-04-09 09:24:14.000001",
+        "end_at": "2024-04-09 10:26:43",
+        "seconds_between_records": 3749.0
+      },
+      {
+        "start_at": "2026-05-31 20:59:59.000001",
+        "end_at": "2026-06-01 21:00:00",
+        "seconds_between_records": 86401.0
+      }
+    ],
+    "log_gap_threshold_seconds": 3600
+  },
+  "output_bytes": 24853271,
+  "groups": [
+    {
+      "split": "test",
+      "exclusion_reason": "active_alarm",
+      "row_count": 202,
+      "positives": 0,
+      "first_as_of": "2026-01-01 00:00:00",
+      "last_as_of": "2026-06-29 00:00:00"
+    },
+    {
+      "split": "test",
+      "exclusion_reason": "channel_history",
+      "row_count": 2,
+      "positives": 0,
+      "first_as_of": "2026-03-13 00:00:00",
+      "last_as_of": "2026-04-02 00:00:00"
+    },
+    {
+      "split": "test",
+      "exclusion_reason": "future_window",
+      "row_count": 5380,
+      "positives": 0,
+      "first_as_of": "2026-06-30 00:00:00",
+      "last_as_of": "2026-07-01 00:00:00"
+    },
+    {
+      "split": "test",
+      "exclusion_reason": "known_log_gap",
+      "row_count": 2358,
+      "positives": 0,
+      "first_as_of": "2026-05-31 00:00:00",
+      "last_as_of": "2026-06-02 00:00:00"
+    },
+    {
+      "split": "test",
+      "exclusion_reason": null,
+      "row_count": 318303,
+      "positives": 8444,
+      "first_as_of": "2026-01-01 00:00:00",
+      "last_as_of": "2026-06-29 00:00:00"
+    },
+    {
+      "split": "train",
+      "exclusion_reason": "active_alarm",
+      "row_count": 4461,
+      "positives": 0,
+      "first_as_of": "2019-01-07 00:00:00",
+      "last_as_of": "2024-12-30 00:00:00"
+    },
+    {
+      "split": "train",
+      "exclusion_reason": "channel_history",
+      "row_count": 11447,
+      "positives": 0,
+      "first_as_of": "2019-01-02 00:00:00",
+      "last_as_of": "2024-11-12 00:00:00"
+    },
+    {
+      "split": "train",
+      "exclusion_reason": "global_history",
+      "row_count": 67,
+      "positives": 0,
+      "first_as_of": "2019-01-01 00:00:00",
+      "last_as_of": "2019-01-01 00:00:00"
+    },
+    {
+      "split": "train",
+      "exclusion_reason": "known_log_gap",
+      "row_count": 4912,
+      "positives": 0,
+      "first_as_of": "2024-04-05 00:00:00",
+      "last_as_of": "2024-04-10 00:00:00"
+    },
+    {
+      "split": "train",
+      "exclusion_reason": "split_boundary",
+      "row_count": 848,
+      "positives": 0,
+      "first_as_of": "2024-12-31 00:00:00",
+      "last_as_of": "2024-12-31 00:00:00"
+    },
+    {
+      "split": "train",
+      "exclusion_reason": null,
+      "row_count": 3351044,
+      "positives": 69358,
+      "first_as_of": "2019-01-02 00:00:00",
+      "last_as_of": "2024-12-30 00:00:00"
+    },
+    {
+      "split": "validation",
+      "exclusion_reason": "active_alarm",
+      "row_count": 385,
+      "positives": 0,
+      "first_as_of": "2025-01-01 00:00:00",
+      "last_as_of": "2025-12-30 00:00:00"
+    },
+    {
+      "split": "validation",
+      "exclusion_reason": "channel_history",
+      "row_count": 1111,
+      "positives": 0,
+      "first_as_of": "2025-03-01 00:00:00",
+      "last_as_of": "2025-12-12 00:00:00"
+    },
+    {
+      "split": "validation",
+      "exclusion_reason": "split_boundary",
+      "row_count": 1137,
+      "positives": 0,
+      "first_as_of": "2025-12-31 00:00:00",
+      "last_as_of": "2025-12-31 00:00:00"
+    },
+    {
+      "split": "validation",
+      "exclusion_reason": null,
+      "row_count": 570662,
+      "positives": 12819,
+      "first_as_of": "2025-01-01 00:00:00",
+      "last_as_of": "2025-12-30 00:00:00"
+    }
+  ],
+  "training": false,
+  "inference": false
+}

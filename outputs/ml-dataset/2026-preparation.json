@@ -1,0 +1,20 @@
+{
+  "input_rows": 30695389,
+  "repeated_headers_removed": 0,
+  "output_rows": 30695389,
+  "alarm_rows": 195422,
+  "exact_duplicates_removed": 0,
+  "flags": {
+    "exact_tuple_deduplication": false,
+    "header_removal": true,
+    "utc_normalization": true,
+    "source_timezone": "Europe/Moscow_assumed",
+    "other_invalid_rows_skipped": false,
+    "numeric_value_coercion": false,
+    "training": false,
+    "inference": false
+  },
+  "year": 2026,
+  "elapsed_seconds": 82.979,
+  "source_archive_sha256": "bdc0a6ebcdedf145d390abe8e2c9c3272f6a17d39d47e488acea7142ca7dec29"
+}

@@ -1,0 +1,16 @@
+{
+  "nonnull_id_rows": 313546017,
+  "distinct_event_ids": 307519939,
+  "partitions": 64,
+  "method": "64_hash_partitions_exact_string_distinct",
+  "elapsed_seconds": 86.838,
+  "memory_limit": "1GB",
+  "threads": 1,
+  "flags": {
+    "full_scan": true,
+    "exact_distinct": true,
+    "deduplication": false,
+    "training": false,
+    "inference": false
+  }
+}

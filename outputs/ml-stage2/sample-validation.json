@@ -1,0 +1,74 @@
+{
+  "source_sha256": "f82b5d4d800e46bb338320ff8db884587b95af88343401696de9feed982b39cd",
+  "source_rows": 169993,
+  "timestamp_order_inversions": 50,
+  "same_channel_alarm_timestamp_repeats": 67,
+  "alarm_only_channels": 1,
+  "results": [
+    {
+      "run": {
+        "schema_version": 1,
+        "algorithm": "consecutive_alarm_gap_v1",
+        "gap_seconds": 300,
+        "source_timezone": "Europe/Moscow",
+        "input_rows": 169993,
+        "alarm_rows": 207,
+        "episodes": 101,
+        "disk_sort": true,
+        "deduplication": false,
+        "recovery_inference": false,
+        "coverage_verified": false,
+        "boundary_scope": "input_rows_only",
+        "training": false,
+        "inference": false
+      },
+      "independent_reference_equal": true,
+      "left_unknown": 84,
+      "right_unknown": 80
+    },
+    {
+      "run": {
+        "schema_version": 1,
+        "algorithm": "consecutive_alarm_gap_v1",
+        "gap_seconds": 900,
+        "source_timezone": "Europe/Moscow",
+        "input_rows": 169993,
+        "alarm_rows": 207,
+        "episodes": 98,
+        "disk_sort": true,
+        "deduplication": false,
+        "recovery_inference": false,
+        "coverage_verified": false,
+        "boundary_scope": "input_rows_only",
+        "training": false,
+        "inference": false
+      },
+      "independent_reference_equal": true,
+      "left_unknown": 84,
+      "right_unknown": 81
+    },
+    {
+      "run": {
+        "schema_version": 1,
+        "algorithm": "consecutive_alarm_gap_v1",
+        "gap_seconds": 3600,
+        "source_timezone": "Europe/Moscow",
+        "input_rows": 169993,
+        "alarm_rows": 207,
+        "episodes": 97,
+        "disk_sort": true,
+        "deduplication": false,
+        "recovery_inference": false,
+        "coverage_verified": false,
+        "boundary_scope": "input_rows_only",
+        "training": false,
+        "inference": false
+      },
+      "independent_reference_equal": true,
+      "left_unknown": 84,
+      "right_unknown": 84
+    }
+  ],
+  "source_git_blob_matches_head": true,
+  "source_git_blob": "c0e18c4d4f6a934fd5fc3d9bdd1056b98223c157"
+}

@@ -1,0 +1,2227 @@
+{
+  "rows": 31937125,
+  "distinct_event_ids": 31147824,
+  "rows_beyond_distinct_event_ids": 789301,
+  "channels": 10400,
+  "first_local": "2023-01-01 00:00:02",
+  "last_local": "2023-12-31 23:59:58",
+  "alarm_rows": 107712,
+  "normal_rows": 31829413,
+  "invalid_alarm_rows": 0,
+  "invalid_timestamp_rows": 0,
+  "missing_id_rows": 0,
+  "empty_value_rows": 0,
+  "finite_numeric_value_rows": 23114518,
+  "unmapped_rows": 21164,
+  "unmapped_channels": 106,
+  "daily": [
+    {
+      "day": "2023-01-01",
+      "rows": 71931,
+      "alarm_rows": 85,
+      "channels": 559
+    },
+    {
+      "day": "2023-01-02",
+      "rows": 81389,
+      "alarm_rows": 766,
+      "channels": 932
+    },
+    {
+      "day": "2023-01-03",
+      "rows": 77719,
+      "alarm_rows": 309,
+      "channels": 868
+    },
+    {
+      "day": "2023-01-04",
+      "rows": 80143,
+      "alarm_rows": 718,
+      "channels": 684
+    },
+    {
+      "day": "2023-01-05",
+      "rows": 83410,
+      "alarm_rows": 356,
+      "channels": 1441
+    },
+    {
+      "day": "2023-01-06",
+      "rows": 82232,
+      "alarm_rows": 227,
+      "channels": 1540
+    },
+    {
+      "day": "2023-01-07",
+      "rows": 73491,
+      "alarm_rows": 72,
+      "channels": 598
+    },
+    {
+      "day": "2023-01-08",
+      "rows": 80114,
+      "alarm_rows": 21,
+      "channels": 396
+    },
+    {
+      "day": "2023-01-09",
+      "rows": 87969,
+      "alarm_rows": 210,
+      "channels": 1287
+    },
+    {
+      "day": "2023-01-10",
+      "rows": 100008,
+      "alarm_rows": 294,
+      "channels": 1609
+    },
+    {
+      "day": "2023-01-11",
+      "rows": 102409,
+      "alarm_rows": 347,
+      "channels": 1823
+    },
+    {
+      "day": "2023-01-12",
+      "rows": 103330,
+      "alarm_rows": 733,
+      "channels": 2281
+    },
+    {
+      "day": "2023-01-13",
+      "rows": 96809,
+      "alarm_rows": 248,
+      "channels": 1895
+    },
+    {
+      "day": "2023-01-14",
+      "rows": 72337,
+      "alarm_rows": 173,
+      "channels": 595
+    },
+    {
+      "day": "2023-01-15",
+      "rows": 73726,
+      "alarm_rows": 92,
+      "channels": 1872
+    },
+    {
+      "day": "2023-01-16",
+      "rows": 99825,
+      "alarm_rows": 322,
+      "channels": 1394
+    },
+    {
+      "day": "2023-01-17",
+      "rows": 102786,
+      "alarm_rows": 303,
+      "channels": 1551
+    },
+    {
+      "day": "2023-01-18",
+      "rows": 101904,
+      "alarm_rows": 156,
+      "channels": 1411
+    },
+    {
+      "day": "2023-01-19",
+      "rows": 103713,
+      "alarm_rows": 322,
+      "channels": 1809
+    },
+    {
+      "day": "2023-01-20",
+      "rows": 102200,
+      "alarm_rows": 332,
+      "channels": 1627
+    },
+    {
+      "day": "2023-01-21",
+      "rows": 70185,
+      "alarm_rows": 97,
+      "channels": 494
+    },
+    {
+      "day": "2023-01-22",
+      "rows": 71027,
+      "alarm_rows": 52,
+      "channels": 455
+    },
+    {
+      "day": "2023-01-23",
+      "rows": 94233,
+      "alarm_rows": 293,
+      "channels": 1398
+    },
+    {
+      "day": "2023-01-24",
+      "rows": 97622,
+      "alarm_rows": 320,
+      "channels": 1837
+    },
+    {
+      "day": "2023-01-25",
+      "rows": 100418,
+      "alarm_rows": 568,
+      "channels": 1334
+    },
+    {
+      "day": "2023-01-26",
+      "rows": 100108,
+      "alarm_rows": 507,
+      "channels": 1845
+    },
+    {
+      "day": "2023-01-27",
+      "rows": 95447,
+      "alarm_rows": 233,
+      "channels": 1051
+    },
+    {
+      "day": "2023-01-28",
+      "rows": 82864,
+      "alarm_rows": 130,
+      "channels": 468
+    },
+    {
+      "day": "2023-01-29",
+      "rows": 87303,
+      "alarm_rows": 101,
+      "channels": 1407
+    },
+    {
+      "day": "2023-01-30",
+      "rows": 102222,
+      "alarm_rows": 777,
+      "channels": 1295
+    },
+    {
+      "day": "2023-01-31",
+      "rows": 89814,
+      "alarm_rows": 427,
+      "channels": 1419
+    },
+    {
+      "day": "2023-02-01",
+      "rows": 82003,
+      "alarm_rows": 398,
+      "channels": 1340
+    },
+    {
+      "day": "2023-02-02",
+      "rows": 104054,
+      "alarm_rows": 417,
+      "channels": 1778
+    },
+    {
+      "day": "2023-02-03",
+      "rows": 106838,
+      "alarm_rows": 467,
+      "channels": 2434
+    },
+    {
+      "day": "2023-02-04",
+      "rows": 71588,
+      "alarm_rows": 53,
+      "channels": 1135
+    },
+    {
+      "day": "2023-02-05",
+      "rows": 63962,
+      "alarm_rows": 117,
+      "channels": 366
+    },
+    {
+      "day": "2023-02-06",
+      "rows": 92117,
+      "alarm_rows": 815,
+      "channels": 1928
+    },
+    {
+      "day": "2023-02-07",
+      "rows": 85566,
+      "alarm_rows": 472,
+      "channels": 2278
+    },
+    {
+      "day": "2023-02-08",
+      "rows": 80080,
+      "alarm_rows": 206,
+      "channels": 1510
+    },
+    {
+      "day": "2023-02-09",
+      "rows": 84760,
+      "alarm_rows": 478,
+      "channels": 1280
+    },
+    {
+      "day": "2023-02-10",
+      "rows": 81321,
+      "alarm_rows": 160,
+      "channels": 876
+    },
+    {
+      "day": "2023-02-11",
+      "rows": 68119,
+      "alarm_rows": 80,
+      "channels": 594
+    },
+    {
+      "day": "2023-02-12",
+      "rows": 62639,
+      "alarm_rows": 150,
+      "channels": 460
+    },
+    {
+      "day": "2023-02-13",
+      "rows": 82594,
+      "alarm_rows": 195,
+      "channels": 963
+    },
+    {
+      "day": "2023-02-14",
+      "rows": 84102,
+      "alarm_rows": 189,
+      "channels": 1229
+    },
+    {
+      "day": "2023-02-15",
+      "rows": 81629,
+      "alarm_rows": 326,
+      "channels": 1204
+    },
+    {
+      "day": "2023-02-16",
+      "rows": 83575,
+      "alarm_rows": 243,
+      "channels": 1263
+    },
+    {
+      "day": "2023-02-17",
+      "rows": 101571,
+      "alarm_rows": 325,
+      "channels": 1710
+    },
+    {
+      "day": "2023-02-18",
+      "rows": 67896,
+      "alarm_rows": 76,
+      "channels": 599
+    },
+    {
+      "day": "2023-02-19",
+      "rows": 63631,
+      "alarm_rows": 11,
+      "channels": 336
+    },
+    {
+      "day": "2023-02-20",
+      "rows": 89379,
+      "alarm_rows": 199,
+      "channels": 1738
+    },
+    {
+      "day": "2023-02-21",
+      "rows": 85156,
+      "alarm_rows": 157,
+      "channels": 1238
+    },
+    {
+      "day": "2023-02-22",
+      "rows": 80688,
+      "alarm_rows": 84,
+      "channels": 970
+    },
+    {
+      "day": "2023-02-23",
+      "rows": 53384,
+      "alarm_rows": 22,
+      "channels": 392
+    },
+    {
+      "day": "2023-02-24",
+      "rows": 49419,
+      "alarm_rows": 64,
+      "channels": 555
+    },
+    {
+      "day": "2023-02-25",
+      "rows": 50927,
+      "alarm_rows": 29,
+      "channels": 402
+    },
+    {
+      "day": "2023-02-26",
+      "rows": 46684,
+      "alarm_rows": 85,
+      "channels": 489
+    },
+    {
+      "day": "2023-02-27",
+      "rows": 64823,
+      "alarm_rows": 145,
+      "channels": 1292
+    },
+    {
+      "day": "2023-02-28",
+      "rows": 70084,
+      "alarm_rows": 295,
+      "channels": 1105
+    },
+    {
+      "day": "2023-03-01",
+      "rows": 67645,
+      "alarm_rows": 330,
+      "channels": 1214
+    },
+    {
+      "day": "2023-03-02",
+      "rows": 68954,
+      "alarm_rows": 318,
+      "channels": 1721
+    },
+    {
+      "day": "2023-03-03",
+      "rows": 68657,
+      "alarm_rows": 216,
+      "channels": 2102
+    },
+    {
+      "day": "2023-03-04",
+      "rows": 47889,
+      "alarm_rows": 51,
+      "channels": 525
+    },
+    {
+      "day": "2023-03-05",
+      "rows": 44827,
+      "alarm_rows": 86,
+      "channels": 364
+    },
+    {
+      "day": "2023-03-06",
+      "rows": 66202,
+      "alarm_rows": 217,
+      "channels": 1781
+    },
+    {
+      "day": "2023-03-07",
+      "rows": 59411,
+      "alarm_rows": 101,
+      "channels": 882
+    },
+    {
+      "day": "2023-03-08",
+      "rows": 47024,
+      "alarm_rows": 265,
+      "channels": 622
+    },
+    {
+      "day": "2023-03-09",
+      "rows": 67190,
+      "alarm_rows": 137,
+      "channels": 1172
+    },
+    {
+      "day": "2023-03-10",
+      "rows": 72625,
+      "alarm_rows": 205,
+      "channels": 2696
+    },
+    {
+      "day": "2023-03-11",
+      "rows": 46120,
+      "alarm_rows": 32,
+      "channels": 495
+    },
+    {
+      "day": "2023-03-12",
+      "rows": 53640,
+      "alarm_rows": 686,
+      "channels": 627
+    },
+    {
+      "day": "2023-03-13",
+      "rows": 71720,
+      "alarm_rows": 373,
+      "channels": 2406
+    },
+    {
+      "day": "2023-03-14",
+      "rows": 77181,
+      "alarm_rows": 304,
+      "channels": 2534
+    },
+    {
+      "day": "2023-03-15",
+      "rows": 86041,
+      "alarm_rows": 286,
+      "channels": 1480
+    },
+    {
+      "day": "2023-03-16",
+      "rows": 87207,
+      "alarm_rows": 1446,
+      "channels": 2477
+    },
+    {
+      "day": "2023-03-17",
+      "rows": 86440,
+      "alarm_rows": 1069,
+      "channels": 1557
+    },
+    {
+      "day": "2023-03-18",
+      "rows": 62405,
+      "alarm_rows": 355,
+      "channels": 1099
+    },
+    {
+      "day": "2023-03-19",
+      "rows": 61748,
+      "alarm_rows": 294,
+      "channels": 693
+    },
+    {
+      "day": "2023-03-20",
+      "rows": 84288,
+      "alarm_rows": 524,
+      "channels": 2347
+    },
+    {
+      "day": "2023-03-21",
+      "rows": 97938,
+      "alarm_rows": 3150,
+      "channels": 1621
+    },
+    {
+      "day": "2023-03-22",
+      "rows": 85798,
+      "alarm_rows": 504,
+      "channels": 2318
+    },
+    {
+      "day": "2023-03-23",
+      "rows": 91207,
+      "alarm_rows": 597,
+      "channels": 2100
+    },
+    {
+      "day": "2023-03-24",
+      "rows": 84754,
+      "alarm_rows": 1018,
+      "channels": 1447
+    },
+    {
+      "day": "2023-03-25",
+      "rows": 65732,
+      "alarm_rows": 648,
+      "channels": 589
+    },
+    {
+      "day": "2023-03-26",
+      "rows": 61651,
+      "alarm_rows": 724,
+      "channels": 595
+    },
+    {
+      "day": "2023-03-27",
+      "rows": 78554,
+      "alarm_rows": 1267,
+      "channels": 1766
+    },
+    {
+      "day": "2023-03-28",
+      "rows": 82178,
+      "alarm_rows": 738,
+      "channels": 1748
+    },
+    {
+      "day": "2023-03-29",
+      "rows": 89431,
+      "alarm_rows": 521,
+      "channels": 2910
+    },
+    {
+      "day": "2023-03-30",
+      "rows": 88026,
+      "alarm_rows": 686,
+      "channels": 2487
+    },
+    {
+      "day": "2023-03-31",
+      "rows": 77376,
+      "alarm_rows": 441,
+      "channels": 1146
+    },
+    {
+      "day": "2023-04-01",
+      "rows": 66739,
+      "alarm_rows": 206,
+      "channels": 2184
+    },
+    {
+      "day": "2023-04-02",
+      "rows": 70211,
+      "alarm_rows": 194,
+      "channels": 605
+    },
+    {
+      "day": "2023-04-03",
+      "rows": 78254,
+      "alarm_rows": 663,
+      "channels": 2056
+    },
+    {
+      "day": "2023-04-04",
+      "rows": 80377,
+      "alarm_rows": 753,
+      "channels": 2725
+    },
+    {
+      "day": "2023-04-05",
+      "rows": 75171,
+      "alarm_rows": 368,
+      "channels": 2653
+    },
+    {
+      "day": "2023-04-06",
+      "rows": 74144,
+      "alarm_rows": 295,
+      "channels": 2198
+    },
+    {
+      "day": "2023-04-07",
+      "rows": 73545,
+      "alarm_rows": 260,
+      "channels": 1576
+    },
+    {
+      "day": "2023-04-08",
+      "rows": 57733,
+      "alarm_rows": 372,
+      "channels": 939
+    },
+    {
+      "day": "2023-04-09",
+      "rows": 54676,
+      "alarm_rows": 75,
+      "channels": 625
+    },
+    {
+      "day": "2023-04-10",
+      "rows": 80325,
+      "alarm_rows": 533,
+      "channels": 1902
+    },
+    {
+      "day": "2023-04-11",
+      "rows": 78289,
+      "alarm_rows": 201,
+      "channels": 1799
+    },
+    {
+      "day": "2023-04-12",
+      "rows": 79558,
+      "alarm_rows": 227,
+      "channels": 1831
+    },
+    {
+      "day": "2023-04-13",
+      "rows": 88692,
+      "alarm_rows": 1081,
+      "channels": 1910
+    },
+    {
+      "day": "2023-04-14",
+      "rows": 78647,
+      "alarm_rows": 174,
+      "channels": 1904
+    },
+    {
+      "day": "2023-04-15",
+      "rows": 71755,
+      "alarm_rows": 61,
+      "channels": 904
+    },
+    {
+      "day": "2023-04-16",
+      "rows": 57753,
+      "alarm_rows": 208,
+      "channels": 926
+    },
+    {
+      "day": "2023-04-17",
+      "rows": 75092,
+      "alarm_rows": 182,
+      "channels": 2188
+    },
+    {
+      "day": "2023-04-18",
+      "rows": 86848,
+      "alarm_rows": 302,
+      "channels": 1959
+    },
+    {
+      "day": "2023-04-19",
+      "rows": 82241,
+      "alarm_rows": 1159,
+      "channels": 2267
+    },
+    {
+      "day": "2023-04-20",
+      "rows": 70525,
+      "alarm_rows": 221,
+      "channels": 2327
+    },
+    {
+      "day": "2023-04-21",
+      "rows": 68427,
+      "alarm_rows": 209,
+      "channels": 2372
+    },
+    {
+      "day": "2023-04-22",
+      "rows": 50478,
+      "alarm_rows": 31,
+      "channels": 603
+    },
+    {
+      "day": "2023-04-23",
+      "rows": 54387,
+      "alarm_rows": 35,
+      "channels": 809
+    },
+    {
+      "day": "2023-04-24",
+      "rows": 75701,
+      "alarm_rows": 270,
+      "channels": 2765
+    },
+    {
+      "day": "2023-04-25",
+      "rows": 86350,
+      "alarm_rows": 269,
+      "channels": 2172
+    },
+    {
+      "day": "2023-04-26",
+      "rows": 87569,
+      "alarm_rows": 304,
+      "channels": 2151
+    },
+    {
+      "day": "2023-04-27",
+      "rows": 83819,
+      "alarm_rows": 347,
+      "channels": 1519
+    },
+    {
+      "day": "2023-04-28",
+      "rows": 66792,
+      "alarm_rows": 95,
+      "channels": 1174
+    },
+    {
+      "day": "2023-04-29",
+      "rows": 58816,
+      "alarm_rows": 107,
+      "channels": 734
+    },
+    {
+      "day": "2023-04-30",
+      "rows": 56526,
+      "alarm_rows": 79,
+      "channels": 722
+    },
+    {
+      "day": "2023-05-01",
+      "rows": 62086,
+      "alarm_rows": 101,
+      "channels": 889
+    },
+    {
+      "day": "2023-05-02",
+      "rows": 69482,
+      "alarm_rows": 124,
+      "channels": 1540
+    },
+    {
+      "day": "2023-05-03",
+      "rows": 72651,
+      "alarm_rows": 249,
+      "channels": 1798
+    },
+    {
+      "day": "2023-05-04",
+      "rows": 75699,
+      "alarm_rows": 506,
+      "channels": 1543
+    },
+    {
+      "day": "2023-05-05",
+      "rows": 61855,
+      "alarm_rows": 55,
+      "channels": 1153
+    },
+    {
+      "day": "2023-05-06",
+      "rows": 53418,
+      "alarm_rows": 28,
+      "channels": 792
+    },
+    {
+      "day": "2023-05-07",
+      "rows": 48689,
+      "alarm_rows": 117,
+      "channels": 710
+    },
+    {
+      "day": "2023-05-08",
+      "rows": 57321,
+      "alarm_rows": 26,
+      "channels": 635
+    },
+    {
+      "day": "2023-05-09",
+      "rows": 49823,
+      "alarm_rows": 27,
+      "channels": 547
+    },
+    {
+      "day": "2023-05-10",
+      "rows": 90807,
+      "alarm_rows": 578,
+      "channels": 5976
+    },
+    {
+      "day": "2023-05-11",
+      "rows": 78142,
+      "alarm_rows": 324,
+      "channels": 2499
+    },
+    {
+      "day": "2023-05-12",
+      "rows": 80194,
+      "alarm_rows": 247,
+      "channels": 1717
+    },
+    {
+      "day": "2023-05-13",
+      "rows": 59480,
+      "alarm_rows": 130,
+      "channels": 744
+    },
+    {
+      "day": "2023-05-14",
+      "rows": 58896,
+      "alarm_rows": 60,
+      "channels": 661
+    },
+    {
+      "day": "2023-05-15",
+      "rows": 73300,
+      "alarm_rows": 204,
+      "channels": 1870
+    },
+    {
+      "day": "2023-05-16",
+      "rows": 71323,
+      "alarm_rows": 130,
+      "channels": 1811
+    },
+    {
+      "day": "2023-05-17",
+      "rows": 72058,
+      "alarm_rows": 254,
+      "channels": 1707
+    },
+    {
+      "day": "2023-05-18",
+      "rows": 76664,
+      "alarm_rows": 267,
+      "channels": 1856
+    },
+    {
+      "day": "2023-05-19",
+      "rows": 70595,
+      "alarm_rows": 386,
+      "channels": 1867
+    },
+    {
+      "day": "2023-05-20",
+      "rows": 48581,
+      "alarm_rows": 137,
+      "channels": 560
+    },
+    {
+      "day": "2023-05-21",
+      "rows": 52485,
+      "alarm_rows": 97,
+      "channels": 687
+    },
+    {
+      "day": "2023-05-22",
+      "rows": 71134,
+      "alarm_rows": 241,
+      "channels": 1776
+    },
+    {
+      "day": "2023-05-23",
+      "rows": 74672,
+      "alarm_rows": 358,
+      "channels": 2950
+    },
+    {
+      "day": "2023-05-24",
+      "rows": 70089,
+      "alarm_rows": 257,
+      "channels": 1637
+    },
+    {
+      "day": "2023-05-25",
+      "rows": 78944,
+      "alarm_rows": 334,
+      "channels": 1684
+    },
+    {
+      "day": "2023-05-26",
+      "rows": 68707,
+      "alarm_rows": 123,
+      "channels": 1641
+    },
+    {
+      "day": "2023-05-27",
+      "rows": 55484,
+      "alarm_rows": 102,
+      "channels": 640
+    },
+    {
+      "day": "2023-05-28",
+      "rows": 53445,
+      "alarm_rows": 96,
+      "channels": 696
+    },
+    {
+      "day": "2023-05-29",
+      "rows": 78001,
+      "alarm_rows": 288,
+      "channels": 2186
+    },
+    {
+      "day": "2023-05-30",
+      "rows": 78224,
+      "alarm_rows": 135,
+      "channels": 1998
+    },
+    {
+      "day": "2023-05-31",
+      "rows": 73704,
+      "alarm_rows": 388,
+      "channels": 2372
+    },
+    {
+      "day": "2023-06-01",
+      "rows": 76564,
+      "alarm_rows": 204,
+      "channels": 2292
+    },
+    {
+      "day": "2023-06-02",
+      "rows": 70773,
+      "alarm_rows": 304,
+      "channels": 1523
+    },
+    {
+      "day": "2023-06-03",
+      "rows": 56511,
+      "alarm_rows": 152,
+      "channels": 875
+    },
+    {
+      "day": "2023-06-04",
+      "rows": 56821,
+      "alarm_rows": 65,
+      "channels": 713
+    },
+    {
+      "day": "2023-06-05",
+      "rows": 74413,
+      "alarm_rows": 94,
+      "channels": 1680
+    },
+    {
+      "day": "2023-06-06",
+      "rows": 72706,
+      "alarm_rows": 178,
+      "channels": 2214
+    },
+    {
+      "day": "2023-06-07",
+      "rows": 69512,
+      "alarm_rows": 303,
+      "channels": 1851
+    },
+    {
+      "day": "2023-06-08",
+      "rows": 73671,
+      "alarm_rows": 228,
+      "channels": 1944
+    },
+    {
+      "day": "2023-06-09",
+      "rows": 74217,
+      "alarm_rows": 208,
+      "channels": 2186
+    },
+    {
+      "day": "2023-06-10",
+      "rows": 61188,
+      "alarm_rows": 97,
+      "channels": 818
+    },
+    {
+      "day": "2023-06-11",
+      "rows": 62900,
+      "alarm_rows": 47,
+      "channels": 886
+    },
+    {
+      "day": "2023-06-12",
+      "rows": 64205,
+      "alarm_rows": 261,
+      "channels": 926
+    },
+    {
+      "day": "2023-06-13",
+      "rows": 81129,
+      "alarm_rows": 161,
+      "channels": 1723
+    },
+    {
+      "day": "2023-06-14",
+      "rows": 89329,
+      "alarm_rows": 593,
+      "channels": 2079
+    },
+    {
+      "day": "2023-06-15",
+      "rows": 92582,
+      "alarm_rows": 340,
+      "channels": 1901
+    },
+    {
+      "day": "2023-06-16",
+      "rows": 82274,
+      "alarm_rows": 146,
+      "channels": 1965
+    },
+    {
+      "day": "2023-06-17",
+      "rows": 69455,
+      "alarm_rows": 145,
+      "channels": 692
+    },
+    {
+      "day": "2023-06-18",
+      "rows": 69953,
+      "alarm_rows": 109,
+      "channels": 887
+    },
+    {
+      "day": "2023-06-19",
+      "rows": 96017,
+      "alarm_rows": 3281,
+      "channels": 1982
+    },
+    {
+      "day": "2023-06-20",
+      "rows": 89889,
+      "alarm_rows": 296,
+      "channels": 1901
+    },
+    {
+      "day": "2023-06-21",
+      "rows": 91498,
+      "alarm_rows": 1084,
+      "channels": 1833
+    },
+    {
+      "day": "2023-06-22",
+      "rows": 86501,
+      "alarm_rows": 105,
+      "channels": 1475
+    },
+    {
+      "day": "2023-06-23",
+      "rows": 87052,
+      "alarm_rows": 282,
+      "channels": 1672
+    },
+    {
+      "day": "2023-06-24",
+      "rows": 69305,
+      "alarm_rows": 57,
+      "channels": 1301
+    },
+    {
+      "day": "2023-06-25",
+      "rows": 58596,
+      "alarm_rows": 50,
+      "channels": 690
+    },
+    {
+      "day": "2023-06-26",
+      "rows": 87472,
+      "alarm_rows": 286,
+      "channels": 1799
+    },
+    {
+      "day": "2023-06-27",
+      "rows": 88598,
+      "alarm_rows": 185,
+      "channels": 1445
+    },
+    {
+      "day": "2023-06-28",
+      "rows": 98766,
+      "alarm_rows": 359,
+      "channels": 1823
+    },
+    {
+      "day": "2023-06-29",
+      "rows": 97103,
+      "alarm_rows": 446,
+      "channels": 1795
+    },
+    {
+      "day": "2023-06-30",
+      "rows": 98968,
+      "alarm_rows": 329,
+      "channels": 1742
+    },
+    {
+      "day": "2023-07-01",
+      "rows": 71216,
+      "alarm_rows": 75,
+      "channels": 872
+    },
+    {
+      "day": "2023-07-02",
+      "rows": 70473,
+      "alarm_rows": 134,
+      "channels": 918
+    },
+    {
+      "day": "2023-07-03",
+      "rows": 98115,
+      "alarm_rows": 182,
+      "channels": 1867
+    },
+    {
+      "day": "2023-07-04",
+      "rows": 95992,
+      "alarm_rows": 225,
+      "channels": 2082
+    },
+    {
+      "day": "2023-07-05",
+      "rows": 92289,
+      "alarm_rows": 317,
+      "channels": 1995
+    },
+    {
+      "day": "2023-07-06",
+      "rows": 99823,
+      "alarm_rows": 318,
+      "channels": 2433
+    },
+    {
+      "day": "2023-07-07",
+      "rows": 100821,
+      "alarm_rows": 128,
+      "channels": 1693
+    },
+    {
+      "day": "2023-07-08",
+      "rows": 77371,
+      "alarm_rows": 54,
+      "channels": 771
+    },
+    {
+      "day": "2023-07-09",
+      "rows": 74989,
+      "alarm_rows": 23,
+      "channels": 758
+    },
+    {
+      "day": "2023-07-10",
+      "rows": 105950,
+      "alarm_rows": 178,
+      "channels": 3103
+    },
+    {
+      "day": "2023-07-11",
+      "rows": 94161,
+      "alarm_rows": 129,
+      "channels": 1812
+    },
+    {
+      "day": "2023-07-12",
+      "rows": 88577,
+      "alarm_rows": 344,
+      "channels": 2165
+    },
+    {
+      "day": "2023-07-13",
+      "rows": 97078,
+      "alarm_rows": 987,
+      "channels": 1620
+    },
+    {
+      "day": "2023-07-14",
+      "rows": 92812,
+      "alarm_rows": 119,
+      "channels": 1647
+    },
+    {
+      "day": "2023-07-15",
+      "rows": 70776,
+      "alarm_rows": 97,
+      "channels": 1150
+    },
+    {
+      "day": "2023-07-16",
+      "rows": 64943,
+      "alarm_rows": 49,
+      "channels": 688
+    },
+    {
+      "day": "2023-07-17",
+      "rows": 89644,
+      "alarm_rows": 155,
+      "channels": 1854
+    },
+    {
+      "day": "2023-07-18",
+      "rows": 104507,
+      "alarm_rows": 873,
+      "channels": 2191
+    },
+    {
+      "day": "2023-07-19",
+      "rows": 106299,
+      "alarm_rows": 2375,
+      "channels": 1717
+    },
+    {
+      "day": "2023-07-20",
+      "rows": 104755,
+      "alarm_rows": 351,
+      "channels": 2611
+    },
+    {
+      "day": "2023-07-21",
+      "rows": 97280,
+      "alarm_rows": 377,
+      "channels": 2917
+    },
+    {
+      "day": "2023-07-22",
+      "rows": 67896,
+      "alarm_rows": 203,
+      "channels": 912
+    },
+    {
+      "day": "2023-07-23",
+      "rows": 65458,
+      "alarm_rows": 171,
+      "channels": 1479
+    },
+    {
+      "day": "2023-07-24",
+      "rows": 102590,
+      "alarm_rows": 378,
+      "channels": 2124
+    },
+    {
+      "day": "2023-07-25",
+      "rows": 105798,
+      "alarm_rows": 273,
+      "channels": 2001
+    },
+    {
+      "day": "2023-07-26",
+      "rows": 106934,
+      "alarm_rows": 749,
+      "channels": 1862
+    },
+    {
+      "day": "2023-07-27",
+      "rows": 95386,
+      "alarm_rows": 286,
+      "channels": 1550
+    },
+    {
+      "day": "2023-07-28",
+      "rows": 106874,
+      "alarm_rows": 245,
+      "channels": 1435
+    },
+    {
+      "day": "2023-07-29",
+      "rows": 105319,
+      "alarm_rows": 555,
+      "channels": 1943
+    },
+    {
+      "day": "2023-07-30",
+      "rows": 100392,
+      "alarm_rows": 90,
+      "channels": 866
+    },
+    {
+      "day": "2023-07-31",
+      "rows": 115848,
+      "alarm_rows": 355,
+      "channels": 3106
+    },
+    {
+      "day": "2023-08-01",
+      "rows": 93407,
+      "alarm_rows": 157,
+      "channels": 1787
+    },
+    {
+      "day": "2023-08-02",
+      "rows": 101632,
+      "alarm_rows": 377,
+      "channels": 2440
+    },
+    {
+      "day": "2023-08-03",
+      "rows": 105780,
+      "alarm_rows": 509,
+      "channels": 1861
+    },
+    {
+      "day": "2023-08-04",
+      "rows": 102881,
+      "alarm_rows": 155,
+      "channels": 1906
+    },
+    {
+      "day": "2023-08-05",
+      "rows": 74156,
+      "alarm_rows": 213,
+      "channels": 869
+    },
+    {
+      "day": "2023-08-06",
+      "rows": 73898,
+      "alarm_rows": 120,
+      "channels": 903
+    },
+    {
+      "day": "2023-08-07",
+      "rows": 93605,
+      "alarm_rows": 162,
+      "channels": 1790
+    },
+    {
+      "day": "2023-08-08",
+      "rows": 101159,
+      "alarm_rows": 317,
+      "channels": 1878
+    },
+    {
+      "day": "2023-08-09",
+      "rows": 92241,
+      "alarm_rows": 264,
+      "channels": 1621
+    },
+    {
+      "day": "2023-08-10",
+      "rows": 105816,
+      "alarm_rows": 450,
+      "channels": 1630
+    },
+    {
+      "day": "2023-08-11",
+      "rows": 99725,
+      "alarm_rows": 199,
+      "channels": 1846
+    },
+    {
+      "day": "2023-08-12",
+      "rows": 78453,
+      "alarm_rows": 40,
+      "channels": 801
+    },
+    {
+      "day": "2023-08-13",
+      "rows": 75290,
+      "alarm_rows": 78,
+      "channels": 701
+    },
+    {
+      "day": "2023-08-14",
+      "rows": 97379,
+      "alarm_rows": 270,
+      "channels": 2223
+    },
+    {
+      "day": "2023-08-15",
+      "rows": 101323,
+      "alarm_rows": 276,
+      "channels": 2129
+    },
+    {
+      "day": "2023-08-16",
+      "rows": 113370,
+      "alarm_rows": 2083,
+      "channels": 2209
+    },
+    {
+      "day": "2023-08-17",
+      "rows": 109006,
+      "alarm_rows": 309,
+      "channels": 1961
+    },
+    {
+      "day": "2023-08-18",
+      "rows": 100809,
+      "alarm_rows": 234,
+      "channels": 2011
+    },
+    {
+      "day": "2023-08-19",
+      "rows": 78224,
+      "alarm_rows": 16,
+      "channels": 596
+    },
+    {
+      "day": "2023-08-20",
+      "rows": 78324,
+      "alarm_rows": 307,
+      "channels": 1289
+    },
+    {
+      "day": "2023-08-21",
+      "rows": 99474,
+      "alarm_rows": 193,
+      "channels": 2028
+    },
+    {
+      "day": "2023-08-22",
+      "rows": 94904,
+      "alarm_rows": 149,
+      "channels": 1424
+    },
+    {
+      "day": "2023-08-23",
+      "rows": 90838,
+      "alarm_rows": 351,
+      "channels": 1535
+    },
+    {
+      "day": "2023-08-24",
+      "rows": 92300,
+      "alarm_rows": 153,
+      "channels": 2123
+    },
+    {
+      "day": "2023-08-25",
+      "rows": 90658,
+      "alarm_rows": 148,
+      "channels": 1604
+    },
+    {
+      "day": "2023-08-26",
+      "rows": 68568,
+      "alarm_rows": 15,
+      "channels": 712
+    },
+    {
+      "day": "2023-08-27",
+      "rows": 67685,
+      "alarm_rows": 39,
+      "channels": 705
+    },
+    {
+      "day": "2023-08-28",
+      "rows": 90595,
+      "alarm_rows": 112,
+      "channels": 1569
+    },
+    {
+      "day": "2023-08-29",
+      "rows": 92821,
+      "alarm_rows": 316,
+      "channels": 1966
+    },
+    {
+      "day": "2023-08-30",
+      "rows": 96382,
+      "alarm_rows": 345,
+      "channels": 1822
+    },
+    {
+      "day": "2023-08-31",
+      "rows": 91940,
+      "alarm_rows": 252,
+      "channels": 2056
+    },
+    {
+      "day": "2023-09-01",
+      "rows": 86738,
+      "alarm_rows": 194,
+      "channels": 1484
+    },
+    {
+      "day": "2023-09-02",
+      "rows": 72438,
+      "alarm_rows": 162,
+      "channels": 959
+    },
+    {
+      "day": "2023-09-03",
+      "rows": 68594,
+      "alarm_rows": 223,
+      "channels": 881
+    },
+    {
+      "day": "2023-09-04",
+      "rows": 90828,
+      "alarm_rows": 198,
+      "channels": 1812
+    },
+    {
+      "day": "2023-09-05",
+      "rows": 95335,
+      "alarm_rows": 210,
+      "channels": 1872
+    },
+    {
+      "day": "2023-09-06",
+      "rows": 103064,
+      "alarm_rows": 960,
+      "channels": 1954
+    },
+    {
+      "day": "2023-09-07",
+      "rows": 94319,
+      "alarm_rows": 226,
+      "channels": 1906
+    },
+    {
+      "day": "2023-09-08",
+      "rows": 76367,
+      "alarm_rows": 63,
+      "channels": 971
+    },
+    {
+      "day": "2023-09-09",
+      "rows": 63738,
+      "alarm_rows": 44,
+      "channels": 735
+    },
+    {
+      "day": "2023-09-10",
+      "rows": 64690,
+      "alarm_rows": 2,
+      "channels": 659
+    },
+    {
+      "day": "2023-09-11",
+      "rows": 94526,
+      "alarm_rows": 889,
+      "channels": 2015
+    },
+    {
+      "day": "2023-09-12",
+      "rows": 86301,
+      "alarm_rows": 329,
+      "channels": 1565
+    },
+    {
+      "day": "2023-09-13",
+      "rows": 85442,
+      "alarm_rows": 728,
+      "channels": 1843
+    },
+    {
+      "day": "2023-09-14",
+      "rows": 85539,
+      "alarm_rows": 242,
+      "channels": 1648
+    },
+    {
+      "day": "2023-09-15",
+      "rows": 91739,
+      "alarm_rows": 429,
+      "channels": 1614
+    },
+    {
+      "day": "2023-09-16",
+      "rows": 61672,
+      "alarm_rows": 76,
+      "channels": 669
+    },
+    {
+      "day": "2023-09-17",
+      "rows": 56517,
+      "alarm_rows": 103,
+      "channels": 641
+    },
+    {
+      "day": "2023-09-18",
+      "rows": 84317,
+      "alarm_rows": 239,
+      "channels": 2899
+    },
+    {
+      "day": "2023-09-19",
+      "rows": 82140,
+      "alarm_rows": 229,
+      "channels": 1621
+    },
+    {
+      "day": "2023-09-20",
+      "rows": 82191,
+      "alarm_rows": 385,
+      "channels": 1977
+    },
+    {
+      "day": "2023-09-21",
+      "rows": 85989,
+      "alarm_rows": 340,
+      "channels": 1588
+    },
+    {
+      "day": "2023-09-22",
+      "rows": 81289,
+      "alarm_rows": 333,
+      "channels": 1779
+    },
+    {
+      "day": "2023-09-23",
+      "rows": 67533,
+      "alarm_rows": 29,
+      "channels": 738
+    },
+    {
+      "day": "2023-09-24",
+      "rows": 75474,
+      "alarm_rows": 49,
+      "channels": 875
+    },
+    {
+      "day": "2023-09-25",
+      "rows": 83418,
+      "alarm_rows": 223,
+      "channels": 1984
+    },
+    {
+      "day": "2023-09-26",
+      "rows": 88691,
+      "alarm_rows": 363,
+      "channels": 1739
+    },
+    {
+      "day": "2023-09-27",
+      "rows": 86179,
+      "alarm_rows": 818,
+      "channels": 1875
+    },
+    {
+      "day": "2023-09-28",
+      "rows": 98259,
+      "alarm_rows": 579,
+      "channels": 2737
+    },
+    {
+      "day": "2023-09-29",
+      "rows": 95983,
+      "alarm_rows": 330,
+      "channels": 1746
+    },
+    {
+      "day": "2023-09-30",
+      "rows": 68658,
+      "alarm_rows": 193,
+      "channels": 757
+    },
+    {
+      "day": "2023-10-01",
+      "rows": 61627,
+      "alarm_rows": 108,
+      "channels": 633
+    },
+    {
+      "day": "2023-10-02",
+      "rows": 81619,
+      "alarm_rows": 339,
+      "channels": 2250
+    },
+    {
+      "day": "2023-10-03",
+      "rows": 87067,
+      "alarm_rows": 823,
+      "channels": 2262
+    },
+    {
+      "day": "2023-10-04",
+      "rows": 87814,
+      "alarm_rows": 248,
+      "channels": 2406
+    },
+    {
+      "day": "2023-10-05",
+      "rows": 83016,
+      "alarm_rows": 167,
+      "channels": 2209
+    },
+    {
+      "day": "2023-10-06",
+      "rows": 75774,
+      "alarm_rows": 133,
+      "channels": 1986
+    },
+    {
+      "day": "2023-10-07",
+      "rows": 60856,
+      "alarm_rows": 127,
+      "channels": 966
+    },
+    {
+      "day": "2023-10-08",
+      "rows": 57826,
+      "alarm_rows": 58,
+      "channels": 866
+    },
+    {
+      "day": "2023-10-09",
+      "rows": 80622,
+      "alarm_rows": 252,
+      "channels": 1926
+    },
+    {
+      "day": "2023-10-10",
+      "rows": 76026,
+      "alarm_rows": 122,
+      "channels": 1558
+    },
+    {
+      "day": "2023-10-11",
+      "rows": 78504,
+      "alarm_rows": 188,
+      "channels": 1747
+    },
+    {
+      "day": "2023-10-12",
+      "rows": 79619,
+      "alarm_rows": 148,
+      "channels": 1409
+    },
+    {
+      "day": "2023-10-13",
+      "rows": 73197,
+      "alarm_rows": 206,
+      "channels": 1454
+    },
+    {
+      "day": "2023-10-14",
+      "rows": 54868,
+      "alarm_rows": 173,
+      "channels": 761
+    },
+    {
+      "day": "2023-10-15",
+      "rows": 58068,
+      "alarm_rows": 51,
+      "channels": 599
+    },
+    {
+      "day": "2023-10-16",
+      "rows": 71661,
+      "alarm_rows": 176,
+      "channels": 2022
+    },
+    {
+      "day": "2023-10-17",
+      "rows": 82677,
+      "alarm_rows": 188,
+      "channels": 3219
+    },
+    {
+      "day": "2023-10-18",
+      "rows": 70271,
+      "alarm_rows": 186,
+      "channels": 1519
+    },
+    {
+      "day": "2023-10-19",
+      "rows": 73687,
+      "alarm_rows": 120,
+      "channels": 2163
+    },
+    {
+      "day": "2023-10-20",
+      "rows": 73459,
+      "alarm_rows": 233,
+      "channels": 2376
+    },
+    {
+      "day": "2023-10-21",
+      "rows": 55452,
+      "alarm_rows": 117,
+      "channels": 675
+    },
+    {
+      "day": "2023-10-22",
+      "rows": 55732,
+      "alarm_rows": 33,
+      "channels": 544
+    },
+    {
+      "day": "2023-10-23",
+      "rows": 68519,
+      "alarm_rows": 166,
+      "channels": 1748
+    },
+    {
+      "day": "2023-10-24",
+      "rows": 74953,
+      "alarm_rows": 191,
+      "channels": 1966
+    },
+    {
+      "day": "2023-10-25",
+      "rows": 72624,
+      "alarm_rows": 223,
+      "channels": 2186
+    },
+    {
+      "day": "2023-10-26",
+      "rows": 70998,
+      "alarm_rows": 626,
+      "channels": 1186
+    },
+    {
+      "day": "2023-10-27",
+      "rows": 72093,
+      "alarm_rows": 166,
+      "channels": 1848
+    },
+    {
+      "day": "2023-10-28",
+      "rows": 51689,
+      "alarm_rows": 26,
+      "channels": 689
+    },
+    {
+      "day": "2023-10-29",
+      "rows": 49353,
+      "alarm_rows": 59,
+      "channels": 425
+    },
+    {
+      "day": "2023-10-30",
+      "rows": 72863,
+      "alarm_rows": 291,
+      "channels": 1584
+    },
+    {
+      "day": "2023-10-31",
+      "rows": 83241,
+      "alarm_rows": 320,
+      "channels": 1473
+    },
+    {
+      "day": "2023-11-01",
+      "rows": 81605,
+      "alarm_rows": 499,
+      "channels": 1557
+    },
+    {
+      "day": "2023-11-02",
+      "rows": 88237,
+      "alarm_rows": 333,
+      "channels": 1595
+    },
+    {
+      "day": "2023-11-03",
+      "rows": 74450,
+      "alarm_rows": 208,
+      "channels": 1288
+    },
+    {
+      "day": "2023-11-04",
+      "rows": 56784,
+      "alarm_rows": 38,
+      "channels": 787
+    },
+    {
+      "day": "2023-11-05",
+      "rows": 61759,
+      "alarm_rows": 63,
+      "channels": 902
+    },
+    {
+      "day": "2023-11-06",
+      "rows": 65899,
+      "alarm_rows": 98,
+      "channels": 982
+    },
+    {
+      "day": "2023-11-07",
+      "rows": 76301,
+      "alarm_rows": 285,
+      "channels": 1578
+    },
+    {
+      "day": "2023-11-08",
+      "rows": 73711,
+      "alarm_rows": 306,
+      "channels": 3476
+    },
+    {
+      "day": "2023-11-09",
+      "rows": 54944,
+      "alarm_rows": 280,
+      "channels": 1822
+    },
+    {
+      "day": "2023-11-10",
+      "rows": 55177,
+      "alarm_rows": 240,
+      "channels": 2090
+    },
+    {
+      "day": "2023-11-11",
+      "rows": 32816,
+      "alarm_rows": 72,
+      "channels": 633
+    },
+    {
+      "day": "2023-11-12",
+      "rows": 29388,
+      "alarm_rows": 35,
+      "channels": 743
+    },
+    {
+      "day": "2023-11-13",
+      "rows": 58215,
+      "alarm_rows": 242,
+      "channels": 1784
+    },
+    {
+      "day": "2023-11-14",
+      "rows": 50717,
+      "alarm_rows": 330,
+      "channels": 1597
+    },
+    {
+      "day": "2023-11-15",
+      "rows": 53849,
+      "alarm_rows": 422,
+      "channels": 1457
+    },
+    {
+      "day": "2023-11-16",
+      "rows": 120067,
+      "alarm_rows": 333,
+      "channels": 1539
+    },
+    {
+      "day": "2023-11-17",
+      "rows": 145901,
+      "alarm_rows": 167,
+      "channels": 2178
+    },
+    {
+      "day": "2023-11-18",
+      "rows": 114759,
+      "alarm_rows": 298,
+      "channels": 587
+    },
+    {
+      "day": "2023-11-19",
+      "rows": 122284,
+      "alarm_rows": 43,
+      "channels": 466
+    },
+    {
+      "day": "2023-11-20",
+      "rows": 152648,
+      "alarm_rows": 348,
+      "channels": 1408
+    },
+    {
+      "day": "2023-11-21",
+      "rows": 149155,
+      "alarm_rows": 256,
+      "channels": 1719
+    },
+    {
+      "day": "2023-11-22",
+      "rows": 160094,
+      "alarm_rows": 976,
+      "channels": 1353
+    },
+    {
+      "day": "2023-11-23",
+      "rows": 149777,
+      "alarm_rows": 243,
+      "channels": 2056
+    },
+    {
+      "day": "2023-11-24",
+      "rows": 148894,
+      "alarm_rows": 232,
+      "channels": 1261
+    },
+    {
+      "day": "2023-11-25",
+      "rows": 193749,
+      "alarm_rows": 32,
+      "channels": 442
+    },
+    {
+      "day": "2023-11-26",
+      "rows": 199428,
+      "alarm_rows": 850,
+      "channels": 595
+    },
+    {
+      "day": "2023-11-27",
+      "rows": 293954,
+      "alarm_rows": 312,
+      "channels": 1183
+    },
+    {
+      "day": "2023-11-28",
+      "rows": 266914,
+      "alarm_rows": 176,
+      "channels": 1275
+    },
+    {
+      "day": "2023-11-29",
+      "rows": 258009,
+      "alarm_rows": 211,
+      "channels": 1498
+    },
+    {
+      "day": "2023-11-30",
+      "rows": 147158,
+      "alarm_rows": 87,
+      "channels": 2396
+    },
+    {
+      "day": "2023-12-01",
+      "rows": 140531,
+      "alarm_rows": 66,
+      "channels": 838
+    },
+    {
+      "day": "2023-12-02",
+      "rows": 126959,
+      "alarm_rows": 85,
+      "channels": 747
+    },
+    {
+      "day": "2023-12-03",
+      "rows": 129208,
+      "alarm_rows": 86,
+      "channels": 504
+    },
+    {
+      "day": "2023-12-04",
+      "rows": 133049,
+      "alarm_rows": 100,
+      "channels": 849
+    },
+    {
+      "day": "2023-12-05",
+      "rows": 138552,
+      "alarm_rows": 64,
+      "channels": 1059
+    },
+    {
+      "day": "2023-12-06",
+      "rows": 141686,
+      "alarm_rows": 118,
+      "channels": 1018
+    },
+    {
+      "day": "2023-12-07",
+      "rows": 146052,
+      "alarm_rows": 348,
+      "channels": 1864
+    },
+    {
+      "day": "2023-12-08",
+      "rows": 141088,
+      "alarm_rows": 153,
+      "channels": 1298
+    },
+    {
+      "day": "2023-12-09",
+      "rows": 126941,
+      "alarm_rows": 95,
+      "channels": 687
+    },
+    {
+      "day": "2023-12-10",
+      "rows": 125058,
+      "alarm_rows": 222,
+      "channels": 1170
+    },
+    {
+      "day": "2023-12-11",
+      "rows": 154762,
+      "alarm_rows": 253,
+      "channels": 2593
+    },
+    {
+      "day": "2023-12-12",
+      "rows": 146772,
+      "alarm_rows": 232,
+      "channels": 2165
+    },
+    {
+      "day": "2023-12-13",
+      "rows": 143064,
+      "alarm_rows": 284,
+      "channels": 1306
+    },
+    {
+      "day": "2023-12-14",
+      "rows": 154460,
+      "alarm_rows": 214,
+      "channels": 2294
+    },
+    {
+      "day": "2023-12-15",
+      "rows": 145319,
+      "alarm_rows": 112,
+      "channels": 1523
+    },
+    {
+      "day": "2023-12-16",
+      "rows": 135578,
+      "alarm_rows": 68,
+      "channels": 420
+    },
+    {
+      "day": "2023-12-17",
+      "rows": 125128,
+      "alarm_rows": 91,
+      "channels": 1194
+    },
+    {
+      "day": "2023-12-18",
+      "rows": 141680,
+      "alarm_rows": 220,
+      "channels": 2009
+    },
+    {
+      "day": "2023-12-19",
+      "rows": 141774,
+      "alarm_rows": 255,
+      "channels": 1258
+    },
+    {
+      "day": "2023-12-20",
+      "rows": 145997,
+      "alarm_rows": 527,
+      "channels": 2763
+    },
+    {
+      "day": "2023-12-21",
+      "rows": 142537,
+      "alarm_rows": 260,
+      "channels": 1786
+    },
+    {
+      "day": "2023-12-22",
+      "rows": 139919,
+      "alarm_rows": 302,
+      "channels": 2282
+    },
+    {
+      "day": "2023-12-23",
+      "rows": 126227,
+      "alarm_rows": 141,
+      "channels": 619
+    },
+    {
+      "day": "2023-12-24",
+      "rows": 127338,
+      "alarm_rows": 40,
+      "channels": 425
+    },
+    {
+      "day": "2023-12-25",
+      "rows": 142525,
+      "alarm_rows": 200,
+      "channels": 1516
+    },
+    {
+      "day": "2023-12-26",
+      "rows": 140812,
+      "alarm_rows": 157,
+      "channels": 1346
+    },
+    {
+      "day": "2023-12-27",
+      "rows": 142026,
+      "alarm_rows": 161,
+      "channels": 1180
+    },
+    {
+      "day": "2023-12-28",
+      "rows": 145475,
+      "alarm_rows": 158,
+      "channels": 1320
+    },
+    {
+      "day": "2023-12-29",
+      "rows": 136896,
+      "alarm_rows": 127,
+      "channels": 761
+    },
+    {
+      "day": "2023-12-30",
+      "rows": 128023,
+      "alarm_rows": 81,
+      "channels": 1406
+    },
+    {
+      "day": "2023-12-31",
+      "rows": 127797,
+      "alarm_rows": 138,
+      "channels": 460
+    }
+  ],
+  "archive": "ext-journal-2023.7z",
+  "archive_sha256": "6737008e77a0ce1610bb1205652a842311ab319cf7eac8edc951670a28a3ab40",
+  "csv_bytes": 1630553963,
+  "parquet_bytes": 264076493,
+  "elapsed_seconds": 28.068,
+  "duckdb_version": "1.5.5",
+  "flags": {
+    "full_scan": true,
+    "strict_csv": true,
+    "numeric_coercion": false,
+    "invalid_record_filter": false,
+    "deduplication": false,
+    "source_timezone": "Europe/Moscow_assumed",
+    "training": false,
+    "inference": false
+  },
+  "memory_limit": "1GB",
+  "threads": 2
+}

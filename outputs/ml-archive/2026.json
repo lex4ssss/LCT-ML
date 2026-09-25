@@ -1,0 +1,1117 @@
+{
+  "rows": 30695389,
+  "distinct_event_ids": 30695389,
+  "rows_beyond_distinct_event_ids": 0,
+  "channels": 11447,
+  "first_local": "2026-01-01 00:00:00",
+  "last_local": "2026-06-30 23:59:59",
+  "alarm_rows": 195422,
+  "normal_rows": 30499967,
+  "invalid_alarm_rows": 0,
+  "invalid_timestamp_rows": 0,
+  "missing_id_rows": 0,
+  "empty_value_rows": 0,
+  "finite_numeric_value_rows": 24695254,
+  "unmapped_rows": 122,
+  "unmapped_channels": 2,
+  "daily": [
+    {
+      "day": "2026-01-01",
+      "rows": 139284,
+      "alarm_rows": 2302,
+      "channels": 865
+    },
+    {
+      "day": "2026-01-02",
+      "rows": 139351,
+      "alarm_rows": 1245,
+      "channels": 764
+    },
+    {
+      "day": "2026-01-03",
+      "rows": 133401,
+      "alarm_rows": 1239,
+      "channels": 462
+    },
+    {
+      "day": "2026-01-04",
+      "rows": 142923,
+      "alarm_rows": 1575,
+      "channels": 1385
+    },
+    {
+      "day": "2026-01-05",
+      "rows": 141244,
+      "alarm_rows": 1270,
+      "channels": 1289
+    },
+    {
+      "day": "2026-01-06",
+      "rows": 139052,
+      "alarm_rows": 1492,
+      "channels": 892
+    },
+    {
+      "day": "2026-01-07",
+      "rows": 134585,
+      "alarm_rows": 1287,
+      "channels": 1437
+    },
+    {
+      "day": "2026-01-08",
+      "rows": 137022,
+      "alarm_rows": 1169,
+      "channels": 947
+    },
+    {
+      "day": "2026-01-09",
+      "rows": 140723,
+      "alarm_rows": 1085,
+      "channels": 1613
+    },
+    {
+      "day": "2026-01-10",
+      "rows": 137347,
+      "alarm_rows": 795,
+      "channels": 581
+    },
+    {
+      "day": "2026-01-11",
+      "rows": 128489,
+      "alarm_rows": 141,
+      "channels": 1269
+    },
+    {
+      "day": "2026-01-12",
+      "rows": 141136,
+      "alarm_rows": 397,
+      "channels": 1181
+    },
+    {
+      "day": "2026-01-13",
+      "rows": 145181,
+      "alarm_rows": 847,
+      "channels": 1784
+    },
+    {
+      "day": "2026-01-14",
+      "rows": 146127,
+      "alarm_rows": 1173,
+      "channels": 2212
+    },
+    {
+      "day": "2026-01-15",
+      "rows": 150090,
+      "alarm_rows": 1570,
+      "channels": 2318
+    },
+    {
+      "day": "2026-01-16",
+      "rows": 145449,
+      "alarm_rows": 1697,
+      "channels": 1391
+    },
+    {
+      "day": "2026-01-17",
+      "rows": 135662,
+      "alarm_rows": 1029,
+      "channels": 2171
+    },
+    {
+      "day": "2026-01-18",
+      "rows": 136176,
+      "alarm_rows": 1422,
+      "channels": 1961
+    },
+    {
+      "day": "2026-01-19",
+      "rows": 154014,
+      "alarm_rows": 1367,
+      "channels": 2281
+    },
+    {
+      "day": "2026-01-20",
+      "rows": 152887,
+      "alarm_rows": 1927,
+      "channels": 1873
+    },
+    {
+      "day": "2026-01-21",
+      "rows": 164384,
+      "alarm_rows": 1183,
+      "channels": 3030
+    },
+    {
+      "day": "2026-01-22",
+      "rows": 156178,
+      "alarm_rows": 302,
+      "channels": 2806
+    },
+    {
+      "day": "2026-01-23",
+      "rows": 142245,
+      "alarm_rows": 494,
+      "channels": 2098
+    },
+    {
+      "day": "2026-01-24",
+      "rows": 134224,
+      "alarm_rows": 231,
+      "channels": 1465
+    },
+    {
+      "day": "2026-01-25",
+      "rows": 130177,
+      "alarm_rows": 208,
+      "channels": 741
+    },
+    {
+      "day": "2026-01-26",
+      "rows": 164674,
+      "alarm_rows": 633,
+      "channels": 2862
+    },
+    {
+      "day": "2026-01-27",
+      "rows": 158020,
+      "alarm_rows": 861,
+      "channels": 2603
+    },
+    {
+      "day": "2026-01-28",
+      "rows": 154445,
+      "alarm_rows": 1257,
+      "channels": 3815
+    },
+    {
+      "day": "2026-01-29",
+      "rows": 147084,
+      "alarm_rows": 502,
+      "channels": 1322
+    },
+    {
+      "day": "2026-01-30",
+      "rows": 151261,
+      "alarm_rows": 1084,
+      "channels": 3323
+    },
+    {
+      "day": "2026-01-31",
+      "rows": 139234,
+      "alarm_rows": 554,
+      "channels": 752
+    },
+    {
+      "day": "2026-02-01",
+      "rows": 138324,
+      "alarm_rows": 392,
+      "channels": 3083
+    },
+    {
+      "day": "2026-02-02",
+      "rows": 166507,
+      "alarm_rows": 600,
+      "channels": 2702
+    },
+    {
+      "day": "2026-02-03",
+      "rows": 186693,
+      "alarm_rows": 1034,
+      "channels": 4245
+    },
+    {
+      "day": "2026-02-04",
+      "rows": 178756,
+      "alarm_rows": 425,
+      "channels": 3299
+    },
+    {
+      "day": "2026-02-05",
+      "rows": 170616,
+      "alarm_rows": 448,
+      "channels": 2168
+    },
+    {
+      "day": "2026-02-06",
+      "rows": 173261,
+      "alarm_rows": 515,
+      "channels": 1979
+    },
+    {
+      "day": "2026-02-07",
+      "rows": 158441,
+      "alarm_rows": 949,
+      "channels": 2439
+    },
+    {
+      "day": "2026-02-08",
+      "rows": 162979,
+      "alarm_rows": 206,
+      "channels": 1781
+    },
+    {
+      "day": "2026-02-09",
+      "rows": 166484,
+      "alarm_rows": 1034,
+      "channels": 2968
+    },
+    {
+      "day": "2026-02-10",
+      "rows": 170444,
+      "alarm_rows": 866,
+      "channels": 3197
+    },
+    {
+      "day": "2026-02-11",
+      "rows": 168158,
+      "alarm_rows": 601,
+      "channels": 3972
+    },
+    {
+      "day": "2026-02-12",
+      "rows": 168030,
+      "alarm_rows": 926,
+      "channels": 2832
+    },
+    {
+      "day": "2026-02-13",
+      "rows": 157665,
+      "alarm_rows": 812,
+      "channels": 1349
+    },
+    {
+      "day": "2026-02-14",
+      "rows": 139246,
+      "alarm_rows": 2092,
+      "channels": 1736
+    },
+    {
+      "day": "2026-02-15",
+      "rows": 152506,
+      "alarm_rows": 644,
+      "channels": 747
+    },
+    {
+      "day": "2026-02-16",
+      "rows": 182229,
+      "alarm_rows": 977,
+      "channels": 2339
+    },
+    {
+      "day": "2026-02-17",
+      "rows": 174683,
+      "alarm_rows": 1022,
+      "channels": 1243
+    },
+    {
+      "day": "2026-02-18",
+      "rows": 188074,
+      "alarm_rows": 1080,
+      "channels": 3045
+    },
+    {
+      "day": "2026-02-19",
+      "rows": 181146,
+      "alarm_rows": 871,
+      "channels": 1195
+    },
+    {
+      "day": "2026-02-20",
+      "rows": 174632,
+      "alarm_rows": 647,
+      "channels": 1433
+    },
+    {
+      "day": "2026-02-21",
+      "rows": 156397,
+      "alarm_rows": 543,
+      "channels": 459
+    },
+    {
+      "day": "2026-02-22",
+      "rows": 157593,
+      "alarm_rows": 575,
+      "channels": 1315
+    },
+    {
+      "day": "2026-02-23",
+      "rows": 153037,
+      "alarm_rows": 830,
+      "channels": 393
+    },
+    {
+      "day": "2026-02-24",
+      "rows": 183272,
+      "alarm_rows": 1078,
+      "channels": 2246
+    },
+    {
+      "day": "2026-02-25",
+      "rows": 182152,
+      "alarm_rows": 420,
+      "channels": 1092
+    },
+    {
+      "day": "2026-02-26",
+      "rows": 179391,
+      "alarm_rows": 467,
+      "channels": 1950
+    },
+    {
+      "day": "2026-02-27",
+      "rows": 183263,
+      "alarm_rows": 412,
+      "channels": 1286
+    },
+    {
+      "day": "2026-02-28",
+      "rows": 157875,
+      "alarm_rows": 62,
+      "channels": 474
+    },
+    {
+      "day": "2026-03-01",
+      "rows": 148981,
+      "alarm_rows": 78,
+      "channels": 472
+    },
+    {
+      "day": "2026-03-02",
+      "rows": 170383,
+      "alarm_rows": 227,
+      "channels": 1359
+    },
+    {
+      "day": "2026-03-03",
+      "rows": 177470,
+      "alarm_rows": 210,
+      "channels": 1636
+    },
+    {
+      "day": "2026-03-04",
+      "rows": 177624,
+      "alarm_rows": 448,
+      "channels": 2095
+    },
+    {
+      "day": "2026-03-05",
+      "rows": 177748,
+      "alarm_rows": 3406,
+      "channels": 2118
+    },
+    {
+      "day": "2026-03-06",
+      "rows": 178062,
+      "alarm_rows": 779,
+      "channels": 1579
+    },
+    {
+      "day": "2026-03-07",
+      "rows": 157128,
+      "alarm_rows": 11,
+      "channels": 448
+    },
+    {
+      "day": "2026-03-08",
+      "rows": 160106,
+      "alarm_rows": 128,
+      "channels": 483
+    },
+    {
+      "day": "2026-03-09",
+      "rows": 150728,
+      "alarm_rows": 272,
+      "channels": 1698
+    },
+    {
+      "day": "2026-03-10",
+      "rows": 182384,
+      "alarm_rows": 2734,
+      "channels": 1501
+    },
+    {
+      "day": "2026-03-11",
+      "rows": 197296,
+      "alarm_rows": 3697,
+      "channels": 2065
+    },
+    {
+      "day": "2026-03-12",
+      "rows": 182633,
+      "alarm_rows": 2620,
+      "channels": 3070
+    },
+    {
+      "day": "2026-03-13",
+      "rows": 174572,
+      "alarm_rows": 1576,
+      "channels": 1271
+    },
+    {
+      "day": "2026-03-14",
+      "rows": 148366,
+      "alarm_rows": 101,
+      "channels": 491
+    },
+    {
+      "day": "2026-03-15",
+      "rows": 146482,
+      "alarm_rows": 80,
+      "channels": 1087
+    },
+    {
+      "day": "2026-03-16",
+      "rows": 177361,
+      "alarm_rows": 825,
+      "channels": 2329
+    },
+    {
+      "day": "2026-03-17",
+      "rows": 172538,
+      "alarm_rows": 595,
+      "channels": 1772
+    },
+    {
+      "day": "2026-03-18",
+      "rows": 177346,
+      "alarm_rows": 511,
+      "channels": 2330
+    },
+    {
+      "day": "2026-03-19",
+      "rows": 184317,
+      "alarm_rows": 2612,
+      "channels": 1639
+    },
+    {
+      "day": "2026-03-20",
+      "rows": 188708,
+      "alarm_rows": 698,
+      "channels": 2840
+    },
+    {
+      "day": "2026-03-21",
+      "rows": 162907,
+      "alarm_rows": 166,
+      "channels": 628
+    },
+    {
+      "day": "2026-03-22",
+      "rows": 152851,
+      "alarm_rows": 81,
+      "channels": 638
+    },
+    {
+      "day": "2026-03-23",
+      "rows": 178355,
+      "alarm_rows": 971,
+      "channels": 2125
+    },
+    {
+      "day": "2026-03-24",
+      "rows": 183058,
+      "alarm_rows": 886,
+      "channels": 1794
+    },
+    {
+      "day": "2026-03-25",
+      "rows": 186347,
+      "alarm_rows": 324,
+      "channels": 2213
+    },
+    {
+      "day": "2026-03-26",
+      "rows": 177635,
+      "alarm_rows": 698,
+      "channels": 1949
+    },
+    {
+      "day": "2026-03-27",
+      "rows": 185908,
+      "alarm_rows": 653,
+      "channels": 2796
+    },
+    {
+      "day": "2026-03-28",
+      "rows": 171990,
+      "alarm_rows": 244,
+      "channels": 678
+    },
+    {
+      "day": "2026-03-29",
+      "rows": 169982,
+      "alarm_rows": 352,
+      "channels": 768
+    },
+    {
+      "day": "2026-03-30",
+      "rows": 182178,
+      "alarm_rows": 407,
+      "channels": 1438
+    },
+    {
+      "day": "2026-03-31",
+      "rows": 194113,
+      "alarm_rows": 259,
+      "channels": 3446
+    },
+    {
+      "day": "2026-04-01",
+      "rows": 192221,
+      "alarm_rows": 1094,
+      "channels": 2365
+    },
+    {
+      "day": "2026-04-02",
+      "rows": 196255,
+      "alarm_rows": 1017,
+      "channels": 2049
+    },
+    {
+      "day": "2026-04-03",
+      "rows": 175376,
+      "alarm_rows": 592,
+      "channels": 2342
+    },
+    {
+      "day": "2026-04-04",
+      "rows": 165457,
+      "alarm_rows": 227,
+      "channels": 812
+    },
+    {
+      "day": "2026-04-05",
+      "rows": 157580,
+      "alarm_rows": 272,
+      "channels": 2006
+    },
+    {
+      "day": "2026-04-06",
+      "rows": 178909,
+      "alarm_rows": 235,
+      "channels": 2760
+    },
+    {
+      "day": "2026-04-07",
+      "rows": 183688,
+      "alarm_rows": 2744,
+      "channels": 3475
+    },
+    {
+      "day": "2026-04-08",
+      "rows": 178535,
+      "alarm_rows": 1092,
+      "channels": 2143
+    },
+    {
+      "day": "2026-04-09",
+      "rows": 200778,
+      "alarm_rows": 4640,
+      "channels": 2202
+    },
+    {
+      "day": "2026-04-10",
+      "rows": 179894,
+      "alarm_rows": 767,
+      "channels": 1641
+    },
+    {
+      "day": "2026-04-11",
+      "rows": 147192,
+      "alarm_rows": 69,
+      "channels": 632
+    },
+    {
+      "day": "2026-04-12",
+      "rows": 159332,
+      "alarm_rows": 89,
+      "channels": 660
+    },
+    {
+      "day": "2026-04-13",
+      "rows": 206159,
+      "alarm_rows": 1228,
+      "channels": 2223
+    },
+    {
+      "day": "2026-04-14",
+      "rows": 211778,
+      "alarm_rows": 6056,
+      "channels": 2834
+    },
+    {
+      "day": "2026-04-15",
+      "rows": 202842,
+      "alarm_rows": 175,
+      "channels": 1894
+    },
+    {
+      "day": "2026-04-16",
+      "rows": 195201,
+      "alarm_rows": 198,
+      "channels": 3405
+    },
+    {
+      "day": "2026-04-17",
+      "rows": 210142,
+      "alarm_rows": 4457,
+      "channels": 2325
+    },
+    {
+      "day": "2026-04-18",
+      "rows": 203304,
+      "alarm_rows": 7888,
+      "channels": 977
+    },
+    {
+      "day": "2026-04-19",
+      "rows": 199644,
+      "alarm_rows": 6291,
+      "channels": 844
+    },
+    {
+      "day": "2026-04-20",
+      "rows": 229864,
+      "alarm_rows": 2513,
+      "channels": 2641
+    },
+    {
+      "day": "2026-04-21",
+      "rows": 227731,
+      "alarm_rows": 1347,
+      "channels": 2884
+    },
+    {
+      "day": "2026-04-22",
+      "rows": 208775,
+      "alarm_rows": 2611,
+      "channels": 3338
+    },
+    {
+      "day": "2026-04-23",
+      "rows": 182265,
+      "alarm_rows": 527,
+      "channels": 2429
+    },
+    {
+      "day": "2026-04-24",
+      "rows": 173010,
+      "alarm_rows": 961,
+      "channels": 2789
+    },
+    {
+      "day": "2026-04-25",
+      "rows": 144868,
+      "alarm_rows": 180,
+      "channels": 877
+    },
+    {
+      "day": "2026-04-26",
+      "rows": 145482,
+      "alarm_rows": 407,
+      "channels": 1091
+    },
+    {
+      "day": "2026-04-27",
+      "rows": 171006,
+      "alarm_rows": 1240,
+      "channels": 2473
+    },
+    {
+      "day": "2026-04-28",
+      "rows": 164245,
+      "alarm_rows": 798,
+      "channels": 2072
+    },
+    {
+      "day": "2026-04-29",
+      "rows": 167026,
+      "alarm_rows": 431,
+      "channels": 2127
+    },
+    {
+      "day": "2026-04-30",
+      "rows": 169888,
+      "alarm_rows": 192,
+      "channels": 1787
+    },
+    {
+      "day": "2026-05-01",
+      "rows": 143000,
+      "alarm_rows": 457,
+      "channels": 679
+    },
+    {
+      "day": "2026-05-02",
+      "rows": 154679,
+      "alarm_rows": 1186,
+      "channels": 1301
+    },
+    {
+      "day": "2026-05-03",
+      "rows": 158562,
+      "alarm_rows": 128,
+      "channels": 1367
+    },
+    {
+      "day": "2026-05-04",
+      "rows": 169271,
+      "alarm_rows": 142,
+      "channels": 1791
+    },
+    {
+      "day": "2026-05-05",
+      "rows": 169967,
+      "alarm_rows": 649,
+      "channels": 2581
+    },
+    {
+      "day": "2026-05-06",
+      "rows": 190222,
+      "alarm_rows": 797,
+      "channels": 2155
+    },
+    {
+      "day": "2026-05-07",
+      "rows": 190081,
+      "alarm_rows": 781,
+      "channels": 2157
+    },
+    {
+      "day": "2026-05-08",
+      "rows": 182338,
+      "alarm_rows": 660,
+      "channels": 1646
+    },
+    {
+      "day": "2026-05-09",
+      "rows": 158721,
+      "alarm_rows": 419,
+      "channels": 689
+    },
+    {
+      "day": "2026-05-10",
+      "rows": 161046,
+      "alarm_rows": 240,
+      "channels": 759
+    },
+    {
+      "day": "2026-05-11",
+      "rows": 160417,
+      "alarm_rows": 165,
+      "channels": 1073
+    },
+    {
+      "day": "2026-05-12",
+      "rows": 176079,
+      "alarm_rows": 264,
+      "channels": 1799
+    },
+    {
+      "day": "2026-05-13",
+      "rows": 172187,
+      "alarm_rows": 471,
+      "channels": 1658
+    },
+    {
+      "day": "2026-05-14",
+      "rows": 175030,
+      "alarm_rows": 354,
+      "channels": 1974
+    },
+    {
+      "day": "2026-05-15",
+      "rows": 178969,
+      "alarm_rows": 319,
+      "channels": 1831
+    },
+    {
+      "day": "2026-05-16",
+      "rows": 157237,
+      "alarm_rows": 256,
+      "channels": 887
+    },
+    {
+      "day": "2026-05-17",
+      "rows": 162618,
+      "alarm_rows": 118,
+      "channels": 801
+    },
+    {
+      "day": "2026-05-18",
+      "rows": 186897,
+      "alarm_rows": 544,
+      "channels": 1973
+    },
+    {
+      "day": "2026-05-19",
+      "rows": 188914,
+      "alarm_rows": 468,
+      "channels": 2501
+    },
+    {
+      "day": "2026-05-20",
+      "rows": 206709,
+      "alarm_rows": 269,
+      "channels": 2155
+    },
+    {
+      "day": "2026-05-21",
+      "rows": 195716,
+      "alarm_rows": 941,
+      "channels": 1976
+    },
+    {
+      "day": "2026-05-22",
+      "rows": 199177,
+      "alarm_rows": 582,
+      "channels": 2179
+    },
+    {
+      "day": "2026-05-23",
+      "rows": 177773,
+      "alarm_rows": 1155,
+      "channels": 1107
+    },
+    {
+      "day": "2026-05-24",
+      "rows": 175924,
+      "alarm_rows": 69,
+      "channels": 977
+    },
+    {
+      "day": "2026-05-25",
+      "rows": 201286,
+      "alarm_rows": 757,
+      "channels": 1892
+    },
+    {
+      "day": "2026-05-26",
+      "rows": 197675,
+      "alarm_rows": 1531,
+      "channels": 1880
+    },
+    {
+      "day": "2026-05-27",
+      "rows": 170839,
+      "alarm_rows": 678,
+      "channels": 1870
+    },
+    {
+      "day": "2026-05-28",
+      "rows": 209131,
+      "alarm_rows": 729,
+      "channels": 2252
+    },
+    {
+      "day": "2026-05-29",
+      "rows": 198851,
+      "alarm_rows": 592,
+      "channels": 2680
+    },
+    {
+      "day": "2026-05-30",
+      "rows": 158197,
+      "alarm_rows": 325,
+      "channels": 1349
+    },
+    {
+      "day": "2026-05-31",
+      "rows": 148554,
+      "alarm_rows": 131,
+      "channels": 840
+    },
+    {
+      "day": "2026-06-02",
+      "rows": 187878,
+      "alarm_rows": 2495,
+      "channels": 2689
+    },
+    {
+      "day": "2026-06-03",
+      "rows": 186777,
+      "alarm_rows": 3885,
+      "channels": 2394
+    },
+    {
+      "day": "2026-06-04",
+      "rows": 187674,
+      "alarm_rows": 4099,
+      "channels": 2500
+    },
+    {
+      "day": "2026-06-05",
+      "rows": 174560,
+      "alarm_rows": 5702,
+      "channels": 1855
+    },
+    {
+      "day": "2026-06-06",
+      "rows": 153580,
+      "alarm_rows": 5536,
+      "channels": 858
+    },
+    {
+      "day": "2026-06-07",
+      "rows": 146629,
+      "alarm_rows": 5265,
+      "channels": 871
+    },
+    {
+      "day": "2026-06-08",
+      "rows": 168312,
+      "alarm_rows": 3603,
+      "channels": 1720
+    },
+    {
+      "day": "2026-06-09",
+      "rows": 185556,
+      "alarm_rows": 4591,
+      "channels": 2283
+    },
+    {
+      "day": "2026-06-10",
+      "rows": 182959,
+      "alarm_rows": 2744,
+      "channels": 3144
+    },
+    {
+      "day": "2026-06-11",
+      "rows": 176898,
+      "alarm_rows": 2194,
+      "channels": 1955
+    },
+    {
+      "day": "2026-06-12",
+      "rows": 158100,
+      "alarm_rows": 231,
+      "channels": 1199
+    },
+    {
+      "day": "2026-06-13",
+      "rows": 161933,
+      "alarm_rows": 431,
+      "channels": 1133
+    },
+    {
+      "day": "2026-06-14",
+      "rows": 152674,
+      "alarm_rows": 63,
+      "channels": 795
+    },
+    {
+      "day": "2026-06-15",
+      "rows": 178434,
+      "alarm_rows": 547,
+      "channels": 1874
+    },
+    {
+      "day": "2026-06-16",
+      "rows": 183821,
+      "alarm_rows": 308,
+      "channels": 1621
+    },
+    {
+      "day": "2026-06-17",
+      "rows": 190393,
+      "alarm_rows": 548,
+      "channels": 1958
+    },
+    {
+      "day": "2026-06-18",
+      "rows": 180874,
+      "alarm_rows": 447,
+      "channels": 1281
+    },
+    {
+      "day": "2026-06-19",
+      "rows": 185856,
+      "alarm_rows": 204,
+      "channels": 1646
+    },
+    {
+      "day": "2026-06-20",
+      "rows": 163022,
+      "alarm_rows": 256,
+      "channels": 946
+    },
+    {
+      "day": "2026-06-21",
+      "rows": 162607,
+      "alarm_rows": 153,
+      "channels": 847
+    },
+    {
+      "day": "2026-06-22",
+      "rows": 188007,
+      "alarm_rows": 344,
+      "channels": 1977
+    },
+    {
+      "day": "2026-06-23",
+      "rows": 185874,
+      "alarm_rows": 277,
+      "channels": 1990
+    },
+    {
+      "day": "2026-06-24",
+      "rows": 194349,
+      "alarm_rows": 449,
+      "channels": 2794
+    },
+    {
+      "day": "2026-06-25",
+      "rows": 194116,
+      "alarm_rows": 1046,
+      "channels": 1899
+    },
+    {
+      "day": "2026-06-26",
+      "rows": 188268,
+      "alarm_rows": 286,
+      "channels": 1852
+    },
+    {
+      "day": "2026-06-27",
+      "rows": 166461,
+      "alarm_rows": 91,
+      "channels": 711
+    },
+    {
+      "day": "2026-06-28",
+      "rows": 167149,
+      "alarm_rows": 251,
+      "channels": 712
+    },
+    {
+      "day": "2026-06-29",
+      "rows": 191838,
+      "alarm_rows": 1420,
+      "channels": 2666
+    },
+    {
+      "day": "2026-06-30",
+      "rows": 196796,
+      "alarm_rows": 1926,
+      "channels": 2716
+    }
+  ],
+  "archive": "ext-journal-2026.7z",
+  "archive_sha256": "bdc0a6ebcdedf145d390abe8e2c9c3272f6a17d39d47e488acea7142ca7dec29",
+  "csv_bytes": 1497523553,
+  "parquet_bytes": 217778114,
+  "elapsed_seconds": 25.791,
+  "duckdb_version": "1.5.5",
+  "flags": {
+    "full_scan": true,
+    "strict_csv": true,
+    "numeric_coercion": false,
+    "invalid_record_filter": false,
+    "deduplication": false,
+    "source_timezone": "Europe/Moscow_assumed",
+    "training": false,
+    "inference": false
+  },
+  "memory_limit": "1GB",
+  "threads": 2
+}

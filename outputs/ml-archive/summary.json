@@ -1,0 +1,52 @@
+{
+  "years": 8,
+  "rows": 313546017,
+  "alarm_rows": 2467812,
+  "first_local": "2019-01-01 00:00:21",
+  "last_local": "2026-06-30 23:59:59",
+  "calendar_missing_dates": [
+    "2024-04-07",
+    "2024-04-08",
+    "2026-06-01"
+  ],
+  "invalid_timestamp_rows": 1,
+  "invalid_alarm_rows": 1,
+  "unmapped_rows": 9439855,
+  "global_distinct_event_ids": 307519939,
+  "extra_id_rows": 6026078,
+  "exact_duplicate_extra_rows": 563940,
+  "exact_duplicate_alarm_extra_rows": 834,
+  "within_year_conflicting_id_groups": 1669268,
+  "parquet_bytes": 2384600757,
+  "flags": {
+    "full_scan": true,
+    "exact_comparison": true,
+    "deduplication": false,
+    "invalid_record_filter": false,
+    "training": false,
+    "inference": false
+  },
+  "observed_valid_channels": 12627,
+  "observed_valid_channels_without_catalogue": 1142,
+  "catalogue_channels_without_observed_history": 0,
+  "top_2021_alarm_dates": [
+    {
+      "day": "2021-05-17",
+      "rows": 193622,
+      "alarm_rows": 37446,
+      "channels": 2092
+    },
+    {
+      "day": "2021-05-18",
+      "rows": 193866,
+      "alarm_rows": 36941,
+      "channels": 1841
+    },
+    {
+      "day": "2021-05-19",
+      "rows": 202693,
+      "alarm_rows": 36047,
+      "channels": 1751
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "flags": {
+    "synthetic_data": true,
+    "streaming": true,
+    "deduplication": false,
+    "training": false,
+    "inference": false
+  },
+  "gap_seconds": 60,
+  "results": [
+    {
+      "rows": 1000,
+      "groups": 1000,
+      "peak_python_bytes": 10261
+    },
+    {
+      "rows": 100000,
+      "groups": 100000,
+      "peak_python_bytes": 9118
+    }
+  ],
+  "scope": "iter_episodes Python allocations; excludes CSV, SQLite and full archive"
+}

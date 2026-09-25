@@ -1,0 +1,30 @@
+{
+  "total_rows": 169993,
+  "valid_rows": 169993,
+  "rejected_rows": 0,
+  "rejection_reasons": {},
+  "alarm_rows": 207,
+  "normal_rows": 169786,
+  "observed_channels": 1241,
+  "unmapped_rows": 0,
+  "unmapped_channels": 0,
+  "catalogue_channels": 11485,
+  "catalogue_facilities": 95,
+  "first_timestamp_utc": "2026-07-31T21:00:00+00:00",
+  "last_timestamp_utc": "2026-08-01T20:59:58+00:00",
+  "span_seconds": 86398.0,
+  "source_timezone": "Europe/Moscow",
+  "duplicate_event_ids": "not_checked",
+  "observation_coverage": "not_verified",
+  "run": {
+    "streaming": true,
+    "reject_invalid_rows": true,
+    "remove_duplicates": false,
+    "numeric_classification": false,
+    "replay": false,
+    "synthetic_data": false,
+    "training": false,
+    "inference": false,
+    "schema_version": 1
+  }
+}

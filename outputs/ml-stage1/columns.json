@@ -1,0 +1,17 @@
+{
+  "events": {
+    "event_id": "ид_события",
+    "channel_id": "ид_канала_данных",
+    "date": "дата",
+    "time": "время",
+    "alarm": "тревожное",
+    "value": "значение_датчика"
+  },
+  "channels": {
+    "channel_id": "ид_канала_данных",
+    "facility_id": "ид_объект"
+  },
+  "facilities": {
+    "facility_id": "ид_объект"
+  }
+}

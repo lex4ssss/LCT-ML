@@ -1,0 +1,44 @@
+{
+  "features": [
+    "event_count_24h",
+    "alarm_count_24h",
+    "last_event_age_hours",
+    "last_alarm_age_hours_24h"
+  ],
+  "threshold": 0.07780670014406951,
+  "threshold_selection": "maximum_validation_row_f1_highest_threshold_tie",
+  "train_rows": 3351044,
+  "validation_rows": 570662,
+  "train_prevalence": 0.020697430412731078,
+  "validation_prevalence": 0.02246338463048179,
+  "model": {
+    "precision": 0.21376497135913905,
+    "recall": 0.38427334425462206,
+    "f1": 0.2747120988205114,
+    "average_precision": 0.1878968241284616,
+    "brier": 0.020435141995374256
+  },
+  "persistence": {
+    "precision": 0.16208615620605907,
+    "recall": 0.4945783602465091,
+    "f1": 0.2441560442099588,
+    "average_precision": 0.09151778604940371,
+    "brier": 0.06878677746196522
+  },
+  "constant": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "average_precision": 0.02246338463048179,
+    "brier": 0.021961899575724017
+  },
+  "iterations": [
+    16
+  ],
+  "sklearn_version": "1.9.1",
+  "training": true,
+  "validation": true,
+  "test_evaluation": false,
+  "calibration": false,
+  "class_weight": null
+}

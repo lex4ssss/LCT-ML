@@ -1,0 +1,19 @@
+{
+  "checks": [
+    {
+      "synthetic_rows": 1000,
+      "python_peak_allocated_bytes": 1324376
+    },
+    {
+      "synthetic_rows": 20000,
+      "python_peak_allocated_bytes": 56098
+    }
+  ],
+  "streaming": true,
+  "synthetic_data": true,
+  "unique_channels": 1,
+  "deduplication": false,
+  "training": false,
+  "inference": false,
+  "limitation": "Python allocations only; memory grows with distinct catalogue and observed channel IDs"
+}

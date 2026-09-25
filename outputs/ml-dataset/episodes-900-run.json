@@ -1,0 +1,18 @@
+{
+  "gap_seconds": 900,
+  "episodes": 502535,
+  "alarm_rows": 2466978,
+  "channels": 10823,
+  "left_unknown": 2287,
+  "right_unknown": 3396,
+  "elapsed_seconds": 13.023,
+  "flags": {
+    "exact_tuple_deduplication": true,
+    "header_removal": true,
+    "utc_normalization": true,
+    "recovery_inference": false,
+    "training": false,
+    "inference": false
+  },
+  "parameter_status": "diagnostic_candidate_not_optimized"
+}

@@ -1,0 +1,2227 @@
+{
+  "rows": 53698948,
+  "distinct_event_ids": 52923849,
+  "rows_beyond_distinct_event_ids": 775099,
+  "channels": 8625,
+  "first_local": "2021-01-01 00:00:01",
+  "last_local": "2021-12-31 23:59:59",
+  "alarm_rows": 1199639,
+  "normal_rows": 52499309,
+  "invalid_alarm_rows": 0,
+  "invalid_timestamp_rows": 0,
+  "missing_id_rows": 0,
+  "empty_value_rows": 0,
+  "finite_numeric_value_rows": 36057607,
+  "unmapped_rows": 3323693,
+  "unmapped_channels": 829,
+  "daily": [
+    {
+      "day": "2021-01-01",
+      "rows": 92317,
+      "alarm_rows": 66,
+      "channels": 591
+    },
+    {
+      "day": "2021-01-02",
+      "rows": 93298,
+      "alarm_rows": 101,
+      "channels": 820
+    },
+    {
+      "day": "2021-01-03",
+      "rows": 96755,
+      "alarm_rows": 69,
+      "channels": 562
+    },
+    {
+      "day": "2021-01-04",
+      "rows": 104894,
+      "alarm_rows": 131,
+      "channels": 901
+    },
+    {
+      "day": "2021-01-05",
+      "rows": 101969,
+      "alarm_rows": 95,
+      "channels": 756
+    },
+    {
+      "day": "2021-01-06",
+      "rows": 103987,
+      "alarm_rows": 77,
+      "channels": 1260
+    },
+    {
+      "day": "2021-01-07",
+      "rows": 98222,
+      "alarm_rows": 81,
+      "channels": 459
+    },
+    {
+      "day": "2021-01-08",
+      "rows": 105114,
+      "alarm_rows": 106,
+      "channels": 739
+    },
+    {
+      "day": "2021-01-09",
+      "rows": 109112,
+      "alarm_rows": 121,
+      "channels": 614
+    },
+    {
+      "day": "2021-01-10",
+      "rows": 118883,
+      "alarm_rows": 118,
+      "channels": 936
+    },
+    {
+      "day": "2021-01-11",
+      "rows": 141166,
+      "alarm_rows": 199,
+      "channels": 1799
+    },
+    {
+      "day": "2021-01-12",
+      "rows": 140832,
+      "alarm_rows": 247,
+      "channels": 1328
+    },
+    {
+      "day": "2021-01-13",
+      "rows": 136812,
+      "alarm_rows": 314,
+      "channels": 1290
+    },
+    {
+      "day": "2021-01-14",
+      "rows": 142862,
+      "alarm_rows": 219,
+      "channels": 1352
+    },
+    {
+      "day": "2021-01-15",
+      "rows": 132589,
+      "alarm_rows": 273,
+      "channels": 1152
+    },
+    {
+      "day": "2021-01-16",
+      "rows": 108673,
+      "alarm_rows": 183,
+      "channels": 769
+    },
+    {
+      "day": "2021-01-17",
+      "rows": 108741,
+      "alarm_rows": 152,
+      "channels": 616
+    },
+    {
+      "day": "2021-01-18",
+      "rows": 141628,
+      "alarm_rows": 422,
+      "channels": 1661
+    },
+    {
+      "day": "2021-01-19",
+      "rows": 141956,
+      "alarm_rows": 363,
+      "channels": 1339
+    },
+    {
+      "day": "2021-01-20",
+      "rows": 149516,
+      "alarm_rows": 660,
+      "channels": 1441
+    },
+    {
+      "day": "2021-01-21",
+      "rows": 147363,
+      "alarm_rows": 442,
+      "channels": 1262
+    },
+    {
+      "day": "2021-01-22",
+      "rows": 142999,
+      "alarm_rows": 406,
+      "channels": 1358
+    },
+    {
+      "day": "2021-01-23",
+      "rows": 102181,
+      "alarm_rows": 494,
+      "channels": 723
+    },
+    {
+      "day": "2021-01-24",
+      "rows": 106666,
+      "alarm_rows": 613,
+      "channels": 863
+    },
+    {
+      "day": "2021-01-25",
+      "rows": 138869,
+      "alarm_rows": 530,
+      "channels": 1840
+    },
+    {
+      "day": "2021-01-26",
+      "rows": 153499,
+      "alarm_rows": 767,
+      "channels": 2617
+    },
+    {
+      "day": "2021-01-27",
+      "rows": 159872,
+      "alarm_rows": 956,
+      "channels": 2830
+    },
+    {
+      "day": "2021-01-28",
+      "rows": 135833,
+      "alarm_rows": 808,
+      "channels": 1718
+    },
+    {
+      "day": "2021-01-29",
+      "rows": 137131,
+      "alarm_rows": 818,
+      "channels": 2137
+    },
+    {
+      "day": "2021-01-30",
+      "rows": 95624,
+      "alarm_rows": 455,
+      "channels": 759
+    },
+    {
+      "day": "2021-01-31",
+      "rows": 86496,
+      "alarm_rows": 120,
+      "channels": 670
+    },
+    {
+      "day": "2021-02-01",
+      "rows": 133169,
+      "alarm_rows": 582,
+      "channels": 1682
+    },
+    {
+      "day": "2021-02-02",
+      "rows": 131299,
+      "alarm_rows": 464,
+      "channels": 1450
+    },
+    {
+      "day": "2021-02-03",
+      "rows": 147562,
+      "alarm_rows": 440,
+      "channels": 1151
+    },
+    {
+      "day": "2021-02-04",
+      "rows": 115169,
+      "alarm_rows": 958,
+      "channels": 1216
+    },
+    {
+      "day": "2021-02-05",
+      "rows": 130382,
+      "alarm_rows": 241,
+      "channels": 2747
+    },
+    {
+      "day": "2021-02-06",
+      "rows": 103881,
+      "alarm_rows": 180,
+      "channels": 815
+    },
+    {
+      "day": "2021-02-07",
+      "rows": 153798,
+      "alarm_rows": 78,
+      "channels": 746
+    },
+    {
+      "day": "2021-02-08",
+      "rows": 148542,
+      "alarm_rows": 206,
+      "channels": 1490
+    },
+    {
+      "day": "2021-02-09",
+      "rows": 143527,
+      "alarm_rows": 322,
+      "channels": 1401
+    },
+    {
+      "day": "2021-02-10",
+      "rows": 132913,
+      "alarm_rows": 258,
+      "channels": 1237
+    },
+    {
+      "day": "2021-02-11",
+      "rows": 138625,
+      "alarm_rows": 506,
+      "channels": 1489
+    },
+    {
+      "day": "2021-02-12",
+      "rows": 134624,
+      "alarm_rows": 177,
+      "channels": 1108
+    },
+    {
+      "day": "2021-02-13",
+      "rows": 101597,
+      "alarm_rows": 111,
+      "channels": 637
+    },
+    {
+      "day": "2021-02-14",
+      "rows": 98535,
+      "alarm_rows": 42,
+      "channels": 495
+    },
+    {
+      "day": "2021-02-15",
+      "rows": 128923,
+      "alarm_rows": 170,
+      "channels": 1106
+    },
+    {
+      "day": "2021-02-16",
+      "rows": 122451,
+      "alarm_rows": 239,
+      "channels": 921
+    },
+    {
+      "day": "2021-02-17",
+      "rows": 126204,
+      "alarm_rows": 364,
+      "channels": 1147
+    },
+    {
+      "day": "2021-02-18",
+      "rows": 137840,
+      "alarm_rows": 318,
+      "channels": 1196
+    },
+    {
+      "day": "2021-02-19",
+      "rows": 130911,
+      "alarm_rows": 197,
+      "channels": 936
+    },
+    {
+      "day": "2021-02-20",
+      "rows": 122297,
+      "alarm_rows": 194,
+      "channels": 773
+    },
+    {
+      "day": "2021-02-21",
+      "rows": 106906,
+      "alarm_rows": 81,
+      "channels": 545
+    },
+    {
+      "day": "2021-02-22",
+      "rows": 103934,
+      "alarm_rows": 95,
+      "channels": 609
+    },
+    {
+      "day": "2021-02-23",
+      "rows": 106055,
+      "alarm_rows": 70,
+      "channels": 526
+    },
+    {
+      "day": "2021-02-24",
+      "rows": 140474,
+      "alarm_rows": 250,
+      "channels": 1559
+    },
+    {
+      "day": "2021-02-25",
+      "rows": 134720,
+      "alarm_rows": 177,
+      "channels": 1910
+    },
+    {
+      "day": "2021-02-26",
+      "rows": 134542,
+      "alarm_rows": 817,
+      "channels": 1613
+    },
+    {
+      "day": "2021-02-27",
+      "rows": 108455,
+      "alarm_rows": 311,
+      "channels": 805
+    },
+    {
+      "day": "2021-02-28",
+      "rows": 93512,
+      "alarm_rows": 110,
+      "channels": 564
+    },
+    {
+      "day": "2021-03-01",
+      "rows": 125212,
+      "alarm_rows": 401,
+      "channels": 1516
+    },
+    {
+      "day": "2021-03-02",
+      "rows": 124589,
+      "alarm_rows": 352,
+      "channels": 2509
+    },
+    {
+      "day": "2021-03-03",
+      "rows": 122571,
+      "alarm_rows": 260,
+      "channels": 1593
+    },
+    {
+      "day": "2021-03-04",
+      "rows": 139638,
+      "alarm_rows": 383,
+      "channels": 1434
+    },
+    {
+      "day": "2021-03-05",
+      "rows": 129295,
+      "alarm_rows": 315,
+      "channels": 1425
+    },
+    {
+      "day": "2021-03-06",
+      "rows": 101189,
+      "alarm_rows": 148,
+      "channels": 855
+    },
+    {
+      "day": "2021-03-07",
+      "rows": 103589,
+      "alarm_rows": 109,
+      "channels": 829
+    },
+    {
+      "day": "2021-03-08",
+      "rows": 100208,
+      "alarm_rows": 43,
+      "channels": 438
+    },
+    {
+      "day": "2021-03-09",
+      "rows": 134900,
+      "alarm_rows": 237,
+      "channels": 1522
+    },
+    {
+      "day": "2021-03-10",
+      "rows": 145215,
+      "alarm_rows": 422,
+      "channels": 2043
+    },
+    {
+      "day": "2021-03-11",
+      "rows": 147418,
+      "alarm_rows": 571,
+      "channels": 1708
+    },
+    {
+      "day": "2021-03-12",
+      "rows": 146235,
+      "alarm_rows": 333,
+      "channels": 1498
+    },
+    {
+      "day": "2021-03-13",
+      "rows": 121216,
+      "alarm_rows": 147,
+      "channels": 734
+    },
+    {
+      "day": "2021-03-14",
+      "rows": 117814,
+      "alarm_rows": 49,
+      "channels": 736
+    },
+    {
+      "day": "2021-03-15",
+      "rows": 158522,
+      "alarm_rows": 357,
+      "channels": 1749
+    },
+    {
+      "day": "2021-03-16",
+      "rows": 117050,
+      "alarm_rows": 411,
+      "channels": 1871
+    },
+    {
+      "day": "2021-03-17",
+      "rows": 93357,
+      "alarm_rows": 347,
+      "channels": 1737
+    },
+    {
+      "day": "2021-03-18",
+      "rows": 100991,
+      "alarm_rows": 2140,
+      "channels": 1908
+    },
+    {
+      "day": "2021-03-19",
+      "rows": 152645,
+      "alarm_rows": 476,
+      "channels": 1740
+    },
+    {
+      "day": "2021-03-20",
+      "rows": 114026,
+      "alarm_rows": 220,
+      "channels": 979
+    },
+    {
+      "day": "2021-03-21",
+      "rows": 112411,
+      "alarm_rows": 115,
+      "channels": 539
+    },
+    {
+      "day": "2021-03-22",
+      "rows": 140511,
+      "alarm_rows": 417,
+      "channels": 1903
+    },
+    {
+      "day": "2021-03-23",
+      "rows": 115956,
+      "alarm_rows": 248,
+      "channels": 1661
+    },
+    {
+      "day": "2021-03-24",
+      "rows": 110610,
+      "alarm_rows": 300,
+      "channels": 1701
+    },
+    {
+      "day": "2021-03-25",
+      "rows": 129029,
+      "alarm_rows": 409,
+      "channels": 1838
+    },
+    {
+      "day": "2021-03-26",
+      "rows": 122421,
+      "alarm_rows": 649,
+      "channels": 1861
+    },
+    {
+      "day": "2021-03-27",
+      "rows": 95713,
+      "alarm_rows": 954,
+      "channels": 1054
+    },
+    {
+      "day": "2021-03-28",
+      "rows": 91478,
+      "alarm_rows": 433,
+      "channels": 824
+    },
+    {
+      "day": "2021-03-29",
+      "rows": 135910,
+      "alarm_rows": 451,
+      "channels": 1845
+    },
+    {
+      "day": "2021-03-30",
+      "rows": 129167,
+      "alarm_rows": 599,
+      "channels": 2101
+    },
+    {
+      "day": "2021-03-31",
+      "rows": 132991,
+      "alarm_rows": 720,
+      "channels": 1853
+    },
+    {
+      "day": "2021-04-01",
+      "rows": 145274,
+      "alarm_rows": 1470,
+      "channels": 2757
+    },
+    {
+      "day": "2021-04-02",
+      "rows": 139202,
+      "alarm_rows": 1038,
+      "channels": 1842
+    },
+    {
+      "day": "2021-04-03",
+      "rows": 102806,
+      "alarm_rows": 566,
+      "channels": 1200
+    },
+    {
+      "day": "2021-04-04",
+      "rows": 96415,
+      "alarm_rows": 358,
+      "channels": 919
+    },
+    {
+      "day": "2021-04-05",
+      "rows": 128369,
+      "alarm_rows": 814,
+      "channels": 2384
+    },
+    {
+      "day": "2021-04-06",
+      "rows": 122417,
+      "alarm_rows": 504,
+      "channels": 2852
+    },
+    {
+      "day": "2021-04-07",
+      "rows": 112420,
+      "alarm_rows": 717,
+      "channels": 1851
+    },
+    {
+      "day": "2021-04-08",
+      "rows": 118511,
+      "alarm_rows": 589,
+      "channels": 1815
+    },
+    {
+      "day": "2021-04-09",
+      "rows": 108647,
+      "alarm_rows": 272,
+      "channels": 1597
+    },
+    {
+      "day": "2021-04-10",
+      "rows": 93181,
+      "alarm_rows": 366,
+      "channels": 1212
+    },
+    {
+      "day": "2021-04-11",
+      "rows": 84178,
+      "alarm_rows": 237,
+      "channels": 1159
+    },
+    {
+      "day": "2021-04-12",
+      "rows": 113405,
+      "alarm_rows": 388,
+      "channels": 1713
+    },
+    {
+      "day": "2021-04-13",
+      "rows": 119844,
+      "alarm_rows": 393,
+      "channels": 1914
+    },
+    {
+      "day": "2021-04-14",
+      "rows": 130366,
+      "alarm_rows": 372,
+      "channels": 1898
+    },
+    {
+      "day": "2021-04-15",
+      "rows": 118341,
+      "alarm_rows": 314,
+      "channels": 1811
+    },
+    {
+      "day": "2021-04-16",
+      "rows": 110934,
+      "alarm_rows": 310,
+      "channels": 1510
+    },
+    {
+      "day": "2021-04-17",
+      "rows": 93871,
+      "alarm_rows": 179,
+      "channels": 847
+    },
+    {
+      "day": "2021-04-18",
+      "rows": 90597,
+      "alarm_rows": 156,
+      "channels": 783
+    },
+    {
+      "day": "2021-04-19",
+      "rows": 137086,
+      "alarm_rows": 2064,
+      "channels": 3369
+    },
+    {
+      "day": "2021-04-20",
+      "rows": 134988,
+      "alarm_rows": 512,
+      "channels": 3380
+    },
+    {
+      "day": "2021-04-21",
+      "rows": 125752,
+      "alarm_rows": 688,
+      "channels": 2986
+    },
+    {
+      "day": "2021-04-22",
+      "rows": 141019,
+      "alarm_rows": 461,
+      "channels": 2853
+    },
+    {
+      "day": "2021-04-23",
+      "rows": 163980,
+      "alarm_rows": 6192,
+      "channels": 1917
+    },
+    {
+      "day": "2021-04-24",
+      "rows": 173606,
+      "alarm_rows": 8703,
+      "channels": 1383
+    },
+    {
+      "day": "2021-04-25",
+      "rows": 143738,
+      "alarm_rows": 8801,
+      "channels": 1119
+    },
+    {
+      "day": "2021-04-26",
+      "rows": 161311,
+      "alarm_rows": 8599,
+      "channels": 2067
+    },
+    {
+      "day": "2021-04-27",
+      "rows": 150722,
+      "alarm_rows": 8273,
+      "channels": 1746
+    },
+    {
+      "day": "2021-04-28",
+      "rows": 160900,
+      "alarm_rows": 8402,
+      "channels": 2130
+    },
+    {
+      "day": "2021-04-29",
+      "rows": 144882,
+      "alarm_rows": 9104,
+      "channels": 1892
+    },
+    {
+      "day": "2021-04-30",
+      "rows": 131445,
+      "alarm_rows": 10106,
+      "channels": 1575
+    },
+    {
+      "day": "2021-05-01",
+      "rows": 116600,
+      "alarm_rows": 11147,
+      "channels": 1116
+    },
+    {
+      "day": "2021-05-02",
+      "rows": 118124,
+      "alarm_rows": 13519,
+      "channels": 770
+    },
+    {
+      "day": "2021-05-03",
+      "rows": 129623,
+      "alarm_rows": 15557,
+      "channels": 1117
+    },
+    {
+      "day": "2021-05-04",
+      "rows": 143014,
+      "alarm_rows": 17050,
+      "channels": 2288
+    },
+    {
+      "day": "2021-05-05",
+      "rows": 146876,
+      "alarm_rows": 20529,
+      "channels": 1610
+    },
+    {
+      "day": "2021-05-06",
+      "rows": 157833,
+      "alarm_rows": 22835,
+      "channels": 1432
+    },
+    {
+      "day": "2021-05-07",
+      "rows": 151882,
+      "alarm_rows": 23600,
+      "channels": 1085
+    },
+    {
+      "day": "2021-05-08",
+      "rows": 145670,
+      "alarm_rows": 23985,
+      "channels": 949
+    },
+    {
+      "day": "2021-05-09",
+      "rows": 167309,
+      "alarm_rows": 24281,
+      "channels": 1868
+    },
+    {
+      "day": "2021-05-10",
+      "rows": 159717,
+      "alarm_rows": 25918,
+      "channels": 981
+    },
+    {
+      "day": "2021-05-11",
+      "rows": 181624,
+      "alarm_rows": 27006,
+      "channels": 2181
+    },
+    {
+      "day": "2021-05-12",
+      "rows": 185071,
+      "alarm_rows": 26655,
+      "channels": 2179
+    },
+    {
+      "day": "2021-05-13",
+      "rows": 178690,
+      "alarm_rows": 28693,
+      "channels": 2262
+    },
+    {
+      "day": "2021-05-14",
+      "rows": 185360,
+      "alarm_rows": 31250,
+      "channels": 1765
+    },
+    {
+      "day": "2021-05-15",
+      "rows": 181342,
+      "alarm_rows": 32780,
+      "channels": 1315
+    },
+    {
+      "day": "2021-05-16",
+      "rows": 169755,
+      "alarm_rows": 35204,
+      "channels": 906
+    },
+    {
+      "day": "2021-05-17",
+      "rows": 193622,
+      "alarm_rows": 37446,
+      "channels": 2092
+    },
+    {
+      "day": "2021-05-18",
+      "rows": 193866,
+      "alarm_rows": 36941,
+      "channels": 1841
+    },
+    {
+      "day": "2021-05-19",
+      "rows": 202693,
+      "alarm_rows": 36047,
+      "channels": 1751
+    },
+    {
+      "day": "2021-05-20",
+      "rows": 201044,
+      "alarm_rows": 34743,
+      "channels": 1775
+    },
+    {
+      "day": "2021-05-21",
+      "rows": 196058,
+      "alarm_rows": 32331,
+      "channels": 1666
+    },
+    {
+      "day": "2021-05-22",
+      "rows": 173279,
+      "alarm_rows": 32314,
+      "channels": 1337
+    },
+    {
+      "day": "2021-05-23",
+      "rows": 201285,
+      "alarm_rows": 31399,
+      "channels": 1189
+    },
+    {
+      "day": "2021-05-24",
+      "rows": 199814,
+      "alarm_rows": 31512,
+      "channels": 2002
+    },
+    {
+      "day": "2021-05-25",
+      "rows": 178843,
+      "alarm_rows": 29270,
+      "channels": 1843
+    },
+    {
+      "day": "2021-05-26",
+      "rows": 186737,
+      "alarm_rows": 28028,
+      "channels": 1994
+    },
+    {
+      "day": "2021-05-27",
+      "rows": 185961,
+      "alarm_rows": 25751,
+      "channels": 2059
+    },
+    {
+      "day": "2021-05-28",
+      "rows": 182836,
+      "alarm_rows": 24562,
+      "channels": 1956
+    },
+    {
+      "day": "2021-05-29",
+      "rows": 170943,
+      "alarm_rows": 23385,
+      "channels": 1386
+    },
+    {
+      "day": "2021-05-30",
+      "rows": 153826,
+      "alarm_rows": 21150,
+      "channels": 888
+    },
+    {
+      "day": "2021-05-31",
+      "rows": 169307,
+      "alarm_rows": 22907,
+      "channels": 1984
+    },
+    {
+      "day": "2021-06-01",
+      "rows": 173634,
+      "alarm_rows": 21550,
+      "channels": 2432
+    },
+    {
+      "day": "2021-06-02",
+      "rows": 182442,
+      "alarm_rows": 22916,
+      "channels": 2175
+    },
+    {
+      "day": "2021-06-03",
+      "rows": 192202,
+      "alarm_rows": 23203,
+      "channels": 2159
+    },
+    {
+      "day": "2021-06-04",
+      "rows": 176236,
+      "alarm_rows": 23379,
+      "channels": 2074
+    },
+    {
+      "day": "2021-06-05",
+      "rows": 154157,
+      "alarm_rows": 21182,
+      "channels": 1324
+    },
+    {
+      "day": "2021-06-06",
+      "rows": 150331,
+      "alarm_rows": 19772,
+      "channels": 1997
+    },
+    {
+      "day": "2021-06-07",
+      "rows": 171795,
+      "alarm_rows": 16724,
+      "channels": 3041
+    },
+    {
+      "day": "2021-06-08",
+      "rows": 171454,
+      "alarm_rows": 7623,
+      "channels": 1949
+    },
+    {
+      "day": "2021-06-09",
+      "rows": 153748,
+      "alarm_rows": 299,
+      "channels": 1691
+    },
+    {
+      "day": "2021-06-10",
+      "rows": 157488,
+      "alarm_rows": 426,
+      "channels": 1814
+    },
+    {
+      "day": "2021-06-11",
+      "rows": 142615,
+      "alarm_rows": 350,
+      "channels": 1610
+    },
+    {
+      "day": "2021-06-12",
+      "rows": 132431,
+      "alarm_rows": 129,
+      "channels": 1010
+    },
+    {
+      "day": "2021-06-13",
+      "rows": 139711,
+      "alarm_rows": 417,
+      "channels": 1160
+    },
+    {
+      "day": "2021-06-14",
+      "rows": 140073,
+      "alarm_rows": 765,
+      "channels": 959
+    },
+    {
+      "day": "2021-06-15",
+      "rows": 157752,
+      "alarm_rows": 389,
+      "channels": 2337
+    },
+    {
+      "day": "2021-06-16",
+      "rows": 164684,
+      "alarm_rows": 701,
+      "channels": 2176
+    },
+    {
+      "day": "2021-06-17",
+      "rows": 170991,
+      "alarm_rows": 734,
+      "channels": 1885
+    },
+    {
+      "day": "2021-06-18",
+      "rows": 163675,
+      "alarm_rows": 692,
+      "channels": 1598
+    },
+    {
+      "day": "2021-06-19",
+      "rows": 137326,
+      "alarm_rows": 384,
+      "channels": 2077
+    },
+    {
+      "day": "2021-06-20",
+      "rows": 136984,
+      "alarm_rows": 267,
+      "channels": 1573
+    },
+    {
+      "day": "2021-06-21",
+      "rows": 154745,
+      "alarm_rows": 386,
+      "channels": 2623
+    },
+    {
+      "day": "2021-06-22",
+      "rows": 165287,
+      "alarm_rows": 326,
+      "channels": 2210
+    },
+    {
+      "day": "2021-06-23",
+      "rows": 167637,
+      "alarm_rows": 501,
+      "channels": 2000
+    },
+    {
+      "day": "2021-06-24",
+      "rows": 164638,
+      "alarm_rows": 511,
+      "channels": 2790
+    },
+    {
+      "day": "2021-06-25",
+      "rows": 164637,
+      "alarm_rows": 457,
+      "channels": 2438
+    },
+    {
+      "day": "2021-06-26",
+      "rows": 153969,
+      "alarm_rows": 111,
+      "channels": 1642
+    },
+    {
+      "day": "2021-06-27",
+      "rows": 150268,
+      "alarm_rows": 163,
+      "channels": 892
+    },
+    {
+      "day": "2021-06-28",
+      "rows": 175618,
+      "alarm_rows": 799,
+      "channels": 2743
+    },
+    {
+      "day": "2021-06-29",
+      "rows": 151095,
+      "alarm_rows": 4157,
+      "channels": 2768
+    },
+    {
+      "day": "2021-06-30",
+      "rows": 64182,
+      "alarm_rows": 230,
+      "channels": 2334
+    },
+    {
+      "day": "2021-07-01",
+      "rows": 71955,
+      "alarm_rows": 2564,
+      "channels": 1920
+    },
+    {
+      "day": "2021-07-02",
+      "rows": 131605,
+      "alarm_rows": 7416,
+      "channels": 1954
+    },
+    {
+      "day": "2021-07-03",
+      "rows": 143705,
+      "alarm_rows": 100,
+      "channels": 941
+    },
+    {
+      "day": "2021-07-04",
+      "rows": 146330,
+      "alarm_rows": 214,
+      "channels": 1217
+    },
+    {
+      "day": "2021-07-05",
+      "rows": 164356,
+      "alarm_rows": 256,
+      "channels": 1695
+    },
+    {
+      "day": "2021-07-06",
+      "rows": 163587,
+      "alarm_rows": 354,
+      "channels": 1805
+    },
+    {
+      "day": "2021-07-07",
+      "rows": 168251,
+      "alarm_rows": 297,
+      "channels": 1728
+    },
+    {
+      "day": "2021-07-08",
+      "rows": 169457,
+      "alarm_rows": 589,
+      "channels": 1834
+    },
+    {
+      "day": "2021-07-09",
+      "rows": 163868,
+      "alarm_rows": 280,
+      "channels": 1559
+    },
+    {
+      "day": "2021-07-10",
+      "rows": 152611,
+      "alarm_rows": 107,
+      "channels": 866
+    },
+    {
+      "day": "2021-07-11",
+      "rows": 146692,
+      "alarm_rows": 173,
+      "channels": 1272
+    },
+    {
+      "day": "2021-07-12",
+      "rows": 175148,
+      "alarm_rows": 481,
+      "channels": 1905
+    },
+    {
+      "day": "2021-07-13",
+      "rows": 170012,
+      "alarm_rows": 529,
+      "channels": 1960
+    },
+    {
+      "day": "2021-07-14",
+      "rows": 170761,
+      "alarm_rows": 438,
+      "channels": 2130
+    },
+    {
+      "day": "2021-07-15",
+      "rows": 182753,
+      "alarm_rows": 368,
+      "channels": 2203
+    },
+    {
+      "day": "2021-07-16",
+      "rows": 178743,
+      "alarm_rows": 567,
+      "channels": 2140
+    },
+    {
+      "day": "2021-07-17",
+      "rows": 159586,
+      "alarm_rows": 368,
+      "channels": 802
+    },
+    {
+      "day": "2021-07-18",
+      "rows": 156213,
+      "alarm_rows": 1062,
+      "channels": 846
+    },
+    {
+      "day": "2021-07-19",
+      "rows": 188199,
+      "alarm_rows": 1387,
+      "channels": 2292
+    },
+    {
+      "day": "2021-07-20",
+      "rows": 171201,
+      "alarm_rows": 428,
+      "channels": 2539
+    },
+    {
+      "day": "2021-07-21",
+      "rows": 188887,
+      "alarm_rows": 1671,
+      "channels": 3761
+    },
+    {
+      "day": "2021-07-22",
+      "rows": 185083,
+      "alarm_rows": 949,
+      "channels": 2617
+    },
+    {
+      "day": "2021-07-23",
+      "rows": 182877,
+      "alarm_rows": 220,
+      "channels": 2539
+    },
+    {
+      "day": "2021-07-24",
+      "rows": 155352,
+      "alarm_rows": 164,
+      "channels": 1346
+    },
+    {
+      "day": "2021-07-25",
+      "rows": 152703,
+      "alarm_rows": 129,
+      "channels": 822
+    },
+    {
+      "day": "2021-07-26",
+      "rows": 171818,
+      "alarm_rows": 736,
+      "channels": 1986
+    },
+    {
+      "day": "2021-07-27",
+      "rows": 173580,
+      "alarm_rows": 1006,
+      "channels": 1887
+    },
+    {
+      "day": "2021-07-28",
+      "rows": 181273,
+      "alarm_rows": 530,
+      "channels": 2079
+    },
+    {
+      "day": "2021-07-29",
+      "rows": 180522,
+      "alarm_rows": 779,
+      "channels": 2773
+    },
+    {
+      "day": "2021-07-30",
+      "rows": 180136,
+      "alarm_rows": 730,
+      "channels": 2245
+    },
+    {
+      "day": "2021-07-31",
+      "rows": 160123,
+      "alarm_rows": 1089,
+      "channels": 1133
+    },
+    {
+      "day": "2021-08-01",
+      "rows": 148821,
+      "alarm_rows": 180,
+      "channels": 725
+    },
+    {
+      "day": "2021-08-02",
+      "rows": 184955,
+      "alarm_rows": 463,
+      "channels": 2536
+    },
+    {
+      "day": "2021-08-03",
+      "rows": 182357,
+      "alarm_rows": 768,
+      "channels": 2476
+    },
+    {
+      "day": "2021-08-04",
+      "rows": 179373,
+      "alarm_rows": 932,
+      "channels": 2044
+    },
+    {
+      "day": "2021-08-05",
+      "rows": 196047,
+      "alarm_rows": 3585,
+      "channels": 2617
+    },
+    {
+      "day": "2021-08-06",
+      "rows": 187599,
+      "alarm_rows": 175,
+      "channels": 1891
+    },
+    {
+      "day": "2021-08-07",
+      "rows": 156335,
+      "alarm_rows": 104,
+      "channels": 758
+    },
+    {
+      "day": "2021-08-08",
+      "rows": 154921,
+      "alarm_rows": 23,
+      "channels": 1231
+    },
+    {
+      "day": "2021-08-09",
+      "rows": 190702,
+      "alarm_rows": 236,
+      "channels": 2266
+    },
+    {
+      "day": "2021-08-10",
+      "rows": 193111,
+      "alarm_rows": 503,
+      "channels": 2055
+    },
+    {
+      "day": "2021-08-11",
+      "rows": 215649,
+      "alarm_rows": 1233,
+      "channels": 3316
+    },
+    {
+      "day": "2021-08-12",
+      "rows": 209364,
+      "alarm_rows": 358,
+      "channels": 1731
+    },
+    {
+      "day": "2021-08-13",
+      "rows": 187156,
+      "alarm_rows": 369,
+      "channels": 1697
+    },
+    {
+      "day": "2021-08-14",
+      "rows": 160821,
+      "alarm_rows": 273,
+      "channels": 920
+    },
+    {
+      "day": "2021-08-15",
+      "rows": 156365,
+      "alarm_rows": 229,
+      "channels": 966
+    },
+    {
+      "day": "2021-08-16",
+      "rows": 202435,
+      "alarm_rows": 300,
+      "channels": 1888
+    },
+    {
+      "day": "2021-08-17",
+      "rows": 187359,
+      "alarm_rows": 418,
+      "channels": 1795
+    },
+    {
+      "day": "2021-08-18",
+      "rows": 204678,
+      "alarm_rows": 2083,
+      "channels": 2079
+    },
+    {
+      "day": "2021-08-19",
+      "rows": 186951,
+      "alarm_rows": 438,
+      "channels": 2228
+    },
+    {
+      "day": "2021-08-20",
+      "rows": 192701,
+      "alarm_rows": 464,
+      "channels": 3093
+    },
+    {
+      "day": "2021-08-21",
+      "rows": 164341,
+      "alarm_rows": 222,
+      "channels": 1311
+    },
+    {
+      "day": "2021-08-22",
+      "rows": 158757,
+      "alarm_rows": 148,
+      "channels": 1070
+    },
+    {
+      "day": "2021-08-23",
+      "rows": 186528,
+      "alarm_rows": 417,
+      "channels": 3094
+    },
+    {
+      "day": "2021-08-24",
+      "rows": 176765,
+      "alarm_rows": 295,
+      "channels": 1692
+    },
+    {
+      "day": "2021-08-25",
+      "rows": 179298,
+      "alarm_rows": 302,
+      "channels": 1467
+    },
+    {
+      "day": "2021-08-26",
+      "rows": 179609,
+      "alarm_rows": 201,
+      "channels": 1445
+    },
+    {
+      "day": "2021-08-27",
+      "rows": 186190,
+      "alarm_rows": 199,
+      "channels": 1834
+    },
+    {
+      "day": "2021-08-28",
+      "rows": 155035,
+      "alarm_rows": 62,
+      "channels": 1141
+    },
+    {
+      "day": "2021-08-29",
+      "rows": 155010,
+      "alarm_rows": 104,
+      "channels": 1087
+    },
+    {
+      "day": "2021-08-30",
+      "rows": 179986,
+      "alarm_rows": 407,
+      "channels": 1769
+    },
+    {
+      "day": "2021-08-31",
+      "rows": 185591,
+      "alarm_rows": 203,
+      "channels": 1971
+    },
+    {
+      "day": "2021-09-01",
+      "rows": 183556,
+      "alarm_rows": 285,
+      "channels": 1817
+    },
+    {
+      "day": "2021-09-02",
+      "rows": 183409,
+      "alarm_rows": 352,
+      "channels": 2077
+    },
+    {
+      "day": "2021-09-03",
+      "rows": 175429,
+      "alarm_rows": 302,
+      "channels": 1596
+    },
+    {
+      "day": "2021-09-04",
+      "rows": 108232,
+      "alarm_rows": 1071,
+      "channels": 982
+    },
+    {
+      "day": "2021-09-05",
+      "rows": 150863,
+      "alarm_rows": 94,
+      "channels": 1076
+    },
+    {
+      "day": "2021-09-06",
+      "rows": 172917,
+      "alarm_rows": 335,
+      "channels": 1890
+    },
+    {
+      "day": "2021-09-07",
+      "rows": 180334,
+      "alarm_rows": 328,
+      "channels": 3056
+    },
+    {
+      "day": "2021-09-08",
+      "rows": 184452,
+      "alarm_rows": 504,
+      "channels": 2010
+    },
+    {
+      "day": "2021-09-09",
+      "rows": 186580,
+      "alarm_rows": 372,
+      "channels": 1939
+    },
+    {
+      "day": "2021-09-10",
+      "rows": 171038,
+      "alarm_rows": 170,
+      "channels": 1416
+    },
+    {
+      "day": "2021-09-11",
+      "rows": 160859,
+      "alarm_rows": 85,
+      "channels": 860
+    },
+    {
+      "day": "2021-09-12",
+      "rows": 170882,
+      "alarm_rows": 269,
+      "channels": 1130
+    },
+    {
+      "day": "2021-09-13",
+      "rows": 192422,
+      "alarm_rows": 832,
+      "channels": 2619
+    },
+    {
+      "day": "2021-09-14",
+      "rows": 182144,
+      "alarm_rows": 360,
+      "channels": 1813
+    },
+    {
+      "day": "2021-09-15",
+      "rows": 177285,
+      "alarm_rows": 286,
+      "channels": 1697
+    },
+    {
+      "day": "2021-09-16",
+      "rows": 171213,
+      "alarm_rows": 225,
+      "channels": 1607
+    },
+    {
+      "day": "2021-09-17",
+      "rows": 162223,
+      "alarm_rows": 48,
+      "channels": 841
+    },
+    {
+      "day": "2021-09-18",
+      "rows": 147541,
+      "alarm_rows": 11,
+      "channels": 626
+    },
+    {
+      "day": "2021-09-19",
+      "rows": 159635,
+      "alarm_rows": 96,
+      "channels": 715
+    },
+    {
+      "day": "2021-09-20",
+      "rows": 182297,
+      "alarm_rows": 421,
+      "channels": 1662
+    },
+    {
+      "day": "2021-09-21",
+      "rows": 191610,
+      "alarm_rows": 386,
+      "channels": 1794
+    },
+    {
+      "day": "2021-09-22",
+      "rows": 190099,
+      "alarm_rows": 413,
+      "channels": 1955
+    },
+    {
+      "day": "2021-09-23",
+      "rows": 182976,
+      "alarm_rows": 495,
+      "channels": 1758
+    },
+    {
+      "day": "2021-09-24",
+      "rows": 196429,
+      "alarm_rows": 268,
+      "channels": 1852
+    },
+    {
+      "day": "2021-09-25",
+      "rows": 163705,
+      "alarm_rows": 275,
+      "channels": 871
+    },
+    {
+      "day": "2021-09-26",
+      "rows": 160264,
+      "alarm_rows": 146,
+      "channels": 653
+    },
+    {
+      "day": "2021-09-27",
+      "rows": 186713,
+      "alarm_rows": 374,
+      "channels": 1789
+    },
+    {
+      "day": "2021-09-28",
+      "rows": 175838,
+      "alarm_rows": 1533,
+      "channels": 2704
+    },
+    {
+      "day": "2021-09-29",
+      "rows": 184869,
+      "alarm_rows": 507,
+      "channels": 1833
+    },
+    {
+      "day": "2021-09-30",
+      "rows": 187463,
+      "alarm_rows": 380,
+      "channels": 1498
+    },
+    {
+      "day": "2021-10-01",
+      "rows": 183943,
+      "alarm_rows": 297,
+      "channels": 1787
+    },
+    {
+      "day": "2021-10-02",
+      "rows": 165937,
+      "alarm_rows": 180,
+      "channels": 831
+    },
+    {
+      "day": "2021-10-03",
+      "rows": 161444,
+      "alarm_rows": 84,
+      "channels": 882
+    },
+    {
+      "day": "2021-10-04",
+      "rows": 168124,
+      "alarm_rows": 604,
+      "channels": 2010
+    },
+    {
+      "day": "2021-10-05",
+      "rows": 175567,
+      "alarm_rows": 778,
+      "channels": 2089
+    },
+    {
+      "day": "2021-10-06",
+      "rows": 177193,
+      "alarm_rows": 1260,
+      "channels": 2195
+    },
+    {
+      "day": "2021-10-07",
+      "rows": 173550,
+      "alarm_rows": 720,
+      "channels": 3310
+    },
+    {
+      "day": "2021-10-08",
+      "rows": 160508,
+      "alarm_rows": 239,
+      "channels": 1640
+    },
+    {
+      "day": "2021-10-09",
+      "rows": 140992,
+      "alarm_rows": 45,
+      "channels": 564
+    },
+    {
+      "day": "2021-10-10",
+      "rows": 131586,
+      "alarm_rows": 111,
+      "channels": 712
+    },
+    {
+      "day": "2021-10-11",
+      "rows": 144565,
+      "alarm_rows": 440,
+      "channels": 1937
+    },
+    {
+      "day": "2021-10-12",
+      "rows": 150819,
+      "alarm_rows": 350,
+      "channels": 1676
+    },
+    {
+      "day": "2021-10-13",
+      "rows": 158484,
+      "alarm_rows": 412,
+      "channels": 3017
+    },
+    {
+      "day": "2021-10-14",
+      "rows": 162834,
+      "alarm_rows": 289,
+      "channels": 2733
+    },
+    {
+      "day": "2021-10-15",
+      "rows": 161776,
+      "alarm_rows": 576,
+      "channels": 1870
+    },
+    {
+      "day": "2021-10-16",
+      "rows": 133929,
+      "alarm_rows": 112,
+      "channels": 605
+    },
+    {
+      "day": "2021-10-17",
+      "rows": 127705,
+      "alarm_rows": 80,
+      "channels": 562
+    },
+    {
+      "day": "2021-10-18",
+      "rows": 154992,
+      "alarm_rows": 491,
+      "channels": 1776
+    },
+    {
+      "day": "2021-10-19",
+      "rows": 153525,
+      "alarm_rows": 342,
+      "channels": 1995
+    },
+    {
+      "day": "2021-10-20",
+      "rows": 150395,
+      "alarm_rows": 216,
+      "channels": 2413
+    },
+    {
+      "day": "2021-10-21",
+      "rows": 156884,
+      "alarm_rows": 279,
+      "channels": 1813
+    },
+    {
+      "day": "2021-10-22",
+      "rows": 158297,
+      "alarm_rows": 435,
+      "channels": 1820
+    },
+    {
+      "day": "2021-10-23",
+      "rows": 121945,
+      "alarm_rows": 119,
+      "channels": 560
+    },
+    {
+      "day": "2021-10-24",
+      "rows": 118701,
+      "alarm_rows": 126,
+      "channels": 606
+    },
+    {
+      "day": "2021-10-25",
+      "rows": 147907,
+      "alarm_rows": 332,
+      "channels": 1944
+    },
+    {
+      "day": "2021-10-26",
+      "rows": 144407,
+      "alarm_rows": 247,
+      "channels": 1917
+    },
+    {
+      "day": "2021-10-27",
+      "rows": 146401,
+      "alarm_rows": 407,
+      "channels": 1503
+    },
+    {
+      "day": "2021-10-28",
+      "rows": 142742,
+      "alarm_rows": 356,
+      "channels": 1337
+    },
+    {
+      "day": "2021-10-29",
+      "rows": 153302,
+      "alarm_rows": 268,
+      "channels": 1279
+    },
+    {
+      "day": "2021-10-30",
+      "rows": 132985,
+      "alarm_rows": 137,
+      "channels": 597
+    },
+    {
+      "day": "2021-10-31",
+      "rows": 124532,
+      "alarm_rows": 47,
+      "channels": 550
+    },
+    {
+      "day": "2021-11-01",
+      "rows": 140747,
+      "alarm_rows": 188,
+      "channels": 1271
+    },
+    {
+      "day": "2021-11-02",
+      "rows": 157772,
+      "alarm_rows": 277,
+      "channels": 1403
+    },
+    {
+      "day": "2021-11-03",
+      "rows": 151646,
+      "alarm_rows": 1327,
+      "channels": 1236
+    },
+    {
+      "day": "2021-11-04",
+      "rows": 121729,
+      "alarm_rows": 96,
+      "channels": 496
+    },
+    {
+      "day": "2021-11-05",
+      "rows": 126480,
+      "alarm_rows": 98,
+      "channels": 590
+    },
+    {
+      "day": "2021-11-06",
+      "rows": 130165,
+      "alarm_rows": 112,
+      "channels": 600
+    },
+    {
+      "day": "2021-11-07",
+      "rows": 130228,
+      "alarm_rows": 40,
+      "channels": 534
+    },
+    {
+      "day": "2021-11-08",
+      "rows": 164320,
+      "alarm_rows": 371,
+      "channels": 1447
+    },
+    {
+      "day": "2021-11-09",
+      "rows": 161189,
+      "alarm_rows": 339,
+      "channels": 1250
+    },
+    {
+      "day": "2021-11-10",
+      "rows": 176574,
+      "alarm_rows": 695,
+      "channels": 1844
+    },
+    {
+      "day": "2021-11-11",
+      "rows": 164490,
+      "alarm_rows": 590,
+      "channels": 1559
+    },
+    {
+      "day": "2021-11-12",
+      "rows": 173015,
+      "alarm_rows": 308,
+      "channels": 1481
+    },
+    {
+      "day": "2021-11-13",
+      "rows": 150141,
+      "alarm_rows": 772,
+      "channels": 490
+    },
+    {
+      "day": "2021-11-14",
+      "rows": 136154,
+      "alarm_rows": 178,
+      "channels": 560
+    },
+    {
+      "day": "2021-11-15",
+      "rows": 152313,
+      "alarm_rows": 301,
+      "channels": 1489
+    },
+    {
+      "day": "2021-11-16",
+      "rows": 158557,
+      "alarm_rows": 440,
+      "channels": 1692
+    },
+    {
+      "day": "2021-11-17",
+      "rows": 158270,
+      "alarm_rows": 359,
+      "channels": 1188
+    },
+    {
+      "day": "2021-11-18",
+      "rows": 154853,
+      "alarm_rows": 253,
+      "channels": 1270
+    },
+    {
+      "day": "2021-11-19",
+      "rows": 162701,
+      "alarm_rows": 296,
+      "channels": 1154
+    },
+    {
+      "day": "2021-11-20",
+      "rows": 129489,
+      "alarm_rows": 160,
+      "channels": 502
+    },
+    {
+      "day": "2021-11-21",
+      "rows": 131592,
+      "alarm_rows": 94,
+      "channels": 458
+    },
+    {
+      "day": "2021-11-22",
+      "rows": 171856,
+      "alarm_rows": 474,
+      "channels": 1717
+    },
+    {
+      "day": "2021-11-23",
+      "rows": 125740,
+      "alarm_rows": 409,
+      "channels": 2597
+    },
+    {
+      "day": "2021-11-24",
+      "rows": 72729,
+      "alarm_rows": 623,
+      "channels": 1243
+    },
+    {
+      "day": "2021-11-25",
+      "rows": 70121,
+      "alarm_rows": 291,
+      "channels": 1300
+    },
+    {
+      "day": "2021-11-26",
+      "rows": 71663,
+      "alarm_rows": 224,
+      "channels": 1172
+    },
+    {
+      "day": "2021-11-27",
+      "rows": 41065,
+      "alarm_rows": 144,
+      "channels": 472
+    },
+    {
+      "day": "2021-11-28",
+      "rows": 37590,
+      "alarm_rows": 54,
+      "channels": 385
+    },
+    {
+      "day": "2021-11-29",
+      "rows": 66886,
+      "alarm_rows": 468,
+      "channels": 1272
+    },
+    {
+      "day": "2021-11-30",
+      "rows": 70194,
+      "alarm_rows": 544,
+      "channels": 1470
+    },
+    {
+      "day": "2021-12-01",
+      "rows": 66328,
+      "alarm_rows": 486,
+      "channels": 2718
+    },
+    {
+      "day": "2021-12-02",
+      "rows": 133933,
+      "alarm_rows": 451,
+      "channels": 2265
+    },
+    {
+      "day": "2021-12-03",
+      "rows": 145962,
+      "alarm_rows": 312,
+      "channels": 1014
+    },
+    {
+      "day": "2021-12-04",
+      "rows": 120262,
+      "alarm_rows": 139,
+      "channels": 405
+    },
+    {
+      "day": "2021-12-05",
+      "rows": 118599,
+      "alarm_rows": 52,
+      "channels": 299
+    },
+    {
+      "day": "2021-12-06",
+      "rows": 148036,
+      "alarm_rows": 305,
+      "channels": 1423
+    },
+    {
+      "day": "2021-12-07",
+      "rows": 154609,
+      "alarm_rows": 1333,
+      "channels": 1410
+    },
+    {
+      "day": "2021-12-08",
+      "rows": 149934,
+      "alarm_rows": 280,
+      "channels": 1301
+    },
+    {
+      "day": "2021-12-09",
+      "rows": 151476,
+      "alarm_rows": 338,
+      "channels": 2397
+    },
+    {
+      "day": "2021-12-10",
+      "rows": 149916,
+      "alarm_rows": 422,
+      "channels": 2188
+    },
+    {
+      "day": "2021-12-11",
+      "rows": 123777,
+      "alarm_rows": 153,
+      "channels": 582
+    },
+    {
+      "day": "2021-12-12",
+      "rows": 121223,
+      "alarm_rows": 126,
+      "channels": 501
+    },
+    {
+      "day": "2021-12-13",
+      "rows": 155265,
+      "alarm_rows": 824,
+      "channels": 1813
+    },
+    {
+      "day": "2021-12-14",
+      "rows": 156284,
+      "alarm_rows": 631,
+      "channels": 1803
+    },
+    {
+      "day": "2021-12-15",
+      "rows": 152742,
+      "alarm_rows": 274,
+      "channels": 1901
+    },
+    {
+      "day": "2021-12-16",
+      "rows": 166327,
+      "alarm_rows": 598,
+      "channels": 1470
+    },
+    {
+      "day": "2021-12-17",
+      "rows": 147710,
+      "alarm_rows": 727,
+      "channels": 1310
+    },
+    {
+      "day": "2021-12-18",
+      "rows": 121891,
+      "alarm_rows": 214,
+      "channels": 424
+    },
+    {
+      "day": "2021-12-19",
+      "rows": 128544,
+      "alarm_rows": 101,
+      "channels": 778
+    },
+    {
+      "day": "2021-12-20",
+      "rows": 157267,
+      "alarm_rows": 1038,
+      "channels": 1570
+    },
+    {
+      "day": "2021-12-21",
+      "rows": 149955,
+      "alarm_rows": 754,
+      "channels": 1432
+    },
+    {
+      "day": "2021-12-22",
+      "rows": 151367,
+      "alarm_rows": 706,
+      "channels": 1364
+    },
+    {
+      "day": "2021-12-23",
+      "rows": 132192,
+      "alarm_rows": 126,
+      "channels": 1082
+    },
+    {
+      "day": "2021-12-24",
+      "rows": 154934,
+      "alarm_rows": 516,
+      "channels": 1296
+    },
+    {
+      "day": "2021-12-25",
+      "rows": 134585,
+      "alarm_rows": 215,
+      "channels": 706
+    },
+    {
+      "day": "2021-12-26",
+      "rows": 126445,
+      "alarm_rows": 131,
+      "channels": 586
+    },
+    {
+      "day": "2021-12-27",
+      "rows": 177419,
+      "alarm_rows": 301,
+      "channels": 1951
+    },
+    {
+      "day": "2021-12-28",
+      "rows": 171591,
+      "alarm_rows": 4058,
+      "channels": 1573
+    },
+    {
+      "day": "2021-12-29",
+      "rows": 147294,
+      "alarm_rows": 275,
+      "channels": 1465
+    },
+    {
+      "day": "2021-12-30",
+      "rows": 136361,
+      "alarm_rows": 251,
+      "channels": 788
+    },
+    {
+      "day": "2021-12-31",
+      "rows": 117807,
+      "alarm_rows": 34,
+      "channels": 393
+    }
+  ],
+  "archive": "ext-journal-2021.7z",
+  "archive_sha256": "2970bdce42bcbb7a93358a19145d5cd45f0596e4c2633c1e9507d244b28e10f5",
+  "csv_bytes": 2735726977,
+  "parquet_bytes": 409165545,
+  "elapsed_seconds": 64.388,
+  "duckdb_version": "1.5.5",
+  "flags": {
+    "full_scan": true,
+    "strict_csv": true,
+    "numeric_coercion": false,
+    "invalid_record_filter": false,
+    "deduplication": false,
+    "source_timezone": "Europe/Moscow_assumed",
+    "training": false,
+    "inference": false
+  },
+  "memory_limit": "1GB",
+  "threads": 2
+}

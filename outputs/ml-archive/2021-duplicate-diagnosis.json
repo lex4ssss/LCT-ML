@@ -1,0 +1,20 @@
+{
+  "year": 2021,
+  "duplicate_id_groups": 775099,
+  "rows_in_groups": 1550198,
+  "extra_id_rows": 775099,
+  "distinct_payloads": 1550198,
+  "exact_duplicate_extra_rows": 0,
+  "exact_duplicate_alarm_extra_rows": 0,
+  "conflicting_id_groups": 775099,
+  "ids_with_multiple_channels": 775061,
+  "ids_with_multiple_timestamps": 775099,
+  "elapsed_seconds": 5.748,
+  "flags": {
+    "full_scan": true,
+    "exact_tuple_comparison": true,
+    "deduplication": false,
+    "training": false,
+    "inference": false
+  }
+}
