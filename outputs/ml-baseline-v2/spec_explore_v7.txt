@@ -1,0 +1,24 @@
+explore-v7: search over task formulations allowed by the organizers (horizon §17, aggregation unit §17, target direction §16) for one that reaches
+the organizers' default guide, precision > 0.7 at recall > 0.5, honestly.
+
+Written on 2026-09-26 before any explore-v7 result was seen.
+
+Grid:
+targets: all alarms (episodes-900), failure, incident (run-006 classes), neispraven (Неисправен), door (Не замкнут), smoke (Обнаружен дым),
+flood (Затоплен, Работают все насосы в АНС); episodes of each target built by ml-dataset-v2/class_labels.py with the 900-second gap.
+horizons: 24, 72, 168 hours; label = an episode of the target with an observed left boundary starts in (as_of, as_of + horizon];
+an episode with an unknown left boundary in the window makes the label unknown and the row is dropped for that target.
+units: channel-day (row) and object-day (max score, any label over the object's rows on that as_of).
+Features: v2 as in run-002. Rows: v2 rows with a known v2 label.
+
+Protocol: one HGB per target and horizon, run-002 parameters, trained on as_of < 2025-01-01 minus the horizon, so no training label window reaches 2025.
+Evaluated on 2025 rows whose label window ends by 2026-01-01. Test 2026 is not touched in the search.
+
+A formulation qualifies only if, on 2025, at the same unit:
+1. the highest precision among thresholds with recall >= 0.5 is >= 0.7,
+2. the base rate (share of positive units) is <= 0.35, so that alerting everything cannot pass,
+3. at that threshold the model's F1 exceeds the F1 of the rule "an alarm in the channel (object) in the previous 24 hours".
+Choice among qualifiers: channel-day before object-day, then the shorter horizon, then the larger precision at recall 0.5 minus the base rate.
+The chosen formulation is confirmed once on test 2026 with the same model and the threshold fixed on 2025
+(the highest-precision threshold with 2025 recall >= 0.5). Its test precision and recall are reported whatever they are.
+If nothing qualifies, that is reported, with the best precision at recall 0.5 per unit.
