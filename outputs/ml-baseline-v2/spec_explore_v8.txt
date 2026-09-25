@@ -1,0 +1,38 @@
+explore-v8: an object-level model toward the organizers' guide, precision > 0.7 at recall > 0.5, at the object-day unit.
+
+Written on 2026-09-26 before any explore-v8 result was seen. Test 2026 was already opened in run-002, run-006 and run-007 (same period).
+
+Units, labels and rows are exactly those of explore-v7 at the object-day unit, so the two are compared on identical object-days:
+rows are v2 rows with a known v2 label; the object of a channel comes from the channel directory, channels outside it share one "unknown" object;
+an object-day exists if the object has at least one row on that as_of with a known target label; its label is 1 if any such row has a positive
+target label (horizon_labels of explore-v7); the rule is "an alarm in any of those rows in the previous 24 hours".
+
+Change against explore-v7: instead of the maximum of channel scores, one HGB (run-002 parameters) is trained directly on object-days.
+Features of an object-day, all computed from rows of that object on that as_of (all loaded rows, not only rows with a known target label),
+so only the past up to as_of is used:
+1. channel count; sums over channels of event_count_24h, event_count_7d, alarm_count_24h, alarm_count_7d, alarm_count_30d, episode_starts_7d,
+   episode_starts_30d; maxima over channels of alarm_count_24h, alarm_count_7d, episode_starts_7d, episode_starts_30d;
+   minima over channels of last_event_age_hours and last_alarm_age_hours_30d.
+2. counts and shares of channels with alarm_count_24h > 0, alarm_count_7d > 0, episode_starts_30d > 0.
+3. per sensor type of the directory (19 types): channel count and the sum of episode_starts_7d.
+4. the 13 v2 features of the lead channel: the largest alarm_count_7d, ties broken by the larger episode_starts_30d, then the smaller
+   last_alarm_age_hours_30d, then the channel id.
+5. target history of the object: starts of target episodes (any left boundary) with first_alarm_at in (as_of - w, as_of] for w = 24 h, 7 d, 30 d,
+   and hours since the last start at or before as_of, capped at 720, missing if none.
+6. month and weekday as in v2.
+
+Grid: the 7 targets and 3 horizons (24, 72, 168 h) of explore-v7, object-day unit only.
+Training: object-days with as_of < 2025-01-01 minus the horizon. Evaluation: 2025 object-days whose label window ends by 2026-01-01.
+
+A variant qualifies only if, on 2025:
+1. the highest precision among thresholds with recall >= 0.5 is >= 0.7,
+2. the base rate is <= 0.35,
+3. the F1 of the model exceeds the F1 of the rule at the threshold of step 4.
+4. Threshold: among 2025 thresholds with precision >= 0.7 and recall >= 0.5, the one with the largest min(precision - 0.7, recall - 0.5).
+   This replaces the explore-v7 choice (highest precision at recall >= 0.5), which sat on the recall edge and lost recall on test.
+Choice among qualifiers: the largest margin min(precision - 0.7, recall - 0.5) at that threshold on 2025.
+For reference each variant is shown next to the explore-v7 max-of-channels model on the same object-days; that model is not a candidate.
+
+Confirmation: the chosen variant, the same model (trained before 2025) and the 2025 threshold are applied once to test 2026 object-days whose
+label window lies inside the data (as_of <= last test as_of minus (horizon - 24 h)). Precision, recall, F1, base rate and the rule are reported
+whatever they are. The threshold is not tuned on test. If nothing qualifies, that is reported with the best precision at recall 0.5 per variant.
