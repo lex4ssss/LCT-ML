@@ -1,0 +1,429 @@
+{
+  "results": [
+    {
+      "target": "door",
+      "episodes": "../../work/ml-prepared/episodes-900-door.parquet",
+      "horizon_hours": 24,
+      "object_day": {
+        "rows": 27210,
+        "base_rate": 0.13664094083057698,
+        "precision_at_recall_0_5": 0.6930509104422148,
+        "threshold": 0.5349355512078992,
+        "margin": -0.006186121570736947,
+        "precision": 0.6938775510204082,
+        "recall": 0.49381387842926305,
+        "f1": 0.5769956002514142,
+        "recall_at_precision_0_7": 0.48036578805809577,
+        "rule_precision": 0.2842598794373744,
+        "rule_recall": 0.5707369553523399,
+        "rule_f1": 0.379504605204328,
+        "qualifies": false
+      }
+    },
+    {
+      "target": "door",
+      "episodes": "../../work/ml-prepared/episodes-900-door.parquet",
+      "horizon_hours": 72,
+      "object_day": {
+        "rows": 27132,
+        "base_rate": 0.2600250626566416,
+        "precision_at_recall_0_5": 0.8829707426856714,
+        "threshold": 0.6492717361155911,
+        "margin": 0.14110559886605245,
+        "precision": 0.8411753766040543,
+        "recall": 0.6411055988660525,
+        "f1": 0.7276383526383526,
+        "recall_at_precision_0_7": 0.882636428065202,
+        "rule_precision": 0.44668549146161085,
+        "rule_recall": 0.47087172218284906,
+        "rule_f1": 0.4584598399116754,
+        "qualifies": true
+      }
+    },
+    {
+      "target": "door",
+      "episodes": "../../work/ml-prepared/episodes-900-door.parquet",
+      "horizon_hours": 168,
+      "object_day": {
+        "rows": 26820,
+        "base_rate": 0.3642058165548098,
+        "precision_at_recall_0_5": 0.9757262236370872,
+        "threshold": 0.7164720746020289,
+        "margin": 0.2493129375162043,
+        "precision": 0.9493129375162043,
+        "recall": 0.7496928746928747,
+        "f1": 0.8377759981695458,
+        "recall_at_precision_0_7": 0.9331490581490581,
+        "rule_precision": 0.5745429925524712,
+        "rule_recall": 0.4343775593775594,
+        "rule_f1": 0.49472395499329563,
+        "qualifies": false
+      }
+    },
+    {
+      "target": "incident",
+      "episodes": "../../work/ml-prepared/episodes-900-incident.parquet",
+      "horizon_hours": 24,
+      "object_day": {
+        "rows": 27210,
+        "base_rate": 0.18761484748254317,
+        "precision_at_recall_0_5": 0.7346762589928058,
+        "threshold": 0.5270150596447803,
+        "margin": 0.019882468168462286,
+        "precision": 0.7202170963364993,
+        "recall": 0.5198824681684623,
+        "f1": 0.60386803185438,
+        "recall_at_precision_0_7": 0.5563173359451518,
+        "rule_precision": 0.39879437374413934,
+        "rule_recall": 0.5831537708129285,
+        "rule_f1": 0.47366746221161493,
+        "qualifies": true
+      }
+    },
+    {
+      "target": "incident",
+      "episodes": "../../work/ml-prepared/episodes-900-incident.parquet",
+      "horizon_hours": 72,
+      "object_day": {
+        "rows": 27132,
+        "base_rate": 0.3378298687896211,
+        "precision_at_recall_0_5": 0.8965045889474712,
+        "threshold": 0.614279258235615,
+        "margin": 0.14641064804713066,
+        "precision": 0.8464285714285714,
+        "recall": 0.6464106480471307,
+        "f1": 0.7330199183471483,
+        "recall_at_precision_0_7": 0.8490072005236744,
+        "rule_precision": 0.5850477343014656,
+        "rule_recall": 0.47468906829587604,
+        "rule_f1": 0.524122146600012,
+        "qualifies": true
+      }
+    },
+    {
+      "target": "incident",
+      "episodes": "../../work/ml-prepared/episodes-900-incident.parquet",
+      "horizon_hours": 168,
+      "object_day": {
+        "rows": 26820,
+        "base_rate": 0.46868008948545864,
+        "precision_at_recall_0_5": 0.9787662740235585,
+        "threshold": 0.6137993755279889,
+        "margin": 0.22466189339697695,
+        "precision": 0.9247715736040609,
+        "recall": 0.724661893396977,
+        "f1": 0.812578055307761,
+        "recall_at_precision_0_7": 0.9000795544948289,
+        "rule_precision": 0.7257955314827352,
+        "rule_recall": 0.42641209228321403,
+        "rule_f1": 0.5372087196191431,
+        "qualifies": false
+      }
+    },
+    {
+      "target": "all",
+      "episodes": "../../work/ml-prepared/episodes-900.parquet",
+      "horizon_hours": 24,
+      "object_day": {
+        "rows": 27210,
+        "base_rate": 0.26666666666666666,
+        "precision_at_recall_0_5": 0.6920289855072463,
+        "threshold": 0.47419331594318864,
+        "margin": -0.004448742746614998,
+        "precision": 0.695551257253385,
+        "recall": 0.4955898566703418,
+        "f1": 0.578786415580235,
+        "recall_at_precision_0_7": 0.48718302094818083,
+        "rule_precision": 0.5030140656396517,
+        "rule_recall": 0.517502756339581,
+        "rule_f1": 0.5101555600842335,
+        "qualifies": false
+      }
+    },
+    {
+      "target": "all",
+      "episodes": "../../work/ml-prepared/episodes-900.parquet",
+      "horizon_hours": 72,
+      "object_day": {
+        "rows": 27132,
+        "base_rate": 0.4910437859354268,
+        "precision_at_recall_0_5": 0.8725772655840754,
+        "threshold": 0.5812483640740396,
+        "margin": 0.11442618028972451,
+        "precision": 0.8146084187481342,
+        "recall": 0.6144261802897245,
+        "f1": 0.7004963203833647,
+        "recall_at_precision_0_7": 0.8205359153343842,
+        "rule_precision": 0.7394110528438886,
+        "rule_recall": 0.4127448772798919,
+        "rule_f1": 0.5297687861271676,
+        "qualifies": false
+      }
+    },
+    {
+      "target": "all",
+      "episodes": "../../work/ml-prepared/episodes-900.parquet",
+      "horizon_hours": 168,
+      "object_day": {
+        "rows": 26820,
+        "base_rate": 0.6853467561521253,
+        "precision_at_recall_0_5": 0.9660500315324785,
+        "threshold": 0.7216856583283325,
+        "margin": 0.2115617813088021,
+        "precision": 0.911561781308802,
+        "recall": 0.7116043740819324,
+        "f1": 0.7992667277726856,
+        "recall_at_precision_0_7": 0.999455959958653,
+        "rule_precision": 0.8966824644549763,
+        "rule_recall": 0.360263315380012,
+        "rule_f1": 0.514010711790732,
+        "qualifies": false
+      }
+    },
+    {
+      "target": "failure",
+      "episodes": "../../work/ml-prepared/episodes-900-failure.parquet",
+      "horizon_hours": 24,
+      "object_day": {
+        "rows": 27210,
+        "base_rate": 0.12002940095553105,
+        "precision_at_recall_0_5": 0.3531574394463668,
+        "threshold": 0.3297360968396428,
+        "margin": -0.23484384568279243,
+        "precision": 0.4665948275862069,
+        "recall": 0.26515615431720757,
+        "f1": 0.33814916048418586,
+        "recall_at_precision_0_7": 0.08266993263931414,
+        "rule_precision": 0.1886135298057602,
+        "rule_recall": 0.43110838946723823,
+        "rule_f1": 0.26241729568539746,
+        "qualifies": false
+      }
+    },
+    {
+      "target": "failure",
+      "episodes": "../../work/ml-prepared/episodes-900-failure.parquet",
+      "horizon_hours": 72,
+      "object_day": {
+        "rows": 27132,
+        "base_rate": 0.265406162464986,
+        "precision_at_recall_0_5": 0.6029460997656512,
+        "threshold": 0.48425047258481946,
+        "margin": -0.06492507087889832,
+        "precision": 0.6350749291211016,
+        "recall": 0.43549507012914873,
+        "f1": 0.516681769503254,
+        "recall_at_precision_0_7": 0.30579086238022496,
+        "rule_precision": 0.3504101116041414,
+        "rule_recall": 0.3618941813636995,
+        "rule_f1": 0.356059570979642,
+        "qualifies": false
+      }
+    },
+    {
+      "target": "failure",
+      "episodes": "../../work/ml-prepared/episodes-900-failure.parquet",
+      "horizon_hours": 168,
+      "object_day": {
+        "rows": 26820,
+        "base_rate": 0.43859060402684563,
+        "precision_at_recall_0_5": 0.820945474829173,
+        "threshold": 0.5717791832848599,
+        "margin": 0.0912607328062569,
+        "precision": 0.7913300716805097,
+        "recall": 0.5912607328062569,
+        "f1": 0.6768197742312184,
+        "recall_at_precision_0_7": 0.7370568732466207,
+        "rule_precision": 0.526878808395396,
+        "rule_recall": 0.3307829635297118,
+        "rule_f1": 0.4064132024232296,
+        "qualifies": false
+      }
+    },
+    {
+      "target": "neispraven",
+      "episodes": "../../work/ml-prepared/episodes-900-neispraven.parquet",
+      "horizon_hours": 24,
+      "object_day": {
+        "rows": 27210,
+        "base_rate": 0.058581403895626605,
+        "precision_at_recall_0_5": 0.39989964877069745,
+        "threshold": 0.3728513495768491,
+        "margin": -0.19183673469387752,
+        "precision": 0.5081632653061224,
+        "recall": 0.3124215809284818,
+        "f1": 0.38694638694638694,
+        "recall_at_precision_0_7": 0.12296110414052698,
+        "rule_precision": 0.10395177494976557,
+        "rule_recall": 0.4868255959849435,
+        "rule_f1": 0.171321337896015,
+        "qualifies": false
+      }
+    },
+    {
+      "target": "neispraven",
+      "episodes": "../../work/ml-prepared/episodes-900-neispraven.parquet",
+      "horizon_hours": 72,
+      "object_day": {
+        "rows": 27132,
+        "base_rate": 0.12557128114403657,
+        "precision_at_recall_0_5": 0.6511272449369507,
+        "threshold": 0.5068230814131135,
+        "margin": -0.0338891204668611,
+        "precision": 0.6661108795331389,
+        "recall": 0.46903434106251835,
+        "f1": 0.5504650361694798,
+        "recall_at_precision_0_7": 0.4073965365424127,
+        "rule_precision": 0.18824794944197928,
+        "rule_recall": 0.4109186968007044,
+        "rule_f1": 0.25820730357801547,
+        "qualifies": false
+      }
+    },
+    {
+      "target": "neispraven",
+      "episodes": "../../work/ml-prepared/episodes-900-neispraven.parquet",
+      "horizon_hours": 168,
+      "object_day": {
+        "rows": 26820,
+        "base_rate": 0.20339299030574198,
+        "precision_at_recall_0_5": 0.815068493150685,
+        "threshold": 0.5635953706683506,
+        "margin": 0.08331805682859761,
+        "precision": 0.783743842364532,
+        "recall": 0.5833180568285976,
+        "f1": 0.6688386757750919,
+        "recall_at_precision_0_7": 0.6940421631530705,
+        "rule_precision": 0.2786729857819905,
+        "rule_recall": 0.3772685609532539,
+        "rule_f1": 0.3205607476635514,
+        "qualifies": true
+      }
+    },
+    {
+      "target": "smoke",
+      "episodes": "../../work/ml-prepared/episodes-900-smoke.parquet",
+      "horizon_hours": 24,
+      "object_day": {
+        "rows": 27210,
+        "base_rate": 0.011319367879456083,
+        "precision_at_recall_0_5": 0.16902944383860413,
+        "threshold": 0.23581447173420836,
+        "margin": -0.3344155844155844,
+        "precision": 0.3695652173913043,
+        "recall": 0.16558441558441558,
+        "f1": 0.22869955156950672,
+        "recall_at_precision_0_7": 0.08441558441558442,
+        "rule_precision": 0.02290689886135298,
+        "rule_recall": 0.5551948051948052,
+        "rule_f1": 0.04399845619451949,
+        "qualifies": false
+      }
+    },
+    {
+      "target": "smoke",
+      "episodes": "../../work/ml-prepared/episodes-900-smoke.parquet",
+      "horizon_hours": 72,
+      "object_day": {
+        "rows": 27132,
+        "base_rate": 0.02635264632168657,
+        "precision_at_recall_0_5": 0.2987951807228916,
+        "threshold": 0.3247698724178562,
+        "margin": -0.28881118881118883,
+        "precision": 0.412568306010929,
+        "recall": 0.2111888111888112,
+        "f1": 0.2793709528214616,
+        "recall_at_precision_0_7": 0.08531468531468532,
+        "rule_precision": 0.04289363990856528,
+        "rule_recall": 0.4461538461538462,
+        "rule_f1": 0.07826300294406281,
+        "qualifies": false
+      }
+    },
+    {
+      "target": "smoke",
+      "episodes": "../../work/ml-prepared/episodes-900-smoke.parquet",
+      "horizon_hours": 168,
+      "object_day": {
+        "rows": 26820,
+        "base_rate": 0.04798657718120805,
+        "precision_at_recall_0_5": 0.423963133640553,
+        "threshold": 0.34556173922964256,
+        "margin": -0.166501240694789,
+        "precision": 0.533498759305211,
+        "recall": 0.3341103341103341,
+        "f1": 0.41089345437171526,
+        "recall_at_precision_0_7": 0.10644910644910645,
+        "rule_precision": 0.07623561272850372,
+        "rule_recall": 0.43745143745143744,
+        "rule_f1": 0.12984317343173432,
+        "qualifies": false
+      }
+    },
+    {
+      "target": "flood",
+      "episodes": "../../work/ml-prepared/episodes-900-flood.parquet",
+      "horizon_hours": 24,
+      "object_day": {
+        "rows": 27210,
+        "base_rate": 0.029290701947813302,
+        "precision_at_recall_0_5": 0.8382352941176471,
+        "threshold": 0.351714183237446,
+        "margin": 0.055102040816326525,
+        "precision": 0.7551020408163265,
+        "recall": 0.5570890840652447,
+        "f1": 0.6411552346570397,
+        "recall_at_precision_0_7": 0.5947302383939774,
+        "rule_precision": 0.07474882786336236,
+        "rule_recall": 0.7001254705144291,
+        "rule_f1": 0.13507625272331156,
+        "qualifies": true
+      }
+    },
+    {
+      "target": "flood",
+      "episodes": "../../work/ml-prepared/episodes-900-flood.parquet",
+      "horizon_hours": 72,
+      "object_day": {
+        "rows": 27132,
+        "base_rate": 0.05012531328320802,
+        "precision_at_recall_0_5": 0.7508269018743109,
+        "threshold": 0.41564012761761127,
+        "margin": 0.03161764705882353,
+        "precision": 0.7317813765182186,
+        "recall": 0.5316176470588235,
+        "f1": 0.6158432708688245,
+        "recall_at_precision_0_7": 0.5632352941176471,
+        "rule_precision": 0.10057819013042894,
+        "rule_recall": 0.55,
+        "rule_f1": 0.17005797430942365,
+        "qualifies": true
+      }
+    },
+    {
+      "target": "flood",
+      "episodes": "../../work/ml-prepared/episodes-900-flood.parquet",
+      "horizon_hours": 168,
+      "object_day": {
+        "rows": 26820,
+        "base_rate": 0.07744220730797911,
+        "precision_at_recall_0_5": 0.7761194029850746,
+        "threshold": 0.5561336311410878,
+        "margin": 0.03496364838070065,
+        "precision": 0.7349636483807006,
+        "recall": 0.535387578237843,
+        "f1": 0.6194986072423398,
+        "recall_at_precision_0_7": 0.5724602792489167,
+        "rule_precision": 0.13229519295870007,
+        "rule_recall": 0.4703899855560905,
+        "rule_f1": 0.20651025153244557,
+        "qualifies": true
+      }
+    }
+  ],
+  "chosen": {
+    "target": "incident",
+    "horizon_hours": 72
+  },
+  "test_evaluation": false
+}
