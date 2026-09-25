@@ -1,0 +1,15 @@
+run-006: separate HGB models for equipment failure and incident episodes, v2 features, folds A and B, then one test 2026 evaluation per target.
+
+Written on 2026-09-26 before run-006 results were seen.
+
+Classes of alarm states (all 16 alarm states in 2019-2026):
+failure: Неисправен, Обесточен, Отключено устройство, Питание от батарей, Батарея разряжена, Не определено, Много неисправных устройств.
+incident: Не замкнут, Обнаружено движение, Обнаружен дым, Обнаружен газ, Затоплен, Работают все насосы в АНС, Рычаг сдернут, Температура ниже 3ºC, Температура выше 40ºC.
+Episodes per class: ml-dataset/episodes.sql with the 900-second gap over alarm rows of that class only (ml-dataset-v2/class_labels.py).
+Check: the same builder over all 16 states reproduces episodes-900.parquet exactly (502535 rows, 0 differences both ways).
+Labels: v2 rows with a known v2 label; label_<class> = 1 if an episode of that class with an observed left boundary starts in (as_of, as_of + 24h].
+
+Protocol per target: HGB with run-002 parameters, features as in run-002 (object features rejected in run-005).
+2025 figures: model trained before 2024-12-31, threshold by max F1 on 2024 with the fold A model.
+Test 2026: the same model, channel and object thresholds by max F1 on 2025, evaluated once. First look at these targets, same 2026 period as run-002.
+No acceptance rule against run-002: these are new targets. Reported next to the base rate and the alarm-in-24h rule for every unit.
