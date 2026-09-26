@@ -8,8 +8,7 @@ import urllib.request
 import numpy as np
 import pandas as pd
 
-import pump_predictor
-from pump_predictor import BadReadings, PumpPredictor, pumps_data
+from pump_predictor import BadReadings, PumpPredictor, pumps_data, v5
 import service
 
 
@@ -21,14 +20,23 @@ class ConstantModel:
         return np.column_stack([1 - np.full(len(matrix), self.value), np.full(len(matrix), self.value)])
 
 
-def make_predictor(b=0.6, c=0.4):
+class Router:
+    classes_ = np.array(['normal', 'Несоосность'])
+
+    def predict(self, matrix):
+        return np.array(['Несоосность'] * len(matrix))
+
+
+def make_predictor(values=(0.6, 0.4, 0.2)):
     predictor = PumpPredictor.__new__(PumpPredictor)
     predictor.model_name = 'pumps-test'
-    predictor.profile = {pump: np.linspace(1, 2, 12) for pump in pumps_data.PUMPS}
-    fitted = dict(A=('a3', ConstantModel(0.1)), B=('v3', ConstantModel(b)), C=('v3', ConstantModel(c)))
+    predictor.max_readings = 289
+    predictor.stats = dict(median={p: np.linspace(1, 2, 6) for p in pumps_data.PUMPS}, std={p: np.full(6, 0.1) for p in pumps_data.PUMPS})
+    predictor.router = Router()
+    fitted = dict(F=ConstantModel(values[0]), T=ConstantModel(values[1]), M=ConstantModel(values[2]))
     predictor.models = {'30min': fitted, '1h': fitted}
-    predictor.decision = dict(horizons={'30min': dict(horizon_hours=0.5, variant='D', threshold=0.5),
-                                        '1h': dict(horizon_hours=1.0, variant='D', threshold=0.51)})
+    predictor.decision = dict(horizons={'30min': dict(horizon_hours=0.5, variant='T', threshold=0.3),
+                                        '1h': dict(horizon_hours=1.0, variant='F', threshold=0.7)})
     return predictor
 
 
@@ -40,28 +48,22 @@ def readings(count, seed=0):
 class FeatureParityTest(unittest.TestCase):
     def test_last_row_matches_experiment_features(self):
         predictor = make_predictor()
-        for count in (1, 5, 13, 30, 97):
+        for count in (1, 5, 13, 100, 289):
             rows = readings(count, seed=count)
             frame = pd.DataFrame(rows)
             frame['pump_id'], frame['trajectory'] = 'NPV_2_2', 0
-            profile = np.tile(predictor.profile['NPV_2_2'], (count, 1))
-            expected = pumps_data.feature_frame_v3(frame, np.ones(count, dtype=bool), profile).iloc[[-1]]
-            got = predictor.features('NPV_2_2', rows)['v3']
-            pd.testing.assert_frame_equal(got.reset_index(drop=True), expected.reset_index(drop=True))
+            expected = v5.feature_frame(frame, predictor.stats).iloc[[-1]]
+            pd.testing.assert_frame_equal(predictor.features('NPV_2_2', rows).reset_index(drop=True), expected.reset_index(drop=True))
 
-    def test_reading_96_steps_back_sets_the_96_step_change(self):
+    def test_reading_288_rows_back_is_inside_the_288_mean(self):
         predictor = make_predictor()
-        rows = readings(97)
+        rows = readings(289)
         changed = [dict(rows[0], motor_current=500.0)] + rows[1:]
-        got = predictor.features('NPV_2_1', changed)['v3']
-        self.assertAlmostEqual(got['motor_current_change_96'].iloc[0], rows[-1]['motor_current'] - 500.0)
-        pd.testing.assert_series_equal(got['motor_current_change_36'], predictor.features('NPV_2_1', rows)['v3']['motor_current_change_36'])
-
-    def test_short_history_is_padded_with_normal_profile(self):
-        predictor = make_predictor()
-        rows = readings(3)
-        got = predictor.features('NPV_2_3', rows)['v3']
-        self.assertAlmostEqual(got['motor_current_change_12'].iloc[0], rows[-1]['motor_current'] - predictor.profile['NPV_2_3'][4])
+        self.assertEqual(predictor.features('NPV_2_1', changed)['motor_current_mean_288'].iloc[0],
+                         predictor.features('NPV_2_1', rows)['motor_current_mean_288'].iloc[0])
+        changed = [rows[0], dict(rows[1], motor_current=500.0)] + rows[2:]
+        self.assertNotEqual(predictor.features('NPV_2_1', changed)['motor_current_mean_288'].iloc[0],
+                            predictor.features('NPV_2_1', rows)['motor_current_mean_288'].iloc[0])
 
 
 class ValidationTest(unittest.TestCase):
@@ -71,19 +73,21 @@ class ValidationTest(unittest.TestCase):
         del broken[1]['motor_current']
         nan = readings(2)
         nan[0]['motor_current'] = float('nan')
-        for pump, rows in (('NPV_9', readings(2)), ('NPV_2_1', []), ('NPV_2_1', readings(98)), ('NPV_2_1', broken),
+        for pump, rows in (('NPV_9', readings(2)), ('NPV_2_1', []), ('NPV_2_1', readings(290)), ('NPV_2_1', broken),
                            ('NPV_2_1', nan), ('NPV_2_1', 'x'), ('NPV_2_1', [dict(readings(1)[0], motor_current='a')])):
             with self.assertRaises(BadReadings):
                 predictor.predict(pump, rows)
 
 
 class PredictTest(unittest.TestCase):
-    def test_ensemble_mean_and_thresholds(self):
-        result = make_predictor(0.6, 0.41).predict('NPV_2_4', readings(20))
+    def test_variants_thresholds_and_diagnosis(self):
+        result = make_predictor().predict('NPV_2_4', readings(20))
         first, second = result['forecasts']
-        self.assertAlmostEqual(first['probability'], 0.505)
+        self.assertAlmostEqual(first['probability'], 0.4)
+        self.assertAlmostEqual(second['probability'], 0.6)
         self.assertEqual((first['alert'], second['alert']), (True, False))
-        self.assertEqual((first['horizon_hours'], second['horizon_hours'], second['model_threshold']), (0.5, 1.0, 0.51))
+        self.assertEqual((first['horizon_hours'], second['horizon_hours'], second['model_threshold']), (0.5, 1.0, 0.7))
+        self.assertEqual(result['diagnosis'], 'Несоосность')
         self.assertTrue(result['synthetic'])
 
 
@@ -91,6 +95,7 @@ class RouteTest(unittest.TestCase):
     def serve(self, pumps):
         server = ThreadingHTTPServer(('127.0.0.1', 0), service.make_handler(None, None, pumps))
         threading.Thread(target=server.serve_forever, daemon=True).start()
+        self.addCleanup(server.server_close)
         self.addCleanup(server.shutdown)
         return f'http://127.0.0.1:{server.server_port}/predict_pump'
 
@@ -104,7 +109,7 @@ class RouteTest(unittest.TestCase):
 
     def test_routes(self):
         url = self.serve(make_predictor())
-        code, body = self.post(url, dict(pump_id='NPV_2_1', readings=readings(10)))
+        code, body = self.post(url, dict(pump_id='NPV_2_1', readings=readings(289)))
         self.assertEqual((code, body['status'], len(body['forecasts'])), (200, 'ok', 2))
         self.assertEqual(self.post(url, dict(pump_id='NPV_2_1', readings=[]))[0], 400)
         self.assertEqual(self.post(url, dict(readings=readings(2)))[0], 400)

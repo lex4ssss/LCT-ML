@@ -16,6 +16,7 @@ from object_predictor import ObjectPredictor
 from pump_predictor import BadReadings, PumpPredictor
 
 MAX_BODY = 64 * 1024
+PUMP_MAX_BODY = 512 * 1024
 
 
 class Predictor:
@@ -113,7 +114,7 @@ def make_handler(predictor, objects=None, pumps=None):
         def predict_pump(self):
             try:
                 length = int(self.headers.get('Content-Length', '0'))
-                if not 0 < length <= MAX_BODY:
+                if not 0 < length <= PUMP_MAX_BODY:
                     raise ValueError('body size')
                 payload = json.loads(self.rfile.read(length))
                 result = pumps.predict(payload['pump_id'], payload['readings'])

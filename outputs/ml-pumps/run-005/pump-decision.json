@@ -1,0 +1,60 @@
+{
+  "spec": "spec_pumps_v5.txt",
+  "version": "v5",
+  "synthetic": true,
+  "test": "seed-909.csv",
+  "model_path": "pumps_v5_models.joblib",
+  "model_sha256": "8e08ab0fa0a221cfa442555dcc56ebf74afcab123b4c66aff88a350cec7a084b",
+  "max_readings": 289,
+  "horizons": {
+    "30min": {
+      "horizon_hours": 0.5,
+      "variant": "T",
+      "threshold": 0.13657755094440735,
+      "test": {
+        "precision": 0.9507,
+        "recall": 0.9984,
+        "f1": 0.974,
+        "tp": 56906,
+        "fp": 2950,
+        "fn": 94,
+        "rows": 1228368,
+        "base_rate": 0.0464
+      },
+      "test_recall_by_fault_type": {
+        "Засорение фильтра": 1.0,
+        "Неизвестная неисправность": 0.9783,
+        "Несоосность": 0.9988
+      }
+    },
+    "1h": {
+      "horizon_hours": 1.0,
+      "variant": "F",
+      "threshold": 0.3321256457025102,
+      "test": {
+        "precision": 0.9507,
+        "recall": 0.9418,
+        "f1": 0.9462,
+        "tp": 104382,
+        "fp": 5418,
+        "fn": 6456,
+        "rows": 1228368,
+        "base_rate": 0.0902
+      },
+      "test_recall_by_fault_type": {
+        "Засорение фильтра": 0.9722,
+        "Неизвестная неисправность": 0.8312,
+        "Несоосность": 0.9176
+      }
+    }
+  },
+  "router_test": {
+    "accuracy": 0.9999,
+    "f1": {
+      "normal": 0.9443,
+      "Несоосность": 1.0,
+      "Засорение фильтра": 1.0,
+      "Неизвестная неисправность": 0.9993
+    }
+  }
+}
