@@ -17,11 +17,14 @@ TARGET_RECALL = 0.5
 MAX_BASE_RATE = 0.35
 
 
-def choose_threshold(labels, scores):
+def choose_threshold(labels, scores, rule='margin'):
     thresholds, precision, recall = curve(labels, scores)
     eligible = (precision >= TARGET_PRECISION) & (recall >= TARGET_RECALL)
     if not eligible.any():
         return None, None
+    if rule == 'recall':
+        best = np.flatnonzero(eligible)[np.argmax(recall[eligible])]
+        return float(thresholds[best]), float(recall[best])
     margin = np.minimum(precision - TARGET_PRECISION, recall - TARGET_RECALL)
     best = np.flatnonzero(eligible)[np.argmax(margin[eligible])]
     return float(thresholds[best]), float(margin[best])
@@ -75,13 +78,13 @@ def predict(fitted, features, variant):
     return model.predict_proba(features[feature_set])[:, 1]
 
 
-def run(primary, replications, out_dir, feature_sets=('v1', 'v2'), spec='spec_pumps_v2.txt'):
+def run(primary, replications, out_dir, feature_sets=('v1', 'v2'), spec='spec_pumps_v2.txt', threshold_rule='margin'):
     out_dir.mkdir(parents=True, exist_ok=True)
     features, labels, meta, shape = prepare(primary, feature_sets)
     part = pumps_data.split(meta)
     rule = pumps_data.rule_alarm(features[feature_sets[0]])
     fault_type = meta['fault_type'].fillna('').to_numpy()
-    report = dict(spec=spec, primary=dict(file=primary.name, **shape,
+    report = dict(spec=spec, threshold_rule=threshold_rule, primary=dict(file=primary.name, **shape,
                   split={p: int((part == p).sum()) for p in ('train', 'validation', 'test')}), horizons={})
     fitted_by_horizon, chosen = {}, {}
     train, valid, test = part == 'train', part == 'validation', part == 'test'
@@ -95,7 +98,7 @@ def run(primary, replications, out_dir, feature_sets=('v1', 'v2'), spec='spec_pu
         variants = {}
         for variant in ('A', 'B', 'C', 'D'):
             scores = predict(fitted, {k: v[valid] for k, v in features.items()}, variant)
-            threshold, margin = choose_threshold(y[valid], scores)
+            threshold, margin = choose_threshold(y[valid], scores, threshold_rule)
             model_valid = scores_at(y[valid], scores >= threshold) if threshold is not None else None
             qualified = (threshold is not None and rule_valid['base_rate'] <= MAX_BASE_RATE
                          and model_valid['f1'] > rule_valid['f1'])
@@ -140,8 +143,10 @@ def main():
     parser.add_argument('--out', type=Path, required=True)
     parser.add_argument('--features', nargs=2, default=['v1', 'v2'])
     parser.add_argument('--spec', default='spec_pumps_v2.txt')
+    parser.add_argument('--threshold-rule', choices=['margin', 'recall'], default='margin')
     args = parser.parse_args()
-    print(json.dumps(run(args.primary, args.replication, args.out, tuple(args.features), args.spec), ensure_ascii=False, indent=2))
+    print(json.dumps(run(args.primary, args.replication, args.out, tuple(args.features), args.spec, args.threshold_rule),
+                     ensure_ascii=False, indent=2))
 
 
 if __name__ == '__main__':

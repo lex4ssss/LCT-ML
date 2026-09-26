@@ -298,6 +298,19 @@ class MetricV2Test(unittest.TestCase):
         self.assertAlmostEqual(margin, 0.05)
         self.assertEqual(pumps_v2.choose_threshold(np.array([0, 1, 1]), np.array([0.9, 0.8, 0.7])), (None, None))
 
+    def test_recall_rule_takes_largest_recall_at_0_95(self):
+        import pumps_v2
+        labels = np.array([1] * 12 + [0] + [1] * 8 + [0] * 20)
+        scores = np.linspace(1, 0, len(labels))
+        threshold, recall = pumps_v2.choose_threshold(labels, scores, 'recall')
+        self.assertAlmostEqual(threshold, scores[20])
+        self.assertAlmostEqual(recall, 1.0)
+        labels = np.array([1] * 12 + [0] * 2 + [1] * 8 + [0] * 20)
+        scores = np.linspace(1, 0, len(labels))
+        threshold, recall = pumps_v2.choose_threshold(labels, scores, 'recall')
+        self.assertAlmostEqual(threshold, scores[11])
+        self.assertAlmostEqual(recall, 0.6)
+
 
 if __name__ == '__main__':
     unittest.main()
