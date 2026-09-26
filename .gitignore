@@ -18,3 +18,4 @@ __pycache__/
 .venv
 work/ml-prepared
 work/baseline-reproduced/
+work/
