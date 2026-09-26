@@ -233,6 +233,61 @@ class FeatureV2Test(unittest.TestCase):
         self.assertFalse([c for c in self.features.columns if c.startswith(forbidden)])
 
 
+class FeatureV3Test(unittest.TestCase):
+    def setUp(self):
+        self.frame = pumps_data.reconstruct(make_frame({'NPV_2_1': [96, 12], 'NPV_2_2': [12]}, normals_by_pump=5))
+        self.features, _, self.meta = pumps_data.prediction_rows(self.frame, [30], feature_set='v3')
+        normal = self.frame[self.frame['trajectory'] < 0].sort_values('timestamp')
+        self.profile = normal[normal['pump_id'] == 'NPV_2_1'].iloc[:3][pumps_data.SENSORS].median().to_numpy()
+        trajectory = self.frame[(self.frame['trajectory'] >= 0) & (self.frame['pump_id'] == 'NPV_2_1')]
+        longest = trajectory.groupby('trajectory')['step'].transform('size') == 96
+        self.x = trajectory[longest].sort_values('step')[pumps_data.SENSORS].to_numpy()
+        self.padded = np.vstack([np.tile(self.profile, (96, 1)), self.x])
+
+    def at(self, column, step):
+        rows = (self.meta['pump_id'] == 'NPV_2_1') & (self.meta['step'] == step)
+        rows &= self.meta.groupby('trajectory')['step'].transform('max').to_numpy() >= 90
+        return self.features.loc[rows.to_numpy(), column].iloc[0]
+
+    def test_profile_uses_train_share_of_normal_rows(self):
+        profile = pumps_data.normal_profile(self.frame)
+        row = np.flatnonzero(self.frame['pump_id'].to_numpy() == 'NPV_2_1')[0]
+        np.testing.assert_allclose(profile[row], self.profile)
+
+    def test_changes_equal_those_on_history_padded_with_normal_profile(self):
+        motor = pumps_data.SENSORS.index('motor_current')
+        for step in (0, 5, 11, 12, 30, 40, 94):
+            t = 96 + step
+            for window in (12, 36, 96):
+                self.assertAlmostEqual(self.at(f'motor_current_change_{window}', step), self.padded[t, motor] - self.padded[t - window, motor])
+            expected = (self.padded[t, motor] - self.padded[t - 12, motor]) - (self.padded[t - 12, motor] - self.padded[t - 24, motor])
+            self.assertAlmostEqual(self.at('motor_current_acceleration_12', step), expected)
+
+    def test_normal_rows_have_zero_dynamics(self):
+        normal = self.meta['trajectory'].to_numpy() < 0
+        dynamic = [c for c in self.features.columns if 'change' in c or 'acceleration' in c]
+        self.assertTrue((self.features.loc[normal, dynamic] == 0).all().all())
+
+    def test_first_row_changes_are_not_zero(self):
+        self.assertNotEqual(self.at('motor_current_change_96', 0), 0.0)
+
+    def test_no_mean_step_or_forbidden_columns(self):
+        forbidden = ('anomaly', 'timestamp', 'fault', 'status', 'trajectory')
+        self.assertFalse([c for c in self.features.columns if '_mean_step_' in c or c.startswith(forbidden)])
+
+    def test_future_rows_do_not_change_past_features(self):
+        changed = self.frame.copy()
+        changed.loc[(changed['step'] >= 60) & (changed['trajectory'] >= 0), pumps_data.SENSORS] *= 10
+        after, _, _ = pumps_data.prediction_rows(changed, [30], feature_set='v3')
+        early = self.meta['step'].to_numpy() < 60
+        pd.testing.assert_frame_equal(self.features[early], after[early])
+
+    def test_a3_is_the_v3_subset(self):
+        a3, _, _ = pumps_data.prediction_rows(self.frame, [30], feature_set='a3')
+        pd.testing.assert_frame_equal(self.features[a3.columns], a3)
+        self.assertEqual(len(a3.columns), 12 + 12 + 1)
+
+
 class MetricV2Test(unittest.TestCase):
     def test_threshold_at_0_95(self):
         import pumps_v2

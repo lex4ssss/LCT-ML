@@ -93,7 +93,8 @@ def prediction_rows(reconstructed, horizons_minutes, feature_set='v1'):
     is_fault_row = in_trajectory & (frame['step'].to_numpy() == last_step)
     fault_type = frame['fault_type_name'].where(is_fault_row).groupby(frame['trajectory']).transform('first')
     remaining = np.where(in_trajectory, STEP_MINUTES * (last_step - frame['step'].to_numpy()), np.inf)
-    features = feature_frame(frame, in_trajectory) if feature_set == 'v1' else feature_frame_v2(frame, in_trajectory)
+    builders = dict(v1=feature_frame, v2=feature_frame_v2, a3=lambda f, t: feature_frame_a3(f, t)[0], v3=feature_frame_v3)
+    features = builders[feature_set](frame, in_trajectory)
     keep = ~is_fault_row
     labels = {h: ((remaining > 0) & (remaining <= h))[keep].astype(np.int8) for h in horizons_minutes}
     meta = pd.DataFrame({
@@ -145,6 +146,49 @@ def feature_frame_v2(frame, in_trajectory):
     acceleration = np.where((position >= 2 * CHANGE_WINDOW)[:, None], recent - previous, 0.0)
     for i, name in enumerate(SENSORS):
         extra[f'{name}_acceleration_{CHANGE_WINDOW}'] = acceleration[:, i]
+    for group, columns in (('vibration', slice(0, 4)), ('temperature', slice(8, 12))):
+        extra[f'{group}_mean'] = values[:, columns].mean(axis=1)
+        extra[f'{group}_max'] = values[:, columns].max(axis=1)
+        extra[f'{group}_change_{CHANGE_WINDOW}_mean'] = recent[:, columns].mean(axis=1)
+        extra[f'{group}_change_{CHANGE_WINDOW}_max'] = recent[:, columns].max(axis=1)
+    return pd.concat([features, pd.DataFrame(extra, index=features.index)], axis=1)
+
+
+def normal_profile(frame):
+    normal = frame[frame['trajectory'] < 0].sort_values('timestamp', kind='stable')
+    rank = normal.groupby('pump_id').cumcount()
+    size = normal.groupby('pump_id')['pump_id'].transform('size')
+    train = normal[rank < (0.6 * size).astype(np.int64)]
+    profile = train.groupby('pump_id')[SENSORS].median()
+    return profile.reindex(frame['pump_id']).to_numpy(dtype=np.float64)
+
+
+def lagged(values, profile, position, lag):
+    earlier = np.arange(len(values)) - np.minimum(position, lag)
+    return np.where((position >= lag)[:, None], values[earlier], profile)
+
+
+def feature_frame_a3(frame, in_trajectory, windows=(CHANGE_WINDOW,)):
+    values = frame[SENSORS].to_numpy(dtype=np.float64)
+    position = frame.groupby('trajectory').cumcount().to_numpy()
+    profile = normal_profile(frame)
+    features = pd.DataFrame(values, columns=SENSORS, index=frame.index)
+    changes = {}
+    for window in windows:
+        changes[window] = np.where(in_trajectory[:, None], values - lagged(values, profile, position, window), 0.0)
+        for i, name in enumerate(SENSORS):
+            features[f'{name}_change_{window}'] = changes[window][:, i]
+    features['pump_type'] = pd.Categorical(frame['pump_id'], categories=PUMPS).codes
+    return features, values, position, profile, changes
+
+
+def feature_frame_v3(frame, in_trajectory):
+    features, values, position, profile, changes = feature_frame_a3(frame, in_trajectory, (CHANGE_WINDOW, 36, 96))
+    lag12 = lagged(values, profile, position, CHANGE_WINDOW)
+    lag24 = lagged(values, profile, position, 2 * CHANGE_WINDOW)
+    acceleration = np.where(in_trajectory[:, None], (values - lag12) - (lag12 - lag24), 0.0)
+    extra = {f'{name}_acceleration_{CHANGE_WINDOW}': acceleration[:, i] for i, name in enumerate(SENSORS)}
+    recent = changes[CHANGE_WINDOW]
     for group, columns in (('vibration', slice(0, 4)), ('temperature', slice(8, 12))):
         extra[f'{group}_mean'] = values[:, columns].mean(axis=1)
         extra[f'{group}_max'] = values[:, columns].max(axis=1)

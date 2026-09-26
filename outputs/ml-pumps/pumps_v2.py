@@ -48,21 +48,22 @@ def reconstruction_quality(reconstructed, seed=0):
                 random_mean_abs_step=round(float(np.abs(np.diff(random_score))[same].mean()), 5))
 
 
-def prepare(path):
+def prepare(path, feature_sets=('v1', 'v2')):
     reconstructed = pumps_data.reconstruct(pumps_data.load(path), allow_extra=True)
-    v1, labels, meta = pumps_data.prediction_rows(reconstructed, HORIZONS.values(), feature_set='v1')
-    v2, _, _ = pumps_data.prediction_rows(reconstructed, HORIZONS.values(), feature_set='v2')
+    built = {name: pumps_data.prediction_rows(reconstructed, HORIZONS.values(), feature_set=name) for name in feature_sets}
+    first, labels, meta = built[feature_sets[0]]
     shape = dict(rows=int(len(reconstructed)), trajectories=int(reconstructed['trajectory'].max() + 1),
-                 normal_rows=int((reconstructed['trajectory'] < 0).sum()), prediction_rows=int(len(v1)),
+                 normal_rows=int((reconstructed['trajectory'] < 0).sum()), prediction_rows=int(len(first)),
                  reconstruction=reconstruction_quality(reconstructed))
-    return dict(v1=v1, v2=v2), labels, meta, shape
+    return {name: built[name][0] for name in feature_sets}, labels, meta, shape
 
 
-def make_models():
+def make_models(feature_sets=('v1', 'v2')):
+    reference, extended = feature_sets
     return dict(
-        A=('v1', HistGradientBoostingClassifier(random_state=0)),
-        B=('v2', HistGradientBoostingClassifier(random_state=0)),
-        C=('v2', make_pipeline(StandardScaler(), MLPClassifier(hidden_layer_sizes=(64, 32), early_stopping=True,
+        A=(reference, HistGradientBoostingClassifier(random_state=0)),
+        B=(extended, HistGradientBoostingClassifier(random_state=0)),
+        C=(extended, make_pipeline(StandardScaler(), MLPClassifier(hidden_layer_sizes=(64, 32), early_stopping=True,
                                                                random_state=0))),
     )
 
@@ -74,19 +75,19 @@ def predict(fitted, features, variant):
     return model.predict_proba(features[feature_set])[:, 1]
 
 
-def run(primary, replications, out_dir):
+def run(primary, replications, out_dir, feature_sets=('v1', 'v2'), spec='spec_pumps_v2.txt'):
     out_dir.mkdir(parents=True, exist_ok=True)
-    features, labels, meta, shape = prepare(primary)
+    features, labels, meta, shape = prepare(primary, feature_sets)
     part = pumps_data.split(meta)
-    rule = pumps_data.rule_alarm(features['v1'])
+    rule = pumps_data.rule_alarm(features[feature_sets[0]])
     fault_type = meta['fault_type'].fillna('').to_numpy()
-    report = dict(spec='spec_pumps_v2.txt', primary=dict(file=primary.name, **shape,
+    report = dict(spec=spec, primary=dict(file=primary.name, **shape,
                   split={p: int((part == p).sum()) for p in ('train', 'validation', 'test')}), horizons={})
     fitted_by_horizon, chosen = {}, {}
     train, valid, test = part == 'train', part == 'validation', part == 'test'
     for name, minutes in HORIZONS.items():
         y = labels[minutes].astype(np.int64)
-        fitted = make_models()
+        fitted = make_models(feature_sets)
         for feature_set, model in fitted.values():
             model.fit(features[feature_set][train], y[train])
         fitted_by_horizon[name] = fitted
@@ -113,11 +114,11 @@ def run(primary, replications, out_dir):
     report['replication'] = {}
     for path in replications:
         try:
-            rep_features, rep_labels, rep_meta, rep_shape = prepare(path)
+            rep_features, rep_labels, rep_meta, rep_shape = prepare(path, feature_sets)
         except pumps_data.NotReconstructable as error:
             report['replication'][path.name] = dict(not_reconstructable=str(error))
             continue
-        rep_rule = pumps_data.rule_alarm(rep_features['v1'])
+        rep_rule = pumps_data.rule_alarm(rep_features[feature_sets[0]])
         rep_fault_type = rep_meta['fault_type'].fillna('').to_numpy()
         entry = dict(**rep_shape)
         for name, variant in chosen.items():
@@ -137,8 +138,10 @@ def main():
     parser.add_argument('--primary', type=Path, required=True)
     parser.add_argument('--replication', type=Path, nargs='*', default=[])
     parser.add_argument('--out', type=Path, required=True)
+    parser.add_argument('--features', nargs=2, default=['v1', 'v2'])
+    parser.add_argument('--spec', default='spec_pumps_v2.txt')
     args = parser.parse_args()
-    print(json.dumps(run(args.primary, args.replication, args.out), ensure_ascii=False, indent=2))
+    print(json.dumps(run(args.primary, args.replication, args.out, tuple(args.features), args.spec), ensure_ascii=False, indent=2))
 
 
 if __name__ == '__main__':
