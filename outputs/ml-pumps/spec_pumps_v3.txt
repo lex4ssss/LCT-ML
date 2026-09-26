@@ -22,3 +22,10 @@ Variants: A = HGB on sensors, pump type and 12-step changes (pumps-v1 without th
 (as in pumps-v2); D = mean of B and C. Data, labels, split, rule, the 0.95 criterion, qualification, threshold and choice are those of
 pumps-v2. Recall at precision >= 0.95 on validation is reported for every variant next to the margin threshold, since the margin rule
 stops at recall 0.55 when precision is 1.0.
+
+Addendum, written on 2026-09-26 before any pumps-v3 result was seen. Padding with the first row still leaks: under a linear drift the
+ratio of the 36-step and 12-step changes is p / 12 for 12 <= p < 36. The history before a trajectory is therefore padded with the pump's
+normal profile instead: per pump, the median of each sensor over the normal rows that fall in the train share (first 60 % by timestamp).
+x(t - w) is that profile when the trajectory has fewer than w earlier rows; the same holds for acceleration. This treats the time before
+degradation as normal operation, as it is in reality, so the onset of a fault is visible only as a jump in the sensors. The first row of a
+trajectory no longer has zero changes. Everything else in this spec stands.
