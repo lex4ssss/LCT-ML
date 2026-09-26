@@ -1,0 +1,41 @@
+pumps-v2: the pump failure forecast of pumps-v1 toward precision >= 0.95 at recall >= 0.5, with a neural model and an ensemble, and a
+reconstruction that also covers the two replication files.
+
+Written on 2026-09-26 after pumps-v1 run-001 and before any pumps-v2 result was seen. Test of the primary file was already opened once in
+pumps-v1 run-001 for 30 min and 1 h (0.727/0.513 and 0.778/0.559 at the 0.7/0.5 criterion). Known on validation before this spec: the
+run-001 HGB reaches recall 0.385 (30 min) and 0.438 (1 h) at precision >= 0.95, so it does not meet the new target.
+
+Data, prediction rows, labels, horizons, the split and the rule are those of pumps-v1.
+
+Reconstruction v2. Per pump, the number of open trajectories is computed backward from the last step: open(287) = rows(287),
+open(s) = open(s + 1) + fault labels at step s. Rows at a step beyond open(s) are extra rows; at most one extra row per step is allowed,
+it must be the first row of the step in file order and carry no fault label, and it is treated as a normal row. Every other check of
+pumps-v1 still holds. In the generator such rows are normal records written before the first trajectory, while the clock was still inside
+the first 24 h. On the primary file reconstruction v2 must give the same trajectories as pumps-v1 (it has no extra rows).
+Reconstruction quality is reported, not used: the mean absolute change of anomaly_score_1 between consecutive rows of a reconstructed
+trajectory, next to the same value for rows matched at random within the step.
+
+Features v2, still only the row and earlier rows of its trajectory, never step, time, trajectory length, anomaly scores, status or fault
+fields:
+1. the pumps-v1 features;
+2. per sensor, for windows of 36 and 96 steps: change against the row that many steps earlier (or the first row) and the mean step change;
+3. per sensor: acceleration = change over the last 12 steps minus change over the 12 steps before those (0 where history is shorter);
+4. across sensors: mean and max of the four vibrations, mean and max of the four temperatures, and the same for their 12-step changes.
+
+Variants, each trained per horizon on train:
+A. pumps-v1: HGB on pumps-v1 features (reference, equal to run-001);
+B. HGB on features v2, random_state 0, default parameters;
+C. MLP on features v2: standard scaling, sklearn MLPClassifier with hidden layers (64, 32), adam, early_stopping, random_state 0;
+D. ensemble: mean of the probabilities of B and C.
+
+A variant qualifies on validation if:
+1. the highest precision among thresholds with recall >= 0.5 is >= 0.95,
+2. the base rate is <= 0.35,
+3. its F1 at the step 4 threshold exceeds the F1 of the rule;
+4. threshold: among validation thresholds with precision >= 0.95 and recall >= 0.5, the one with the largest min(precision - 0.95, recall - 0.5).
+Choice per horizon: the qualifier with the largest margin at its threshold. If nothing qualifies at a horizon, test is not opened for it and
+every variant is reported with its best precision at recall >= 0.5 and its recall at precision >= 0.95 on validation.
+
+Confirmation: the chosen variant per horizon is scored once on test with its validation threshold. Replication: the same models and
+thresholds are applied once to all prediction rows of the two replication files. Precision, recall, F1, base rate, the rule and recall per
+fault type are reported as they are; thresholds are not tuned on test or replication data.
