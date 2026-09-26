@@ -20,12 +20,12 @@ class NotReconstructable(ValueError):
 
 
 def load(path):
-    columns = ['timestamp', 'pump_id', 'fault_type_name', *SENSORS]
+    columns = ['timestamp', 'pump_id', 'fault_type_name', 'anomaly_score_1', *SENSORS]
     frame = pd.read_csv(path, usecols=columns, dtype={'fault_type_name': 'string'}, parse_dates=['timestamp'])
     return frame.reset_index(drop=True)
 
 
-def reconstruct(frame):
+def reconstruct(frame, allow_extra=False):
     step = ((frame['timestamp'] - ORIGIN).dt.total_seconds() // (STEP_MINUTES * 60)).astype(np.int64).to_numpy()
     labelled = frame['fault_type_name'].notna().to_numpy()
     pump = frame['pump_id'].to_numpy()
@@ -36,6 +36,11 @@ def reconstruct(frame):
         in_window = np.flatnonzero((pump == pump_id) & (step < max_length))
         by_step = in_window[np.argsort(step[in_window], kind='stable')]
         steps_here = step[by_step]
+        extra = extra_rows(by_step, steps_here, labelled, max_length)
+        if len(extra) and not allow_extra:
+            raise NotReconstructable(f'{pump_id}: extra rows at steps {sorted(step[extra])[:5]}')
+        keep = ~np.isin(by_step, extra)
+        by_step, steps_here = by_step[keep], steps_here[keep]
         open_ids = np.array([], dtype=np.int64)
         for current in range(max_length):
             rows = by_step[steps_here == current]
@@ -61,14 +66,34 @@ def reconstruct(frame):
     return result
 
 
-def prediction_rows(reconstructed, horizons_minutes):
+def extra_rows(by_step, steps_here, labelled, max_length):
+    counts = np.bincount(steps_here, minlength=max_length)
+    labels = np.bincount(steps_here, weights=labelled[by_step], minlength=max_length).astype(np.int64)
+    open_count = np.zeros(max_length, dtype=np.int64)
+    open_count[-1] = counts[-1]
+    for current in range(max_length - 2, -1, -1):
+        open_count[current] = open_count[current + 1] + labels[current]
+    surplus = counts - open_count
+    if (surplus < 0).any() or (surplus > 1).any():
+        bad = int(np.flatnonzero((surplus < 0) | (surplus > 1))[0])
+        raise NotReconstructable(f'{int(counts[bad])} rows at step {bad}, {int(open_count[bad])} open trajectories')
+    extra = []
+    for current in np.flatnonzero(surplus == 1):
+        first = by_step[np.flatnonzero(steps_here == current)[0]]
+        if labelled[first]:
+            raise NotReconstructable(f'extra row at step {current} carries a fault label')
+        extra.append(first)
+    return np.asarray(extra, dtype=np.int64)
+
+
+def prediction_rows(reconstructed, horizons_minutes, feature_set='v1'):
     frame = reconstructed.sort_values(['trajectory', 'step'], kind='stable')
     in_trajectory = frame['trajectory'].to_numpy() >= 0
     last_step = frame.groupby('trajectory')['step'].transform('max').to_numpy()
     is_fault_row = in_trajectory & (frame['step'].to_numpy() == last_step)
     fault_type = frame['fault_type_name'].where(is_fault_row).groupby(frame['trajectory']).transform('first')
     remaining = np.where(in_trajectory, STEP_MINUTES * (last_step - frame['step'].to_numpy()), np.inf)
-    features = feature_frame(frame, in_trajectory)
+    features = feature_frame(frame, in_trajectory) if feature_set == 'v1' else feature_frame_v2(frame, in_trajectory)
     keep = ~is_fault_row
     labels = {h: ((remaining > 0) & (remaining <= h))[keep].astype(np.int8) for h in horizons_minutes}
     meta = pd.DataFrame({
@@ -96,6 +121,36 @@ def feature_frame(frame, in_trajectory):
     features['pump_type'] = pd.Categorical(frame['pump_id'], categories=PUMPS).codes
     assert (trajectory[np.arange(len(frame)) - lag] == trajectory).all()
     return features
+
+
+def window_change(values, position, in_trajectory, window):
+    lag = np.minimum(position, window)
+    change = np.where(in_trajectory[:, None], values - values[np.arange(len(values)) - lag], 0.0)
+    return change, change / np.maximum(lag, 1)[:, None]
+
+
+def feature_frame_v2(frame, in_trajectory):
+    features = feature_frame(frame, in_trajectory)
+    values = frame[SENSORS].to_numpy(dtype=np.float64)
+    position = frame.groupby('trajectory').cumcount().to_numpy()
+    extra = {}
+    for window in (36, 96):
+        change, mean_step = window_change(values, position, in_trajectory, window)
+        for i, name in enumerate(SENSORS):
+            extra[f'{name}_change_{window}'] = change[:, i]
+            extra[f'{name}_mean_step_{window}'] = mean_step[:, i]
+    recent, _ = window_change(values, position, in_trajectory, CHANGE_WINDOW)
+    shifted = np.arange(len(values)) - np.minimum(position, CHANGE_WINDOW)
+    previous = np.where((position >= 2 * CHANGE_WINDOW)[:, None], recent[shifted], 0.0)
+    acceleration = np.where((position >= 2 * CHANGE_WINDOW)[:, None], recent - previous, 0.0)
+    for i, name in enumerate(SENSORS):
+        extra[f'{name}_acceleration_{CHANGE_WINDOW}'] = acceleration[:, i]
+    for group, columns in (('vibration', slice(0, 4)), ('temperature', slice(8, 12))):
+        extra[f'{group}_mean'] = values[:, columns].mean(axis=1)
+        extra[f'{group}_max'] = values[:, columns].max(axis=1)
+        extra[f'{group}_change_{CHANGE_WINDOW}_mean'] = recent[:, columns].mean(axis=1)
+        extra[f'{group}_change_{CHANGE_WINDOW}_max'] = recent[:, columns].max(axis=1)
+    return pd.concat([features, pd.DataFrame(extra, index=features.index)], axis=1)
 
 
 def rule_alarm(features):

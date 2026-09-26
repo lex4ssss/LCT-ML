@@ -7,9 +7,10 @@ import pumps_data
 import pumps_v1
 
 
-def make_frame(lengths_by_pump, normals_by_pump=2, seed=0):
+def make_frame(lengths_by_pump, normals_by_pump=2, seed=0, leading=()):
     rng = np.random.default_rng(seed)
-    rows = []
+    rows = [dict(timestamp=pumps_data.ORIGIN + pd.Timedelta(minutes=5 * step), pump_id=pump_id, fault_type_name=None,
+                 tag=-2) for pump_id, step in leading]
     for pump_id, lengths in lengths_by_pump.items():
         for step in range(max(lengths)):
             for order, length in enumerate(lengths):
@@ -25,6 +26,7 @@ def make_frame(lengths_by_pump, normals_by_pump=2, seed=0):
     for name in pumps_data.SENSORS:
         frame[name] = rng.uniform(1.0, 2.0, len(frame))
     frame['fault_type_name'] = frame['fault_type_name'].astype('string')
+    frame['anomaly_score_1'] = np.where(frame['tag'] >= 0, (frame['tag'] % 1000) / 300 + (frame['tag'] // 1000) * 0.1, 0.0)
     return frame.sort_values(['pump_id', 'timestamp'], kind='stable').reset_index(drop=True)
 
 
@@ -150,6 +152,96 @@ class MetricTest(unittest.TestCase):
     def test_scores_at(self):
         result = pumps_v1.scores_at(np.array([1, 1, 0, 0]), np.array([True, False, True, False]))
         self.assertEqual((result['precision'], result['recall'], result['base_rate']), (0.5, 0.5, 0.5))
+
+
+class ReconstructV2Test(unittest.TestCase):
+    def test_leading_normal_rows_are_split_off(self):
+        frame = make_frame({'NPV_2_1': [12, 96, 12], 'NPV_2_2': [96]}, leading=[('NPV_2_1', 0), ('NPV_2_1', 1), ('NPV_2_2', 2)])
+        with self.assertRaises(pumps_data.NotReconstructable):
+            pumps_data.reconstruct(frame)
+        result = pumps_data.reconstruct(frame, allow_extra=True)
+        self.assertTrue((result.loc[result['tag'] == -2, 'trajectory'] == -1).all())
+        in_trajectory = result[result['trajectory'] >= 0]
+        self.assertEqual(in_trajectory.groupby('trajectory')['tag'].apply(lambda t: (t // 1000).nunique()).max(), 1)
+        self.assertEqual(sorted(in_trajectory.groupby('trajectory').size()), [12, 12, 96, 96])
+
+    def test_same_result_without_extra_rows(self):
+        frame = make_frame({'NPV_2_1': [12, 96, 12]})
+        pd.testing.assert_frame_equal(pumps_data.reconstruct(frame), pumps_data.reconstruct(frame, allow_extra=True))
+
+    def test_two_extra_rows_at_one_step_are_rejected(self):
+        frame = make_frame({'NPV_2_1': [12, 96]}, leading=[('NPV_2_1', 3), ('NPV_2_1', 3)])
+        with self.assertRaises(pumps_data.NotReconstructable):
+            pumps_data.reconstruct(frame, allow_extra=True)
+
+    def test_labelled_extra_row_is_rejected(self):
+        frame = make_frame({'NPV_2_1': [12, 96]}, leading=[('NPV_2_1', 3)])
+        frame.loc[frame['tag'] == -2, 'fault_type_name'] = 'Несоосность'
+        with self.assertRaises(pumps_data.NotReconstructable):
+            pumps_data.reconstruct(frame, allow_extra=True)
+
+    def test_quality_separates_matched_from_random(self):
+        import pumps_v2
+        result = pumps_data.reconstruct(make_frame({'NPV_2_1': [96, 96, 96, 12, 12]}))
+        quality = pumps_v2.reconstruction_quality(result)
+        self.assertLess(quality['matched_mean_abs_step'], quality['random_mean_abs_step'])
+
+
+class FeatureV2Test(unittest.TestCase):
+    def setUp(self):
+        self.frame = pumps_data.reconstruct(make_frame({'NPV_2_1': [96]}, normals_by_pump=2))
+        self.features, _, self.meta = pumps_data.prediction_rows(self.frame, [30], feature_set='v2')
+        self.ordered = self.frame[self.frame['trajectory'] >= 0].sort_values('step')['motor_current'].to_numpy()
+
+    def at(self, column, step):
+        row = np.flatnonzero((self.meta['trajectory'].to_numpy() >= 0) & (self.meta['step'].to_numpy() == step))[0]
+        return self.features[column].iloc[row]
+
+    def test_long_windows(self):
+        x = self.ordered
+        self.assertAlmostEqual(self.at('motor_current_change_36', 50), x[50] - x[14])
+        self.assertAlmostEqual(self.at('motor_current_mean_step_96', 50), (x[50] - x[0]) / 50)
+
+    def test_acceleration(self):
+        x = self.ordered
+        self.assertAlmostEqual(self.at('motor_current_acceleration_12', 40), (x[40] - x[28]) - (x[28] - x[16]))
+        self.assertEqual(self.at('motor_current_acceleration_12', 23), 0.0)
+
+    def test_group_aggregates(self):
+        vib = self.frame[self.frame['trajectory'] >= 0].sort_values('step')[pumps_data.SENSORS[:4]].to_numpy()
+        self.assertAlmostEqual(self.at('vibration_max', 10), vib[10].max())
+        self.assertAlmostEqual(self.at('vibration_change_12_mean', 30), (vib[30] - vib[18]).mean())
+
+    def test_v2_keeps_v1_columns(self):
+        v1, _, _ = pumps_data.prediction_rows(self.frame, [30], feature_set='v1')
+        pd.testing.assert_frame_equal(self.features[v1.columns], v1)
+
+    def test_normal_rows_have_zero_dynamics(self):
+        normal = self.meta['trajectory'].to_numpy() < 0
+        dynamic = [c for c in self.features.columns if 'change' in c or 'step' in c or 'acceleration' in c]
+        self.assertTrue((self.features.loc[normal, dynamic] == 0).all().all())
+
+    def test_future_rows_do_not_change_past_features(self):
+        changed = self.frame.copy()
+        changed.loc[changed['step'] >= 60, pumps_data.SENSORS] *= 10
+        after, _, _ = pumps_data.prediction_rows(changed, [30], feature_set='v2')
+        early = self.meta['step'].to_numpy() < 60
+        pd.testing.assert_frame_equal(self.features[early], after[early])
+
+    def test_no_forbidden_columns(self):
+        forbidden = ('anomaly', 'step_', 'timestamp', 'fault', 'status', 'trajectory')
+        self.assertFalse([c for c in self.features.columns if c.startswith(forbidden)])
+
+
+class MetricV2Test(unittest.TestCase):
+    def test_threshold_at_0_95(self):
+        import pumps_v2
+        labels = np.array([1] * 12 + [0] + [1] * 8 + [0] * 20)
+        scores = np.linspace(1, 0, len(labels))
+        threshold, margin = pumps_v2.choose_threshold(labels, scores)
+        self.assertAlmostEqual(threshold, scores[10])
+        self.assertAlmostEqual(margin, 0.05)
+        self.assertEqual(pumps_v2.choose_threshold(np.array([0, 1, 1]), np.array([0.9, 0.8, 0.7])), (None, None))
 
 
 if __name__ == '__main__':
