@@ -1,0 +1,14 @@
+pumps-v4: the pumps-v3 models with a threshold rule that keeps precision >= 0.95 and takes as much recall as it allows.
+
+Written on 2026-09-26 after pumps-v3 run-003. Known before this spec: on validation the v3 variants reach recall 0.78-0.83 at precision
+>= 0.95, while the margin rule of pumps-v2/v3 stops near recall 0.55 because precision is 1.0 there and the margin cannot grow further.
+The rule below was chosen after seeing those validation numbers; test was not looked at for it. Test of the primary file was opened in
+run-001, run-002 and run-003; this is the fourth look.
+
+Everything of pumps-v3 stands (data, features v3 with normal-profile padding, variants A-D trained per horizon with the same seeds, the rule,
+base rate <= 0.35, F1 above the rule), except the threshold and the choice:
+1. threshold: among validation thresholds with precision >= 0.95, the one with the largest recall; a variant qualifies only if that recall
+   is >= 0.5;
+2. choice per horizon: the qualifying variant with the largest validation recall at its threshold.
+Confirmation: the chosen variant per horizon is scored once on test with its validation threshold; precision, recall, F1, base rate,
+the rule and recall per fault type are reported as they are.
