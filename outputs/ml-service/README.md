@@ -66,6 +66,14 @@ B=outputs/ml-baseline-v2
 
 ## Стык с backend
 
+### Риски по объектам: backend-object-risks.patch (26.09)
+
+Патч к Runoi/LCT-backend 928b993, накладывается отдельно и поверх backend-risk-sync.patch (`git apply --check` на чистом клоне). Новый src/services/object_risk_sync.py: при старте backend, если задан ML_PREDICTOR_URL, запрашивает `/risk_map` для incident и failure и создаёт Risk с target_type="facility", target_id=fac_<ид_объект> для каждого объекта с alert. Тип риска: для failure sensor_failure; для incident по первому каналу-подозреваемому (пожарные датчики → fire, охранные → unauthorized_access, насосы и затопление → flooding, иначе unauthorized_access). Уровень риска считает их risk_level_for_probability по калиброванной probability. Повтор не создаёт дубль, пока у объекта есть открытый риск той же модели с незакончившимся окном. Ошибка ML-сервиса не роняет старт (ObjectRiskError в лог). Тесты в их каталоге: tests/test_object_risk_sync.py, 4 теста, ML-сервис подменён httpx.MockTransport.
+
+Проверено 26.09 на Postgres 16 в Docker: полный набор их тестов на чистой базе 208 passed без патча и 212 passed с патчем. На повторном прогоне по той же базе у них падают 75 тестов и без нашего патча, наши 4 теста повтор переживают. Сквозной запуск backend (оба патча) с нашим сервисом на реальном датасете: в /risks под manager 27 рисков по объектам, ровно 13 предупреждений incident и 14 failure из /risk_map; dispatcher видит только объекты своей зоны. Линтер в их репозитории не настроен (нет ruff/flake8 в конфиге и requirements), поэтому линтером не проверялось; код следует их форматированию, без docstrings.
+
+### Прогноз по каналам
+
 Две проблемы найдены при чтении backend 928b993 и подтверждены запуском:
 
 1. Backend передаёт as_of = datetime.now(UTC), а архив журнала заканчивается 30 июня 2026 года. Без демо-часов сервис на текущее время отвечает stale_journal.

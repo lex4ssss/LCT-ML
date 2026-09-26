@@ -6,6 +6,15 @@ import explore_v8 as e8
 import experiment_v2 as ex
 
 
+class ReadableTests(unittest.TestCase):
+    def test_values_read_like_numbers(self):
+        self.assertEqual(op.readable('событий за 7 сут: {}', 758123.0), '758 123')
+        self.assertEqual(op.readable('доля каналов: {}', 0.256), '26%')
+        self.assertEqual(op.readable('часов с последней тревоги: {}', 10.84), '10.8')
+        self.assertEqual(op.readable('каналов: {}', 3.0), '3')
+        self.assertEqual(op.readable('каналов: {}', np.nan), 'нет данных')
+
+
 class HistoryRowTests(unittest.TestCase):
     def test_windows_age_and_fallbacks(self):
         t = datetime(2025, 3, 10)

@@ -49,6 +49,16 @@ def class_history_row(t, starts, seen):
     return np.array(counts + [age])
 
 
+def readable(text, value):
+    if np.isnan(value):
+        return 'нет данных'
+    if text.startswith('доля'):
+        return f'{value:.0%}'
+    if float(value).is_integer():
+        return f'{int(value):,}'.replace(',', ' ')
+    return f'{value:.1f}'
+
+
 def verified(path, digest):
     if hashlib.file_digest(Path(path).open('rb'), 'sha256').hexdigest() != digest:
         raise ValueError('file does not match object decision: ' + str(path))
@@ -88,8 +98,7 @@ class ObjectPredictor:
     def factors(self, row):
         contributions = self.explainer.shap_values(row[None, :])[0]
         order = [index for index in np.argsort(-contributions) if contributions[index] > 0][:TOP_FACTORS]
-        return [dict(text=self.texts[index].format('нет данных' if np.isnan(row[index]) else f'{row[index]:.3g}'), contribution_log_odds=float(contributions[index]))
-                for index in order]
+        return [dict(text=self.texts[index].format(readable(self.texts[index], row[index])), contribution_log_odds=float(contributions[index])) for index in order]
 
     def suspects(self, columns, channels):
         scores = self.channel_model.predict_proba(ex.matrix_v2(columns, True))[:, 1]
