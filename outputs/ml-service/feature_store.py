@@ -74,7 +74,7 @@ def to_utc_naive(moment):
 
 
 class FeatureStore:
-    def __init__(self, prepared_dir, config_path, class_states=()):
+    def __init__(self, prepared_dir, config_path, class_states=None):
         config = json.loads(Path(config_path).read_text())
         self.gaps = [(datetime.fromisoformat(g['start_at']), datetime.fromisoformat(g['end_at'])) for g in config['gap_intervals_utc']]
         files = sorted(str(p) for p in Path(prepared_dir).glob('20??.parquet'))
@@ -84,9 +84,11 @@ class FeatureStore:
         self.connection.execute('CREATE VIEW observations AS SELECT channel_id, occurred_at, is_alarm, raw_value FROM read_parquet(' + repr(files) + ')')
         self.connection.execute('CREATE TABLE channels AS SELECT channel_id, min(occurred_at) AS first_at FROM observations GROUP BY channel_id')
         self.global_first, self.global_last = self.connection.execute('SELECT min(first_at), (SELECT max(occurred_at) FROM observations) FROM channels').fetchone()
-        self.class_states = list(class_states)
-        self.connection.execute('CREATE TABLE class_first AS SELECT channel_id, min(occurred_at) AS first_at FROM observations '
-                                'WHERE is_alarm AND raw_value IN (SELECT unnest(?)) GROUP BY channel_id', [self.class_states])
+        self.class_states = {name: list(states) for name, states in (class_states or {}).items()}
+        self.connection.execute('CREATE TABLE class_first(class_name VARCHAR, channel_id VARCHAR, first_at TIMESTAMP)')
+        for name, states in self.class_states.items():
+            self.connection.execute('INSERT INTO class_first SELECT ?, channel_id, min(occurred_at) FROM observations '
+                                    'WHERE is_alarm AND raw_value IN (SELECT unnest(?)) GROUP BY channel_id', [name, states])
 
     def check_journal(self, t):
         if t - 30 * DAY < self.global_first:
@@ -111,10 +113,11 @@ class FeatureStore:
             result[channel] = values
         return t, result
 
-    def class_history(self, channels, moment):
+    def class_history(self, channels, moment, name):
         t = to_utc_naive(moment)
-        starts = self.connection.execute(CLASS_STARTS_SQL, {'channels': list(channels), 'states': self.class_states, 't': t}).fetchall()
-        seen = dict(self.connection.execute('SELECT channel_id, first_at <= ? FROM class_first WHERE channel_id IN (SELECT unnest(?))', [t, list(channels)]).fetchall())
+        starts = self.connection.execute(CLASS_STARTS_SQL, {'channels': list(channels), 'states': self.class_states[name], 't': t}).fetchall()
+        seen = dict(self.connection.execute('SELECT channel_id, first_at <= ? FROM class_first WHERE class_name = ? AND channel_id IN (SELECT unnest(?))',
+                                            [t, name, list(channels)]).fetchall())
         return starts, {channel for channel, before in seen.items() if before}
 
     def gap_hours(self, t):

@@ -11,9 +11,7 @@ import numpy as np
 from feature_store import FeatureStore, InsufficientData, to_utc_naive
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / 'ml-baseline-v2'))
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent / 'ml-dataset-v2'))
 import experiment_v2 as ex
-from class_labels import INCIDENT_STATES
 from object_predictor import ObjectPredictor
 
 MAX_BODY = 64 * 1024
@@ -71,10 +69,10 @@ def make_handler(predictor, objects=None):
                 return self.reply(404, dict(error='not_found'))
             demo = None if predictor.demo_offset is None else (datetime.now(timezone.utc).replace(tzinfo=None) + predictor.demo_offset).isoformat()
             self.reply(200, dict(status='ok', model_name=predictor.model_name, threshold=predictor.threshold, journal_last_record=predictor.store.global_last.isoformat(), demo_now_utc=demo,
-                                 object_model_name=None if objects is None else objects.model_name))
+                                 object_models={name: model.model_name for name, model in (objects or {}).items()}))
 
         def do_POST(self):
-            if self.path not in ('/predict', '/predict_object', '/risk_map') or (self.path != '/predict' and objects is None):
+            if self.path not in ('/predict', '/predict_object', '/risk_map') or (self.path != '/predict' and not objects):
                 return self.reply(404, dict(error='not_found'))
             try:
                 length = int(self.headers.get('Content-Length', '0'))
@@ -85,22 +83,24 @@ def make_handler(predictor, objects=None):
                 key = {'/predict': 'target_id', '/predict_object': 'object_id'}.get(self.path)
                 if key is not None and (not isinstance(payload[key], str) or not payload[key]):
                     raise ValueError(key)
+                if self.path != '/predict':
+                    model = objects[payload.get('target', 'incident')]
             except (ValueError, KeyError, TypeError) as error:
                 return self.reply(400, dict(error='bad_request', detail=str(error)))
             try:
                 if self.path == '/predict':
                     return self.reply(200, predictor.predict(payload['target_id'], as_of))
-                if self.path == '/predict_object' and payload['object_id'] not in objects.objects:
+                if self.path == '/predict_object' and payload['object_id'] not in model.objects:
                     return self.reply(404, dict(error='unknown_object', object_id=payload['object_id']))
-                wanted = [payload['object_id']] if self.path == '/predict_object' else sorted(objects.objects)
+                wanted = [payload['object_id']] if self.path == '/predict_object' else sorted(model.objects)
                 requested = to_utc_naive(as_of)
                 with predictor.lock:
-                    results = objects.predict_objects(wanted, requested if predictor.demo_offset is None else requested + predictor.demo_offset)
+                    results = model.predict_objects(wanted, requested if predictor.demo_offset is None else requested + predictor.demo_offset)
                 if self.path == '/predict_object':
                     result = results[payload['object_id']]
                     return self.reply(200 if result['status'] == 'ok' else 422, result)
                 ranked = sorted(results.values(), key=lambda row: (-row.get('probability', -1.0), -row.get('score', -1.0)))
-                self.reply(200, dict(as_of_utc=next((row['as_of_utc'] for row in ranked if 'as_of_utc' in row), None), horizon_hours=objects.hours,
+                self.reply(200, dict(as_of_utc=next((row['as_of_utc'] for row in ranked if 'as_of_utc' in row), None), target=model.api_target, horizon_hours=model.hours,
                                      alerts=sum(row.get('alert', False) for row in ranked), objects=ranked))
             except InsufficientData as error:
                 self.reply(422, dict(status='insufficient_data', reason=error.reason, detail=error.detail))
@@ -119,13 +119,20 @@ def main():
     parser.add_argument('--host', default='127.0.0.1')
     parser.add_argument('--port', type=int, default=8090)
     parser.add_argument('--demo-anchor', type=datetime.fromisoformat)
-    parser.add_argument('--object-decision')
+    parser.add_argument('--object-decision', action='append', default=[])
     parser.add_argument('--directory')
     args = parser.parse_args()
-    if (args.object_decision is None) != (args.directory is None):
+    if bool(args.object_decision) != (args.directory is not None):
         parser.error('--object-decision and --directory go together')
-    predictor = Predictor(FeatureStore(args.prepared, args.config, INCIDENT_STATES), args.decision, args.demo_anchor)
-    objects = None if args.object_decision is None else ObjectPredictor(predictor.store, args.directory, args.object_decision, predictor.model)
+    decisions = [json.loads(Path(path).read_text()) for path in args.object_decision]
+    states = {decision['target']: decision['class_states'] for decision in decisions}
+    predictor = Predictor(FeatureStore(args.prepared, args.config, states), args.decision, args.demo_anchor)
+    objects = {}
+    for path in args.object_decision:
+        model = ObjectPredictor(predictor.store, args.directory, path, predictor.model)
+        if model.api_target in objects:
+            parser.error('two object models for ' + model.api_target)
+        objects[model.api_target] = model
     ThreadingHTTPServer((args.host, args.port), make_handler(predictor, objects)).serve_forever()
 
 

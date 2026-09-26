@@ -26,6 +26,10 @@ class HistoryRowTests(unittest.TestCase):
         self.assertIn('«c»', texts[1 + len(e8.SUMS) + len(e8.MAXIMA) + len(e8.MINIMA) + 2 * len(e8.ACTIVE) + 2])
         self.assertIn('ведущий канал', texts[-4 - 2 - len(ex.V2_FEATURES)])
         self.assertIn('месяц', texts[-6])
+        self.assertIn('инцидентов', texts[-1])
+        failure = op.feature_texts(types, 'neispraven')
+        self.assertTrue(all('«Неисправен»' in text for text in failure[-4:]))
+        self.assertEqual(failure[:-4], texts[:-4])
 
 
 if __name__ == '__main__':

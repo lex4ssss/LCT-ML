@@ -17,7 +17,7 @@ class FakeChannels:
 
 
 class FakeObjects:
-    hours, model_name = 72, 'fake-object'
+    hours, model_name, api_target = 72, 'fake-object', 'incident'
     objects = {'a': ['1'], 'b': ['2'], 'c': ['3'], 'd': ['4']}
 
     def predict_objects(self, object_ids, moment):
@@ -32,6 +32,13 @@ class FakeObjects:
             else:
                 results[obj] = dict(status='insufficient_data', reason='no_eligible_channels', object_id=obj)
         return results
+
+
+class FakeFailures(FakeObjects):
+    hours, model_name, api_target = 168, 'fake-failure', 'failure'
+
+    def predict_objects(self, object_ids, moment):
+        return {obj: dict(status='ok', object_id=obj, as_of_utc=moment.isoformat(), probability=0.1, score=0.1, alert=False) for obj in object_ids}
 
 
 class ServiceTests(unittest.TestCase):
@@ -51,11 +58,16 @@ class ServiceTests(unittest.TestCase):
             return error.code, json.loads(error.read())
 
     def test_object_routes(self):
-        base = self.start(FakeObjects())
+        base = self.start(dict(incident=FakeObjects(), failure=FakeFailures()))
         code, ranked = self.call(base, '/risk_map', {'as_of': '2025-01-01T03:00:00+03:00'})
         self.assertEqual(code, 200)
         self.assertEqual([row['object_id'] for row in ranked['objects']], ['b', 'c', 'a', 'd'])
-        self.assertEqual((ranked['alerts'], ranked['horizon_hours'], ranked['as_of_utc']), (2, 72, '2025-01-01T00:00:00'))
+        self.assertEqual((ranked['alerts'], ranked['horizon_hours'], ranked['as_of_utc'], ranked['target']), (2, 72, '2025-01-01T00:00:00', 'incident'))
+        code, failures = self.call(base, '/risk_map', {'as_of': '2025-01-01', 'target': 'failure'})
+        self.assertEqual((code, failures['target'], failures['horizon_hours'], failures['alerts']), (200, 'failure', 168, 0))
+        self.assertEqual(self.call(base, '/predict_object', {'object_id': 'd', 'as_of': '2025-01-01', 'target': 'failure'})[0], 200)
+        self.assertEqual(self.call(base, '/risk_map', {'as_of': '2025-01-01', 'target': 'weather'})[0], 400)
+        self.assertEqual(self.call(base, '/risk_map', {'as_of': '2025-01-01', 'target': ['incident']})[0], 400)
         self.assertEqual(self.call(base, '/predict_object', {'object_id': 'c', 'as_of': '2025-01-01'})[1]['score'], 0.7)
         self.assertEqual(self.call(base, '/predict_object', {'object_id': 'd', 'as_of': '2025-01-01'})[0], 422)
         self.assertEqual(self.call(base, '/predict_object', {'object_id': 'zz', 'as_of': '2025-01-01'})[0], 404)

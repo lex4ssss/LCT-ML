@@ -1,0 +1,15 @@
+{
+  "run": "run009",
+  "api_target": "failure",
+  "target": "neispraven",
+  "class_states": [
+    "Неисправен"
+  ],
+  "horizon_hours": 168,
+  "threshold": 0.5635953706683506,
+  "model_path": "hgb_object_neispraven_168h.joblib",
+  "model_sha256": "97d51d0e584f6992b21e66cc7a67580ea9d76e689b59ef846a7d631762fcfe93",
+  "calibration_path": "../run-009-calibration/isotonic.joblib",
+  "calibration_sha256": "86cf97a4ac6af90fd4c85beac49830901dcd75130bd0638851e9b1881826181e",
+  "source": "explore-v8.json chosen among ['failure', 'neispraven'], test 2026 once, isotonic fitted on 2025"
+}

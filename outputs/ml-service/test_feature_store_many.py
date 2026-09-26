@@ -21,6 +21,9 @@ def build_journal(root, rng):
             state = rng.choice(STATES + ['Неисправен']) if alarm else 'Норма'
             rows.append((f'e{len(rows)}', channel, moment, alarm, state))
             moment += timedelta(seconds=rng.choice([60, 300, 800, 950, 3600, 20000, 90000]))
+    for hour in range(0, 75 * 24, 30):
+        rows.append((f's{hour}', 'solo', START + timedelta(hours=hour), hour % 90 == 0, 'Не замкнут' if hour % 90 == 0 else 'Норма'))
+    channels.append('solo')
     rows.append(('last', 'c0', START + timedelta(days=75), True, 'Не замкнут'))
     with duckdb.connect() as c:
         c.execute('CREATE TABLE o(event_id VARCHAR, channel_id VARCHAR, occurred_at TIMESTAMP, is_alarm BOOLEAN, raw_value VARCHAR)')
@@ -36,7 +39,8 @@ class ManyTests(unittest.TestCase):
         self.tmp = tempfile.TemporaryDirectory()
         root = Path(self.tmp.name)
         self.rows, self.channels, config = build_journal(root, random.Random(9))
-        self.store = FeatureStore(root, config, STATES)
+        self.classes = dict(incident=STATES, neispraven=['Неисправен'])
+        self.store = FeatureStore(root, config, self.classes)
 
     def tearDown(self):
         self.store.connection.close()
@@ -63,17 +67,18 @@ class ManyTests(unittest.TestCase):
         self.assertGreater(served, 40)
 
     def test_class_history_matches_brute_force(self):
-        for t in self.moments():
-            starts, seen = self.store.class_history(self.channels, t)
+        for (name, states), t in [(item, t) for item in self.classes.items() for t in self.moments()]:
+            starts, seen = self.store.class_history(self.channels, t, name)
             expected, first = [], {}
             for channel in self.channels:
-                times = sorted(r[2] for r in self.rows if r[1] == channel and r[3] and r[4] in STATES)
+                times = sorted(r[2] for r in self.rows if r[1] == channel and r[3] and r[4] in states)
                 expected += [(channel, at) for i, at in enumerate(times)
                              if t - timedelta(days=30) < at <= t and (i == 0 or at - times[i - 1] > timedelta(seconds=900))]
                 if times and times[0] <= t:
                     first[channel] = True
             self.assertEqual(sorted(starts), sorted(expected), t)
             self.assertEqual(seen, set(first))
+            self.assertEqual('solo' in seen, name == 'incident')
 
 
 if __name__ == '__main__':

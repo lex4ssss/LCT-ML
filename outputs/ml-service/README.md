@@ -32,18 +32,31 @@ probability означает ожидаемую частоту начала за
 
 400 при неверном JSON, дате, пустом target_id или теле больше 64 KB.
 
-## Прогноз по объекту (run-008)
+## Прогноз по объекту: инцидент (run-008) и отказ (run-009)
 
-Включается флагами `--object-decision outputs/ml-baseline-v2/run-008-incident72/object-decision.json --directory <справочник_каналов_датчиков.csv>`; без них сервис работает как раньше. SHA-256 модели и калибровки сверяются при старте. Зависимости: outputs/ml-service/requirements.txt (добавлен shap).
+```bash
+B=outputs/ml-baseline-v2
+.venv/bin/python outputs/ml-service/service.py --prepared work/ml-prepared --config outputs/ml-dataset/dataset-config.json \
+  --decision $B/decision.json --directory <справочник_каналов_датчиков.csv> \
+  --object-decision $B/run-008-incident72/object-decision.json --object-decision $B/run-009-neispraven168/object-decision.json \
+  --port 8090 --demo-anchor 2026-06-20T00:00:00
+```
 
-1. `POST /predict_object {"object_id": "3215", "as_of": "..."}`: вероятность начала эпизода инцидента в объекте за 72 часа. На test 2026 года при пороге модели precision 0,827, recall 0,616 при базовой доле 0,347 (ml-baseline-v2/README.md, run-008).
-2. `POST /risk_map {"as_of": "..."}`: все 78 объектов справочника, отсортированы по вероятности, затем по score; поле alerts с числом объектов выше порога. Около секунды.
+Без `--object-decision` сервис работает как раньше. SHA-256 моделей и калибровок сверяются при старте, состояния класса берутся из object-decision.json. Зависимости: outputs/ml-service/requirements.txt (добавлен shap). Старт около 10 секунд.
 
-Поля ответа: probability (isotonic на 2025 году; на test корзины отклоняются от наблюдаемой доли не больше чем на 5 п. п., run-008-calibration/report.json), score и threshold модели, alert = score ≥ threshold (порогу соответствует probability 0,652), top_factors (до трёх признаков с наибольшим положительным вкладом SHAP, текстом), suspect_channels (до пяти каналов объекта с наибольшей оценкой канальной модели run-002 на 24 часа: вторая ступень, где искать), channels_used и channels_total. 404 unknown_object, 422 при общей нехватке данных (stale_journal, known_log_gap, global_history) и no_eligible_channels.
+1. `POST /predict_object {"object_id": "3215", "as_of": "...", "target": "incident"}`: прогноз по одному объекту. target необязателен, по умолчанию incident.
+2. `POST /risk_map {"as_of": "...", "target": "failure"}`: все 78 объектов справочника, отсортированы по вероятности, затем по score; поле alerts с числом объектов выше порога. Около секунды.
+
+| target | что прогнозируется | горизонт | test 2026: precision / recall | базовая доля | правило: precision / recall |
+|---|---|---|---|---|---|
+| incident | начало эпизода инцидента в объекте («Не замкнут», «Обнаружен дым», «Затоплен» и др.) | 72 ч | 0,827 / 0,616 | 0,347 | 0,573 / 0,492 |
+| failure | начало эпизода «Неисправен» в объекте | 168 ч | 0,869 / 0,625 | 0,239 | 0,343 / 0,428 |
+
+Поля ответа: target, target_scope, horizon_hours, probability (isotonic на 2025 году; на test у incident корзины отклоняются от наблюдаемой доли не больше чем на 5 п. п., у failure модель занижает до 13 п. п.; отчёты в run-008-calibration и run-009-calibration), score и threshold модели, alert = score ≥ threshold (порогу соответствует probability 0,652 у incident и 0,559 у failure), top_factors (до трёх признаков с наибольшим положительным вкладом SHAP, текстом), suspect_channels (до пяти каналов объекта с наибольшей оценкой канальной модели run-002 на 24 часа: вторая ступень, где искать), channels_used и channels_total. 400 при неизвестном target, 404 unknown_object, 422 при общей нехватке данных (stale_journal, known_log_gap, global_history) и no_eligible_channels.
 
 Цель та же, что в обучении: начало записанного эпизода, не подтверждённая авария. Каналы вне справочника в прогноз объекта не входят.
 
-Проверки 26.09: признаки объекта сервиса совпали с обучающими на 600 случайных объекто-сутках 2019–2025 годов (сиды 7 и 23), включая историю инцидентов, 0 расхождений (`check_object_parity.py`, выход 1 при расхождении); пакетный расчёт признаков каналов совпал с поканальным на 1 600 парах канал-дата; 20 HTTP-проверок на реальных данных прошли после одной правки (при равной вероятности isotonic рейтинг теперь идёт по score).
+Проверки 26.09: признаки объекта сервиса совпали с обучающими на 600 случайных объекто-сутках 2019–2025 годов (сиды 7 и 23), включая историю инцидентов, 0 расхождений (`check_object_parity.py`, выход 1 при расхождении); пакетный расчёт признаков каналов совпал с поканальным на 1 600 парах канал-дата; 20 HTTP-проверок на реальных данных прошли после одной правки (при равной вероятности isotonic рейтинг теперь идёт по score). После добавления failure: признаки совпали на 300 объекто-сутках для failure (сид 7) и ещё 300 для incident (сид 31), 24 HTTP-проверки с обеими моделями прошли. Тесты: test_feature_store_many, test_object_predictor, test_object_predictor_end_to_end (синтетический журнал, маленькие настоящие модели), test_service_objects; мутационная проверка по новому коду сервиса: из 17 мутантов первым прогоном пойманы 15, два выживших (фильтр класса в class_first, передача цели в тексты причин) пойманы после доработки тестов.
 
 ## Проверки
 

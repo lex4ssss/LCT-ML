@@ -19,9 +19,11 @@ RU = {'event_count_24h': 'событий за 24 ч', 'alarm_count_24h': 'тре
       'channel_age_days': 'возраст канала, сут', 'log_gap_hours_30d': 'часов пауз журнала за 30 сут'}
 TOP_FACTORS = 3
 TOP_CHANNELS = 5
+CLASS_WORDS = dict(incident='инцидентов', neispraven='эпизодов «Неисправен»')
 
 
-def feature_texts(type_names):
+def feature_texts(type_names, target='incident'):
+    word = CLASS_WORDS[target]
     texts = ['каналов с данными в объекте: {}']
     texts += [f'{RU[name]}, сумма по каналам объекта: {{}}' for name in e8.SUMS]
     texts += [f'{RU[name]}, максимум на одном канале: {{}}' for name in e8.MAXIMA]
@@ -32,8 +34,8 @@ def feature_texts(type_names):
     texts += [f'начал тревожных эпизодов за 7 сут на датчиках «{name}»: {{}}' for name in type_names]
     texts += [f'ведущий канал объекта, {RU[name]}: {{}}' for name in ex.V2_FEATURES]
     texts += ['месяц: {}', 'день недели: {}']
-    return texts + ['начал инцидентов в объекте за 24 ч: {}', 'начал инцидентов в объекте за 7 сут: {}', 'начал инцидентов в объекте за 30 сут: {}',
-                    'часов с последнего начала инцидента в объекте (не больше 720): {}']
+    return texts + [f'начал {word} в объекте за 24 ч: {{}}', f'начал {word} в объекте за 7 сут: {{}}', f'начал {word} в объекте за 30 сут: {{}}',
+                    f'часов с последнего начала {word} в объекте (не больше 720): {{}}']
 
 
 def class_history_row(t, starts, seen):
@@ -60,6 +62,7 @@ class ObjectPredictor:
         self.model = verified(decision_path.parent / self.decision['model_path'], self.decision['model_sha256'])
         self.calibrator = verified(decision_path.parent / self.decision['calibration_path'], self.decision['calibration_sha256'])
         self.threshold, self.hours = float(self.decision['threshold']), int(self.decision['horizon_hours'])
+        self.target, self.api_target = self.decision['target'], self.decision['api_target']
         self.store, self.channel_model, self.explainer = store, channel_model, shap.TreeExplainer(self.model)
         with duckdb.connect() as connection:
             rows = connection.execute('SELECT ид_канала_данных, ид_объект, тип_датчика FROM read_csv(?, all_varchar=true)', [str(directory)]).fetchall()
@@ -69,10 +72,10 @@ class ObjectPredictor:
         self.objects = {}
         for channel, obj, _ in rows:
             self.objects.setdefault(obj, []).append(channel)
-        self.texts = feature_texts(type_names)
+        self.texts = feature_texts(type_names, self.target)
         if len(self.texts) != self.model.n_features_in_:
             raise ValueError('feature names do not match the object model')
-        self.model_name = 'hgb-object-run008-' + self.decision['model_sha256'][:8]
+        self.model_name = f"hgb-object-{self.decision['run']}-" + self.decision['model_sha256'][:8]
 
     def object_row(self, t, features, starts, seen):
         channels = sorted(features)
@@ -96,7 +99,7 @@ class ObjectPredictor:
     def predict_objects(self, object_ids, moment):
         channels = [channel for obj in object_ids for channel in self.objects[obj]]
         t, features = self.store.features_many(channels, moment)
-        starts, seen = self.store.class_history(channels, t)
+        starts, seen = self.store.class_history(channels, t, self.target)
         results = {}
         for obj in object_ids:
             mine = set(self.objects[obj])
@@ -106,7 +109,8 @@ class ObjectPredictor:
                 continue
             row, columns, used = self.object_row(t, own, [at for channel, at in starts if channel in mine], bool(seen & mine))
             score = float(self.model.predict_proba(row[None, :])[0, 1])
-            results[obj] = dict(status='ok', object_id=obj, as_of_utc=t.isoformat(), horizon_hours=self.hours, target_scope='incident_episode_start_in_object',
+            results[obj] = dict(status='ok', object_id=obj, as_of_utc=t.isoformat(), horizon_hours=self.hours, target=self.api_target,
+                                target_scope=f'{self.target}_episode_start_in_object',
                                 probability=float(self.calibrator.predict([score])[0]), score=score, threshold=self.threshold, alert=score >= self.threshold,
                                 channels_used=len(used), channels_total=len(mine), top_factors=self.factors(row), suspect_channels=self.suspects(columns, used),
                                 model_name=self.model_name)

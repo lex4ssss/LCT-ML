@@ -1,0 +1,163 @@
+{
+  "target": "neispraven",
+  "horizon_hours": 168,
+  "fit_on": "2025 object-days, model trained before 2025",
+  "calibrated_probability_at_threshold": 0.559090909090909,
+  "year_2025": {
+    "rows": 26820,
+    "base_rate": 0.20339299030574198,
+    "brier_raw": 0.08755121165568006,
+    "brier_calibrated": 0.08620633454778197,
+    "reliability_calibrated": [
+      {
+        "low": 0.0,
+        "high": 0.1,
+        "rows": 15722,
+        "mean_probability": 0.028876733240045797,
+        "observed_rate": 0.028876733240045797
+      },
+      {
+        "low": 0.1,
+        "high": 0.2,
+        "rows": 2366,
+        "mean_probability": 0.1559594251901944,
+        "observed_rate": 0.15595942519019443
+      },
+      {
+        "low": 0.2,
+        "high": 0.3,
+        "rows": 2257,
+        "mean_probability": 0.2157731501993797,
+        "observed_rate": 0.2157731501993797
+      },
+      {
+        "low": 0.3,
+        "high": 0.4,
+        "rows": 1411,
+        "mean_probability": 0.32459248759744863,
+        "observed_rate": 0.32459248759744863
+      },
+      {
+        "low": 0.4,
+        "high": 0.5,
+        "rows": 524,
+        "mean_probability": 0.4580152671755725,
+        "observed_rate": 0.4580152671755725
+      },
+      {
+        "low": 0.5,
+        "high": 0.6,
+        "rows": 572,
+        "mean_probability": 0.5506993006993006,
+        "observed_rate": 0.5506993006993007
+      },
+      {
+        "low": 0.6,
+        "high": 0.7,
+        "rows": 1310,
+        "mean_probability": 0.6603053435114504,
+        "observed_rate": 0.6603053435114504
+      },
+      {
+        "low": 0.7,
+        "high": 0.8,
+        "rows": 800,
+        "mean_probability": 0.7287499999999999,
+        "observed_rate": 0.72875
+      },
+      {
+        "low": 0.8,
+        "high": 0.9,
+        "rows": 705,
+        "mean_probability": 0.8794326241134752,
+        "observed_rate": 0.8794326241134752
+      },
+      {
+        "low": 0.9,
+        "high": 1.0,
+        "rows": 1153,
+        "mean_probability": 0.9228100607111884,
+        "observed_rate": 0.9228100607111882
+      }
+    ]
+  },
+  "test_2026": {
+    "rows": 13320,
+    "base_rate": 0.23873873873873874,
+    "brier_raw": 0.08190043132084278,
+    "brier_calibrated": 0.08218954688168381,
+    "reliability_calibrated": [
+      {
+        "low": 0.0,
+        "high": 0.1,
+        "rows": 7782,
+        "mean_probability": 0.029357874125711423,
+        "observed_rate": 0.03276792598303778
+      },
+      {
+        "low": 0.1,
+        "high": 0.2,
+        "rows": 1089,
+        "mean_probability": 0.154532411183995,
+        "observed_rate": 0.13682277318640956
+      },
+      {
+        "low": 0.2,
+        "high": 0.3,
+        "rows": 1037,
+        "mean_probability": 0.21572864517944226,
+        "observed_rate": 0.23240115718418514
+      },
+      {
+        "low": 0.3,
+        "high": 0.4,
+        "rows": 679,
+        "mean_probability": 0.32438147372745774,
+        "observed_rate": 0.4050073637702504
+      },
+      {
+        "low": 0.4,
+        "high": 0.5,
+        "rows": 189,
+        "mean_probability": 0.45562045386227507,
+        "observed_rate": 0.5502645502645502
+      },
+      {
+        "low": 0.5,
+        "high": 0.6,
+        "rows": 300,
+        "mean_probability": 0.5499569728052184,
+        "observed_rate": 0.6633333333333333
+      },
+      {
+        "low": 0.6,
+        "high": 0.7,
+        "rows": 687,
+        "mean_probability": 0.6596140690635991,
+        "observed_rate": 0.7627365356622998
+      },
+      {
+        "low": 0.7,
+        "high": 0.8,
+        "rows": 403,
+        "mean_probability": 0.7300154194743206,
+        "observed_rate": 0.8610421836228288
+      },
+      {
+        "low": 0.8,
+        "high": 0.9,
+        "rows": 311,
+        "mean_probability": 0.8769926291304966,
+        "observed_rate": 0.932475884244373
+      },
+      {
+        "low": 0.9,
+        "high": 1.0,
+        "rows": 843,
+        "mean_probability": 0.9246977928977111,
+        "observed_rate": 0.9442467378410438
+      }
+    ]
+  },
+  "protocol": "isotonic fitted on 2025 only; test 2026 used once to report calibration, nothing refitted on it"
+}

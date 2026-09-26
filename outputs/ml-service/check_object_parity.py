@@ -1,4 +1,4 @@
-from datetime import datetime
+import json
 from pathlib import Path
 import random
 import sys
@@ -10,17 +10,14 @@ import eval_units as eu
 import explore_v8 as e8
 import run_v2 as rv
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent / 'ml-dataset-v2'))
-from class_labels import INCIDENT_STATES
-
-
 class NoChannelModel:
     pass
 
 
 def main(prepared, config, examples, directory, episodes, decision, seed, days):
     rng = random.Random(int(seed))
-    predictor = ObjectPredictor(FeatureStore(prepared, config, INCIDENT_STATES), directory, decision, NoChannelModel())
+    decided = json.loads(Path(decision).read_text())
+    predictor = ObjectPredictor(FeatureStore(prepared, config, {decided['target']: decided['class_states']}), directory, decision, NoChannelModel())
     with duckdb.connect(config={'threads': 4, 'memory_limit': '4GB'}) as connection:
         columns = rv.load(connection, examples)
         codes, code, sensor, type_count = e8.channel_info(connection, directory, columns['channel_id'])
@@ -42,7 +39,7 @@ def main(prepared, config, examples, directory, episodes, decision, seed, days):
         if set(features) != trained:
             row_set += 1
             continue
-        starts, seen = predictor.store.class_history(predictor.objects[obj], t)
+        starts, seen = predictor.store.class_history(predictor.objects[obj], t, predictor.target)
         served, _, _ = predictor.object_row(t, features, [at for _, at in starts], bool(seen))
         if np.allclose(served, matrix[position], equal_nan=True, rtol=1e-9, atol=1e-9):
             same += 1
