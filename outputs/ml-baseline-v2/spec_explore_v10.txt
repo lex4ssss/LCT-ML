@@ -1,0 +1,30 @@
+explore-v10: can the two accepted object models (incident 72 h, run-008; «Неисправен» 168 h, run-009) be improved by tuned boosting, a neural
+network and their ensemble, and what precision does a stricter operating point give.
+
+Written on 2026-09-27 before any explore-v10 result was seen. Test 2026 was already opened in run-002, run-006, run-007, run-008, run-009;
+explore-v10 confirmation is the sixth look at that period.
+
+Rows, labels, features and the rule are those of explore-v8 for the two targets (object-days, same training rows as_of < 2025-01-01 minus
+the horizon, same 2025 evaluation rows).
+
+Variants per target:
+R. reference: HGB with run-002 parameters (equal to run-008 / run-009 search models);
+T. tuned HGB: parameters chosen on an inner split that never touches 2025: train as_of < 2024-01-01 minus the horizon, evaluate 2024
+   object-days whose label window ends by 2025-01-01, pick the grid point with the largest AP; grid learning_rate {0.05, 0.1},
+   max_leaf_nodes {31, 63}, min_samples_leaf {50, 200}, max_iter {300, 600}, l2_regularization 1.0, random_state 0; then retrain on the
+   usual training rows;
+M. neural network: median imputation with missing indicators, standard scaling, sklearn MLPClassifier hidden layers (64, 32), adam,
+   early_stopping, random_state 0;
+E. ensemble: mean of the probabilities of T and M.
+
+Acceptance on 2025, per target: AP minus the AP of R >= 0.01, precision at recall >= 0.5 not lower than R's, and the explore-v8
+qualification (precision >= 0.7 at recall >= 0.5, base rate <= 0.35, F1 above the rule at the margin threshold). Choice: the accepted
+variant with the largest AP; if none is accepted, R stays and is reported.
+
+Operating points, both fixed on 2025 for the chosen model (or R):
+1. margin threshold of explore-v8 (largest min(precision - 0.7, recall - 0.5));
+2. strict threshold: the highest precision among 2025 thresholds with recall >= 0.6. Recall 0.6 rather than 0.5 leaves room, since the
+   recall-edge threshold of explore-v7 lost recall on test.
+
+Confirmation: for each target the chosen model with both 2025 thresholds is scored once on test 2026 object-days as in explore-v8 confirm;
+R is scored on the same rows for comparison. Precision, recall, F1, base rate and the rule are reported as they are.
