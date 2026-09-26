@@ -1,0 +1,24 @@
+explore-v11: rhythm features of the object and a higher-precision operating point for the two object models (incident 72 h, «Неисправен» 168 h).
+
+Written on 2026-09-27 before any explore-v11 result was seen. Test 2026 was opened in run-002, 006, 007, 008, 009 and 010; explore-v11
+confirmation is the seventh look at that period.
+
+Rows, labels, the rule, the training rows (as_of < 2025-01-01 minus the horizon) and the 2025 evaluation rows are those of explore-v8.
+
+Rhythm features of an object-day with day start d, from starts (first_alarm_at) of the target's episodes in the object, only before d:
+1. starts in (d - 90 days, d] and (d - 365 days, d];
+2. active days: number of calendar days with at least one start among the last 7, 30 and 90 days before d;
+3. streak: number of consecutive calendar days with at least one start, counting back from the day before d;
+4. same window one and two weeks back: starts in [d - 7 days, d - 7 days + horizon) and [d - 14 days, d - 14 days + horizon), both entirely
+   before d only when the horizon is at most 7 days, which holds for 72 h and 168 h;
+5. starts on the same weekday as d in the last 4 weeks (days d - 7, d - 14, d - 21, d - 28).
+
+Variants: R = explore-v8 reference HGB (run-002 parameters) on explore-v8 features; H = the same HGB on explore-v8 plus rhythm features.
+Acceptance on 2025, per target: AP of H minus AP of R >= 0.01, precision at recall >= 0.5 not lower than R's, and the explore-v8
+qualification. The chosen model is H if accepted, otherwise R.
+
+Operating points for the chosen model, both fixed on 2025:
+1. margin threshold of explore-v8;
+2. precision threshold: the highest precision among 2025 thresholds with recall >= 0.5.
+Confirmation: each target, the chosen model with both thresholds, scored once on test 2026; R with its margin threshold on the same rows.
+Reported as is, with base rate and the rule.
