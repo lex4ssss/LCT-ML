@@ -1,0 +1,24 @@
+pumps-v3: pumps-v2 with the position leak removed from the features.
+
+Written on 2026-09-26 after pumps-v2 run-002 and before any pumps-v3 result was seen.
+
+Why: in pumps-v1 and pumps-v2 the mean step change was computed as change / min(position, window). The ratio of the two features equals
+min(position, window), i.e. the number of rows since the trajectory started, which the specs exclude as a feature (in reality the start of
+degradation is not observed). Together with the drift rate it gives the time to the fault, which explains precision 1.0 in run-002.
+The acceleration of pumps-v2 was 0 below 24 rows of history, another position flag. So run-001 (0.7 criterion) and run-002 (0.95
+criterion) are not valid results; they stay in the repository with this note.
+Test of the primary file was opened in run-001 and run-002; this is the third look. The replication files are dropped: in run-002 both
+show trajectories that start after step 0 (fewer rows at a step than open trajectories), which row order cannot resolve.
+
+Features v3, per sensor, history padded with the first row of the trajectory so that no feature depends on how long the history is:
+1. the 12 sensors and pump type;
+2. for windows w = 12, 36, 96: change = x(t) - x(max(t - w, first row));
+3. acceleration = (x(t) - x(t - 12)) - (x(t - 12) - x(t - 24)) with the same padding;
+4. across sensors: mean and max of the four vibrations and of the four temperatures, and of their 12-step changes.
+No mean step columns (they were change / window, linear in change). Normal rows get 0 for changes and acceleration. The only remaining
+position signal is that the first row of a trajectory has all changes exactly 0; it is kept and reported.
+
+Variants: A = HGB on sensors, pump type and 12-step changes (pumps-v1 without the mean step); B = HGB on features v3; C = MLP on features v3
+(as in pumps-v2); D = mean of B and C. Data, labels, split, rule, the 0.95 criterion, qualification, threshold and choice are those of
+pumps-v2. Recall at precision >= 0.95 on validation is reported for every variant next to the margin threshold, since the margin rule
+stops at recall 0.55 when precision is 1.0.
