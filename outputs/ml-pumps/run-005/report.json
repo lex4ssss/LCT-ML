@@ -1,0 +1,273 @@
+{
+  "spec": "spec_pumps_v5.txt",
+  "train": [
+    "fully_synthetic_gost_compliant_dataset.csv",
+    "seed-101.csv",
+    "seed-102.csv"
+  ],
+  "validation": "seed-103.csv",
+  "test": "seed-909.csv",
+  "train_rows": 3750888,
+  "horizons": {
+    "30min": {
+      "validation": {
+        "rule": {
+          "precision": 0.0718,
+          "recall": 0.356,
+          "f1": 0.1194,
+          "tp": 20290,
+          "fp": 262488,
+          "fn": 36710,
+          "rows": 1237200,
+          "base_rate": 0.0461
+        },
+        "variants": {
+          "F": {
+            "threshold": 0.19964540534454792,
+            "recall_at_precision_0_95": 0.9976491228070176,
+            "model": {
+              "precision": 0.95,
+              "recall": 0.9976,
+              "f1": 0.9732,
+              "tp": 56866,
+              "fp": 2992,
+              "fn": 134,
+              "rows": 1237200,
+              "base_rate": 0.0461
+            },
+            "qualified": true
+          },
+          "T": {
+            "threshold": 0.13657755094440735,
+            "recall_at_precision_0_95": 0.9984035087719298,
+            "model": {
+              "precision": 0.95,
+              "recall": 0.9984,
+              "f1": 0.9736,
+              "tp": 56909,
+              "fp": 2993,
+              "fn": 91,
+              "rows": 1237200,
+              "base_rate": 0.0461
+            },
+            "qualified": true
+          },
+          "M": {
+            "threshold": 0.34105437994003296,
+            "recall_at_precision_0_95": 0.9543157894736842,
+            "model": {
+              "precision": 0.9501,
+              "recall": 0.9543,
+              "f1": 0.9522,
+              "tp": 54396,
+              "fp": 2859,
+              "fn": 2604,
+              "rows": 1237200,
+              "base_rate": 0.0461
+            },
+            "qualified": true
+          },
+          "D": {
+            "threshold": 0.25508748921360225,
+            "recall_at_precision_0_95": 0.9879824561403509,
+            "model": {
+              "precision": 0.9501,
+              "recall": 0.988,
+              "f1": 0.9687,
+              "tp": 56315,
+              "fp": 2959,
+              "fn": 685,
+              "rows": 1237200,
+              "base_rate": 0.0461
+            },
+            "qualified": true
+          }
+        }
+      },
+      "chosen": "T",
+      "test": {
+        "model": {
+          "precision": 0.9507,
+          "recall": 0.9984,
+          "f1": 0.974,
+          "tp": 56906,
+          "fp": 2950,
+          "fn": 94,
+          "rows": 1228368,
+          "base_rate": 0.0464
+        },
+        "rule": {
+          "precision": 0.0704,
+          "recall": 0.3611,
+          "f1": 0.1179,
+          "tp": 20584,
+          "fp": 271597,
+          "fn": 36416,
+          "rows": 1228368,
+          "base_rate": 0.0464
+        },
+        "recall_by_fault_type": {
+          "Засорение фильтра": 1.0,
+          "Неизвестная неисправность": 0.9783,
+          "Несоосность": 0.9988
+        },
+        "pumps_v4": {
+          "model": {
+            "precision": 0.9366,
+            "recall": 0.824,
+            "f1": 0.8767,
+            "tp": 46970,
+            "fp": 3179,
+            "fn": 10030,
+            "rows": 1228368,
+            "base_rate": 0.0464
+          },
+          "recall_by_fault_type": {
+            "Засорение фильтра": 1.0,
+            "Неизвестная неисправность": 0.0003,
+            "Несоосность": 0.707
+          }
+        }
+      }
+    },
+    "1h": {
+      "validation": {
+        "rule": {
+          "precision": 0.1319,
+          "recall": 0.3366,
+          "f1": 0.1895,
+          "tp": 37285,
+          "fp": 245493,
+          "fn": 73473,
+          "rows": 1237200,
+          "base_rate": 0.0895
+        },
+        "variants": {
+          "F": {
+            "threshold": 0.3321256457025102,
+            "recall_at_precision_0_95": 0.9402481084887774,
+            "model": {
+              "precision": 0.9511,
+              "recall": 0.9402,
+              "f1": 0.9456,
+              "tp": 104140,
+              "fp": 5353,
+              "fn": 6618,
+              "rows": 1237200,
+              "base_rate": 0.0895
+            },
+            "qualified": true
+          },
+          "T": {
+            "threshold": 0.34322298694504677,
+            "recall_at_precision_0_95": 0.9396973582043735,
+            "model": {
+              "precision": 0.95,
+              "recall": 0.9397,
+              "f1": 0.9448,
+              "tp": 104079,
+              "fp": 5476,
+              "fn": 6679,
+              "rows": 1237200,
+              "base_rate": 0.0895
+            },
+            "qualified": true
+          },
+          "M": {
+            "threshold": 0.3915312886238098,
+            "recall_at_precision_0_95": 0.9080879033568682,
+            "model": {
+              "precision": 0.95,
+              "recall": 0.9081,
+              "f1": 0.9286,
+              "tp": 100578,
+              "fp": 5292,
+              "fn": 10180,
+              "rows": 1237200,
+              "base_rate": 0.0895
+            },
+            "qualified": true
+          },
+          "D": {
+            "threshold": 0.3438691144060527,
+            "recall_at_precision_0_95": 0.9341808266671482,
+            "model": {
+              "precision": 0.95,
+              "recall": 0.9342,
+              "f1": 0.942,
+              "tp": 103468,
+              "fp": 5442,
+              "fn": 7290,
+              "rows": 1237200,
+              "base_rate": 0.0895
+            },
+            "qualified": true
+          }
+        }
+      },
+      "chosen": "F",
+      "test": {
+        "model": {
+          "precision": 0.9507,
+          "recall": 0.9418,
+          "f1": 0.9462,
+          "tp": 104382,
+          "fp": 5418,
+          "fn": 6456,
+          "rows": 1228368,
+          "base_rate": 0.0902
+        },
+        "rule": {
+          "precision": 0.1302,
+          "recall": 0.3431,
+          "f1": 0.1887,
+          "tp": 38028,
+          "fp": 254153,
+          "fn": 72810,
+          "rows": 1228368,
+          "base_rate": 0.0902
+        },
+        "recall_by_fault_type": {
+          "Засорение фильтра": 0.9722,
+          "Неизвестная неисправность": 0.8312,
+          "Несоосность": 0.9176
+        },
+        "pumps_v4": {
+          "model": {
+            "precision": 0.9287,
+            "recall": 0.8367,
+            "f1": 0.8803,
+            "tp": 92734,
+            "fp": 7122,
+            "fn": 18104,
+            "rows": 1228368,
+            "base_rate": 0.0902
+          },
+          "recall_by_fault_type": {
+            "Засорение фильтра": 0.96,
+            "Неизвестная неисправность": 0.0,
+            "Несоосность": 0.7869
+          }
+        }
+      }
+    }
+  },
+  "validation_router": {
+    "accuracy": 0.9999,
+    "f1": {
+      "normal": 0.9332,
+      "Несоосность": 1.0,
+      "Засорение фильтра": 1.0,
+      "Неизвестная неисправность": 0.9992
+    }
+  },
+  "test_router": {
+    "accuracy": 0.9999,
+    "f1": {
+      "normal": 0.9443,
+      "Несоосность": 1.0,
+      "Засорение фильтра": 1.0,
+      "Неизвестная неисправность": 0.9993
+    }
+  }
+}
