@@ -1,0 +1,39 @@
+pumps-v5: a stronger pump failure forecast (tree of models, denoised features, more training data) proven on a fresh generated test.
+
+Written on 2026-09-27 before any pumps-v5 model was trained. Target: precision >= 0.95 with recall as high as possible, at 30 min and 1 h.
+
+Data. The primary file was produced by new-gen.py with its CONFIG (4000 misalignment, 5000 clogging, 500 unknown trajectories, 500 normal
+rows). generate_pumps.py runs the same generator with a fixed numpy seed and tags every row with its true trajectory; the tag is used only to
+check reconstruction (on seeds 101 and 909 the reconstructed trajectories match the truth one to one, 9500 each, 500 normal rows each).
+1. train: the whole primary file and seeds 101 and 102;
+2. validation (variant choice and threshold): seed 103;
+3. fresh test, scored once: seed 909. No model or threshold has seen it.
+Rows, horizons, labels and the rule are those of pumps-v1. Horizons 8 h and 24 h stay out (base rate above 0.35).
+
+Signals: mean of the 4 vibrations, mean of the 4 temperatures, motor current, filter pressure drop, suction and discharge pressure.
+Normal profile and noise: per pump, median and standard deviation of each sensor and signal over the normal rows of the train files.
+History before a trajectory is the normal profile, as in pumps-v3; a normal row is a one-row history.
+
+Features v5, from the row and up to 288 earlier rows of its history:
+1. the 12 sensors, pump type, max vibration, min temperature;
+2. per signal: rolling mean over 12, 36, 96 and 288 rows; least-squares slope over 12, 36 and 96 rows;
+3. per signal: deviation of the 12-row mean from the profile in units of the profile noise;
+4. time since onset: rows since the first row of the history where any signal deviates from the profile by more than 4 noise units
+   (-1 if none).
+Never: timestamp, step, trajectory id or length, anomaly scores, status, fault fields, truth tags.
+
+Variants per horizon:
+F. flat HGB on features v5;
+T. tree of models: a router (HGB, 4 classes: normal, misalignment, clogging, unknown) and one expert HGB per fault type trained on that
+   type's trajectory rows; probability = sum over fault types of P(type) * P(fault within horizon | type);
+M. MLP (64, 32) on standardized features v5, trained on a random 1 000 000 train rows (seed 0);
+D. mean of T and M.
+All HGB with default parameters and random_state 0.
+
+Choice on validation (seed 103): threshold = largest recall with precision >= 0.95; a variant qualifies if that recall >= 0.5 and its F1
+beats the rule; the qualifier with the largest validation recall is chosen per horizon.
+
+Report on the fresh test (seed 909), once: precision, recall, F1, base rate, the rule and recall per fault type for the chosen variant;
+the pumps-v4 model (run-004, unchanged) scored on the same rows for comparison; router accuracy and per-class F1 on test rows.
+Expected ceiling from the generator code: unknown faults are about 5 % of positives and only the part inside 24 h trajectories is
+identifiable, so overall recall at precision 0.95 cannot exceed about 0.96.
