@@ -1,0 +1,51 @@
+pumps-v1: a pump failure forecast on the synthetic pump dataset (archive «МРОН datasets.zip»), precision > 0.7 at recall > 0.5.
+
+Written on 2026-09-26 before any model was trained or scored on these files. The data is fully synthetic, produced by new-gen.py
+(or an earlier version of it); every number from this experiment is reported as a result on synthetic data.
+
+Files and what is measured about them before this spec (structure only, no model):
+1. fully_synthetic_gost_compliant_dataset (1).csv, 10 000 rows: excluded. Pump and fault are drawn independently for every 5-minute row,
+   30 % of rows carry a fault, fault runs last 1-7 rows, and time_to_next_fault_hours is uncorrelated with the next fault in the file
+   (-0.02; 100-500 h on every normal row, 0.16-34 h on every fault row). There is no history to forecast from.
+2. fully_synthetic_gost_compliant_dataset.csv (1 236 656 rows): primary file.
+3. synthetic_dataset_with_fault_codes.csv (547 588 rows) and synthetic_dataset_with_controlled_defects.csv (885 812 rows): replication only.
+In files 2 and 3 every pre-fault trajectory starts at 2025-07-14 00:00, advances 5 minutes per row, lasts 12, 96 or 288 rows (1, 8, 24 h)
+and carries the fault label only on its last row (steps 11, 95, 287). Normal rows are single rows with no history. The file is sorted by
+pump and timestamp with the generation order kept inside each (pump, timestamp) group, which is what makes reconstruction possible.
+
+Reconstruction, per pump: rows with step = (timestamp - 2025-07-14 00:00) / 5 min below 288 form the trajectories. Rows of step 0 open one
+trajectory each, in file order. At every next step the rows are matched by position to the trajectories still open, in the same order.
+A trajectory closes on the row that carries a fault label. Checks that must hold, otherwise the file is reported as not reconstructable:
+every trajectory has length 12, 96 or 288, exactly one labelled row, and it is its last one; the number of rows at a step equals the number
+of trajectories open at that step. Rows with step >= 288 are normal rows; normal rows found among trajectories break the checks above.
+
+Prediction rows: every trajectory row except its last (the fault itself) and every normal row.
+Label for horizon H in {30 min, 1 h, 8 h, 24 h}: 1 if the row is in a trajectory and its fault comes within (t, t + H], i.e.
+5 min * (last step - step) <= H; 0 for every other trajectory row and every normal row.
+
+Features use only the row and earlier rows of the same trajectory:
+1. the 12 sensor columns (4 vibrations, motor current, filter pressure drop, suction and discharge pressure, 4 temperatures);
+2. pump type (NPV_2_1..NPV_2_4) as a category;
+3. per sensor: change against the row 12 steps earlier in the trajectory (or its first row if it is younger), and the mean
+   of the last 12 one-step changes (0 when there is no earlier row).
+Excluded as features: timestamp, step, trajectory position or length, anomaly_score_1, anomaly_score_2 (the generator computes them from the
+fault severity), status (always «good»), fault_type_code, fault_type_name. Normal rows get 0 for every change feature.
+
+Split, per pump, by generation order: trajectories in file order, first 60 % train, next 20 % validation, last 20 % test; normal rows in
+timestamp order with the same shares. Model: one sklearn HistGradientBoostingClassifier per horizon, random_state 0, default parameters.
+
+Rule to compare against, from the thresholds in the dataset description: alarm if any vibration > 2.8 mm/s, motor current > 82 A,
+filter pressure drop > 0.15 MPa or any temperature > 80 C on the row. Pressures are left out of the rule: the discharge pressure in the
+data is around 14, far from the 0.05-0.45 MPa range of the description.
+
+A horizon qualifies only if, on validation:
+1. the highest precision among thresholds with recall >= 0.5 is >= 0.7,
+2. the base rate is <= 0.35,
+3. the F1 of the model at the threshold of step 4 exceeds the F1 of the rule.
+4. Threshold: among validation thresholds with precision >= 0.7 and recall >= 0.5, the one with the largest min(precision - 0.7, recall - 0.5).
+Expected from the structure alone: at 8 h and 24 h the base rate is above 0.35 (all trajectory rows of the 1 h and 8 h trajectories are
+positive at 8 h, nearly all rows at 24 h), so only 30 min and 1 h can qualify. They are still reported.
+
+Confirmation: every qualifying horizon is scored once on test with its validation threshold; precision, recall, F1, base rate and the rule
+are reported as they are, with recall per fault type. The threshold is not tuned on test.
+Replication: the same models and thresholds are applied once to all rows of the two replication files, reported as they are.
