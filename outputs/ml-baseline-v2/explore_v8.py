@@ -100,8 +100,8 @@ def selection(labels, scores, rule):
                 qualifies=bool(margin >= 0 and base <= 0.35 and at['f1'] > ruled['f1']))
 
 
-def choose(results):
-    qualified = [row for row in results if row['object_day']['qualifies']]
+def choose(results, targets=None):
+    qualified = [row for row in results if row['object_day']['qualifies'] and (targets is None or row['target'] in targets)]
     return max(qualified, key=lambda row: row['object_day']['margin']) if qualified else None
 
 
@@ -138,10 +138,10 @@ def search(examples, directory, output, *targets):
     output.write_text(json.dumps(dict(results=results, chosen=chosen and dict(target=chosen['target'], horizon_hours=chosen['horizon_hours']), test_evaluation=False), indent=2) + '\n')
 
 
-def confirm(examples, directory, search_report, output):
+def confirm(examples, directory, search_report, output, *targets):
     if output.exists():
         raise FileExistsError(str(output))
-    chosen = choose(json.loads(search_report.read_text())['results'])
+    chosen = choose(json.loads(search_report.read_text())['results'], targets or None)
     if chosen is None:
         raise ValueError('no qualified variant')
     episodes, hours = Path(chosen['episodes']), chosen['horizon_hours']
@@ -165,6 +165,6 @@ if __name__ == '__main__':
     if sys.argv[1] == 'search':
         search(Path(sys.argv[2]), Path(sys.argv[3]), Path(sys.argv[4]), *sys.argv[5:])
     elif sys.argv[1] == 'confirm':
-        confirm(*map(Path, sys.argv[2:6]))
+        confirm(*map(Path, sys.argv[2:6]), *sys.argv[6:])
     else:
         raise ValueError('mode')

@@ -25,10 +25,10 @@ def summary(labels, raw, calibrated):
                 brier_calibrated=float(brier_score_loss(labels, calibrated)), reliability_calibrated=reliability(labels, calibrated))
 
 
-def main(examples, directory, search_report, run_dir, output):
+def main(examples, directory, search_report, run_dir, output, *targets):
     if output.exists():
         raise FileExistsError(str(output))
-    chosen = e8.choose(json.loads(search_report.read_text())['results'])
+    chosen = e8.choose(json.loads(search_report.read_text())['results'], targets or None)
     hours, episodes, threshold = chosen['horizon_hours'], Path(chosen['episodes']), chosen['object_day']['threshold']
     model = joblib.load(run_dir / f"hgb_object_{chosen['target']}_{hours}h.joblib")
     with duckdb.connect(config={'threads': 4, 'memory_limit': '4GB'}) as connection:
@@ -52,4 +52,4 @@ def main(examples, directory, search_report, run_dir, output):
 
 
 if __name__ == '__main__':
-    main(*map(Path, sys.argv[1:6]))
+    main(*map(Path, sys.argv[1:6]), *sys.argv[6:])

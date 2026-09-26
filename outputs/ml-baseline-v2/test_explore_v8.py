@@ -126,6 +126,8 @@ class SelectionTests(unittest.TestCase):
         results = [dict(target='a', object_day=dict(row, margin=0.1)), dict(target='b', object_day=dict(row, margin=0.2)), dict(target='c', object_day=weak)]
         self.assertEqual(e8.choose(results)['target'], 'b')
         self.assertIsNone(e8.choose(results[2:]))
+        self.assertEqual(e8.choose(results, ('a', 'c'))['target'], 'a')
+        self.assertIsNone(e8.choose(results, ('c',)))
 
 
 if __name__ == '__main__':

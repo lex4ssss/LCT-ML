@@ -36,3 +36,9 @@ For reference each variant is shown next to the explore-v7 max-of-channels model
 Confirmation: the chosen variant, the same model (trained before 2025) and the 2025 threshold are applied once to test 2026 object-days whose
 label window lies inside the data (as_of <= last test as_of minus (horizon - 24 h)). Precision, recall, F1, base rate and the rule are reported
 whatever they are. The threshold is not tuned on test. If nothing qualifies, that is reported with the best precision at recall 0.5 per variant.
+
+Addendum, written on 2026-09-26 after run-008 and before any test result of a failure-direction model was seen.
+The organizers score the failure forecast and the incident forecast separately (§16). The failure-direction forecast is chosen by the same rule
+restricted to the failure targets (failure, neispraven) of explore-v8.json: among qualifiers, the largest margin on 2025. Only neispraven 168 h
+qualifies. It is confirmed once on test 2026 with its 2025 threshold (run-009), the same protocol as run-008. This is a second test look within
+explore-v8; both looks are reported.
