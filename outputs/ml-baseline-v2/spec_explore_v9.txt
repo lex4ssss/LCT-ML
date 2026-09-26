@@ -1,0 +1,30 @@
+explore-v9: pump flapping at sibling objects as a predictor of floods (§16 hint of the organizers), on the explore-v8 object-day unit.
+
+Written on 2026-09-26 before any explore-v9 feature was computed against a label. Known before this spec (data measurement only):
+180 channels of sensor type «Состояние насоса» in 18 objects under 15 parents; their raw_value is «Включен» / «Выключен» and they are not
+alarms; «Включен» events per year grow from 24k (2019) to 82 570 (2025). Hydraulic connectivity is not in the data, so siblings (objects
+with the same parent in справочник_объектов_диспетчер.csv) are the proxy. Test 2026 was never opened for an object-level flood model.
+
+Reference: the explore-v8 flood object model (target flood, episodes-900-flood.parquet), same object-days, same training rows, same
+2025 evaluation rows, same rule, retrained here from the same code so both are compared on identical rows.
+
+Pump features of an object-day, events with occurred_at in (d - w, d] where d is the object-day's day start, so only the past is used:
+1. own: «Включен» events of the object's pump channels for w = 24 h, 7 d, 30 d, and flap ratio = count 24 h / (count 30 d / 30),
+   0 when the 30-day count is 0; has_pumps = 1 if the object has any pump channel;
+2. siblings: the same four values summed over the other objects with the same parent, and the number of siblings with pump channels;
+3. sibling floods: starts of flood episodes (episodes-900-flood.parquet, first_alarm_at) in the other objects with the same parent
+   for w = 24 h and 7 d.
+Objects without a parent in the directory get 0 for sibling features.
+
+Variant: HGB (run-002 parameters, as in explore-v8) on the explore-v8 features plus the pump features, per horizon 24, 72, 168 h.
+
+Acceptance on 2025, per horizon, fixed before results:
+1. AP of the variant minus AP of the reference >= 0.01;
+2. precision at recall >= 0.5 of the variant is not lower than the reference's;
+3. the explore-v8 qualification holds (precision >= 0.7 at recall >= 0.5, base rate <= 0.35, F1 above the rule at the margin threshold).
+Choice: among accepted horizons the largest AP gain. If nothing is accepted, the result is negative and is reported as such with the AP
+and precision at recall 0.5 of both models per horizon; test is not opened.
+
+Confirmation: the chosen horizon, the model trained before 2025 and its 2025 margin threshold are applied once to test 2026 object-days
+as in explore-v8 confirm; the reference is scored on the same rows for comparison. Reported as is. Test 2026 was already opened in
+run-002, run-006, run-007, run-008 and run-009 for other models and targets.
