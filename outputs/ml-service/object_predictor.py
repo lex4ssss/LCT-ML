@@ -121,6 +121,7 @@ class ObjectPredictor:
             results[obj] = dict(status='ok', object_id=obj, as_of_utc=t.isoformat(), horizon_hours=self.hours, target=self.api_target,
                                 target_scope=f'{self.target}_episode_start_in_object',
                                 probability=float(self.calibrator.predict([score])[0]), score=score, threshold=self.threshold, alert=score >= self.threshold,
+                                model_threshold=float(self.calibrator.predict([self.threshold])[0]),
                                 channels_used=len(used), channels_total=len(mine), top_factors=self.factors(row), suspect_channels=self.suspects(columns, used),
                                 model_name=self.model_name)
         return results

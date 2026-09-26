@@ -56,6 +56,8 @@ class EndToEndTests(unittest.TestCase):
                     self.assertEqual((row['status'], row['channels_used'], row['channels_total']), ('ok', len(mine), len(predictor.objects[obj])))
                     self.assertAlmostEqual(row['probability'], row['score'] / 2, places=9)
                     self.assertEqual(row['alert'], row['score'] >= 0.5)
+                    self.assertAlmostEqual(row['model_threshold'], 0.25, places=9)
+                    self.assertEqual(row['horizon_hours'], 72)
                     self.assertEqual(row['target_scope'], f'{target}_episode_start_in_object')
                     self.assertTrue(set(s['target_id'].removeprefix('sensor_') for s in row['suspect_channels']) <= set(mine))
             store.connection.close()

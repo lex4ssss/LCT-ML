@@ -49,7 +49,8 @@ class Predictor:
         recommendation = ('Риск нового тревожного эпизода в ближайшие 24 ч выше рабочего порога модели: проверить канал и объект' if alert
                           else 'Риск ниже рабочего порога модели: плановое наблюдение')
         return dict(probability=probability, lead_min_hours=0.0, prediction_window_hours=24.0, top_factors=factors, recommendation=recommendation,
-                    model_name=self.model_name, status='ok', alert=alert, threshold=self.threshold, as_of_utc=t.isoformat(),
+                    model_name=self.model_name, status='ok', alert=alert, threshold=self.threshold, model_threshold=self.threshold,
+                    horizon_hours=24.0, as_of_utc=t.isoformat(),
                     target_scope='recorded_alarm_episode_start', features=values,
                     demo_clock=None if self.demo_offset is None else dict(requested_as_of_utc=requested.isoformat(), anchor_utc=self.demo_anchor.isoformat()))
 
