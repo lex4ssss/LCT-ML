@@ -1,0 +1,8 @@
+-r ../ml-baseline/requirements.txt
+shap==0.52.0
+numba==0.67.0
+llvmlite==0.49.0
+pandas==3.0.6
+slicer==0.0.8
+tqdm==4.70.1
+packaging==26.3

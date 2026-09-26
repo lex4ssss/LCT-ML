@@ -1,0 +1,10 @@
+{
+  "target": "incident",
+  "horizon_hours": 72,
+  "threshold": 0.614279258235615,
+  "model_path": "hgb_object_incident_72h.joblib",
+  "model_sha256": "7b48500141d47670e224b0cf684bf993520fa96c47076d5717992be567836854",
+  "calibration_path": "../run-008-calibration/isotonic.joblib",
+  "calibration_sha256": "a2f8b7a7a0de11ba309dbcda4defd09e6c9e42cfa733507c969bc04f803584f6",
+  "source": "explore-v8.json chosen variant, run-008 test once, isotonic fitted on 2025"
+}
