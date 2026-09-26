@@ -1,0 +1,98 @@
+{
+  "spec": "spec_pumps_v4.txt",
+  "threshold_rule": "recall",
+  "data": "fully_synthetic_gost_compliant_dataset.csv",
+  "synthetic": true,
+  "model_path": "pumps_v2_models.joblib",
+  "model_sha256": "93159e611c8177295942813fc5987c322211afeccfdfacd7ad7b302553c92f24",
+  "normal_profile": {
+    "NPV_2_1": {
+      "vibration_pump_bearing_drive": 1.2453814546588575,
+      "vibration_pump_bearing_nondrive": 1.2349433294978105,
+      "vibration_motor_bearing_drive": 1.1951842448663828,
+      "vibration_motor_bearing_nondrive": 1.244916819278243,
+      "motor_current": 48.00275228776201,
+      "pressure_diff_filter": 0.047222448971177,
+      "pressure_suction": 0.297052784188756,
+      "pressure_discharge": 14.327738215275565,
+      "temperature_motor_bearing_drive": 59.82497512328382,
+      "temperature_motor_bearing_nondrive": 59.926986333784264,
+      "temperature_pump_bearing_drive": 60.266709823454875,
+      "temperature_pump_bearing_nondrive": 60.093964260144155
+    },
+    "NPV_2_2": {
+      "vibration_pump_bearing_drive": 1.3182377927769668,
+      "vibration_pump_bearing_nondrive": 1.3426980414998324,
+      "vibration_motor_bearing_drive": 1.3324095979278965,
+      "vibration_motor_bearing_nondrive": 1.3280811963558403,
+      "motor_current": 75.32954736127554,
+      "pressure_diff_filter": 0.0528200781247491,
+      "pressure_suction": 0.3027182179847482,
+      "pressure_discharge": 19.063148538672515,
+      "temperature_motor_bearing_drive": 61.93878475233216,
+      "temperature_motor_bearing_nondrive": 62.1238971147076,
+      "temperature_pump_bearing_drive": 62.11793072761717,
+      "temperature_pump_bearing_nondrive": 61.96087934095031
+    },
+    "NPV_2_3": {
+      "vibration_pump_bearing_drive": 1.1273055029422807,
+      "vibration_pump_bearing_nondrive": 1.1039223178581763,
+      "vibration_motor_bearing_drive": 1.113244557498122,
+      "vibration_motor_bearing_nondrive": 1.108868102910094,
+      "motor_current": 52.31200674399647,
+      "pressure_diff_filter": 0.0496994755990561,
+      "pressure_suction": 0.3017095933409708,
+      "pressure_discharge": 4.991544958300505,
+      "temperature_motor_bearing_drive": 58.396998730886686,
+      "temperature_motor_bearing_nondrive": 58.100154983049734,
+      "temperature_pump_bearing_drive": 58.1706035093172,
+      "temperature_pump_bearing_nondrive": 58.24038483389925
+    },
+    "NPV_2_4": {
+      "vibration_pump_bearing_drive": 1.0990128520962177,
+      "vibration_pump_bearing_nondrive": 1.0994922800655873,
+      "vibration_motor_bearing_drive": 1.0899222725378508,
+      "vibration_motor_bearing_nondrive": 1.0674141799661707,
+      "motor_current": 52.1492789945181,
+      "pressure_diff_filter": 0.05295052614905365,
+      "pressure_suction": 0.2999679031321657,
+      "pressure_discharge": 4.985448209891018,
+      "temperature_motor_bearing_drive": 58.06533286141965,
+      "temperature_motor_bearing_nondrive": 57.84320707179987,
+      "temperature_pump_bearing_drive": 57.97068911932781,
+      "temperature_pump_bearing_nondrive": 57.84541514480311
+    }
+  },
+  "horizons": {
+    "30min": {
+      "horizon_hours": 0.5,
+      "variant": "D",
+      "threshold": 0.5037247359946297,
+      "test": {
+        "precision": 0.9543,
+        "recall": 0.8127,
+        "f1": 0.8779,
+        "tp": 9275,
+        "fp": 444,
+        "fn": 2137,
+        "rows": 244787,
+        "base_rate": 0.0466
+      }
+    },
+    "1h": {
+      "horizon_hours": 1.0,
+      "variant": "D",
+      "threshold": 0.5199411344349298,
+      "test": {
+        "precision": 0.954,
+        "recall": 0.8256,
+        "f1": 0.8851,
+        "tp": 18304,
+        "fp": 883,
+        "fn": 3867,
+        "rows": 244787,
+        "base_rate": 0.0906
+      }
+    }
+  }
+}

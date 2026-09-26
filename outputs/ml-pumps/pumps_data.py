@@ -168,10 +168,10 @@ def lagged(values, profile, position, lag):
     return np.where((position >= lag)[:, None], values[earlier], profile)
 
 
-def feature_frame_a3(frame, in_trajectory, windows=(CHANGE_WINDOW,)):
+def feature_frame_a3(frame, in_trajectory, windows=(CHANGE_WINDOW,), profile=None):
     values = frame[SENSORS].to_numpy(dtype=np.float64)
     position = frame.groupby('trajectory').cumcount().to_numpy()
-    profile = normal_profile(frame)
+    profile = normal_profile(frame) if profile is None else profile
     features = pd.DataFrame(values, columns=SENSORS, index=frame.index)
     changes = {}
     for window in windows:
@@ -182,8 +182,8 @@ def feature_frame_a3(frame, in_trajectory, windows=(CHANGE_WINDOW,)):
     return features, values, position, profile, changes
 
 
-def feature_frame_v3(frame, in_trajectory):
-    features, values, position, profile, changes = feature_frame_a3(frame, in_trajectory, (CHANGE_WINDOW, 36, 96))
+def feature_frame_v3(frame, in_trajectory, profile=None):
+    features, values, position, profile, changes = feature_frame_a3(frame, in_trajectory, (CHANGE_WINDOW, 36, 96), profile)
     lag12 = lagged(values, profile, position, CHANGE_WINDOW)
     lag24 = lagged(values, profile, position, 2 * CHANGE_WINDOW)
     acceleration = np.where(in_trajectory[:, None], (values - lag12) - (lag12 - lag24), 0.0)

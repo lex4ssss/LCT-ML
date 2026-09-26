@@ -13,6 +13,7 @@ from feature_store import FeatureStore, InsufficientData, to_utc_naive
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / 'ml-baseline-v2'))
 import experiment_v2 as ex
 from object_predictor import ObjectPredictor
+from pump_predictor import BadReadings, PumpPredictor
 
 MAX_BODY = 64 * 1024
 
@@ -55,7 +56,7 @@ class Predictor:
                     demo_clock=None if self.demo_offset is None else dict(requested_as_of_utc=requested.isoformat(), anchor_utc=self.demo_anchor.isoformat()))
 
 
-def make_handler(predictor, objects=None):
+def make_handler(predictor, objects=None, pumps=None):
     class Handler(BaseHTTPRequestHandler):
         def reply(self, status, body):
             data = json.dumps(body, ensure_ascii=False).encode()
@@ -70,9 +71,12 @@ def make_handler(predictor, objects=None):
                 return self.reply(404, dict(error='not_found'))
             demo = None if predictor.demo_offset is None else (datetime.now(timezone.utc).replace(tzinfo=None) + predictor.demo_offset).isoformat()
             self.reply(200, dict(status='ok', model_name=predictor.model_name, threshold=predictor.threshold, journal_last_record=predictor.store.global_last.isoformat(), demo_now_utc=demo,
-                                 object_models={name: model.model_name for name, model in (objects or {}).items()}))
+                                 object_models={name: model.model_name for name, model in (objects or {}).items()},
+                                 pump_model=pumps and pumps.model_name))
 
         def do_POST(self):
+            if self.path == '/predict_pump' and pumps:
+                return self.predict_pump()
             if self.path not in ('/predict', '/predict_object', '/risk_map') or (self.path != '/predict' and not objects):
                 return self.reply(404, dict(error='not_found'))
             try:
@@ -106,6 +110,17 @@ def make_handler(predictor, objects=None):
             except InsufficientData as error:
                 self.reply(422, dict(status='insufficient_data', reason=error.reason, detail=error.detail))
 
+        def predict_pump(self):
+            try:
+                length = int(self.headers.get('Content-Length', '0'))
+                if not 0 < length <= MAX_BODY:
+                    raise ValueError('body size')
+                payload = json.loads(self.rfile.read(length))
+                result = pumps.predict(payload['pump_id'], payload['readings'])
+            except (BadReadings, ValueError, KeyError, TypeError) as error:
+                return self.reply(400, dict(error='bad_request', detail=str(error)))
+            self.reply(200, result)
+
         def log_message(self, *args):
             pass
 
@@ -122,6 +137,7 @@ def main():
     parser.add_argument('--demo-anchor', type=datetime.fromisoformat)
     parser.add_argument('--object-decision', action='append', default=[])
     parser.add_argument('--directory')
+    parser.add_argument('--pump-decision')
     args = parser.parse_args()
     if bool(args.object_decision) != (args.directory is not None):
         parser.error('--object-decision and --directory go together')
@@ -134,7 +150,8 @@ def main():
         if model.api_target in objects:
             parser.error('two object models for ' + model.api_target)
         objects[model.api_target] = model
-    ThreadingHTTPServer((args.host, args.port), make_handler(predictor, objects)).serve_forever()
+    pumps = PumpPredictor(args.pump_decision) if args.pump_decision else None
+    ThreadingHTTPServer((args.host, args.port), make_handler(predictor, objects, pumps)).serve_forever()
 
 
 if __name__ == '__main__':
