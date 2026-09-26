@@ -113,3 +113,36 @@ OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 .venv/bin/python \
 git clone https://github.com/Runoi/LCT-backend.git work/LCT-backend
 git -C work/LCT-backend checkout 928b9931da16ca53498425316482d19bc40f11ba
 ```
+
+После 26.09.2026 оба патча влиты в backend (коммиты 4e3e808 и 2f3dfa8), уровни риска backend считает по полям `alert`, `model_threshold` и `horizon_hours` сервиса.
+
+## Модели объекта: explore-v9 и explore-v10
+
+```bash
+cd outputs/ml-baseline-v2
+P=../../work/ml-prepared
+D=<архив>/справочник_каналов_датчиков.csv
+../../.venv/bin/python explore_v9.py search $P/training-examples-v2.parquet $D <архив>/справочник_объектов_диспетчер.csv "$P/20[0-9][0-9].parquet" $P/episodes-900-flood.parquet explore-v9.json
+../../.venv/bin/python explore_v10.py search $P/training-examples-v2.parquet $D explore-v10.json "incident=$P/episodes-900-incident.parquet:72" "neispraven=$P/episodes-900-neispraven.parquet:168"
+../../.venv/bin/python explore_v10.py confirm $P/training-examples-v2.parquet $D explore-v10.json run-010-strict "incident=$P/episodes-900-incident.parquet:72" "neispraven=$P/episodes-900-neispraven.parquet:168"
+```
+
+Перебор explore-v10 занимает около 7 минут и до 10 ГБ памяти.
+
+## Насосы (синтетика)
+
+Исходники: архив «МРОН datasets.zip» и генератор new-gen.py, контрольные суммы в [sources.json](sources.json). Свежие наборы получаются тем же генератором с фиксированным seed, около минуты на набор:
+
+```bash
+for seed in 101 102 103 909; do
+  .venv/bin/python outputs/ml-pumps/generate_pumps.py --generator <путь>/new-gen.py --seed $seed --out work/pumps-synthetic/seed-$seed.csv
+done
+cd outputs/ml-pumps
+W=../../work/pumps-synthetic
+../../.venv/bin/python pumps_v5.py --train <путь>/fully_synthetic_gost_compliant_dataset.csv $W/seed-101.csv $W/seed-102.csv \
+  --validation $W/seed-103.csv --test $W/seed-909.csv --v4-run run-004 --out run-005
+../../.venv/bin/python build_pump_decision_v5.py --run run-005
+```
+
+Прогон занимает около 3 минут и до 8 ГБ памяти. Сервис подключает модель флагом `--pump-decision outputs/ml-pumps/run-005/pump-decision.json`.
+

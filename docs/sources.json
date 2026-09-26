@@ -86,5 +86,46 @@
     "dependencies": "outputs/ml-baseline/requirements.txt",
     "local_model_weights_included": false,
     "authentication_included": false
+  },
+  "pumps_synthetic": {
+    "note": "synthetic pump dataset from the team sync; not Moskollektor data",
+    "local_paths": [
+      "/Users/work/Downloads/archive 2",
+      "/Users/work/Downloads/archive 3"
+    ],
+    "files": [
+      {
+        "name": "fully_synthetic_gost_compliant_dataset.csv",
+        "bytes": 359499768,
+        "sha256": "3dd5b476f7d8bb05729d9ecdd18333db16649706c007a868457efcb45b2f4e82"
+      },
+      {
+        "name": "new-gen.py",
+        "bytes": 30515,
+        "sha256": "df7b883b2b5da650079498f646f1396a28b2d8bd09f3ab106a81404ccdfd6885"
+      },
+      {
+        "name": "МРОН datasets.zip",
+        "bytes": 269166519,
+        "sha256": "002065b706f773fc598825a7fe6ff25dcddc19dd90a9e02c42e9a88e25408101"
+      },
+      {
+        "name": "описание датасета.docx",
+        "bytes": 21107,
+        "sha256": "6d60fab71dae5facbdb9fc6d7fe3d1388f637ac3ceb3943f8a06e6111ca2a1dc"
+      }
+    ],
+    "generated": {
+      "script": "outputs/ml-pumps/generate_pumps.py",
+      "seeds": {
+        "train": [
+          101,
+          102
+        ],
+        "validation": 103,
+        "test": 909
+      },
+      "local_path": "work/pumps-synthetic"
+    }
   }
 }
