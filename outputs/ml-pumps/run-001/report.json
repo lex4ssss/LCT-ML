@@ -1,0 +1,187 @@
+{
+  "spec": "spec_pumps_v1.txt",
+  "primary": {
+    "file": "fully_synthetic_gost_compliant_dataset.csv",
+    "rows": 1236656,
+    "trajectories": 9500,
+    "normal_rows": 500,
+    "prediction_rows": 1227156,
+    "split": {
+      "train": 737808,
+      "validation": 244561,
+      "test": 244787
+    }
+  },
+  "horizons": {
+    "30min": {
+      "validation": {
+        "best_precision_at_recall_0_5": 0.7572,
+        "threshold": 0.2914426898051183,
+        "model": {
+          "precision": 0.7186,
+          "recall": 0.5186,
+          "f1": 0.6024,
+          "tp": 5909,
+          "fp": 2314,
+          "fn": 5485,
+          "rows": 244561,
+          "base_rate": 0.0466
+        },
+        "rule": {
+          "precision": 0.0688,
+          "recall": 0.3648,
+          "f1": 0.1158,
+          "tp": 4156,
+          "fp": 56231,
+          "fn": 7238,
+          "rows": 244561,
+          "base_rate": 0.0466
+        }
+      },
+      "qualified": true,
+      "test": {
+        "model": {
+          "precision": 0.7269,
+          "recall": 0.5125,
+          "f1": 0.6012,
+          "tp": 5849,
+          "fp": 2198,
+          "fn": 5563,
+          "rows": 244787,
+          "base_rate": 0.0466
+        },
+        "rule": {
+          "precision": 0.0724,
+          "recall": 0.3509,
+          "f1": 0.12,
+          "tp": 4005,
+          "fp": 51336,
+          "fn": 7407,
+          "rows": 244787,
+          "base_rate": 0.0466
+        },
+        "recall_by_fault_type": {
+          "Засорение фильтра": 0.4042,
+          "Неизвестная неисправность": 0.0386,
+          "Несоосность": 0.7123
+        }
+      }
+    },
+    "1h": {
+      "validation": {
+        "best_precision_at_recall_0_5": 0.8719,
+        "threshold": 0.38737434733563286,
+        "model": {
+          "precision": 0.7681,
+          "recall": 0.5678,
+          "f1": 0.6529,
+          "tp": 12578,
+          "fp": 3797,
+          "fn": 9576,
+          "rows": 244561,
+          "base_rate": 0.0906
+        },
+        "rule": {
+          "precision": 0.1263,
+          "recall": 0.3442,
+          "f1": 0.1848,
+          "tp": 7626,
+          "fp": 52761,
+          "fn": 14528,
+          "rows": 244561,
+          "base_rate": 0.0906
+        }
+      },
+      "qualified": true,
+      "test": {
+        "model": {
+          "precision": 0.7784,
+          "recall": 0.559,
+          "f1": 0.6507,
+          "tp": 12394,
+          "fp": 3528,
+          "fn": 9777,
+          "rows": 244787,
+          "base_rate": 0.0906
+        },
+        "rule": {
+          "precision": 0.133,
+          "recall": 0.3321,
+          "f1": 0.19,
+          "tp": 7362,
+          "fp": 47979,
+          "fn": 14809,
+          "rows": 244787,
+          "base_rate": 0.0906
+        },
+        "recall_by_fault_type": {
+          "Засорение фильтра": 0.509,
+          "Неизвестная неисправность": 0.045,
+          "Несоосность": 0.6917
+        }
+      }
+    },
+    "8h": {
+      "validation": {
+        "best_precision_at_recall_0_5": 1.0,
+        "threshold": 0.654551223672611,
+        "model": {
+          "precision": 0.9818,
+          "recall": 0.7822,
+          "f1": 0.8707,
+          "tp": 99930,
+          "fp": 1850,
+          "fn": 27830,
+          "rows": 244561,
+          "base_rate": 0.5224
+        },
+        "rule": {
+          "precision": 0.5708,
+          "recall": 0.2698,
+          "f1": 0.3664,
+          "tp": 34467,
+          "fp": 25920,
+          "fn": 93293,
+          "rows": 244561,
+          "base_rate": 0.5224
+        }
+      },
+      "qualified": false
+    },
+    "24h": {
+      "validation": {
+        "best_precision_at_recall_0_5": 0.9999,
+        "threshold": 0.999702990261111,
+        "model": {
+          "precision": 0.9999,
+          "recall": 0.9997,
+          "f1": 0.9998,
+          "tp": 244396,
+          "fp": 19,
+          "fn": 65,
+          "rows": 244561,
+          "base_rate": 0.9996
+        },
+        "rule": {
+          "precision": 1.0,
+          "recall": 0.247,
+          "f1": 0.3962,
+          "tp": 60387,
+          "fp": 0,
+          "fn": 184074,
+          "rows": 244561,
+          "base_rate": 0.9996
+        }
+      },
+      "qualified": false
+    }
+  },
+  "replication": {
+    "synthetic_dataset_with_fault_codes.csv": {
+      "not_reconstructable": "NPV_2_1: 789 rows at step 1, 788 open trajectories"
+    },
+    "synthetic_dataset_with_controlled_defects.csv": {
+      "not_reconstructable": "NPV_2_1: 1215 rows at step 2, 1214 open trajectories"
+    }
+  }
+}
