@@ -80,7 +80,135 @@
         ]
       }
     },
-    "replicates": 1000
+    "replicates": 1000,
+    "alerts_per_day": {
+      "days": 175,
+      "mean": 20.13,
+      "median": 21.0,
+      "max": 30
+    },
+    "rule_alarm_24h": {
+      "total": {
+        "precision": 0.5734,
+        "recall": 0.492,
+        "f1": 0.5296,
+        "alerts": 4062,
+        "rows": 13628,
+        "base_rate": 0.3474
+      },
+      "months": {
+        "2026-01": {
+          "precision": 0.5571,
+          "recall": 0.4552,
+          "f1": 0.501,
+          "alerts": 648,
+          "rows": 2423,
+          "base_rate": 0.3273
+        },
+        "2026-02": {
+          "precision": 0.5565,
+          "recall": 0.459,
+          "f1": 0.5031,
+          "alerts": 584,
+          "rows": 2205,
+          "base_rate": 0.3211
+        },
+        "2026-03": {
+          "precision": 0.595,
+          "recall": 0.4869,
+          "f1": 0.5355,
+          "alerts": 716,
+          "rows": 2400,
+          "base_rate": 0.3646
+        },
+        "2026-04": {
+          "precision": 0.6031,
+          "recall": 0.5339,
+          "f1": 0.5664,
+          "alerts": 771,
+          "rows": 2343,
+          "base_rate": 0.3717
+        },
+        "2026-05": {
+          "precision": 0.5627,
+          "recall": 0.5,
+          "f1": 0.5295,
+          "alerts": 734,
+          "rows": 2330,
+          "base_rate": 0.3545
+        },
+        "2026-06": {
+          "precision": 0.5567,
+          "recall": 0.5129,
+          "f1": 0.5339,
+          "alerts": 609,
+          "rows": 1927,
+          "base_rate": 0.343
+        }
+      }
+    },
+    "target_starts_7d": {
+      "threshold": 7.0,
+      "chosen_by": "margin",
+      "total": {
+        "precision": 0.7176,
+        "recall": 0.556,
+        "f1": 0.6265,
+        "alerts": 3668,
+        "rows": 13628,
+        "base_rate": 0.3474
+      },
+      "months": {
+        "2026-01": {
+          "precision": 0.749,
+          "recall": 0.4666,
+          "f1": 0.575,
+          "alerts": 494,
+          "rows": 2423,
+          "base_rate": 0.3273
+        },
+        "2026-02": {
+          "precision": 0.7047,
+          "recall": 0.5664,
+          "f1": 0.628,
+          "alerts": 569,
+          "rows": 2205,
+          "base_rate": 0.3211
+        },
+        "2026-03": {
+          "precision": 0.6778,
+          "recall": 0.5577,
+          "f1": 0.6119,
+          "alerts": 720,
+          "rows": 2400,
+          "base_rate": 0.3646
+        },
+        "2026-04": {
+          "precision": 0.7457,
+          "recall": 0.5993,
+          "f1": 0.6645,
+          "alerts": 700,
+          "rows": 2343,
+          "base_rate": 0.3717
+        },
+        "2026-05": {
+          "precision": 0.6662,
+          "recall": 0.5533,
+          "f1": 0.6045,
+          "alerts": 686,
+          "rows": 2330,
+          "base_rate": 0.3545
+        },
+        "2026-06": {
+          "precision": 0.7896,
+          "recall": 0.5961,
+          "f1": 0.6793,
+          "alerts": 499,
+          "rows": 1927,
+          "base_rate": 0.343
+        }
+      }
+    }
   },
   "neispraven": {
     "total": {
@@ -163,6 +291,134 @@
         ]
       }
     },
-    "replicates": 1000
+    "replicates": 1000,
+    "alerts_per_day": {
+      "days": 171,
+      "mean": 13.37,
+      "median": 13.0,
+      "max": 19
+    },
+    "rule_alarm_24h": {
+      "total": {
+        "precision": 0.3432,
+        "recall": 0.428,
+        "f1": 0.3809,
+        "alerts": 3966,
+        "rows": 13320,
+        "base_rate": 0.2387
+      },
+      "months": {
+        "2026-01": {
+          "precision": 0.358,
+          "recall": 0.4241,
+          "f1": 0.3883,
+          "alerts": 648,
+          "rows": 2423,
+          "base_rate": 0.2258
+        },
+        "2026-02": {
+          "precision": 0.3014,
+          "recall": 0.3721,
+          "f1": 0.333,
+          "alerts": 584,
+          "rows": 2205,
+          "base_rate": 0.2145
+        },
+        "2026-03": {
+          "precision": 0.3925,
+          "recall": 0.4323,
+          "f1": 0.4114,
+          "alerts": 716,
+          "rows": 2400,
+          "base_rate": 0.2708
+        },
+        "2026-04": {
+          "precision": 0.3735,
+          "recall": 0.455,
+          "f1": 0.4103,
+          "alerts": 771,
+          "rows": 2343,
+          "base_rate": 0.2702
+        },
+        "2026-05": {
+          "precision": 0.2997,
+          "recall": 0.4112,
+          "f1": 0.3467,
+          "alerts": 734,
+          "rows": 2330,
+          "base_rate": 0.2296
+        },
+        "2026-06": {
+          "precision": 0.3197,
+          "recall": 0.4795,
+          "f1": 0.3836,
+          "alerts": 513,
+          "rows": 1619,
+          "base_rate": 0.2112
+        }
+      }
+    },
+    "target_starts_7d": {
+      "threshold": 3.0,
+      "chosen_by": "margin",
+      "total": {
+        "precision": 0.7682,
+        "recall": 0.6242,
+        "f1": 0.6888,
+        "alerts": 2584,
+        "rows": 13320,
+        "base_rate": 0.2387
+      },
+      "months": {
+        "2026-01": {
+          "precision": 0.8141,
+          "recall": 0.5923,
+          "f1": 0.6857,
+          "alerts": 398,
+          "rows": 2423,
+          "base_rate": 0.2258
+        },
+        "2026-02": {
+          "precision": 0.7257,
+          "recall": 0.6152,
+          "f1": 0.6659,
+          "alerts": 401,
+          "rows": 2205,
+          "base_rate": 0.2145
+        },
+        "2026-03": {
+          "precision": 0.7075,
+          "recall": 0.5508,
+          "f1": 0.6194,
+          "alerts": 506,
+          "rows": 2400,
+          "base_rate": 0.2708
+        },
+        "2026-04": {
+          "precision": 0.7944,
+          "recall": 0.6714,
+          "f1": 0.7277,
+          "alerts": 535,
+          "rows": 2343,
+          "base_rate": 0.2702
+        },
+        "2026-05": {
+          "precision": 0.775,
+          "recall": 0.6374,
+          "f1": 0.6995,
+          "alerts": 440,
+          "rows": 2330,
+          "base_rate": 0.2296
+        },
+        "2026-06": {
+          "precision": 0.8092,
+          "recall": 0.7193,
+          "f1": 0.7616,
+          "alerts": 304,
+          "rows": 1619,
+          "base_rate": 0.2112
+        }
+      }
+    }
   }
 }

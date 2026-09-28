@@ -42,6 +42,8 @@ B=outputs/ml-baseline-v2
   --port 8090 --demo-anchor 2026-06-20T00:00:00
 ```
 
+`GET /quality` при запуске с `--quality outputs/ml-baseline-v2/validate-stability.json` отдаёт этот файл без изменений: precision и recall моделей объекта по месяцам test 2026, два правила для сравнения и число объектов под предупреждением в сутки. Без ключа маршрут отвечает 404.
+
 Без `--object-decision` сервис работает как раньше. SHA-256 моделей и калибровок сверяются при старте, состояния класса берутся из object-decision.json. Зависимости: outputs/ml-service/requirements.txt (добавлен shap). Старт около 10 секунд.
 
 1. `POST /predict_object {"object_id": "3215", "as_of": "...", "target": "incident"}`: прогноз по одному объекту. target необязателен, по умолчанию incident.

@@ -17,6 +17,11 @@ class StabilityTest(unittest.TestCase):
         self.assertEqual(list(table), ['2026-01', '2026-02'])
         self.assertEqual((table['2026-01']['precision'], table['2026-02']['recall']), (0.5, 0.5))
 
+    def test_alerts_per_day(self):
+        day = np.array(['2026-01-01', '2026-01-01', '2026-01-01', '2026-01-02', '2026-01-02', '2026-01-03'], dtype='datetime64[us]')
+        result = vs.alerts_per_day(np.array([True, True, False, True, False, False]), day)
+        self.assertEqual(result, dict(days=3, mean=1.0, median=1.0, max=2))
+
     def test_bootstrap_brackets_point_estimate(self):
         rng = np.random.default_rng(1)
         labels = (rng.random(2000) < 0.3).astype(np.int64)

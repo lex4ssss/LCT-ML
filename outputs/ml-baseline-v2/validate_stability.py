@@ -49,17 +49,30 @@ def bootstrap(labels, alarms, groups, seed=0):
                 objects=dict(precision=interval(objects_ci[:, 0]), recall=interval(objects_ci[:, 1])))
 
 
+def alerts_per_day(alarms, day):
+    days = np.unique(day)
+    per_day = np.array([alarms[day == value].sum() for value in days])
+    return dict(days=int(len(days)), mean=round(float(per_day.mean()), 2), median=float(np.median(per_day)), max=int(per_day.max()))
+
+
 def validate_target(connection, columns, test_columns, directory, episodes, hours):
-    matrix, _, _, _, day, present, label, _ = vo.frames(connection, columns, directory, episodes, hours)
+    matrix, history, _, _, day, present, label, _ = vo.frames(connection, columns, directory, episodes, hours)
     train, evaluation = e8.masks(day, present, hours)
     model = ex.make_model('hgb').fit(matrix[train], label[train])
     threshold, _ = e8.margin_threshold(label[evaluation], model.predict_proba(matrix[evaluation])[:, 1])
-    t_matrix, _, _, t_objects, t_day, t_present, t_label, _ = vo.frames(connection, test_columns, directory, episodes, hours)
+    week_threshold, week_chosen_by = vo.fixed_threshold(label[evaluation], history[evaluation][:, 1])
+    t_matrix, t_history, _, t_objects, t_day, t_present, t_label, t_rule = vo.frames(connection, test_columns, directory, episodes, hours)
     rows = t_present & (t_day <= t_day[t_present].max() - (hours - 24) * e7.HOUR)
     labels, day, objects = t_label[rows], t_day[rows], t_objects[rows]
     alarms = model.predict_proba(t_matrix[rows])[:, 1] >= threshold
+    rule_alarms = t_rule[rows] >= 1.0
+    week_alarms = t_history[rows][:, 1] >= week_threshold
     return dict(total=vo.scored(labels, alarms.astype(np.float64), 0.5), months=by_month(labels, alarms, day),
-                bootstrap_95=bootstrap(labels, alarms, objects), replicates=REPLICATES)
+                bootstrap_95=bootstrap(labels, alarms, objects), replicates=REPLICATES,
+                alerts_per_day=alerts_per_day(alarms, day),
+                rule_alarm_24h=dict(total=vo.scored(labels, rule_alarms.astype(np.float64), 0.5), months=by_month(labels, rule_alarms, day)),
+                target_starts_7d=dict(threshold=float(week_threshold), chosen_by=week_chosen_by,
+                                      total=vo.scored(labels, week_alarms.astype(np.float64), 0.5), months=by_month(labels, week_alarms, day)))
 
 
 if __name__ == '__main__':

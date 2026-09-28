@@ -57,7 +57,7 @@ class Predictor:
                     demo_clock=None if self.demo_offset is None else dict(requested_as_of_utc=requested.isoformat(), anchor_utc=self.demo_anchor.isoformat()))
 
 
-def make_handler(predictor, objects=None, pumps=None):
+def make_handler(predictor, objects=None, pumps=None, quality=None):
     class Handler(BaseHTTPRequestHandler):
         def reply(self, status, body):
             data = json.dumps(body, ensure_ascii=False).encode()
@@ -68,6 +68,8 @@ def make_handler(predictor, objects=None, pumps=None):
             self.wfile.write(data)
 
         def do_GET(self):
+            if self.path == '/quality' and quality is not None:
+                return self.reply(200, quality)
             if self.path != '/health':
                 return self.reply(404, dict(error='not_found'))
             demo = None if predictor.demo_offset is None else (datetime.now(timezone.utc).replace(tzinfo=None) + predictor.demo_offset).isoformat()
@@ -139,6 +141,7 @@ def main():
     parser.add_argument('--object-decision', action='append', default=[])
     parser.add_argument('--directory')
     parser.add_argument('--pump-decision')
+    parser.add_argument('--quality')
     args = parser.parse_args()
     if bool(args.object_decision) != (args.directory is not None):
         parser.error('--object-decision and --directory go together')
@@ -152,7 +155,8 @@ def main():
             parser.error('two object models for ' + model.api_target)
         objects[model.api_target] = model
     pumps = PumpPredictor(args.pump_decision) if args.pump_decision else None
-    ThreadingHTTPServer((args.host, args.port), make_handler(predictor, objects, pumps)).serve_forever()
+    quality = json.loads(Path(args.quality).read_text()) if args.quality else None
+    ThreadingHTTPServer((args.host, args.port), make_handler(predictor, objects, pumps, quality)).serve_forever()
 
 
 if __name__ == '__main__':

@@ -42,8 +42,8 @@ class FakeFailures(FakeObjects):
 
 
 class ServiceTests(unittest.TestCase):
-    def start(self, objects):
-        server = ThreadingHTTPServer(('127.0.0.1', 0), service.make_handler(FakeChannels(), objects))
+    def start(self, objects, quality=None):
+        server = ThreadingHTTPServer(('127.0.0.1', 0), service.make_handler(FakeChannels(), objects, quality=quality))
         threading.Thread(target=server.serve_forever, daemon=True).start()
         self.addCleanup(server.server_close)
         self.addCleanup(server.shutdown)
@@ -75,6 +75,18 @@ class ServiceTests(unittest.TestCase):
         self.assertEqual(self.call(base, '/predict_object', {'object_id': 'a'})[0], 400)
         self.assertEqual(self.call(base, '/risk_map', {'as_of': '2000-01-01'}), (422, dict(status='insufficient_data', reason='stale_journal', detail='x')))
         self.assertEqual(self.call(base, '/predict', {'target_id': 'sensor_1', 'as_of': '2025-01-01'}), (200, dict(target_id='sensor_1')))
+
+    def fetch(self, base, path):
+        try:
+            with urllib.request.urlopen(base + path) as response:
+                return response.status, json.loads(response.read())
+        except urllib.error.HTTPError as error:
+            return error.code, json.loads(error.read())
+
+    def test_quality_route(self):
+        report = {'incident': {'total': {'precision': 0.8}, 'alerts_per_day': {'mean': 20.1}}}
+        self.assertEqual(self.fetch(self.start(None, report), '/quality'), (200, report))
+        self.assertEqual(self.fetch(self.start(None), '/quality')[0], 404)
 
     def test_object_routes_absent_without_object_model(self):
         base = self.start(None)
