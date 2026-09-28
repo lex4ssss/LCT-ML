@@ -15,6 +15,23 @@ class ReadableTests(unittest.TestCase):
         self.assertEqual(op.readable('каналов: {}', np.nan), 'нет данных')
 
 
+class DispatcherTextTests(unittest.TestCase):
+    def test_blind_spots_name_missing_families_and_silent_channels(self):
+        self.assertEqual(op.blind_spots(['Датчик дыма', 'КД Люк', 'Газовый датчик', None], 3, 5),
+                         ['нет датчиков тепловых и температурных', 'нет датчиков затопления', '2 из 5 каналов без записей за 30 суток'])
+        full = ['Датчик дыма', 'Датчик температуры', 'Датчик затопления', 'Газовый датчик', 'КД Дверь']
+        self.assertEqual(op.blind_spots(full, 5, 5), [])
+
+    def test_verdict_names_target_factor_and_suspects_only_on_alert(self):
+        factors = [dict(text='тревог за 7 сут, сумма по каналам объекта: 12')]
+        suspects = [dict(target_id='sensor_11', sensor_type='КД Дверь'), dict(target_id='sensor_12', sensor_type=None),
+                    dict(target_id='sensor_13', sensor_type='Датчик дыма'), dict(target_id='sensor_14', sensor_type='Датчик дыма')]
+        self.assertEqual(op.verdict('incident', '7', 0.834, 72, True, factors, suspects),
+                         'Инцидент на объекте 7: 83 % за 72 ч, выше порога тревоги. Главный признак: тревог за 7 сут, сумма по каналам объекта: 12. '
+                         'Проверить: КД Дверь 11, канал 12, Датчик дыма 13')
+        self.assertEqual(op.verdict('failure', '7', 0.1, 168, False, [], suspects), 'Отказ оборудования на объекте 7: 10 % за 168 ч, ниже порога тревоги')
+
+
 class HistoryRowTests(unittest.TestCase):
     def test_windows_age_and_fallbacks(self):
         t = datetime(2025, 3, 10)

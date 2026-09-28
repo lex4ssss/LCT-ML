@@ -20,6 +20,25 @@ RU = {'event_count_24h': 'событий за 24 ч', 'alarm_count_24h': 'тре
 TOP_FACTORS = 3
 TOP_CHANNELS = 5
 CLASS_WORDS = dict(incident='инцидентов', neispraven='эпизодов «Неисправен»')
+VERDICT_WORDS = dict(incident='Инцидент', failure='Отказ оборудования')
+FAMILIES = {'дыма': {'Датчик дыма'}, 'тепловых и температурных': {'Тепловой датчик', 'Датчик температуры'}, 'затопления': {'Датчик затопления'},
+            'газа': {'Газовый датчик'}, 'дверей и люков': {'КД Дверь', 'КД Люк', 'КД АВ', '9-секционный люк'}}
+
+
+def blind_spots(sensor_types, used, total):
+    spots = [f'нет датчиков {family}' for family, names in FAMILIES.items() if not names & set(sensor_types)]
+    if used < total:
+        spots.append(f'{total - used} из {total} каналов без записей за 30 суток')
+    return spots
+
+
+def verdict(api_target, obj, probability, hours, alert, factors, suspects):
+    text = f"{VERDICT_WORDS[api_target]} на объекте {obj}: {round(probability * 100)} % за {hours} ч, {'выше' if alert else 'ниже'} порога тревоги"
+    if factors:
+        text += f". Главный признак: {factors[0]['text']}"
+    if alert and suspects:
+        text += '. Проверить: ' + ', '.join(f"{s['sensor_type'] or 'канал'} {s['target_id'].removeprefix('sensor_')}" for s in suspects[:3])
+    return text
 
 
 def feature_texts(type_names, target='incident'):
@@ -118,10 +137,14 @@ class ObjectPredictor:
                 continue
             row, columns, used = self.object_row(t, own, [at for channel, at in starts if channel in mine], bool(seen & mine))
             score = float(self.model.predict_proba(row[None, :])[0, 1])
+            probability, alert = float(self.calibrator.predict([score])[0]), score >= self.threshold
+            factors, suspects = self.factors(row), self.suspects(columns, used)
             results[obj] = dict(status='ok', object_id=obj, as_of_utc=t.isoformat(), horizon_hours=self.hours, target=self.api_target,
                                 target_scope=f'{self.target}_episode_start_in_object',
-                                probability=float(self.calibrator.predict([score])[0]), score=score, threshold=self.threshold, alert=score >= self.threshold,
+                                probability=probability, score=score, threshold=self.threshold, alert=alert,
                                 model_threshold=float(self.calibrator.predict([self.threshold])[0]),
-                                channels_used=len(used), channels_total=len(mine), top_factors=self.factors(row), suspect_channels=self.suspects(columns, used),
+                                channels_used=len(used), channels_total=len(mine), top_factors=factors, suspect_channels=suspects,
+                                verdict=verdict(self.api_target, obj, probability, self.hours, alert, factors, suspects),
+                                blind_spots=blind_spots([self.sensor_type.get(c) for c in mine], len(used), len(mine)),
                                 model_name=self.model_name)
         return results
