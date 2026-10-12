@@ -1,0 +1,39 @@
+Explore-v12: improve the submitted object forecasts on the existing real journal.
+
+Base source: LCT-ML 8d58eb3. The submitted incident target remains recorded incident episode onset within 72 hours; failure remains recorded Neispraven onset within 168 hours. Labels, eligible object-days, horizon boundaries and known-gap masks are exactly those of explore-v8. No target is replaced by a more frequent event or synthetic data.
+
+This specification precedes feature-label comparisons and training. Historical test 2026 has already been inspected in run-002, 006, 007, 008, 009, 010 and 011. No test predictions are computed during search. Only an accepted winner is confirmed once on the same reused 2026 period and reported explicitly as another inspection.
+
+Research sources:
+https://github.com/RomanTamrazov/mcpms : categorical object identity, CatBoost and recent-history training.
+https://github.com/a666tra/moscollector-neurokontur : numeric telemetry and temporal updating.
+https://github.com/orbitalrailgun/lct2026-gorod-8 : groups identified by object and picket, with observation coverage.
+Implementations are written independently. No competitor model or source code is reused.
+
+New features, computed exclusively at or before as_of:
+N. Per-object daily numeric summaries for temperature and gas: count, mean, standard deviation, minimum, maximum and share of positive gas values. Missing numeric history stays NaN. Values are parsed as finite decimal numbers; no assumed physical unit or gas alarm threshold creates a label. Rolling summaries cover 1, 7 and 30 days; changes compare the last day with the preceding history. Additional object counters cover negative numeric readings and clock-reset strings over 1, 7 and 30 days. Negative temperature is not relabelled as failure.
+D. Candidate domains use the channel registry's object id and a parsed picket in the sensor name. This is a location proxy, not proven hydraulic or electrical connectivity. On each existing channel snapshot, domain statistics count observed channels, channels with past alarms, domains with at least two observed alarmed channels, and singleton alarm domains. Windows are 24 hours, 7 and 30 days. No missing observation becomes a healthy sensor, no alarm is removed, and no future labels enter a domain feature.
+I. Object identity is a categorical feature of tree models. Evaluation addresses future predictions on existing registered objects, not unseen-object transfer. The unknown historical object stays a separate category, and known-object-only diagnostics are reported.
+
+Variants per target:
+R: unchanged submitted HistGradientBoosting model and its 2025 operating point.
+H_N: same HGB parameters, reference plus N.
+H_D: same HGB parameters, reference plus D.
+H_ND: same HGB parameters, reference plus N and D.
+C_B: CatBoost on reference features plus categorical object identity.
+C_ND: CatBoost on reference plus N, D and categorical object identity.
+C_ND_2022: C_ND trained only on eligible object-days from 2022-01-01.
+L_ND_2022: LightGBM on reference plus N, D and categorical object identity, trained from 2022-01-01.
+E: equal mean of C_ND_2022 and L_ND_2022, if both implementations run successfully.
+
+Fixed CatBoost parameters: CPU, iterations 600, depth 6, learning_rate 0.05, l2_leaf_reg 10, loss_function Logloss, random_seed 0, thread_count 4, has_time true, chronological training order, allow_writing_files false, no early stopping on 2025.
+Fixed LightGBM parameters: CPU, n_estimators 600, learning_rate 0.05, num_leaves 31, min_child_samples 200, reg_lambda 10, random_state 0, n_jobs 4, verbosity -1, no early stopping on 2025.
+Class weights, weather, synthetic augmentation, neural networks and automated online retraining are off. Each variant's feature toggles and training interval are stored with its result.
+
+Training ends strictly before 2025-01-01 minus the target horizon. Selection uses eligible 2025 object-days only, with label windows ending by 2026-01-01. Threshold is the explore-v8 maximum margin above precision 0.7 and recall 0.5, with the larger threshold breaking ties. For diagnostics, report AP, precision at recall 0.5, recall at precision 0.7, base rate, the alarm-in-24-hours rule, and the stronger target-history-in-7-days rule.
+
+Acceptance per target: AP gain over R at least 0.01; precision at recall 0.5 no lower than R; qualification under the unchanged explore-v8 rule; F1 at the selected margin threshold no lower than R. Among accepted variants select the largest AP, then the largest margin, then the smaller feature set. If none qualifies, retain R without changing the service.
+
+Verification before a real-data run: independent synthetic oracle for numeric windows and domains, exact inclusive as_of boundaries, empty and missing inputs, future-record invariance, label split boundaries, unknown objects, model serialization and reproducibility. After any fix perform 20 targeted smoke checks before proceeding. Confirmed winners require offline-service feature parity before they can replace submitted artifacts.
+
+Search and result files remain in an isolated branch. Do not modify the submitted monorepository or current service while the experiment is in progress.
