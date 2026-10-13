@@ -1,0 +1,27 @@
+Explore-v17: model capacity with preregistered channel features, selected exclusively on 2024.
+
+Retain the original recorded-onset incident 72-hour and Neispraven 168-hour object-day targets, labels, eligible rows and historical training start. Reuse immutable explore-v12 base/history cache and the completed explore-v16 channel feature cache; no new feature construction. T106 and N40 are both on for every new model. Reference R remains the submitted HGB with those additions off. No 2026 prediction is computed during search.
+
+Select parameters independently per target and model family on an inner chronological split: train eligible as_of strictly before 2024-01-01 minus the target horizon, evaluate as_of from 2024-01-01 with horizon ending by 2025-01-01. Inner selection uses largest average precision; ties favor fewer iterations, then fewer leaves or smaller depth, then larger minimum leaf. Fit one selected HGB and one selected CatBoost on the original frozen training rows before 2025-01-01 minus the horizon. Evaluate those models and their equal mean on the entire unchanged eligible 2025 year. Do not select ensemble weights or reselect parameters using 2025 results.
+
+HGB grid (max_iter, learning_rate, max_leaf_nodes, min_samples_leaf, l2_regularization):
+H0: (300, 0.05, 31, 200, 1).
+H1: (300, 0.05, 31, 50, 1).
+H2: (600, 0.05, 63, 50, 10).
+H3: (600, 0.03, 31, 200, 10).
+All HGB random_state 0 and early_stopping false. Object identity is off.
+
+CatBoost grid (iterations, learning_rate, depth, l2_leaf_reg):
+C0: (600, 0.05, 6, 10).
+C1: (600, 0.05, 8, 10).
+C2: (1200, 0.03, 6, 10).
+C3: (1200, 0.03, 8, 10).
+All CatBoost CPU, Logloss, random_seed 0, thread_count 4, has_time true, allow_writing_files false, verbose false and no validation early stopping. Categorical object identity is on. Both families sort training rows chronologically and use one BLAS thread and four OpenMP threads.
+
+Variants evaluated on 2025: R, H_TUNED, C_TUNED and E_TUNED (equal mean, identity only through the CatBoost contribution). For audit also fit the original base-only HGB on the inner training split and report its 2024 AP and base rate; this model does not enter parameter selection. Publish all eight inner grid results per target, all fitted parameter values, input/code/cache/score hashes, monthly and known-object diagnostics, original base rates and both baseline rules.
+
+Recency weights, online refitting, class balancing, object numeric/domain/state/family/rhythm extras, weather, synthetic data, neural networks, calibration and per-object/per-channel operating thresholds are off. Original object history, original target history and original calendar features remain on. New models keep one annual threshold by the original maximum-margin rule on 2025.
+
+Acceptance remains AP >= R + 0.01, precision at recall 0.5 and F1 at chosen threshold no lower than R, and original qualification satisfied. Rank accepted variants by AP, margin, fewer features and fewer models. None accepted means retain R without another test look. A single accepted winner may receive one disclosed confirmation on already reused 2026, with no reselection on test and service feature/score parity before replacement.
+
+Before real fitting verify horizon-purged inner masks against a calendar oracle, deterministic grid/ties, chronological training and exact estimator parameters, independence of inner selection from future features/labels, saved-score/input/code/cache resume guards, reference identity and serialization. Each fix receives 20 targeted smoke checks. Source explore-v16 and its report remain unchanged.
