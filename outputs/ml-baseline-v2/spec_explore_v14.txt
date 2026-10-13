@@ -1,8 +1,8 @@
-Explore-v14: separate incident-channel families without changing the target.
+Explore-v14: separate channel families without changing either submitted target.
 
-The primary target remains recorded incident episode onset in an eligible object-day within 72 hours. This is not a verified physical fire, flood, gas leak or unauthorized-access label. The Neispraven target at 168 hours is unchanged and is not trained in this experiment.
+The targets remain recorded incident episode onset within 72 hours and recorded Neispraven onset within 168 hours, in eligible object-days. These are not verified physical accident labels. The two targets are trained and selected separately with their original horizons, class episode sources and reference artifacts.
 
-This specification precedes family-label comparisons and training. Reuse the exact explore-v8 channel eligibility, 900-second episodes, unknown-boundary exclusion and object-day aggregation. Reuse the immutable explore-v12 object feature cache and its manifest. The union of family labels must exactly equal the existing incident label, with identical eligible object-days, before any real model is trained. Abort on a mismatch. No 2026 observations, features, labels or predictions enter this search.
+This specification precedes family-label comparisons and training. Reuse the exact explore-v8 channel eligibility, 900-second episodes, unknown-boundary exclusion and object-day aggregation. Reuse the immutable explore-v12 object feature cache and its manifest. The union of family labels must exactly equal the existing incident label on all eligible training and evaluation rows, with identical eligible object-days, before any real model is trained. Abort on a mismatch. No snapshot whose as_of is in 2026 and no window ending after 2026-01-01 enters training or evaluation; the inclusive label endpoint at that date is preserved exactly as in explore-v8. No 2026 predictions enter this search.
 
 Five disjoint families determined only by the existing channel registry:
 smoke_temperature: Datсhik dyma, Teplovoy datchik, Datchik temperatury, with exact original Russian sensor-type names in code.
@@ -11,18 +11,18 @@ gas: Gazovyi datchik.
 access: KD Dver, KD Lyuk, KD AV, 9-sektsionnyi lyuk.
 other: every remaining or unregistered channel. No incident channel or episode is dropped.
 
-A family label is the maximum original non-null 72-hour incident channel label among that family's eligible channel snapshots in the object-day, or zero if none contributes a positive label. The family labels partition the existing observed target; missing channels do not create proof of health. A channel whose future window contains an unknown incident boundary remains excluded exactly as before, even if it also has a known onset.
+A family label is the maximum original non-null target-specific channel label among that family's eligible channel snapshots in the object-day, or zero if none contributes a positive label. Use 72-hour incident windows and 168-hour Neispraven windows. The family labels partition the existing observed target; missing channels do not create proof of health. A channel whose future window contains an unknown target boundary remains excluded exactly as before, even if it also has a known onset.
 
-For each family add four past-history features to the submitted 77-feature object matrix: incident episode starts in 24, 168 and 720 hours and hours since the last family start capped at 720, with the same missing and boundary rules as explore-v8. All family-history features use onsets at or before as_of only. This produces 20 additional features. Recompute no raw-value alarm or physical-unit rule.
+For each family add four past-history features to the submitted 77-feature object matrix: target-specific episode starts in 24, 168 and 720 hours and hours since the last family start capped at 720, with the same missing and boundary rules as explore-v8. All family-history features use onsets at or before as_of only. This produces 20 additional features per target. Recompute no raw-value alarm or physical-unit rule.
 
 Variants fixed in advance:
-R: unchanged run-008 HGB and its 2025 threshold.
+R: unchanged run-008 incident or run-009 Neispraven HGB and its 2025 threshold.
 H_F: one HGB for the unchanged union target, on the reference matrix plus the 20 family-history features.
 HEAD_MAX: five independent HGBs, one per family, each using the same reference plus family-history matrix; combine the five scores by maximum.
 HEAD_OR: the same five heads, combined as 1-product(1-score). This is a candidate ranking score; conditional independence and probability calibration are not assumed verified.
 Heads with only one training class return that class as a constant score; no broken binary predict_proba branch is allowed. Rare heads are not removed and class weights are not introduced.
 
-All models train only on eligible as_of strictly before 2025-01-01 minus 72 hours and are frozen throughout 2025. Selection uses the same eligible 2025 label windows ending by 2026-01-01. HGB parameters are unchanged: 300 iterations, learning_rate 0.05, 31 leaves, minimum leaf 200, l2 1, early_stopping false, random_state 0, four CPU OpenMP threads and one BLAS thread.
+All models train only on eligible as_of strictly before 2025-01-01 minus their unchanged target horizon and are frozen throughout 2025. Selection uses the same eligible 2025 label windows ending by 2026-01-01. HGB parameters are unchanged: 300 iterations, learning_rate 0.05, 31 leaves, minimum leaf 200, l2 1, early_stopping false, random_state 0, four CPU OpenMP threads and one BLAS thread.
 
 Recency weights, online refitting, numeric telemetry, domains, categorical identity, class balancing, weather, synthetic data, neural networks, calibration and per-family/per-object operating thresholds are off. Each variant receives one annual threshold for the original union target by the existing maximum-margin rule above precision 0.7 and recall 0.5.
 
