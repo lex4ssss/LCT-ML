@@ -1,0 +1,175 @@
+{
+  "date": "2026-10-15",
+  "spec_commit": "72d5d19",
+  "toggles": {
+    "xlsx_extraction": true,
+    "explicit_bindings": false,
+    "automatic_id_matching": false,
+    "quantity_matching": false,
+    "model_training": false,
+    "threshold_selection": false,
+    "new_2026_predictions": false,
+    "synthetic_outcome_labels": false
+  },
+  "run": {
+    "monthly": {
+      "objects": 24,
+      "equipment_rows": 140,
+      "work_marks": 548,
+      "all_work_marks": 549,
+      "work_kind_counts": {
+        "ТО": 408,
+        "ТО+ТР": 138,
+        "ТР": 2
+      },
+      "unassigned_work_cells": [
+        "R76"
+      ],
+      "rows_without_work": 1,
+      "hidden_equipment_rows": 2,
+      "hidden_work_marks": 2,
+      "title_year": 2026,
+      "sheet_year_conflict": true,
+      "source_sha256": "ef14db84b977a418d346afc3b2b5f0a8a5aef1820144fc955a7c774939a9cd68",
+      "sheet": "2025 год"
+    },
+    "ppr": {
+      "objects": 26,
+      "sensor_quantity": 1008,
+      "distinct_dismantling_windows": 16,
+      "first_dismantle_on": "2026-01-12",
+      "last_commission_on": "2026-12-22",
+      "title_year": 2026,
+      "date_year_conflicts": 0,
+      "source_sha256": "8ae33d6362ee16c935f59349ad9c66c1c76c1785fb10e02b828ce003b672cf4d",
+      "sheet": "РЭК"
+    },
+    "eligible_equipment_or_ppr_rows": 0,
+    "binding_supplied": false,
+    "as_of": null,
+    "actual_outcome_labels_created": false,
+    "training_performed": false,
+    "prediction_performed": false
+  },
+  "independent_DOM_reconciliation": {
+    "monthly": {
+      "objects": 24,
+      "equipment_rows": 140,
+      "all_work_marks": 549,
+      "work_marks": 548,
+      "orphan_cells": [
+        "R76"
+      ],
+      "hidden_work_marks": 2,
+      "work_kind_counts": {
+        "ТО": 408,
+        "ТО+ТР": 138,
+        "ТР": 2
+      }
+    },
+    "ppr": {
+      "objects": 26,
+      "sensor_quantity": 1008
+    }
+  },
+  "independent_value_checks": {
+    "monthly_quantities": 140,
+    "monthly_intervals_and_marks": 548,
+    "ppr_quantities": 26,
+    "ppr_dates_and_merge_anchors": 104
+  },
+  "source_structure_and_name_checks": {
+    "plan_object_sections": 50,
+    "catalogue_leaf_objects": 78,
+    "normalized_exact_name_matches": 0,
+    "structure": {
+      "monthly": {
+        "actual_or_approval_keyword_hits": 0,
+        "comments_drawings_embeddings_external_links": 0,
+        "formulas": 0,
+        "conditional_formats": 0,
+        "modified_metadata": "2026-09-25T10:41:13Z",
+        "modified_is_not_approval_date": true
+      },
+      "ppr": {
+        "actual_or_approval_keyword_hits": 0,
+        "comments_drawings_embeddings_external_links": 0,
+        "formulas": 0,
+        "conditional_formats": 0,
+        "modified_metadata": "2026-09-25T10:38:01Z",
+        "modified_is_not_approval_date": true
+      }
+    }
+  },
+  "source_code_sha256": {
+    "maintenance_v19.py": "fe94f74005f33044e80f1047b73e08a12ccf2226700191f29d9999f0b1f7c615",
+    "test_maintenance_v19.py": "c4d3f7048c5ec5f51c94bceda3ea0d824d0893075e5ca3287c00ed357ead6c18"
+  },
+  "backend_search": {
+    "versions": {
+      "backend_current": "472428d2deadfa87b2ea5b75bd58d9d9d753650a",
+      "submission": "091f5d9303939b303c41854f0aef6c3af2203eaa",
+      "backend_local": "928b9931da16ca53498425316482d19bc40f11ba"
+    },
+    "scope": [
+      "object and channel catalogues",
+      "facility and channel loaders",
+      "backend code and text documentation",
+      "Word XML parts and embedded-file inventory"
+    ],
+    "catalogue_comparisons": {
+      "backend_current:ид_объект": {
+        "rows": 95,
+        "equal_after_csv_and_newline_normalization": true
+      },
+      "submission:ид_объект": {
+        "rows": 95,
+        "equal_after_csv_and_newline_normalization": true
+      },
+      "backend_local:ид_объект": {
+        "rows": 95,
+        "equal_after_csv_and_newline_normalization": true
+      },
+      "backend_current:ид_канала_данных": {
+        "rows": 11485,
+        "equal_after_csv_and_newline_normalization": true
+      },
+      "submission:ид_канала_данных": {
+        "rows": 11485,
+        "equal_after_csv_and_newline_normalization": true
+      },
+      "backend_local:ид_канала_данных": {
+        "rows": 11485,
+        "equal_after_csv_and_newline_normalization": true
+      }
+    },
+    "confirmed_crosswalk_found": false,
+    "numeric_ordinal_and_quantity_matching_used": false,
+    "synthetic_equipment_registry_used": false,
+    "installation_year_generated_by_hash": true,
+    "existing_example_journal": {
+      "sha256": "3a06fe5d4fc3d8350c2e8fb6d74887ecf9545b4f72638953dc16d78ff3130f5c",
+      "rows": 169993,
+      "dates": [
+        "2026-08-01"
+      ],
+      "same_as_original_example": true,
+      "covers_72h_or_168h_future": false
+    }
+  },
+  "verification": {
+    "unit_tests_passed": 202,
+    "new_unit_tests_passed": 21,
+    "snapshot_hash_smoke_scenarios_passed": 20,
+    "registry_schema_cli_smoke_scenarios_passed": 20,
+    "real_output_reproduced_identically": true,
+    "sources_unchanged": true,
+    "production_model_changes": false
+  },
+  "limitations": [
+    "Связь разделов графиков с ID журнала не подтверждена в проверенной области.",
+    "Дата доступности именно этих версий плана до прогноза не установлена.",
+    "В книгах нет исторических версий графика для отбора на 2025 году и подтверждений фактического исполнения.",
+    "Обучение, подбор порога и новые проверки на 2026 не проводились; прирост метрик не заявляется."
+  ]
+}
