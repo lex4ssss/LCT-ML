@@ -1,0 +1,16 @@
+{
+  "independent_metric_rows_checked": 16,
+  "independent_AP_confusion_and_P_at_R_05": true,
+  "real_curves_checked": 8,
+  "curve_rows_each": 37,
+  "monotonicity_and_saved_scores_verified": true,
+  "risk_set_training_counts_match_v18": true,
+  "matched_flags_only_differ_in_sharing": true,
+  "ensemble_scores_reproduced": true,
+  "unit_tests_passed": 234,
+  "new_unit_tests_passed": 17,
+  "validated_matrix_smoke_scenarios_passed": 20,
+  "new_test_predictions": false,
+  "completed_resume_without_training_or_prediction": true,
+  "artifact_hashes_unchanged_on_resume": true
+}
