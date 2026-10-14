@@ -1,0 +1,19 @@
+{
+  "period": "2025 eligible object-day evaluation",
+  "method": "independent direct range join of source snapshots with unknown-boundary onsets",
+  "targets": {
+    "incident": {
+      "unknown_onsets": 55,
+      "snapshot_pairs": 0,
+      "retained_snapshot_pairs": 0,
+      "unmatched_unknown_onsets": 55
+    },
+    "neispraven": {
+      "unknown_onsets": 56,
+      "snapshot_pairs": 0,
+      "retained_snapshot_pairs": 0,
+      "unmatched_unknown_onsets": 56
+    }
+  },
+  "interpretation": "Unknown-boundary onsets exist in the source but have no preceding source snapshots in the original eligible evaluation windows. Zero exclusions in the evaluated rows does not establish physical-label correctness."
+}
